@@ -30,7 +30,7 @@ class FunctionInfoController extends BaseController {
                 } else {
                     $result = $this->FunctionInfoService->InsertFunctionInfo($model);
                     if (!$result) {
-                        $this->addError("Insert Failed");
+                        $this->addErrors($this->FunctionInfoService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
                     return Redirect::to("functioninfo/detail/".$model->getFunctionId());
@@ -57,7 +57,7 @@ class FunctionInfoController extends BaseController {
                 } else {
                     $result = $this->FunctionInfoService->UpdateFunctionInfo($model, $model->getFunctionId());
                     if (!$result) {
-                        $this->addError("Update Failed");
+                        $this->addErrors($this->FunctionInfoService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
                     return Redirect::to("functioninfo/detail/".$model->getFunctionId());
@@ -70,7 +70,7 @@ class FunctionInfoController extends BaseController {
     }
     
     public function delete($id) {
-               if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowDelete()) { return Redirect::to("access_denied"); }
         try {
             $model = $this->FunctionInfoService->getFunctionInfo($id);

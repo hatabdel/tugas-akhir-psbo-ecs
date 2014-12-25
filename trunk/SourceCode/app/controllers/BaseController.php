@@ -48,7 +48,7 @@ class BaseController extends Controller {
     }
     
     protected function addError($err) {
-    if (is_null($err) || empty($err)) { return; }
+        if (is_null($err) || empty($err)) { return; }
         $this->errors[] = '<li>'.$err.'</li>';
         $this->getErrors();
     }
@@ -64,7 +64,11 @@ class BaseController extends Controller {
     }
     
     protected function addErrors($arr_err) {
-        
+        if (is_null($arr_err) || empty($arr_err)) { return; }
+        foreach ($arr_err as $err) {
+           $this->errors[] = '<li>'.$err.'</li>';
+        }
+        $this->getErrors();
     }
     
     protected function getErrors() {
