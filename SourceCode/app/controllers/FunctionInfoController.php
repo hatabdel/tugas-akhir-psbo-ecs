@@ -6,10 +6,14 @@ class FunctionInfoController extends BaseController {
     
     public function __construct() {
         parent::__construct();
+        $this->loadDefaultValue();
+        $this->loadDefaultService();
     }
     
     public function index() {
-        return View::make("functioninfo/index");
+        $FunctionInfoList = $this->FunctionInfoService->getList();
+        $this->data['FunctionInfoList'] = $FunctionInfoList;
+        return View::make("functioninfo/index", $this->data);
     }
     
     public function create() {
@@ -22,27 +26,84 @@ class FunctionInfoController extends BaseController {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
                 if ($validation->fails()) {
-                    return $this->createInputView($model);
+                    return $this->createInputView($model, $validation->messages());
                 } else {
-                    
+                    $result = $this->FunctionInfoService->InsertFunctionInfo($model);
+                    if (!$result) {
+                        $this->addError("Insert Failed");
+                        return $this->createInputView($model, $validation->messages());
+                    }
+                    return Redirect::to("functioninfo/detail/".$model->getFunctionId());
                 }
             }
-        
-            return View::make("functioninfo/input");
+            return $this->createInputView($model);
         } catch (Exception $ex) {
-            //return $this->createInputView($model);
+            return $this->createInputView(null);
         }
     }
     
-    private function createInputView() {
-        /*if (!is_null($model))
-            $this->data["model"] = $model;*/
+    public function edit($id) {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowUpdate()) { return Redirect::to("access_denied"); }
         
+        $model = $this->FunctionInfoService->getFunctionInfo($id);
+        try {
+            $input = Input::all();
+            if (count($input) > 0) {
+                $model = $this->bindData($input);
+                $validation = Validator::make($input, $this->initValidation());
+                if ($validation->fails()) {
+                    return $this->createInputView($model, $validation->messages(), "edit");
+                } else {
+                    $result = $this->FunctionInfoService->UpdateFunctionInfo($model, $model->getFunctionId());
+                    if (!$result) {
+                        $this->addError("Update Failed");
+                        return $this->createInputView($model, $validation->messages(), "edit");
+                    }
+                    return Redirect::to("functioninfo/detail/".$model->getFunctionId());
+                }
+            }
+            return $this->createInputView($model, null, "edit");
+        } catch (Exception $ex) {
+            return $this->createInputView(null, null, "edit");
+        }
+    }
+    
+    public function delete($id) {
+               if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowDelete()) { return Redirect::to("access_denied"); }
+        try {
+            $model = $this->FunctionInfoService->getFunctionInfo($id);
+            if (is_null($model)) { return Redirect::to("functioninfo"); }
+            $this->FunctionInfoService->DeleteFunctionInfo($id);
+            return Redirect::to("functioninfo");
+        } catch (Exception $ex) {
+            var_dump($ex->messages()); die();
+        }
+    }
+    
+    public function detail($id) {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        $this->data["model"] = $this->FunctionInfoService->getFunctionInfo($id);
+        return View::make("functioninfo/detail", $this->data);
+    }
+    
+    private function createInputView($model, $validation = null, $mode = "create") {
+        if (!is_null($model)) {
+            $this->data["model"] = $model;
+        } else {
+            $this->data["model"] = new FunctionInfo();
+        }
+        $this->data["mode"] = $mode;
+        $this->addErrorValidation($validation);
         return View::make("functioninfo/input", $this->data);
     }
     
     private function initValidation() {
         $form_validation = array(
+            "function_id" => "required",
             "url" => "required"
         );
         return $form_validation;
@@ -50,14 +111,17 @@ class FunctionInfoController extends BaseController {
     
     private function bindData($param) {
         $FuntionInfoObj = new FunctionInfo();
-        $FuntionInfoObj->setUrl($param["url"]);
-        $FuntionInfoObj->setIsActive($param["is_active"]);
-        $FuntionInfoObj->setIsShow($param["is_show"]);
+        if (!is_null($param) && count($param) > 0) {
+            $FuntionInfoObj->setFunctionId($param["function_id"]);
+            $FuntionInfoObj->setUrl($param["url"]);
+            $FuntionInfoObj->setIsActive($param["is_active"]);
+            $FuntionInfoObj->setIsShow($param["is_show"]);
+        }
         return $FuntionInfoObj;
     }
     
     private function loadDefaultValue() {
-        
+        $this->data["_MODULE_NAME"] = "Function Info - ";
     }
     
     private function loadDefaultService() {

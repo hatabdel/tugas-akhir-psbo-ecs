@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title> - E-Learning Collaborative System</title>
+        <title>@yield('title') E-Learning Collaborative System</title>
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/bootstrap/bootstrap.min.css"; ?>" />
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/bootstrap/bootstrap-responsive.min.css"; ?>" />
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/font-awesome/css/font-awesome.min.css"; ?>" />
