@@ -37,5 +37,14 @@ class FunctionInfo {
     public function IsShow() {
         return $this->mIsShow;
     }
+    
+    public function toArray() {
+        return array(
+            "function_id" => $this->mFunctionId,
+            "url" => $this->mUrl,
+            "is_active" => $this->mIsActive,
+            "is_show" => $this->mIsShow
+        );
+    }
 }
 

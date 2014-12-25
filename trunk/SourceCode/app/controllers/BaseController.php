@@ -6,11 +6,13 @@ class BaseController extends Controller {
     protected $login_url;
     protected $access_denied_url;
     protected $data;
+    protected $errors = array();
     
     public function __construct() {
         $this->setupLayout();
         $this->login_url = url();
-        $this->access_denied_url = url();    
+        $this->access_denied_url = url();
+        $this->data["errors"] = "";
     }
     
     /*
@@ -46,7 +48,19 @@ class BaseController extends Controller {
     }
     
     protected function addError($err) {
+    if (is_null($err) || empty($err)) { return; }
+        $this->errors[] = '<li>'.$err.'</li>';
+        $this->getErrors();
+    }
+    
+    protected function addErrorValidation($errors) {
+        if (is_null($errors)) { return; }
+        foreach ($errors->all('<li>:message</li>') as $message)
+        {
+            $this->errors[] = $message;
+        }
         
+        $this->getErrors();
     }
     
     protected function addErrors($arr_err) {
@@ -54,7 +68,13 @@ class BaseController extends Controller {
     }
     
     protected function getErrors() {
-        
+        if (!is_null($this->errors) && count($this->errors) > 0) {
+            $this->data["errors"] = "<div class=\"alert alert-danger\" role=\"alert\">";
+            foreach($this->errors as $error) {
+                $this->data["errors"] .= $error;
+            }
+            $this->data["errors"] .= "</div>";
+        }
     }
 
 }
