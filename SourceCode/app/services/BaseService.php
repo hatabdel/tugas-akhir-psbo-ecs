@@ -19,4 +19,9 @@ class BaseService {
     public function getErrors() {
         return $this->arr_error;
     }
+    
+    public function getServiceState() {
+        if(count($this->arr_error) <= 0) { return true; }
+        return false;
+    }
 }
