@@ -11,6 +11,9 @@ class FunctionInfoController extends BaseController {
     }
     
     public function index() {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
         $FunctionInfoList = $this->FunctionInfoService->getList();
         $this->data['FunctionInfoList'] = $FunctionInfoList;
         return View::make("functioninfo/index", $this->data);
@@ -109,6 +112,7 @@ class FunctionInfoController extends BaseController {
     private function initValidation() {
         $form_validation = array(
             "function_id" => "required",
+            "name" => "required",
             "url" => "required"
         );
         return $form_validation;
@@ -118,6 +122,7 @@ class FunctionInfoController extends BaseController {
         $FuntionInfoObj = new FunctionInfo();
         if (!is_null($param) && count($param) > 0) {
             $FuntionInfoObj->setFunctionId($param["function_id"]);
+            $FuntionInfoObj->setUrl($param["name"]);
             $FuntionInfoObj->setUrl($param["url"]);
             $FuntionInfoObj->setIsActive($param["is_active"]);
             $FuntionInfoObj->setIsShow($param["is_show"]);

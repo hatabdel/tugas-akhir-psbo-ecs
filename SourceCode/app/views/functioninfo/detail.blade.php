@@ -20,6 +20,12 @@
             </div>
         </div>
         <div class="control-group">
+            <label class="control-label">Name</label>
+            <div class="controls">
+                <?php if(!is_null($model)) { echo $model->getName(); } ?>
+            </div>
+        </div>
+        <div class="control-group">
             <label class="control-label">URL</label>
             <div class="controls">
                 <?php if(!is_null($model)) { echo $model->getUrl(); } ?>

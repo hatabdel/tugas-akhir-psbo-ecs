@@ -23,7 +23,7 @@ class PrivilegeInfo {
     }
 
     public function getFunctionId() {
-        //return $this->mPassword;
+        return $this->mFunctionId;
     }
     
     public function setUserGroupId($value) {
@@ -65,5 +65,16 @@ class PrivilegeInfo {
     public function IsAllowDelete() {
         return $this->mIsAllowDelete;
     }
+    
+    public function toArray() {
+        return array(
+            "id" => $this->mId,
+            "function_id" => $this->mFunctionId,
+            "user_group_id" => $this->mUserGroupId,
+            "is_allow_read" => +$this->mIsAllowRead,
+            "is_allow_create" => +$this->mIsAllowCreate,
+            "is_allow_update" => +$this->mIsAllowUpdate,
+            "is_allow_delete" => +$this->mIsAllowDelete
+        );
+    }
 }
-?>

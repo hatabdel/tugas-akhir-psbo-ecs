@@ -117,8 +117,8 @@ class UserInfoController extends BaseController {
     private function bindData($param) {
         $UserInfoObj = new UserInfo();
         if (!is_null($param) && count($param) > 0) {
-            $UserInfoObj->setUserName($param["function_id"]);
-            $UserInfoObj->setUrl($param["url"]);
+            $UserInfoObj->setUserName($param["user_name"]);
+            $UserInfoObj->setPassword($param["password"]);
             $UserInfoObj->setIsActive($param["is_active"]);
             $UserInfoObj->setIsShow($param["is_show"]);
         }

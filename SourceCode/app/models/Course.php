@@ -28,6 +28,14 @@ class Course {
         return $this->mName;
     }
     
+    public function setDescription($value) {
+        $this->mDescription = $value;
+    }
+
+    public function getDescription() {
+        return $this->mDescription;
+    }
+    
     public function setStartDate($value) {
         $this->mStartDate = $value;
     }
@@ -48,8 +56,8 @@ class Course {
         $this->mCreatedDate = $value;
     }
 
-    public function getCreatedUser() {
-        return $this->mCreatedUser;
+    public function getCreatedDate() {
+        return $this->mCreatedDate;
     }
     
     public function setCreatedUser($value) {

@@ -1,11 +1,11 @@
 <?php
 
-class UserInfo {
+class CourseDetail {
 
     private $mId;
-    private $mIdentityId
+    private $mIdentityId;
     private $mCourseCode;
-    private $mCreateDate;
+    private $mCreatedDate;
     
     public function setId($value) {
         $this->mId = $value;

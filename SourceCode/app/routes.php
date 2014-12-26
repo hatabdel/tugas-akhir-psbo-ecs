@@ -12,8 +12,27 @@
 */
 
 Route::any('/', 'HomeController@Index');
+
 Route::any('userinfo', 'UserInfoController@index');
+Route::any('userinfo/popup', 'UserInfoController@popup');
 Route::any('userinfo/create', 'UserInfoController@create');
+Route::any('userinfo/edit/{id}', 'UserInfoController@edit');
+Route::any('userinfo/delete/{id}', 'UserInfoController@delete');
+Route::any('userinfo/detail/{id}', 'UserInfoController@detail');
+
+Route::any('usergroup', 'PrivilegeInfoController@index');
+Route::any('usergroup/popup', 'PrivilegeInfoController@popup');
+Route::any('usergroup/create', 'PrivilegeInfoController@create');
+Route::any('usergroup/edit/{id}', 'PrivilegeInfoController@edit');
+Route::any('usergroup/delete/{id}', 'PrivilegeInfoController@delete');
+Route::any('usergroup/detail/{id}', 'PrivilegeInfoController@detail');
+
+Route::any('privilegeinfo', 'PrivilegeInfoController@index');
+Route::any('privilegeinfo/popup', 'PrivilegeInfoController@popup');
+Route::any('privilegeinfo/create', 'PrivilegeInfoController@create');
+Route::any('privilegeinfo/edit/{id}', 'PrivilegeInfoController@edit');
+Route::any('privilegeinfo/delete/{id}', 'PrivilegeInfoController@delete');
+Route::any('privilegeinfo/detail/{id}', 'PrivilegeInfoController@detail');
 
 Route::any('functioninfo', 'FunctionInfoController@index');
 Route::any('functioninfo/popup', 'FunctionInfoController@popup');

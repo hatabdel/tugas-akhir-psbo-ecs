@@ -46,6 +46,7 @@ class FunctionInfoDao extends BaseDao implements UserInterface, RemindableInterf
         $FunctionInfoObj = new FunctionInfo();
         
         $FunctionInfoObj->setFunctionId($rowset["function_id"]);
+        $FunctionInfoObj->setName($rowset["name"]);
         $FunctionInfoObj->setUrl($rowset["url"]);
         $FunctionInfoObj->setIsActive($rowset["is_active"]);
         $FunctionInfoObj->setIsShow($rowset["is_show"]);
