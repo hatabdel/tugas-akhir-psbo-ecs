@@ -96,7 +96,12 @@ class FunctionInfoController extends BaseController {
         } else {
             $this->data["model"] = new FunctionInfo();
         }
-        $this->data["mode"] = $mode;
+        if ($mode == "create") {
+            $this->data["action"] = "/functioninfo/".$mode;
+        } else {
+            $this->data["action"] = "/functioninfo/".$mode."/".(!is_null($model) ? $model->getFunctionId() : "");
+        }
+        
         $this->addErrorValidation($validation);
         return View::make("functioninfo/input", $this->data);
     }

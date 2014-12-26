@@ -14,7 +14,7 @@
     </div>
     <div class="box-content" id="dialog-inputAdmin" title="Tambah Data User">
         <?php echo $errors; ?>
-        <form method="post" action="<?php echo url()."/functioninfo/".$mode."/".(!is_null($model) ? $model->getFunctionId() : ""); ?>" class="form-horizontal">
+        <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
             <div class="control-group">
                 <label class="control-label">Function Id</label>
                 <div class="controls">
