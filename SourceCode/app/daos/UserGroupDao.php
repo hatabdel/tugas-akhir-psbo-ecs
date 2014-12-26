@@ -16,6 +16,8 @@ class UserGroupDao extends BaseDao implements UserInterface, RemindableInterface
 	 * @var string
 	 */
 	protected $table = 'user_group';
+    protected $primary_key = 'id';
+    protected $fillable = array('name');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -30,7 +32,9 @@ class UserGroupDao extends BaseDao implements UserInterface, RemindableInterface
     }
     
     public function InsertUserGroup($UserGroupObj) {
-        return parent::InsertObject($UserGroupObj);
+        $result = parent::InsertObjectReturnId($UserGroupObj);
+        if (!is_null($result) && !is_null($UserGroupObj)) { $UserGroupObj->setId($result); }
+        return $UserGroupObj;
     }
     
     public function UpdateUserGroup($UserGroupObj, $Id) {
@@ -43,10 +47,8 @@ class UserGroupDao extends BaseDao implements UserInterface, RemindableInterface
     
     function toObject($rowset) {
         $UserGroupObj = new UserGroup();
-        $UserGroupObj->setUserName($rowset["user_name"]);
-        $UserGroupObj->setPassword($rowset["password"]);
-        $UserGroupObj->setCreatedDate($rowset["created_date"]);
-        $UserGroupObj->setIsActive($rowset["is_active"]);
+        $UserGroupObj->setId($rowset["id"]);
+        $UserGroupObj->setName($rowset["name"]);
         return $UserGroupObj;
     }
 

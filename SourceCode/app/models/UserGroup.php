@@ -4,7 +4,6 @@ class UserGroup {
 
     private $mId;
     private $mName;
-    private $mListPrivilageInfo;
     
     public function setId($value) {
         $this->mId = $value;
@@ -22,12 +21,10 @@ class UserGroup {
         return $this->mName;
     }
     
-    public function setListPrivilageInfo($value) {
-        $this->mListPrivilageInfo = $value;
-    }
-
-    public function getListPrivilageInfo() {
-        return $this->mListPrivilageInfo;
+    public function toArray() {
+        return array(
+            "id" => $this->mId,
+            "name" => $this->mName
+        );
     }
 }
-?>

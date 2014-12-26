@@ -32,9 +32,9 @@ class BaseDao extends Dao {
     }
     
     protected function InsertObjectReturnId($object) {
-        if (is_null($object) || empty($object)) { return false; }
+        if (is_null($object) || empty($object)) { return null; }
         $result = DB::table($this->table)->insertGetId($object->toArray());
-        if ($result > 0) { return true; }
+        if (!is_null($result) && !empty($result)) { return $result; }
     }
     
     protected function UpdateObject($object, $id) {
