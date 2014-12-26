@@ -109,8 +109,22 @@ class Forum
 	
 	public function IsPublic()
 	{
-		return $this->mIssPublic;
+		return $this->mIsPublic;
 	}
+        
+        public function toArray() {
+        return array(
+            "id" => $this->mId,
+            "title" => $this->mTitle,
+            "content" => $this->mContent,
+            "created_date" => $this->mCreatedDate,
+            "created_user" => $this->mCreatedUser,
+            "update_date" => $this->mUpdateDate,
+            "update_user" => $this->mUpdateUser,
+            "course_code" => $this->mCourseCode,
+            "is_public" => $this->mIsPublic
+        );
+    }
 	
 }
 ?>
