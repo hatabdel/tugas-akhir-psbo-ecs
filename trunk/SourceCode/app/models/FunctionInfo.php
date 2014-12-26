@@ -2,6 +2,7 @@
 
 class FunctionInfo {
     private $mFunctionId;
+    private $mName;
     private $mUrl;
     private $mIsActive;
     private $mIsShow;
@@ -12,6 +13,14 @@ class FunctionInfo {
     
     public function getFunctionId() {
         return $this->mFunctionId;
+    }
+    
+    public function setName($value) {
+        $this->mName = $value;
+    }
+    
+    public function getName() {
+        return $this->mName;
     }
     
     public function setUrl($value) {
@@ -41,6 +50,7 @@ class FunctionInfo {
     public function toArray() {
         return array(
             "function_id" => $this->mFunctionId,
+            "name" => $this->mName,
             "url" => $this->mUrl,
             "is_active" => $this->mIsActive,
             "is_show" => $this->mIsShow

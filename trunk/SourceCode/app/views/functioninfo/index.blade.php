@@ -21,6 +21,7 @@
                     <thead>
                         <tr>
                             <th>Function Id</th>
+                            <th>Name</th>
                             <th>URL</th>
                             <th>Is Active</th>
                             <th>Is Show</th>
@@ -32,6 +33,7 @@
                         @if (is_null($item)) continue @endif
                         <tr>
                             <td class="FunctionId"><a href="<?php echo url()."/functioninfo/detail/".$item->getFunctionId(); ?>">{{ $item->getFunctionId() }}</a></td>
+                            <td class="Url">{{ $item->getName() }}</td>
                             <td class="Url">{{ $item->getUrl() }}</td>
                             <td class="IsActive">{{ $item->IsActive() }}</td>
                             <td class="IsShow">{{ $item->IsShow() }}</td>

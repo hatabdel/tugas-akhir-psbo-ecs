@@ -56,7 +56,7 @@ class Comment
 	
 	public function setUpdateDate($value)
 	{
-		4this->mUpdateDate =$value;
+		$this->mUpdateDate = $value;
 	}
 	
 	public function getUpdateDate()
@@ -82,5 +82,3 @@ class Comment
         return $this->mForumId;
     }
 }
-	
-?>
