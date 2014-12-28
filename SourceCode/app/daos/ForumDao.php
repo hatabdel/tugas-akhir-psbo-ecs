@@ -13,6 +13,8 @@ class ForumDao extends BaseDao implements UserInterface, RemindableInterface
 	 * @var string
 	 */
 	protected $table = 'forum';
+	 protected $primary_key = 'id';
+    protected $fillable = array('id');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -27,7 +29,9 @@ class ForumDao extends BaseDao implements UserInterface, RemindableInterface
     }
     
     public function InsertForum($ForumObj) {
-        return parent::InsertObject($ForumObj);
+        $result = parent::InsertObjectReturnId($ForumObj);
+        if (!is_null($result) && !is_null($ForumObj)) { $ForumObj->setId($result); }
+        return $ForumObj;
     }
     
     public function UpdateForum($ForumObj, $Id) {
@@ -40,9 +44,9 @@ class ForumDao extends BaseDao implements UserInterface, RemindableInterface
     
     function toObject($rowset) {
         $ForumObj = new Forum();
-        $ForumObj->setUserName($rowset["user_name"]);
-        $ForumObj->setPassword($rowset["password"]);
-        $ForumObj->setCreatedDate($rowset["created_date"]);
+        $ForumObj->setId($rowset["id"]);
+        $ForumObj->setTitle($rowset["title"]);
+        $ForumObj->setContent($rowset["content"]);
         $ForumObj->setIsPublic($rowset["is_public"]);
         return $ForumObj;
     }
