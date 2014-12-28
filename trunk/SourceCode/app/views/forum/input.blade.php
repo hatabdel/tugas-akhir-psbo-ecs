@@ -16,21 +16,21 @@
         <?php echo $errors; ?>
         <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
             <div class="control-group">
-                <!--<label class="control-label">Forum Id</label>-->
+                <label class="control-label">Forum Id</label>
                 <div class="controls">
-                    <input type="hidden" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
+                    <input type="text" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">Title</label>
                 <div class="controls">
-                    <input type="text" name="title" value="<?php if(!is_null($model)) echo $model->getTitle(); ?>" />
+                    <input class="span10" type="text" name="title" value="<?php if(!is_null($model)) echo $model->getTitle(); ?>" />
                 </div>
             </div>
              <div class="control-group">
                 <label class="control-label">Content</label>
                 <div class="controls">
-                    <input type="text" name="content" value="<?php if(!is_null($model)) echo $model->getContent(); ?>" />
+                    <textarea rows="10" class="span10" cols="50" name="content" value="<?php if(!is_null($model)) echo $model->getContent(); ?>" ></textarea>
                 </div>
             </div>
             <div class="control-group">

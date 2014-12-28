@@ -42,3 +42,11 @@ Route::any('functioninfo/delete/{id}', 'FunctionInfoController@delete');
 Route::any('functioninfo/detail/{id}', 'FunctionInfoController@detail');
 
 
+Route::any('forum', 'ForumController@index');
+Route::any('forum/popup', 'ForumController@popup');
+Route::any('forum/create', 'ForumController@create');
+Route::any('forum/edit/{id}', 'ForumController@edit');
+Route::any('forum/delete/{id}', 'ForumController@delete');
+Route::any('forum/detail/{id}', 'ForumController@detail');
+
+
