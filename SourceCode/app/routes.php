@@ -50,3 +50,11 @@ Route::any('forum/delete/{id}', 'ForumController@delete');
 Route::any('forum/detail/{id}', 'ForumController@detail');
 
 
+Route::any('comment', 'CommentController@index');
+Route::any('comment/popup', 'CommentController@popup');
+Route::any('comment/create', 'CommentController@create');
+Route::any('comment/edit/{id}', 'CommentController@edit');
+Route::any('comment/delete/{id}', 'CommentController@delete');
+Route::any('comment/detail/{id}', 'CommentController@detail');
+
+
