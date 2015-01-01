@@ -60,7 +60,7 @@ class ForumController extends BaseController {
                         $this->addErrors($this->ForumService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("Forum/detail/".$model->getId());
+                    return Redirect::to("forum/detail/".$model->getId());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -74,9 +74,9 @@ class ForumController extends BaseController {
         if (!$this->IsAllowDelete()) { return Redirect::to("access_denied"); }
         try {
             $model = $this->ForumService->getForum($id);
-            if (is_null($model)) { return Redirect::to("Forum"); }
+            if (is_null($model)) { return Redirect::to("forum"); }
             $this->ForumService->DeleteForum($id);
-            return Redirect::to("Forum");
+            return Redirect::to("forum");
         } catch (Exception $ex) {
             var_dump($ex->messages()); die();
         }
@@ -97,18 +97,18 @@ class ForumController extends BaseController {
             $this->data["model"] = new Forum();
         }
         if ($mode == "create") {
-            $this->data["action"] = "/Forum/".$mode;
+            $this->data["action"] = "/forum/".$mode;
         } else {
-            $this->data["action"] = "/Forum/".$mode."/".(!is_null($model) ? $model->getId() : "");
+            $this->data["action"] = "/forum/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
         $this->addErrorValidation($validation);
         return View::make("forum/input", $this->data);
     }
     
-    private function initValidation() {
+	private function initValidation() {
         $form_validation = array(
-            "name" => "required"
+            "title" => "required"
         );
         return $form_validation;
     }
