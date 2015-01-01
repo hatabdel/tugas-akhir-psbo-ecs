@@ -3410,3 +3410,176 @@ Stack trace:
 #9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
 #10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
 #11 {main} [] []
+[2014-12-29 09:41:46] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-12-29 09:41:57] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-12-29 09:42:15] production.ERROR: exception 'InvalidArgumentException' with message 'View [comment/index] not found.' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:9429
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(9402): Illuminate\View\FileViewFinder->findInPaths('comment/index', Array)
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\vendor\laravel\framework\src\Illuminate\View\Factory.php(124): Illuminate\View\FileViewFinder->find('comment/index')
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(3238): Illuminate\View\Factory->make('comment/index', Array)
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\controllers\CommentController.php(16): Illuminate\Support\Facades\Facade::__callStatic('make', Array)
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\controllers\CommentController.php(16): Illuminate\Support\Facades\View::make('comment/index', Array)
+#5 [internal function]: CommentController->index()
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5776): Illuminate\Routing\Controller->callAction('index', Array)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5764): Illuminate\Routing\ControllerDispatcher->call(Object(CommentController), Object(Illuminate\Routing\Route), 'index')
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4971): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'CommentControll...', 'index')
+#10 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#11 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5329): call_user_func_array(Object(Closure), Array)
+#12 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4996): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#13 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#14 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#16 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#17 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#18 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#19 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#20 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#21 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#22 {main} [] []
+[2015-01-01 06:02:18] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 06:02:32] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 06:05:43] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 06:05:55] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\PrivilegeInfoService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 06:08:21] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 06:09:40] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 06:31:18] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 06:58:18] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method ForumService::validateBase()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\ForumService.php:72
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 07:04:55] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\ForumService.php:63
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 07:13:41] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\ForumService.php:63
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 07:13:57] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\ForumService.php:63
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 07:16:21] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\ForumService.php:65
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 07:17:29] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\ForumService.php:65
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 07:19:13] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method ForumService::validateBase()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\ForumService.php:74
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 07:24:13] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method ForumService::validateBase()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\ForumService.php:74
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

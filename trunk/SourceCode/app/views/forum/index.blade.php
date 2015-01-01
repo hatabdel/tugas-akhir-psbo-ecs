@@ -17,7 +17,7 @@
                 <div class="clearfix"></div>
                 <a class='btn show-tooltip' style='margin-bottom:10px !important;' title='Create' href='<?php echo url()."/forum/create"; ?>' ><i class='icon-plus'> Create</i></a>
                 @if (count($ForumList) > 0 && !is_null($ForumList))
-                <table class="table table-advance" id="table_user_info">
+                <table class="table table-advance" id="table_forum">
                     <thead>
                         <tr>
                             <th>Title</th>
