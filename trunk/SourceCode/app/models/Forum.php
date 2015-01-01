@@ -112,7 +112,7 @@ class Forum
 		return $this->mIsPublic;
 	}
         
-        public function toArray() {
+    public function toArray() {
         return array(
             "id" => $this->mId,
             "title" => $this->mTitle,
