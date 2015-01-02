@@ -16,6 +16,8 @@ class CommentDao extends BaseDao implements UserInterface, RemindableInterface
 	 * @var string
 	 */
 	protected $table = 'comment';
+	protected $primary_key = 'id';
+    protected $fillable = array('id');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -30,7 +32,10 @@ class CommentDao extends BaseDao implements UserInterface, RemindableInterface
     }
     
     public function InsertComment($CommentObj) {
-        return parent::InsertObject($CommentObj);
+		
+        $result = parent::InsertObjectReturnId($CommentObj);
+        if (!is_null($result) && !is_null($CommentObj)) { $CommentObj->setId($result); }
+        return $CommentObj;
     }
     
     public function UpdateComment($CommentObj, $Id) {
@@ -43,10 +48,9 @@ class CommentDao extends BaseDao implements UserInterface, RemindableInterface
     
     function toObject($rowset) {
         $CommentObj = new Comment();
-        $CommentObj->setUserName($rowset["user_name"]);
-        $CommentObj->setPassword($rowset["password"]);
-        $CommentObj->setCreatedDate($rowset["created_date"]);
-        //$CommentObj->setIsActive($rowset["is_active"]);
+        $CommentObj->setId($rowset["id"]);
+        $CommentObj->setTitle($rowset["title"]);
+        $CommentObj->setContent($rowset["content"]);
         return $CommentObj;
     }
 

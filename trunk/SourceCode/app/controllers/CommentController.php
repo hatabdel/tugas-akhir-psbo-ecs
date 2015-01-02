@@ -60,7 +60,7 @@ class CommentController extends BaseController {
                         $this->addErrors($this->CommentService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("Comment/detail/".$model->getId());
+                    return Redirect::to("comment/detail/".$model->getId());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -74,9 +74,9 @@ class CommentController extends BaseController {
         if (!$this->IsAllowDelete()) { return Redirect::to("access_denied"); }
         try {
             $model = $this->CommentService->getComment($id);
-            if (is_null($model)) { return Redirect::to("Comment"); }
+            if (is_null($model)) { return Redirect::to("comment"); }
             $this->CommentService->DeleteComment($id);
-            return Redirect::to("Comment");
+            return Redirect::to("comment");
         } catch (Exception $ex) {
             var_dump($ex->messages()); die();
         }
@@ -97,9 +97,9 @@ class CommentController extends BaseController {
             $this->data["model"] = new Comment();
         }
         if ($mode == "create") {
-            $this->data["action"] = "/Comment/".$mode;
+            $this->data["action"] = "/comment/".$mode;
         } else {
-            $this->data["action"] = "/Comment/".$mode."/".(!is_null($model) ? $model->getId() : "");
+            $this->data["action"] = "/comment/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
         $this->addErrorValidation($validation);

@@ -56,7 +56,7 @@ class ForumController extends BaseController {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
                     $result = $this->ForumService->UpdateForum($model, $model->getId());
-                    if (!$result) {
+					if (!$result) {
                         $this->addErrors($this->ForumService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }

@@ -63,9 +63,9 @@ class UserGroupService extends BaseService {
     private function validateBase($model) {
         if (is_null($model)) { return false; }
         
-        if (is_null($model->getName()) || empty($model->getName())) {
+        /*if (is_null($model->getName()) || empty($model->getName())) {
             $this->addError("Name is required!");
-        }
+        }*/
         
         return $this->getServiceState();
     }

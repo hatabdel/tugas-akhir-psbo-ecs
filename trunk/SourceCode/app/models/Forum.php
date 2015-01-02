@@ -6,8 +6,8 @@ class Forum
 	private $mContent;
 	private $mCreatedDate;
 	private $mCreatedUser;
-	private $mUpdateDate;
-	private $mUpdateUser;
+	private $mUpdatedDate;
+	private $mUpdatedUser;
 	private $mCourseCode;
 	private $mListOfComments;
 	private $mIsPublic;
@@ -62,22 +62,22 @@ class Forum
 		return $this->mCreatedUser;
 	}
 	
-	public function setUpdateDate($value)
+	public function setUpdatedDate($value)
 	{
-		$this->mUpdateDate = $value;
+		$this->mUpdatedDate = $value;
 	}
 	
-	public function getUpdateDate()
+	public function getUpdatedDate()
 	{
-		return $this->mUpdateDate;
+		return $this->mUpdatedDate;
 	}
 	
-	public function setUpdateUser()
+	public function setUpdatedUser()
 	{
-		$this->mUpdateUser = $value;
+		$this->mUpdatedUser = $value;
 	}
 	
-	public function getUpdateUser()
+	public function getUpdatedUser()
 	{
 		return $this->mUpdateuser;
 	}
@@ -119,8 +119,8 @@ class Forum
             "content" => $this->mContent,
             "created_date" => $this->mCreatedDate,
             "created_user" => $this->mCreatedUser,
-            "update_date" => $this->mUpdateDate,
-            "update_user" => $this->mUpdateUser,
+            "update_date" => $this->mUpdatedDate,
+            "update_user" => $this->mUpdatedUser,
             "course_code" => $this->mCourseCode,
             "is_public" => $this->mIsPublic
         );

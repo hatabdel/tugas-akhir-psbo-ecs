@@ -7,7 +7,7 @@
             <div class="box-title">
                 <h3>
                     <i class="icon-table"></i>
-                    Forum
+                    Comment
                 </h3>
                 <div class="box-tool">
                     <a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
@@ -15,9 +15,9 @@
             </div>
             <div class="box-content">
                 <div class="clearfix"></div>
-                <a class='btn show-tooltip' style='margin-bottom:10px !important;' title='Create' href='<?php echo url()."/forum/create"; ?>' ><i class='icon-plus'> Create</i></a>
-                @if (count($ForumList) > 0 && !is_null($ForumList))
-                <table class="table table-advance" id="table_forum" border="1">
+                <a class='btn show-tooltip' style='margin-bottom:10px !important;' title='Create' href='<?php echo url()."/comment/create"; ?>' ><i class='icon-plus'> Create</i></a>
+                @if (count($CommentList) > 0 && !is_null($CommentList))
+                <table class="table table-advance" id="table_comment" border="1">
                  <!--   <thead>
                         <tr>
                             <th>Title</th>
@@ -26,16 +26,16 @@
                         </tr>
                     </thead>-->
                     
-                    @foreach ($ForumList as $item)
+                    @foreach ($CommentList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
 							<!--<td class="Id">{{ $item->getId() }}</td>-->
-                            <td class="Title"><a href="<?php echo url()."/forum/detail/".$item->getId(); ?>">{{ $item->getTitle() }}</a>
+                            <td class="Title"><a href="<?php echo url()."/comment/detail/".$item->getId(); ?>">{{ $item->getTitle() }}</a>
 							</td>
 							<td class="CreatedDate">{{ $item->getCreatedDate() }}</td>
                             <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/forum/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/forum/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/comment/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
+                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/comment/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
                             </td>
                         </tr>
 						@endforeach
@@ -44,7 +44,7 @@
                 @else
                 <h3>There is no data in database</h3>
                 @endif
-                <a class='btn show-tooltip' style='margin-top:10px !important;' title='Create' href='<?php echo url()."/forum/create"; ?>'><i class='icon-plus'> Create</i></a>
+                <a class='btn show-tooltip' style='margin-top:10px !important;' title='Create' href='<?php echo url()."/comment/create"; ?>'><i class='icon-plus'> Create</i></a>
             </div>
         </div>
     </div>

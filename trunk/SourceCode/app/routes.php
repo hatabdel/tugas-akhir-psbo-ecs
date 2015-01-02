@@ -20,12 +20,12 @@ Route::any('userinfo/edit/{id}', 'UserInfoController@edit');
 Route::any('userinfo/delete/{id}', 'UserInfoController@delete');
 Route::any('userinfo/detail/{id}', 'UserInfoController@detail');
 
-Route::any('usergroup', 'PrivilegeInfoController@index');
-Route::any('usergroup/popup', 'PrivilegeInfoController@popup');
-Route::any('usergroup/create', 'PrivilegeInfoController@create');
-Route::any('usergroup/edit/{id}', 'PrivilegeInfoController@edit');
-Route::any('usergroup/delete/{id}', 'PrivilegeInfoController@delete');
-Route::any('usergroup/detail/{id}', 'PrivilegeInfoController@detail');
+Route::any('usergroup', 'UserGroupController@index');
+Route::any('usergroup/popup', 'UserGroupController@popup');
+Route::any('usergroup/create', 'UserGroupController@create');
+Route::any('usergroup/edit/{id}', 'UserGroupController@edit');
+Route::any('usergroup/delete/{id}', 'UserGroupController@delete');
+Route::any('usergroup/detail/{id}', 'UserGroupController@detail');
 
 Route::any('privilegeinfo', 'PrivilegeInfoController@index');
 Route::any('privilegeinfo/popup', 'PrivilegeInfoController@popup');

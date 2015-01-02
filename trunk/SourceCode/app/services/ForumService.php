@@ -28,6 +28,7 @@ class ForumService extends BaseService
     public function InsertForum($ForumObj) {
         try {
             if (!$this->validateOnInsert($ForumObj)) { return false; }
+			$ForumObj->setCreatedDate(Date("Y-m-d H:i:s"));
             return $this->ForumDao->InsertForum($ForumObj);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
@@ -37,7 +38,13 @@ class ForumService extends BaseService
     
     public function UpdateForum($ForumObj, $Id) {
         try {
-            if (!$this->ForumDao->UpdateForum($ForumObj, $Id));
+            if (!$this->validateOnUpdate($ForumObj)) { return false; }
+			$ForumObjOld = $this->getForum($Id);
+			if (!is_null($ForumObjOld)) {
+				$ForumObj->setCreatedDate($ForumObjOld->getCreatedDate());
+			}
+			$ForumObj->setUpdatedDate(Date("Y-m-d H:i:s"));
+            return $this->ForumDao->UpdateForum($ForumObj, $Id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
