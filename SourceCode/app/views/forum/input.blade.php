@@ -16,9 +16,9 @@
         <?php echo $errors; ?>
         <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Forum Id</label>
+                <!--<label class="control-label">Forum Id</label>-->
                 <div class="controls">
-                    <input type="text" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
+                    <input type="hidden" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
                 </div>
             </div>
             <div class="control-group">
