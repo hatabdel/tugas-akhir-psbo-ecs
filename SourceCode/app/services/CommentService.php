@@ -28,6 +28,7 @@ class CommentService extends BaseService
     public function InsertComment($CommentObj) {
         try {
             if (!$this->validateOnInsert($CommentObj)) { return false; }
+			$CommentObj->setCreatedDate(Date("YYYY-mm-dd H:i:s"));
             return $this->CommentDao->InsertComment($CommentObj);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
@@ -69,13 +70,13 @@ class CommentService extends BaseService
     
     private function validateOnInsert($model) {
         if (is_null($model)) { return false; }
-        $this->validateBase($model);
+        //$this->validateBase($model);
         return $this->getServiceState();
     }
     
     private function validateOnUpdate($model) {
         if (is_null($model)) { return false; }
-        $this->validateBase($model);
+        //$this->validateBase($model);
         return $this->getServiceState();
     }
 }

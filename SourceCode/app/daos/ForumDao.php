@@ -48,6 +48,7 @@ class ForumDao extends BaseDao implements UserInterface, RemindableInterface
         $ForumObj->setTitle($rowset["title"]);
         $ForumObj->setContent($rowset["content"]);
         $ForumObj->setIsPublic($rowset["is_public"]);
+		$ForumObj->setCreatedDate($rowset["created_date"]);
         return $ForumObj;
     }
 }

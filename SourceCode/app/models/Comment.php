@@ -4,10 +4,10 @@ class Comment
 	private $mId;
 	private $mTitle;
 	private $mContent;
-	private $mCreateDate;
+	private $mCreatedDate;
 	private $mCreatedUser;
-	private $mUpdateDate;
-	private $mUpdateUser;
+	private $mUpdatedDate;
+	private $mUpdatedUser;
 	private $mForumId;
 	
 	public function setId($value) {
@@ -54,24 +54,24 @@ class Comment
 		return $this->mCreatedUser;
 	}
 	
-	public function setUpdateDate($value)
+	public function setUpdatedDate($value)
 	{
-		$this->mUpdateDate = $value;
+		$this->mUpdatedDate = $value;
 	}
 	
-	public function getUpdateDate()
+	public function getUpdatedDate()
 	{
-		return $this->mUpdateDate;
+		return $this->mUpdatedDate;
 	}
 	
-	public function setUpdateUser($value)
+	public function setUpdatedUser($value)
 	{
-		$this->mUpdateUser = $value;
+		$this->mUpdatedUser = $value;
 	}
 	
-	public function getUpdateUser()
+	public function getUpdatedUser()
 	{
-		return $this->mUpdateUser;
+		return $this->mUpdatedUser;
 	}
     
     public function setForumId($value) {
@@ -80,5 +80,18 @@ class Comment
 
     public function getForumId() {
         return $this->mForumId;
+    }
+	
+	public function toArray() {
+        return array(
+            "id" => $this->mId,
+            "title" => $this->mTitle,
+            "content" => $this->mContent,
+            "created_date" => $this->mCreatedDate,
+            "created_user" => $this->mCreatedUser,
+            "update_date" => $this->mUpdateDate,
+            "update_user" => $this->mUpdateUser,
+            "forum_id" => $this->mForumId
+        );
     }
 }

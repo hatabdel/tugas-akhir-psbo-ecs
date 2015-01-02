@@ -3583,3 +3583,169 @@ Stack trace:
 Stack trace:
 #0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
 #1 {main} [] []
+[2015-01-02 15:28:53] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 22:20:44] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 22:21:17] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 22:32:16] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method CommentService::validateBase()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\CommentService.php:72
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 22:45:24] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Comment::toArray()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\daos\BaseDao.php:30
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 22:48:49] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Comment::toArray()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\daos\BaseDao.php:30
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 22:50:34] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Comment::toArray()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\daos\BaseDao.php:36
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 22:52:01] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Comment::toArray()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\daos\BaseDao.php:36
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 23:16:49] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-01 23:17:00] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Comment::toArray()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\daos\BaseDao.php:36
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-01 23:33:53] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-02 00:25:55] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\PrivilegeInfoService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:36:03] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Forum::setUpdatedDate()' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\ForumService.php:46
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:40:44] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\PrivilegeInfoService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:41:21] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\PrivilegeInfoService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:41:38] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\UserGroupService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:41:59] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\UserGroupService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:42:57] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\UserGroupService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:43:44] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\UserGroupService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:44:55] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\UserGroupService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:46:08] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-02 00:46:24] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\FunctionInfoService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-02 00:48:08] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php:5680
+Stack trace:
+#0 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(5004): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4992): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2015-01-02 00:49:05] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Can't use method return value in write context' in C:\xampp\htdocs\tugas-akhir-psbo-ecs\SourceCode\app\services\FunctionInfoService.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
