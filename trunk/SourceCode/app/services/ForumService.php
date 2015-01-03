@@ -64,7 +64,7 @@ class ForumService extends BaseService
         
     }
     
-    /*private function validateBase($model) {
+    private function validateBase($model) {
 		echo "<pre>";
 		var_dump($model); die();
         if (is_null($model)) { return false; }
@@ -74,17 +74,17 @@ class ForumService extends BaseService
         }
         
         return $this->getServiceState();
-    }*/
+    }
     
     private function validateOnInsert($model) {
         if (is_null($model)) { return false; }
-        //$this->validateBase($model);
+        $this->validateBase($model);
         return $this->getServiceState();
     }
     
     private function validateOnUpdate($model) {
         if (is_null($model)) { return false; }
-        //$this->validateBase($model);
+        $this->validateBase($model);
         return $this->getServiceState();
     }
 }
