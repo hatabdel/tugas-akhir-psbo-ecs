@@ -15,6 +15,8 @@ class CourseDao extends BaseDao implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'course';
+    protected $primary_key = 'code';
+    protected $fillable = array('code');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -46,7 +48,7 @@ class CourseDao extends BaseDao implements UserInterface, RemindableInterface {
         $CourseObj->setName($rowset["name"]);
         $CourseObj->setDescription($rowset["description"]);
         $CourseObj->setStartDate($rowset["start_date"]);
-        $CourseObj->setEndDate($rowset["name_date"]);
+        $CourseObj->setEndDate($rowset["end_date"]);
         $CourseObj->setCreatedDate($rowset["created_date"]);
         $CourseObj->setCreatedUser($rowset["created_user"]);
         $CourseObj->setIsActive($rowset["is_active"]);

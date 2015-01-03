@@ -10,7 +10,6 @@ class Course {
     private $mCreatedDate;
     private $mCreatedUser;
     private $mIsActive;
-    private $mListOfInstructor;
     
     public function setCode($value) {
         $this->mCode = $value;
@@ -76,11 +75,16 @@ class Course {
         return $this->mIsActive;
     }
     
-    public function setListOfInstructor($value) {
-        $this->mListOfInstructor = $value;
-    }
-
-    public function ListOfInstructor() {
-        return $this->mListOfInstructor;
+    public function toArray() {
+        return array(
+            "code" => $this->mCode,
+            "name" => $this->mName,
+            "description" => $this->mDescription,
+            "start_date" => $this->mStartDate,
+            "end_date" => $this->mEndDate,
+            "created_date" => $this->mCreatedDate,
+            "created_user"=> $this->mCreatedUser,
+            "is_active" => $this->mIsActive
+        );
     }
 }
