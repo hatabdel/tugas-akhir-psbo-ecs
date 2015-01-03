@@ -33,7 +33,7 @@ class UserInfoController extends BaseController {
                         $this->addErrors($this->UserInfoService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("userinfo/detail/".$model->getFunctionId());
+                    return Redirect::to("userinfo/detail/".$model->getUserName());
                 }
             }
             return $this->createInputView($model);
@@ -55,12 +55,12 @@ class UserInfoController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
-                    $result = $this->UserInfoService->UpdateUserInfo($model, $model->getFunctionId());
+                    $result = $this->UserInfoService->UpdateUserInfo($model, $model->getUserName());
                     if (!$result) {
                         $this->addErrors($this->UserInfoService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("userinfo/detail/".$model->getFunctionId());
+                    return Redirect::to("userinfo/detail/".$model->getUserName());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -99,8 +99,10 @@ class UserInfoController extends BaseController {
         if ($mode == "create") {
             $this->data["action"] = "/userinfo/".$mode;
         } else {
-            $this->data["action"] = "/userinfo/".$mode."/".(!is_null($model) ? $model->getFunctionId() : "");
+            $this->data["action"] = "/userinfo/".$mode."/".(!is_null($model) ? $model->getUserName() : "");
         }
+        
+        $this->loadUserGroupList();
         
         $this->addErrorValidation($validation);
         return View::make("userinfo/input", $this->data);
@@ -108,8 +110,8 @@ class UserInfoController extends BaseController {
     
     private function initValidation() {
         $form_validation = array(
-            "function_id" => "required",
-            "url" => "required"
+            "user_name" => "required",
+            "password" => "required"
         );
         return $form_validation;
     }
@@ -120,13 +122,19 @@ class UserInfoController extends BaseController {
             $UserInfoObj->setUserName($param["user_name"]);
             $UserInfoObj->setPassword($param["password"]);
             $UserInfoObj->setIsActive($param["is_active"]);
-            $UserInfoObj->setIsShow($param["is_show"]);
+            $UserInfoObj->setUserGroup($param["user_group_id"]);
         }
         return $UserInfoObj;
     }
     
     private function loadDefaultValue() {
         $this->data["_MODULE_NAME"] = "User Info - ";
+    }
+    
+    private function loadUserGroupList() {
+        $UserGroupService = new UserGroupService();
+        $UserGroupList = $UserGroupService->getList();
+        $this->data['UserGroupList'] = $UserGroupList;
     }
     
     private function loadDefaultService() {

@@ -15,6 +15,8 @@ class UserInfoDao extends BaseDao implements UserInterface, RemindableInterface 
 	 * @var string
 	 */
 	protected $table = 'user_info';
+    protected $primary_key = 'user_name';
+    protected $fillable = array('user_name');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *

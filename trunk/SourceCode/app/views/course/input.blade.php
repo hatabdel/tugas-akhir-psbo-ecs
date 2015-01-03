@@ -7,40 +7,42 @@
 @section('main_content')
 <div class="box">
     <div class="box-title">
-        <h3><i class="icon-plus"></i>Create User Info</h3>
+        <h3><i class="icon-plus"></i>Create Course</h3>
         <div class="box-tool">
             <a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
         </div>
     </div>
-    <div class="box-content" id="dialog-inputAdmin" title="Tambah User Info">
+    <div class="box-content" id="dialog-inputAdmin" title="Tambah Data Course">
         <?php echo $errors; ?>
         <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">User Name</label>
+                <label class="control-label">Code</label>
                 <div class="controls">
-                    <input type="text" name="user_name" value="<?php if(!is_null($model)) echo $model->getUserName(); ?>" />
+                    <input type="text" name="code" value="<?php if(!is_null($model)) echo $model->getCode(); ?>" />
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Password</label>
+                <label class="control-label">Name</label>
                 <div class="controls">
-                    <input type="password" name="password" value="" />
+                    <input type="text" name="name" value="<?php if(!is_null($model)) echo $model->getName(); ?>" />
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">User Group</label>
+                <label class="control-label">Description</label>
                 <div class="controls">
-                    <select name="user_group_id">
-                        <?php if (!is_null($UserGroupList)) { 
-                                foreach($UserGroupList as $item) {
-                                    if (is_null($item)) { continue; }
-                                    $selected = "";
-                                    if ($item->getId() == $model->getUserGroup() ) { $selected = "selected=\"selected\""; }
-                        ?>
-                        <option value="{{ $item->getId() }}" <?php echo $selected; ?>> {{ $item->getName() }}</option>
-                        <?php   }
-                              }?>
-                    </select>
+                    <textarea name="description"><?php if(!is_null($model)) echo $model->getDescription(); ?></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Start Date</label>
+                <div class="controls">
+                    <input type="text" name="start_date" value="<?php if(!is_null($model)) echo $model->getStartDate(); ?>" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">End Date</label>
+                <div class="controls">
+                    <input type="text" name="end_date" value="<?php if(!is_null($model)) echo $model->getEndDate(); ?>" />
                 </div>
             </div>
             <div class="control-group">

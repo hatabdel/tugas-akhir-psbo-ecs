@@ -6,6 +6,7 @@ class UserInfo {
     private $mPassword;
     private $mCreatedDate;
     private $mIsActive;
+    private $mUserGroup;
     
     public function setUserName($value) {
         $this->mUserName = $value;
@@ -31,6 +32,14 @@ class UserInfo {
         return $this->mCreatedDate;
     }
     
+    public function setUserGroup($value) {
+        $this->mUserGroup = $value;
+    }
+
+    public function getUserGroup() {
+        return $this->mUserGroup;
+    }
+    
     public function setIsActive($value) {
         $this->mIsActive = $value;
     }
@@ -38,4 +47,15 @@ class UserInfo {
     public function IsActive() {
         return $this->mIsActive;
     }
+    
+    public function toArray() {
+        return array(
+            "user_name" => $this->mUserName,
+            "password" => md5($this->mPassword),
+            "created_date" => $this->mCreatedDate,
+            "user_group_id" => $this->mUserGroup,
+            "is_active" => $this->mIsActive
+        );
+    }
+        
 }

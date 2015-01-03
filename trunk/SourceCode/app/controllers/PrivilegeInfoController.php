@@ -31,7 +31,6 @@ class PrivilegeInfoController extends BaseController {
                 } else {
                     $result = $this->PrivilegeInfoService->InsertPrivilegeInfo($model);
                     if (!$result) {
-                        var_dump($this->PrivilegeInfoService->getErrors()); die();
                         $this->addErrors($this->PrivilegeInfoService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
