@@ -8,6 +8,7 @@
 class BaseService {
     
     private $arr_error = array();
+    protected $mUserInfo = null;
     public function __construct() {
         
     }
@@ -23,5 +24,9 @@ class BaseService {
     public function getServiceState() {
         if(count($this->arr_error) <= 0) { return true; }
         return false;
+    }
+    
+    public function setUserInfo($UserInfoObj) {
+        $this->mUserInfo = $UserInfoObj;
     }
 }

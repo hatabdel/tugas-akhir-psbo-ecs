@@ -50,7 +50,10 @@ class CourseDao extends BaseDao implements UserInterface, RemindableInterface {
         $CourseObj->setStartDate($rowset["start_date"]);
         $CourseObj->setEndDate($rowset["end_date"]);
         $CourseObj->setCreatedDate($rowset["created_date"]);
-        $CourseObj->setCreatedUser($rowset["created_user"]);
+        $CreatedUser = new UserInfo();
+        $CreatedUser->setUserName($rowset["created_user"]);
+        $CreatedUser->setIsLoaded(true);
+        $CourseObj->setCreatedUser($CreatedUser);
         $CourseObj->setIsActive($rowset["is_active"]);
         return $CourseObj;
     }

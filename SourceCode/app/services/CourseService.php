@@ -30,6 +30,8 @@ class CourseService extends BaseService {
     public function InsertCourse($CourseObj) {
         try {
             if (!$this->validateOnInsert($CourseObj)) { return false; }
+            $CourseObj->setCreatedDate(Date("Y-m-d H:i:s"));
+            $CourseObj->setCreatedUser($this->mUserInfo);
             return $this->CourseDao->InsertCourse($CourseObj);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
@@ -40,6 +42,11 @@ class CourseService extends BaseService {
     public function UpdateCourse($CourseObj, $Id) {
         try {
             if (!$this->validateOnUpdate($CourseObj)) { return false; }
+            $CourseObjOld = $this->getCourse($Id);
+            if (!is_null($CourseObjOld)) {
+                $CourseObj->setCreatedDate($CourseObjOld->getCreatedDate());
+                $CourseObj->setCreatedUser($CourseObjOld->getCreatedUser());
+            }
             return $this->CourseDao->UpdateCourse($CourseObj, $Id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());

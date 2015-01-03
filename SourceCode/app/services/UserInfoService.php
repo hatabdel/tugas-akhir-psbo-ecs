@@ -19,7 +19,7 @@ class UserInfoService extends BaseService {
     }
     
     public function getUserInfo($id) {
-        try { 
+        try {
             return $this->UserInfoDao->getUserInfo($id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());

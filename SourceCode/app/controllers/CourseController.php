@@ -29,6 +29,7 @@ class CourseController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages());
                 } else {
+                    $this->CourseService->setUserInfo($this->mUserInfo);
                     $result = $this->CourseService->InsertCourse($model);
                     if (!$result) {
                         $this->addErrors($this->CourseService->getErrors());
@@ -57,6 +58,7 @@ class CourseController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
+                    $this->CourseService->setUserInfo($this->mUserInfo);
                     $result = $this->CourseService->UpdateCourse($model, $model->getCode());
                     if (!$result) {
                         $this->addErrors($this->CourseService->getErrors());
