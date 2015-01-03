@@ -2,17 +2,20 @@
 
 class BaseController extends Controller {
 
-	
     protected $login_url;
     protected $access_denied_url;
     protected $data;
     protected $errors = array();
+    protected $mUserInfo = null;
     
     public function __construct() {
         $this->setupLayout();
         $this->login_url = url();
         $this->access_denied_url = url();
         $this->data["errors"] = "";
+        $UserInfo = new UserInfo();
+        $UserInfo->setUserName("bayu");
+        $this->mUserInfo = $UserInfo;
     }
     
     /*
@@ -80,5 +83,5 @@ class BaseController extends Controller {
             $this->data["errors"] .= "</div>";
         }
     }
-
+    
 }

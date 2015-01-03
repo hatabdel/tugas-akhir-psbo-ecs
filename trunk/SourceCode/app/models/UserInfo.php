@@ -7,6 +7,11 @@ class UserInfo {
     private $mCreatedDate;
     private $mIsActive;
     private $mUserGroup;
+    private $mIsLoaded;
+    
+    public function __construct() {
+        $this->mIsLoaded = false;
+    }
     
     public function setUserName($value) {
         $this->mUserName = $value;
@@ -48,6 +53,14 @@ class UserInfo {
         return $this->mIsActive;
     }
     
+    public function setIsLoaded($value) {
+        $this->mIsLoaded = $value;
+    }
+    
+    public function IsLoaded() {
+        return $this->mIsLoaded;
+    }
+
     public function toArray() {
         return array(
             "user_name" => $this->mUserName,

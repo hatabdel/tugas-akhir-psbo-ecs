@@ -64,6 +64,13 @@ class Course {
     }
 
     public function getCreatedUser() {
+        if (!is_null($this->mCreatedUser) && !empty($this->mCreatedUser)) {
+            if (!$this->mCreatedUser->IsLoaded()) {
+                $UserInfoDao = new UserInfoDao();
+                $this->mCreatedUser = $UserInfoDao->getUserInfo($this->mCreatedUse->getUserName());
+                if (!is_null($this->mCreatedUser)) { $this->mCreatedUser->setIsLoaded(true); }
+            }
+        }
         return $this->mCreatedUser;
     }
     
@@ -83,7 +90,7 @@ class Course {
             "start_date" => $this->mStartDate,
             "end_date" => $this->mEndDate,
             "created_date" => $this->mCreatedDate,
-            "created_user"=> $this->mCreatedUser,
+            "created_user"=> (!is_null($this->mCreatedUser) ? $this->mCreatedUser->getUserName() : null),
             "is_active" => $this->mIsActive
         );
     }

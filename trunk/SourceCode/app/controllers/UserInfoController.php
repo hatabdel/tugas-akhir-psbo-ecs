@@ -28,6 +28,7 @@ class UserInfoController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages());
                 } else {
+                    $this->UserInfoService->setUserInfo($this->mUserInfo);
                     $result = $this->UserInfoService->InsertUserInfo($model);
                     if (!$result) {
                         $this->addErrors($this->UserInfoService->getErrors());
