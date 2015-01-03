@@ -37,7 +37,8 @@
                                 <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/forum/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
                                 <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/forum/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
                             </td>
-                        </tr>
+							
+						</tr>
 						@endforeach
                     
                 </table>
