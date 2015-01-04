@@ -49,4 +49,17 @@ class BaseDao extends Dao {
         DB::table($this->table)->where($this->primary_key, $id)->delete();
         return true;
     }
+    
+    protected function addError($message) {
+        $this->arr_error = $message;
+    }
+    
+    public function getError() {
+        return $this->arr_error;
+    }
+    
+    public function getDaoState() {
+        if(!empty($this->arr_error)) { return true; }
+        return false;
+    }
 }

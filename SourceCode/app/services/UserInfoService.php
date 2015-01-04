@@ -30,17 +30,34 @@ class UserInfoService extends BaseService {
     public function InsertUserInfo($UserInfoObj) {
         try {
             if (!$this->validateOnInsert($UserInfoObj)) { return false; }
-            return $this->UserInfoDao->InsertUserInfo($UserInfoObj);
+            $UserInfoObj->setCreatedDate(Date("Y-m-d H:i:s"));
+            $result = $this->UserInfoDao->InsertUserInfo($UserInfoObj);
+            
+            if (!is_null($this->UserInfoDao->getError()) && !empty($this->UserInfoDao->getError())) {
+                $this->addError($this->UserInfoDao->getError());
+            }
+            
+            return $result;
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
     }
     
-    public function UpdateUserInfo($UserInfoObj, $Id) {
+    public function UpdateUserInfo($UserInfoObj, $id) {
         try {
             if (!$this->validateOnUpdate($UserInfoObj)) { return false; }
-            return $this->UserInfoDao->UpdateUserInfo($UserInfoObj, $Id);
+            $UserInfoObjOld = $this->getUserInfo($id);
+            if (!is_null($UserInfoObjOld)) {
+                $UserInfoObj->setCreatedDate($UserInfoObjOld->getCreatedDate());
+            }
+            $UserInfoObj->setUpdatedDate(Date("Y-m-d H:i:s"));
+            
+            $result = $this->UserInfoDao->UpdateUserInfo($UserInfoObj, $id);
+            if (!is_null($this->UserInfoDao->getError()) && !empty($this->UserInfoDao->getError())) {
+                $this->addError($this->UserInfoDao->getError());
+            }
+            return $result;
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
@@ -70,8 +87,6 @@ class UserInfoService extends BaseService {
         if (is_null($model->getPassword()) || empty($model->getPassword())) {
             $this->addError("Name is required!");
         }
-        
-        
         
         return $this->getServiceState();
     }

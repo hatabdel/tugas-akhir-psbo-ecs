@@ -5,6 +5,9 @@ class UserInfo {
     private $mUserName;
     private $mPassword;
     private $mCreatedDate;
+    private $mCreatedUser;
+    private $mUpdatedDate;
+    private $mUpdatedUser;
     private $mIsActive;
     private $mUserGroup;
     private $mIsLoaded;
@@ -37,11 +40,30 @@ class UserInfo {
         return $this->mCreatedDate;
     }
     
+    public function setCreatedUser($value) {
+        $this->mCreatedUser = $value;
+    }
+
+    public function setUpdatedDate($value) {
+        $this->mUpdatedDate = $value;
+    }
+
+    public function getUpdatedDate() {
+        return $this->mUpdatedDate;
+    }
+   
     public function setUserGroup($value) {
         $this->mUserGroup = $value;
     }
 
     public function getUserGroup() {
+        if (!is_null($this->mUserGroup) && !empty($this->mUserGroup)) {
+            if (!$this->mUserGroup->IsLoaded()) {
+                $UserGroupDao = new UserGroupDao();
+                $this->mUserGroup = $UserGroupDao->getUserGroup($this->mUserGroup->getId());
+                if (!is_null($this->mUserGroup)) { $this->mUserGroup->setIsLoaded(true); }
+            }
+        }
         return $this->mUserGroup;
     }
     
@@ -66,7 +88,8 @@ class UserInfo {
             "user_name" => $this->mUserName,
             "password" => md5($this->mPassword),
             "created_date" => $this->mCreatedDate,
-            "user_group_id" => $this->mUserGroup,
+            "updated_date" => $this->mUpdatedDate,
+            "user_group_id" => (!is_null($this->mUserGroup) ? $this->mUserGroup->getId() : null),
             "is_active" => $this->mIsActive
         );
     }

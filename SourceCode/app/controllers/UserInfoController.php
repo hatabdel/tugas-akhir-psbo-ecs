@@ -102,7 +102,7 @@ class UserInfoController extends BaseController {
         } else {
             $this->data["action"] = "/userinfo/".$mode."/".(!is_null($model) ? $model->getUserName() : "");
         }
-        
+        $this->data["mode"] = $mode;
         $this->loadUserGroupList();
         
         $this->addErrorValidation($validation);
@@ -119,12 +119,17 @@ class UserInfoController extends BaseController {
     
     private function bindData($param) {
         $UserInfoObj = new UserInfo();
+        
         if (!is_null($param) && count($param) > 0) {
             $UserInfoObj->setUserName($param["user_name"]);
             $UserInfoObj->setPassword($param["password"]);
             $UserInfoObj->setIsActive($param["is_active"]);
-            $UserInfoObj->setUserGroup($param["user_group_id"]);
+            $UserGroupObj = new UserGroup();
+            $UserGroupObj->setId($param["user_group_id"]);
+            $UserGroupObj->setIsLoaded(true);
+            $UserInfoObj->setUserGroup($UserGroupObj);
         }
+        
         return $UserInfoObj;
     }
     

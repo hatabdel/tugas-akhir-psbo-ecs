@@ -31,15 +31,30 @@ class UserInfoDao extends BaseDao implements UserInterface, RemindableInterface 
     }
     
     public function InsertUserInfo($UserInfoObj) {
-        return parent::InsertObject($UserInfoObj);
+        try {
+            return parent::InsertObject($UserInfoObj);
+        } catch (Exception $ex) {
+            $this->addError($ex-getMessages());
+            throw new Exception($ex->getMessage());
+        }
     }
     
     public function UpdateUserInfo($UserInfoObj, $Id) {
-        return parent::UpdateObject($UserInfoObj, $Id);
+        try {
+            return parent::UpdateObject($UserInfoObj, $Id);
+        } catch (Exception $ex) {
+            $this->addError($ex-getMessages());
+            throw new Exception($ex->getMessage());
+        }
     }
     
     public function DeleteUserInfo($Id) {
-        return parent::DeleteObject($Id);
+        try {
+            return parent::DeleteObject($Id);
+        } catch (Exception $ex) {
+            $this->addError($ex-getMessages());
+            throw new Exception($ex->getMessage());
+        }
     }
     
     function toObject($rowset) {
@@ -47,7 +62,13 @@ class UserInfoDao extends BaseDao implements UserInterface, RemindableInterface 
         $UserInfoObj->setUserName($rowset["user_name"]);
         $UserInfoObj->setPassword($rowset["password"]);
         $UserInfoObj->setCreatedDate($rowset["created_date"]);
+        $UserInfoObj->setUpdatedDate($rowset["updated_date"]);
+        $UserGroupObj = new UserGroup();
+        $UserGroupObj->setId($rowset["user_group_id"]);
+        $UserGroupObj->setIsLoaded(false);
+        $UserInfoObj->setUserGroup($UserGroupObj);
         $UserInfoObj->setIsActive($rowset["is_active"]);
+        $UserInfoObj->setIsLoaded(true);
         return $UserInfoObj;
     }
 
