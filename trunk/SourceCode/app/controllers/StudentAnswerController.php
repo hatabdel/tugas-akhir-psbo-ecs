@@ -1,8 +1,8 @@
 <?php
 
-class QuizTypeController extends BaseController {
+class StudentAnswerController extends BaseController {
     
-    private $QuizTypeService;
+    private $StudentAnswerService;
     
     public function __construct() {
         parent::__construct();
@@ -11,9 +11,9 @@ class QuizTypeController extends BaseController {
     }
     
     public function index() {
-        $QuizTypeList = $this->QuizTypeService->getList();
-        $this->data['QuizTypeList'] = $QuizTypeList;
-        return View::make("quiztype/index", $this->data);
+        $StudentAnswerList = $this->StudentAnswerService->getList();
+        $this->data['StudentAnswerList'] = $StudentAnswerList;
+        return View::make("studentanswer/index", $this->data);
     }
     
     public function create() {
@@ -29,12 +29,12 @@ class QuizTypeController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages());
                 } else {
-                    $result = $this->QuizTypeService->InsertQuizType($model);
+                    $result = $this->StudentAnswerService->InsertStudentAnswer($model);
                     if (!$result) {
-                        $this->addErrors($this->QuizTypeService->getErrors());
+                        $this->addErrors($this->StudentAnswerService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("quiztype/detail/".$model->getId());
+                    return Redirect::to("studentanswer/detail/".$model->getStudentAnswerId());
                 }
             }
             return $this->createInputView($model);
@@ -48,7 +48,7 @@ class QuizTypeController extends BaseController {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowUpdate()) { return Redirect::to("access_denied"); }
         
-        $model = $this->QuizTypeService->getQuizType($id);
+        $model = $this->StudentAnswerService->getStudentAnswer($id);
         try {
             $input = Input::all();
             if (count($input) > 0) {
@@ -57,12 +57,12 @@ class QuizTypeController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
-                    $result = $this->QuizTypeService->UpdateQuizType($model, $model->getId());
+                    $result = $this->StudentAnswerService->UpdateStudentAnswer($model, $model->getStudentAnswerId());
                     if (!$result) {
-                        $this->addErrors($this->QuizTypeService->getErrors());
+                        $this->addErrors($this->StudentAnswerService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("quiztype/detail/".$model->getId());
+                    return Redirect::to("studentanswer/detail/".$model->getStudentAnswerId());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -76,13 +76,13 @@ class QuizTypeController extends BaseController {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowDelete()) { return Redirect::to("access_denied"); }
         try {
-            $model = $this->QuizTypeService->getQuizType($id);
-            if (is_null($model)) { return Redirect::to("quiztype"); }
-            $this->QuizTypeService->DeleteQuizType($id);
-            return Redirect::to("quiztype");
+            $model = $this->StudentAnswerService->getStudentAnswer($id);
+            if (is_null($model)) { return Redirect::to("studentanswer"); }
+            $this->StudentAnswerService->DeleteStudentAnswer($id);
+            return Redirect::to("studentanswer");
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
-            return Redirect::to("quiztype");//var_dump($ex->messages()); die();
+            return Redirect::to("studentanswer");// var_dump($ex->messages()); die();
         }
     }
     
@@ -90,44 +90,52 @@ class QuizTypeController extends BaseController {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
-        $this->data["model"] = $this->QuizTypeService->getQuizType($id);
-        return View::make("quiztype/detail", $this->data);
+        $this->data["model"] = $this->StudentAnswerService->getStudentAnswer($id);
+        return View::make("studentanswer/detail", $this->data);
     }
     
     private function createInputView($model, $validation = null, $mode = "create") {
         if (!is_null($model)) {
             $this->data["model"] = $model;
         } else {
-            $this->data["model"] = new QuizType();
+            $this->data["model"] = new StudentAnswer();
         }
         if ($mode == "create") {
-            $this->data["action"] = "/quiztype/".$mode;
+            $this->data["action"] = "/studentanswer/".$mode;
         } else {
-            $this->data["action"] = "/quiztype/".$mode."/".(!is_null($model) ? $model->getId() : "");
+            $this->data["action"] = "/studentanswer/".$mode."/".(!is_null($model) ? $model->getStudentAnswerId() : "");
         }
         
         $this->loadFunctionList();
         $this->loadUsertGroupList();
         
         $this->addErrorValidation($validation);
-        return View::make("quiztype/input", $this->data);
+        return View::make("studentanswer/input", $this->data);
     }
     
     private function initValidation() {
         $form_validation = array(
-            "name" => "required"
+            //"student_answer_id" => "required",
+            "student_quiz_id" => "required",
+            "quiz_question_id" => "required",
+            "student_answer" => "required",
+            "score" => "required"
+            //"is_correct" => "required"
         );
         return $form_validation;
     }
     
     private function bindData($param) {
-	   $QuizTypeObj = new QuizType();
+	   $StudentAnswerObj = new StudentAnswer();
         if (!is_null($param) && count($param) > 0) {
-            $QuizTypeObj->setId($param["id"]);
-            $QuizTypeObj->setName($param["name"]);
+            $StudentAnswerObj->setStudentAnswerId($param["student_answer_id"]);
+            $StudentAnswerObj->setStudentQuizId($param["student_quiz_id"]);
+            $StudentAnswerObj->setQuizQuestionId($param["quiz_question_id"]);
+            $StudentAnswerObj->setStudentAnswer($param["student_answer"]);
+            $StudentAnswerObj->setScore($param["score"]);
+            $StudentAnswerObj->setIsCorrect($param["is_correct"]);
         }
-        return $QuizTypeObj;
-		
+        return $StudentAnswerObj;
     }
     
     private function loadFunctionList() {
@@ -143,10 +151,10 @@ class QuizTypeController extends BaseController {
     }
 	
     private function loadDefaultValue() {
-        $this->data["_MODULE_NAME"] = "Quiz Type - ";
+        $this->data["_MODULE_NAME"] = "Student Answer - ";
     }
     
     private function loadDefaultService() {
-        $this->QuizTypeService = new QuizTypeService();
+        $this->StudentAnswerService = new StudentAnswerService();
     }
 }

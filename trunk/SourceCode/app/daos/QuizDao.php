@@ -1,0 +1,66 @@
+<?php
+
+use Illuminate\Auth\UserTrait;
+use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\Reminders\RemindableTrait;
+use Illuminate\Auth\Reminders\RemindableInterface;
+
+class QuizDao extends BaseDao implements UserInterface, RemindableInterface {
+
+	use UserTrait, RemindableTrait;
+
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'quiz';
+    protected $primary_key = 'quiz_id';
+    protected $fillable = array('quiz_id');
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	public function getList() {
+        return parent::getList();
+    }
+    
+    public function getQuiz($id) {
+        return parent::getObject($id);
+    }
+	
+     public function InsertQuiz($QuizObj) {
+		try {
+		$result = parent::InsertObjectReturnId($QuizObj);
+        if (!is_null($result) && !is_null($QuizObj)) { $QuizObj->setQuizId($result); }
+		return $QuizObj;
+		} catch (Exception $ex) {
+            var_dump($ex->getMessage());
+        }
+    }
+  
+    public function UpdateQuiz($QuizObj, $Id) {
+        return parent::UpdateObject($QuizObj, $Id);
+    }
+    
+    public function DeleteQuiz($Id) {
+        return parent::DeleteObject($Id);
+    }
+    
+    function toObject($rowset) {
+        $QuizObj = new Quiz();
+        $QuizObj->setQuizId($rowset["quiz_id"]);
+        $QuizObj->setQuizName($rowset["quiz_name"]);
+        $QuizObj->setCourseCode($rowset["course_code"]);
+        $QuizObj->setQuizTypeId($rowset["quiz_type_id"]);
+        $QuizObj->setStartDateTime($rowset["start_date_time"]);
+        $QuizObj->setEndDateTime($rowset["end_date_time"]);
+        $QuizObj->setCreatedDate($rowset["created_date"]);
+        $QuizObj->setCreatedUser($rowset["created_user"]);
+        $QuizObj->setUpdateDate($rowset["update_date"]);
+        $QuizObj->setUpdateUser($rowset["update_user"]);
+        return $QuizObj;
+    }
+
+}
