@@ -8,9 +8,15 @@ class Forum
 	private $mCreatedUser;
 	private $mUpdatedDate;
 	private $mUpdatedUser;
-	private $mCourseCode;
+	private $mCourse;
 	private $mListOfComments;
 	private $mIsPublic;
+	private $mIsLoaded;
+	
+	public function __construct()
+	{
+		$this->mIsLoaded = false;
+	}
 	
 	public function setId($value)
 	{
@@ -62,7 +68,7 @@ class Forum
 		if (!is_null($this->mCreatedUser) && !empty($this->mCreatedUser)) {
             if (!$this->mCreatedUser->IsLoaded()) {
                 $UserInfoDao = new UserInfoDao();
-                $this->mCreatedUser = $UserInfoDao->getUserInfo($this->mCreatedUse->getUserName());
+                $this->mCreatedUser = $UserInfoDao->getUserInfo($this->mCreatedUser->getUserName());
                 if (!is_null($this->mCreatedUser)) { $this->mCreatedUser->setIsLoaded(true); }
             }
         }
@@ -86,24 +92,31 @@ class Forum
 	
 	public function getUpdatedUser()
 	{
-		return $this->mUpdateuser;
-	}
-	
-	public function setCourseCode($value)
-	{
-		$this->mCourseCode = $value;
-	}
-	
-	public function getCourseCode()
-	{
-		if (!is_null($this->mCourseCode) && !empty($this->mCourseCode)) {
-            if (!$this->mCourseCode->IsLoaded()) {
-                $CourseDao = new CourseDao();
-                $this->mCourseCode = $CourseDao->getCourse($this->mCourseCode->getCode());
-                if (!is_null($this->mCourseCode)) { $this->mCourseCode->setIsLoaded(true); }
+		if (!is_null($this->mUpdatedUser) && !empty($this->mUpdatedUser)) {
+            if (!$this->mUpdatedUser->IsLoaded()) {
+                $UserInfoDao = new UserInfoDao();
+                $this->mUpdatedUser = $UserInfoDao->getUserInfo($this->mUpdatedUser->getUserName());
+                if (!is_null($this->mUpdatedUser)) { $this->mUpdatedUser->setIsLoaded(true); }
             }
         }
-		return $this->mCourseCode;
+		return $this->mUpdateduser;
+	}
+	
+	public function setCourse($value)
+	{
+		$this->mCourse = $value;
+	}
+	
+	public function getCourse()
+	{
+		if (!is_null($this->mCourse) && !empty($this->mCourse)) {
+            if (!$this->mCourse->IsLoaded()) {
+                $CourseDao = new CourseDao();
+                $this->mCourse = $CourseDao->getCourse($this->mCourse->getCode());
+                if (!is_null($this->mCourse)) { $this->mCourse->setIsLoaded(true); }
+            }
+        }
+		return $this->mCourse;
 	}
 	
 	public function setListOfComments($value)
@@ -125,6 +138,16 @@ class Forum
 	{
 		return $this->mIsPublic;
 	}
+	
+	public function setIsLoaded($value)
+	{
+		$this->mIsLoaded = $value;
+	}
+	
+	public function IsLoaded()
+	{
+		return $this->mIsLoaded;
+	}
         
     public function toArray() {
         return array(
@@ -135,7 +158,7 @@ class Forum
             "created_user" => (!is_null($this->mCreatedUser) ? $this->mCreatedUser->getUserName() : null),
             "update_date" => $this->mUpdatedDate,
             "update_user" => $this->mUpdatedUser,
-            "course_code" => (!is_null($this->mCourseCode) ? $this->mCourseCode->getCode() : null),
+            "course_code" => (!is_null($this->mCourse) ? $this->mCourse->getCode() : null),
             "is_public" => $this->mIsPublic
         );
     }
