@@ -1,18 +1,18 @@
 <?php
 
 class Answer {
-    private $mId;
+    private $mAnswer;
     private $mSequence;
-    private $mQuizQuestionId;
+    private $mQuizQuestion;
     private $mContent;
     private $mIsCorrect;
     
-    public function setId($value) {
-        $this->mId = $value;
+    public function setAnswer($value) {
+        $this->mAnswer = $value;
     }
     
-    public function getId() {
-        return $this->mId;
+    public function getAnswer() {
+        return $this->mAnswer;
     }
     
     public function setSequence($value) {
@@ -23,12 +23,12 @@ class Answer {
         return $this->mSequence;
     }
     
-    public function setQuizQuestionId($value) {
-        $this->mQuizQuestionId = $value;
+    public function setQuizQuestion($value) {
+        $this->mQuizQuestion = $value;
     }
     
-    public function getQuizQuestionId() {
-        return $this->mQuizQuestionId;
+    public function getQuizQuestion() {
+        return $this->mQuizQuestion;
     }
     
     public function setContent($value) {
@@ -49,9 +49,9 @@ class Answer {
     
     public function toArray() {
         return array(
-			"id" => $this->mId,
+			"id" => $this->mAnswer,
             "sequence" => $this->mSequence,
-            "quiz_question_id" => $this->mQuizQuestionId,
+            "quiz_question_id" => $this->mQuizQuestion,
             "content" => $this->mContent,
             "is_correct" => $this->mIsCorrect
         );

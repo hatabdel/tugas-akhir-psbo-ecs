@@ -68,7 +68,7 @@ class AnswerService extends BaseService {
         }
         
         
-        if (is_null($model->getQuizQuestionId()) || empty($model->getQuizQuestionId())) {
+        if (is_null($model->getQuizQuestion()) || empty($model->getQuizQuestion())) {
             $this->addError("Quiz Question Id is required!");
         }
         
@@ -84,10 +84,10 @@ class AnswerService extends BaseService {
         if (is_null($model)) { return false; }
         $this->validateBase($model);
 		
-		if (!is_null($model->getId()) && !empty($model->getId())) {
-            $AnswerObj = $this->getAnswer($model->getId());
+		if (!is_null($model->getAnswer()) && !empty($model->getAnswer())) {
+            $AnswerObj = $this->getAnswer($model->getAnswer());
             if (!is_null($AnswerObj)) {
-                $this->addError("Data with code ".$model->getId()." is already exist!");
+                $this->addError("Data with code ".$model->getAnswer()." is already exist!");
             }
         }
         return $this->getServiceState();

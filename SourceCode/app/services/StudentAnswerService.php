@@ -67,14 +67,13 @@ class StudentAnswerService extends BaseService {
             $this->addError("Student Answer Id is required!");
         }*/
         
-        if (is_null($model->getStudentQuizId()) || empty($model->getStudentQuizId())) {
+        if (is_null($model->getStudentQuiz()) || empty($model->getStudentQuiz())) {
             $this->addError("Student Quiz Id is required!");
         }
         
-        if (is_null($model->getQuizQuestionId()) || empty($model->getQuizQuestionId())) {
+        if (is_null($model->getQuizQuestion()) || empty($model->getQuizQuestion())) {
             $this->addError("Quiz Question Id is required!");
         }
-        
         
         if (is_null($model->getStudentAnswer()) || empty($model->getStudentAnswer())) {
             $this->addError("Student Answer Id is required!");
@@ -82,7 +81,7 @@ class StudentAnswerService extends BaseService {
         
         
         if (is_null($model->getScore()) || empty($model->getScore())) {
-            $this->addError("Score Id is required!");
+            $this->addError("Score is required!");
         }
 		
 		
@@ -94,10 +93,10 @@ class StudentAnswerService extends BaseService {
         if (is_null($model)) { return false; }
         $this->validateBase($model);
 		
-        if (!is_null($model->getStudentAnswerId()) && !empty($model->getStudentAnswerId())) {
-            $StudentAnswerObj = $this->getStudentAnswer($model->getStudentAnswerId());
+        if (!is_null($model->getId()) && !empty($model->getId())) {
+            $StudentAnswerObj = $this->getStudentAnswer($model->getId());
             if (!is_null($StudentAnswerObj)) {
-                $this->addError("Data with code ".$model->getStudentAnswerId()." is already exist!");
+                $this->addError("Data with code ".$model->getId()." is already exist!");
             }
         }
         return $this->getServiceState();

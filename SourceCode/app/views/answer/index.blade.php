@@ -32,14 +32,14 @@
                     @foreach ($AnswerList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
-                            <td class="Id"><a href="<?php echo url()."/answer/detail/".$item->getId(); ?>">{{ $item->getId() }}</a></td>
+                            <td class="Answer"><a href="<?php echo url()."/answer/detail/".$item->getAnswer(); ?>">{{ $item->getAnswer() }}</a></td>
                             <td class="Sequence">{{ $item->getSequence() }}</td>
-                            <td class="QuizQuestionId">{{ $item->getQuizQuestionId() }}</td>
+                            <td class="QuizQuestion">{{ $item->getQuizQuestion() }}</td>
                             <td class="Content">{{ $item->getContent() }}</td>
                             <td class="IsCorrect">{{ $item->IsCorrect() }}</td>
                             <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/answer/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/answer/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/answer/edit/".$item->getAnswer(); ?>'><i class='icon-edit'></i></a>
+                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/answer/delete/".$item->getAnswer(); ?>'><i class='icon-trash'></i></a>
                             </td>
                         </tr>
                     @endforeach

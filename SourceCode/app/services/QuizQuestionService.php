@@ -67,17 +67,16 @@ class QuizQuestionService extends BaseService {
             $this->addError("Quiz Question Id is required!");
         }*/
         
-        if (is_null($model->getQuizId()) || empty($model->getQuizId())) {
+        if (is_null($model->getQuiz()) || empty($model->getQuiz())) {
             $this->addError("Quiz Id is required!");
         }
-        
         
         if (is_null($model->getQuestion()) || empty($model->getQuestion())) {
             $this->addError("Question is required!");
         }
         
         
-        if (is_null($model->getAnswerTypeId()) || empty($model->getAnswerTypeId())) {
+        if (is_null($model->getAnswerType()) || empty($model->getAnswerType())) {
             $this->addError("Answer Type Id is required!");
         }
         
@@ -95,10 +94,10 @@ class QuizQuestionService extends BaseService {
         if (is_null($model)) { return false; }
         $this->validateBase($model);
         
-		if (!is_null($model->getQuizQuestionId()) && !empty($model->getQuizQuestionId())) {
-            $CourseObj = $this->getQuizQuestion($model->getQuizQuestionId());
-            if (!is_null($CourseObj)) {
-                $this->addError("Data with code ".$model->getQuizQuestionId()." is already exist!");
+		if (!is_null($model->getId()) && !empty($model->getId())) {
+            $QuizQuestionObj = $this->getQuizQuestion($model->getId());
+            if (!is_null($QuizQuestionObj)) {
+                $this->addError("Data with code ".$model->getId()." is already exist!");
             }
         }
         return $this->getServiceState();

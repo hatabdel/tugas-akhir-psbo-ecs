@@ -34,7 +34,7 @@ class QuizQuestionController extends BaseController {
                         $this->addErrors($this->QuizQuestionService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("quizquestion/detail/".$model->getQuizQuestionId());
+                    return Redirect::to("quizquestion/detail/".$model->getId());
                 }
             }
             return $this->createInputView($model);
@@ -57,12 +57,12 @@ class QuizQuestionController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
-                    $result = $this->QuizQuestionService->UpdateQuizQuestion($model, $model->getQuizQuestionId());
+                    $result = $this->QuizQuestionService->UpdateQuizQuestion($model, $model->getId());
                     if (!$result) {
                         $this->addErrors($this->QuizQuestionService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("quizquestion/detail/".$model->getQuizQuestionId());
+                    return Redirect::to("quizquestion/detail/".$model->getId());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -103,7 +103,7 @@ class QuizQuestionController extends BaseController {
         if ($mode == "create") {
             $this->data["action"] = "/quizquestion/".$mode;
         } else {
-            $this->data["action"] = "/quizquestion/".$mode."/".(!is_null($model) ? $model->getQuizQuestionId() : "");
+            $this->data["action"] = "/quizquestion/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
         $this->loadFunctionList();
@@ -128,10 +128,10 @@ class QuizQuestionController extends BaseController {
     private function bindData($param) {
 	   $QuizQuestionObj = new QuizQuestion();
         if (!is_null($param) && count($param) > 0) {
-            $QuizQuestionObj->setQuizQuestionId($param["quiz_question_id"]);
-            $QuizQuestionObj->setQuizId($param["quiz_id"]);
+            $QuizQuestionObj->setId($param["id"]);
+            $QuizQuestionObj->setQuiz($param["quiz_id"]);
             $QuizQuestionObj->setQuestion($param["question"]);
-            $QuizQuestionObj->setAnswerTypeId($param["answer_type_id"]);
+            $QuizQuestionObj->setAnswerType($param["answer_type_id"]);
             $QuizQuestionObj->setScore($param["score"]);
         }
         return $QuizQuestionObj;

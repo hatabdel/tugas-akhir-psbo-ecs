@@ -32,7 +32,7 @@ class AnswerDao extends BaseDao implements UserInterface, RemindableInterface {
     
     public function InsertAnswer($AnswerObj) {
 		$result = parent::InsertObjectReturnId($AnswerObj);
-        if (!is_null($result) && !is_null($AnswerObj)) { $AnswerObj->setId($result); }
+        if (!is_null($result) && !is_null($AnswerObj)) { $AnswerObj->setAnswer($result); }
 		return $AnswerObj;
     }
     
@@ -47,9 +47,9 @@ class AnswerDao extends BaseDao implements UserInterface, RemindableInterface {
     function toObject($rowset) {
         $AnswerObj = new Answer();
         
-        $AnswerObj->setId($rowset["id"]);
+        $AnswerObj->setAnswer($rowset["id"]);
         $AnswerObj->setSequence($rowset["sequence"]);
-        $AnswerObj->setQuizQuestionId($rowset["quiz_question_id"]);
+        $AnswerObj->setQuizQuestion($rowset["quiz_question_id"]);
         $AnswerObj->setContent($rowset["content"]);
         $AnswerObj->setIsCorrect($rowset["is_correct"]);
         return $AnswerObj;

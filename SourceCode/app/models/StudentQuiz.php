@@ -1,35 +1,35 @@
 <?php
 
 class StudentQuiz {
-    private $mStudentQuizId;
-    private $mIdentityId;
-    private $mQuizId;
+    private $mStudentQuiz;
+    private $mIdentity;
+    private $mQuiz;
     private $mTotalScore;
     private $mStartDateTime;
     private $mEndDateTime;
     
-    public function setStudentQuizId($value) {
-        $this->mStudentQuizId = $value;
+    public function setStudentQuiz($value) {
+        $this->mStudentQuiz = $value;
     }
     
-    public function getStudentQuizId() {
-        return $this->mStudentQuizId;
+    public function getStudentQuiz() {
+        return $this->mStudentQuiz;
     }
     
-    public function setIdentityId($value) {
-        $this->mIdentityId = $value;
+    public function setIdentity($value) {
+        $this->mIdentity = $value;
     }
     
-    public function getIdentityId() {
-        return $this->mIdentityId;
+    public function getIdentity() {
+        return $this->mIdentity;
     }
     
-    public function setQuizId($value) {
-        $this->mQuizId = $value;
+    public function setQuiz($value) {
+        $this->mQuiz = $value;
     }
     
-    public function getQuizId() {
-        return $this->mQuizId;
+    public function getQuiz() {
+        return $this->mQuiz;
     }
     
     public function setTotalScore($value) {
@@ -58,9 +58,9 @@ class StudentQuiz {
     
     public function toArray() {
         return array(
-            "student_quiz_id" => $this->mStudentQuizId,
-            "identity_id" => $this->mIdentityId,
-            "quiz_id" => $this->mQuizId,
+            "id" => $this->mStudentQuiz,
+            "identity_id" => $this->mIdentity,
+            "quiz_id" => $this->mQuiz,
             "total_score" => $this->mTotalScore,
             "start_date_time" => $this->mStartDateTime,
             "end_date_time" => $this->mEndDateTime

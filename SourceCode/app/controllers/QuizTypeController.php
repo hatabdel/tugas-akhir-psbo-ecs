@@ -34,7 +34,7 @@ class QuizTypeController extends BaseController {
                         $this->addErrors($this->QuizTypeService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("quiztype/detail/".$model->getId());
+                    return Redirect::to("quiztype/detail/".$model->getQuizType());
                 }
             }
             return $this->createInputView($model);
@@ -57,12 +57,12 @@ class QuizTypeController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
-                    $result = $this->QuizTypeService->UpdateQuizType($model, $model->getId());
+                    $result = $this->QuizTypeService->UpdateQuizType($model, $model->getQuizType());
                     if (!$result) {
                         $this->addErrors($this->QuizTypeService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("quiztype/detail/".$model->getId());
+                    return Redirect::to("quiztype/detail/".$model->getQuizType());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -103,7 +103,7 @@ class QuizTypeController extends BaseController {
         if ($mode == "create") {
             $this->data["action"] = "/quiztype/".$mode;
         } else {
-            $this->data["action"] = "/quiztype/".$mode."/".(!is_null($model) ? $model->getId() : "");
+            $this->data["action"] = "/quiztype/".$mode."/".(!is_null($model) ? $model->getQuizType() : "");
         }
         
         $this->loadFunctionList();
@@ -123,7 +123,7 @@ class QuizTypeController extends BaseController {
     private function bindData($param) {
 	   $QuizTypeObj = new QuizType();
         if (!is_null($param) && count($param) > 0) {
-            $QuizTypeObj->setId($param["id"]);
+            $QuizTypeObj->setQuizType($param["id"]);
             $QuizTypeObj->setName($param["name"]);
         }
         return $QuizTypeObj;

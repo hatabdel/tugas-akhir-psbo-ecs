@@ -18,7 +18,7 @@
             <div class="control-group">
                 <label class="control-label">Quiz Id</label>
                 <div class="controls">
-                    <input type="text" name="quiz_id" value="<?php if(!is_null($model)) echo $model->getQuizId(); ?>" />
+                    <input type="text" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
                 </div>
             </div>
             <div class="control-group">
@@ -36,7 +36,7 @@
             <div class="control-group">
                 <label class="control-label">Quiz Type Id</label>
                 <div class="controls">
-                    <input type="text" name="quiz_type_id" value="<?php if(!is_null($model)) echo $model->getQuizTypeId(); ?>" />
+                    <input type="text" name="quiz_type_id" value="<?php if(!is_null($model)) echo $model->getQuizType(); ?>" />
                 </div>
             </div>
             <div class="control-group">

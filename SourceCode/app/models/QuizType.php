@@ -1,15 +1,15 @@
 <?php
 
 class QuizType {
-    private $mId;
+    private $mQuizType;
     private $mName;
 	
-    public function setId($value) {
-        $this->mId = $value;
+    public function setQuizType($value) {
+        $this->mQuizType = $value;
     }
     
-    public function getId() {
-        return $this->mId;
+    public function getQuizType() {
+        return $this->mQuizType;
     }
     
     public function setName($value) {
@@ -22,7 +22,7 @@ class QuizType {
     
     public function toArray() {
         return array(
-            "id" => $this->mId,
+            "id" => $this->mQuizType,
             "name" => $this->mName
         );
     }

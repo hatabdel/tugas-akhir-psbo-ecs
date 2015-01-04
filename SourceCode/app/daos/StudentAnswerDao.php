@@ -15,8 +15,8 @@ class StudentAnswerDao extends BaseDao implements UserInterface, RemindableInter
 	 * @var string
 	 */
 	protected $table = 'student_answer';
-    protected $primary_key = 'student_answer_id';
-    protected $fillable = array('student_answer_id');
+    protected $primary_key = 'id';
+    protected $fillable = array('id');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -32,7 +32,7 @@ class StudentAnswerDao extends BaseDao implements UserInterface, RemindableInter
     
     public function InsertStudentAnswer($StudentAnswerObj) {
 		$result = parent::InsertObjectReturnId($StudentAnswerObj);
-        if (!is_null($result) && !is_null($StudentAnswerObj)) { $StudentAnswerObj->setStudentAnswerId($result); }
+        if (!is_null($result) && !is_null($StudentAnswerObj)) { $StudentAnswerObj->setId($result); }
 		return $StudentAnswerObj;
     }
     
@@ -47,9 +47,9 @@ class StudentAnswerDao extends BaseDao implements UserInterface, RemindableInter
     function toObject($rowset) {
         $StudentAnswerObj = new StudentAnswer();
         
-        $StudentAnswerObj->setStudentAnswerId($rowset["student_answer_id"]);
-        $StudentAnswerObj->setStudentQuizId($rowset["student_quiz_id"]);
-        $StudentAnswerObj->setQuizQuestionId($rowset["quiz_question_id"]);
+        $StudentAnswerObj->setId($rowset["id"]);
+        $StudentAnswerObj->setStudentQuiz($rowset["student_quiz_id"]);
+        $StudentAnswerObj->setQuizQuestion($rowset["quiz_question_id"]);
         $StudentAnswerObj->setStudentAnswer($rowset["student_answer"]);
         $StudentAnswerObj->setScore($rowset["score"]);
         $StudentAnswerObj->setIsCorrect($rowset["is_correct"]);
