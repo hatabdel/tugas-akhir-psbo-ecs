@@ -109,7 +109,7 @@ class ForumController extends BaseController {
         }
         
 		//$this->loadFunctionList();
-        //$this->loadUsertGroupList();
+        $this->loadCourseList();
 		
         $this->addErrorValidation($validation);
         return View::make("forum/input", $this->data);
@@ -138,6 +138,13 @@ class ForumController extends BaseController {
         $this->data["_MODULE_NAME"] = "Forum - ";
     }
     
+	private function loadCourseList()
+	{
+		$CourseService = new CourseService();
+		$CourseList = $CourseService->getList(); 
+		$this->data['CourseList'] = $CourseList;
+	}
+	
     private function loadDefaultService() {
         $this->ForumService = new ForumService();
     }

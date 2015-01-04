@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Title</label>
+                <label class="control-label">Title Comment</label>
                 <div class="controls">
                     <input class="span10" type="text" name="title" value="<?php if(!is_null($model)) echo $model->getTitle(); ?>" />
                 </div>
@@ -33,7 +33,11 @@
                     <textarea rows="10" class="span10" cols="50" name="content"><?php if(!is_null($model)) echo $model->getContent(); ?></textarea>
                 </div>
             </div>
-
+			 <div class="control-group">
+                <label class="control-label">Forum Id</label>
+                <div class="controls">
+                    <input type="text" name="forumid" value="<?php if(!is_null($model)) echo $model->getForumId(); ?>" />
+                </div>
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
                 <button type="reset" class="btn btn-primary">Reset</button>

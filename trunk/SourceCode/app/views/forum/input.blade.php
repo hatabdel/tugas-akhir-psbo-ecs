@@ -33,6 +33,26 @@
                     <textarea rows="10" class="span10" cols="50" name="content"><?php if(!is_null($model)) echo $model->getContent(); ?></textarea>
                 </div>
             </div>
+			<div class="control-group">
+                <label class="control-label">Course Code</label>
+				<div class="controls">
+					<select name="course_code">
+						<?php if(!is_null($CourseList))
+						{
+							foreach($CourseList as $item)
+							{
+								if(is_null($item)){continue;}
+								$selected = "";
+								if($item->getCode() == $model->getCourse()) 
+									{
+										$selected = "selected=\"selected\"";
+									}?>
+						<option value="{{ $item->getCode() }}" <?php echo $selected;?>> {{ $item->getName() }} </option>
+						<?php }
+						}?>
+					</select>
+				</div>   
+            </div>
             <div class="control-group">
                 <label class="control-label">Is Public</label>
                 <?php 

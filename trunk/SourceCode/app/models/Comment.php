@@ -9,6 +9,12 @@ class Comment
 	private $mUpdatedDate;
 	private $mUpdatedUser;
 	private $mForumId;
+	private $mIsLoaded;
+	
+	public function __construct()
+	{
+		$this->mIsLoaded = false;
+	}
 	
 	public function setId($value) {
         $this->mId = $value;
@@ -46,6 +52,11 @@ class Comment
 	
 	public function setCreatedUser($value)
 	{
+		$this->mCreatedUser = $value;
+	}
+	
+	public function getCreatedUser()
+	{
 		if (!is_null($this->mCreatedUser) && !empty($this->mCreatedUser)) {
             if (!$this->mCreatedUser->IsLoaded()) {
                 $UserInfoDao = new UserInfoDao();
@@ -53,11 +64,6 @@ class Comment
                 if (!is_null($this->mCreatedUser)) { $this->mCreatedUser->setIsLoaded(true); }
             }
         }
-		$this->mCreatedUser = $value;
-	}
-	
-	public function getCreatedUser()
-	{
 		return $this->mCreatedUser;
 	}
 	
@@ -78,6 +84,13 @@ class Comment
 	
 	public function getUpdatedUser()
 	{
+		if (!is_null($this->mUpdatedUser) && !empty($this->mUpdatedUser)) {
+            if (!$this->mUpdatedUser->IsLoaded()) {
+                $UserInfoDao = new UserInfoDao();
+                $this->mUpdatedUser = $UserInfoDao->getUserInfo($this->mUpdatedUser->getId());
+                if (!is_null($this->mUpdatedUser)) { $this->mUpdatedUser->setIsLoaded(true); }
+            }
+        }
 		return $this->mUpdatedUser;
 	}
     
@@ -95,6 +108,16 @@ class Comment
         }
         return $this->mForumId;
     }
+	
+	public function setIsLoaded($value)
+	{
+		$this->mIsLoaded = $value;
+	}
+	
+	public function IsLoaded()
+	{
+		return $this->mIsLoaded;
+	}
 	
 	public function toArray() {
         return array(

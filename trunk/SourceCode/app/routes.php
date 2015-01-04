@@ -95,7 +95,7 @@ Route::any('quizquestion/detail/{id}', 'QuizQuestionController@detail');
 
 Route::any('answer', 'AnswerController@index');
 Route::any('answer/popup', 'AnswerController@popup');
-Route::any('answer/create', 'AnswerController@create');
+Route::any('answer/create/forum_id?', 'AnswerController@create');
 Route::any('answer/edit/{id}', 'AnswerController@edit');
 Route::any('answer/delete/{id}', 'AnswerController@delete');
 Route::any('answer/detail/{id}', 'AnswerController@detail');
