@@ -30,7 +30,7 @@
              <div class="control-group">
                 <label class="control-label">Comment</label>
                 <div class="controls">
-                    <textarea rows="10" class="span10" cols="50" name="content" value="<?php if(!is_null($model)) echo $model->getContent(); ?>" ></textarea>
+                    <textarea rows="10" class="span10" cols="50" name="content"><?php if(!is_null($model)) echo $model->getContent(); ?></textarea>
                 </div>
             </div>
 

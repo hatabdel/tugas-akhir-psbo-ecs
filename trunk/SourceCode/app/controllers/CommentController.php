@@ -22,12 +22,14 @@ class CommentController extends BaseController {
         
         try {
             $input = Input::all();
+			$model = null;
             if (count($input) > 0) {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages());
                 } else {
+					$this->CommentService->setUserInfo($this->mUserInfo);
                     $result = $this->CommentService->InsertComment($model);
                     if (!$result) {
                         $this->addErrors($this->CommentService->getErrors());
@@ -38,6 +40,7 @@ class CommentController extends BaseController {
             }
             return $this->createInputView($model);
         } catch (Exception $ex) {
+			$this->addError($ex->getMessage());
             return $this->createInputView(null);
         }
     }
@@ -55,6 +58,7 @@ class CommentController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
+					$this->CommentService->setUserInfo($this->mUserInfo);
                     $result = $this->CommentService->UpdateComment($model, $model->getId());
                     if (!$result) {
                         $this->addErrors($this->CommentService->getErrors());
@@ -65,6 +69,7 @@ class CommentController extends BaseController {
             }
             return $this->createInputView($model, null, "edit");
         } catch (Exception $ex) {
+			 $this->addError($ex->getMessage());
             return $this->createInputView(null, null, "edit");
         }
     }
@@ -78,7 +83,8 @@ class CommentController extends BaseController {
             $this->CommentService->DeleteComment($id);
             return Redirect::to("comment");
         } catch (Exception $ex) {
-            var_dump($ex->messages()); die();
+			$this->addError($ex->getMessage());
+            return Redirect::to("course");
         }
     }
     
@@ -102,6 +108,9 @@ class CommentController extends BaseController {
             $this->data["action"] = "/comment/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
+        //$this->loadFunctionList();
+        //$this->loadUsertGroupList();
+		
         $this->addErrorValidation($validation);
         return View::make("comment/input", $this->data);
     }
@@ -117,6 +126,7 @@ class CommentController extends BaseController {
         $CommentObj = new Comment();
         if (!is_null($param) && count($param) > 0) {
             $CommentObj->setId($param["id"]);
+			$CommentObj->setTitle($param["title"]);
 			$CommentObj->setContent($param["content"]);
 			
         }
