@@ -16,7 +16,7 @@
         <div class="control-group">
             <label class="control-label">Quiz Id</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getQuizId(); } ?>
+                <?php if(!is_null($model)) { echo $model->getId(); } ?>
             </div>
         </div>
         <div class="control-group">
@@ -34,7 +34,7 @@
         <div class="control-group">
             <label class="control-label">Quiz Type Id</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getQuizTypeId(); } ?>
+                <?php if(!is_null($model)) { echo $model->getQuizType(); } ?>
             </div>
         </div>
         <div class="control-group">
@@ -74,7 +74,7 @@
             </div>
         </div>
         <div class="form-actions">
-            <button type="button" onclick='window.location.href="<?php echo url()."/quiz/edit/".(!is_null($model) ? $model->getQuizId() : ""); ?>"' class="btn btn-primary">Edit</button>
+            <button type="button" onclick='window.location.href="<?php echo url()."/quiz/edit/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Edit</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/quiz"; ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>

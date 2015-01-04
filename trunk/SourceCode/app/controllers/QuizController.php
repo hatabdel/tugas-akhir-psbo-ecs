@@ -34,7 +34,7 @@ class QuizController extends BaseController {
                         $this->addErrors($this->QuizService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("quiz/detail/".$model->getQuizId());
+                    return Redirect::to("quiz/detail/".$model->getId());
                 }
             }
             return $this->createInputView($model);
@@ -57,12 +57,12 @@ class QuizController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
-                    $result = $this->QuizService->UpdateQuiz($model, $model->getQuizId());
+                    $result = $this->QuizService->UpdateQuiz($model, $model->getId());
                     if (!$result) {
                         $this->addErrors($this->QuizService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("quiz/detail/".$model->getQuizId());
+                    return Redirect::to("quiz/detail/".$model->getId());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -103,7 +103,7 @@ class QuizController extends BaseController {
         if ($mode == "create") {
             $this->data["action"] = "/quiz/".$mode;
         } else {
-            $this->data["action"] = "/quiz/".$mode."/".(!is_null($model) ? $model->getQuizId() : "");
+            $this->data["action"] = "/quiz/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
         $this->loadFunctionList();
@@ -131,10 +131,10 @@ class QuizController extends BaseController {
     private function bindData($param) {
         $QuizObj = new Quiz();
         if (!is_null($param) && count($param) > 0) {
-			$QuizObj->setQuizId($param["quiz_id"]);
+			$QuizObj->setId($param["id"]);
 			$QuizObj->setQuizName($param["quiz_name"]);
 			$QuizObj->setCourseCode($param["course_code"]);
-			$QuizObj->setQuizTypeId($param["quiz_type_id"]);
+			$QuizObj->setQuizType($param["quiz_type_id"]);
 			$QuizObj->setStartDateTime($param["start_date_time"]);
 			$QuizObj->setEndDateTime($param["end_date_time"]);
 			$QuizObj->setCreatedDate($param["created_date"]);

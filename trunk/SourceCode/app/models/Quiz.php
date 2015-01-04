@@ -1,10 +1,10 @@
 <?php
 
 class Quiz {
-    private $mQuizId;
+    private $mId;
     private $mQuizName;
     private $mCourseCode;
-    private $mQuizTypeId;
+    private $mQuizType;
     private $mStartDateTime;
     private $mEndDateTime;
     private $mCreatedDate;
@@ -12,12 +12,12 @@ class Quiz {
     private $mUpdateDate;
     private $mUpdateUser;
 	
-    public function setQuizId($value) {
-        $this->mQuizId = $value;
+    public function setId($value) {
+        $this->mId = $value;
     }
     
-    public function getQuizId() {
-        return $this->mQuizId;
+    public function getId() {
+        return $this->mId;
     }
     
     public function setQuizName($value) {
@@ -36,12 +36,12 @@ class Quiz {
         return $this->mCourseCode;
     }
     
-    public function setQuizTypeId($value) {
-        $this->mQuizTypeId = $value;
+    public function setQuizType($value) {
+        $this->mQuizType = $value;
     }
     
-    public function getQuizTypeId() {
-        return $this->mQuizTypeId;
+    public function getQuizType() {
+        return $this->mQuizType;
     }
 	
     public function setStartDateTime($value) {
@@ -94,10 +94,10 @@ class Quiz {
 	
     public function toArray() {
         return array(
-            "quiz_id" => $this->mQuizId,
+            "id" => $this->mId,
             "quiz_name" => $this->mQuizName,
             "course_code" => $this->mCourseCode,
-            "quiz_type_id" => $this->mQuizTypeId,
+            "quiz_type_id" => $this->mQuizType,
             "start_date_time" => $this->mStartDateTime,
             "end_date_time" => $this->mEndDateTime,
             "created_date" => $this->mCreatedDate,

@@ -72,7 +72,7 @@ class QuizService extends BaseService {
         }
         
         
-        if (is_null($model->getQuizTypeId()) || empty($model->getQuizTypeId())) {
+        if (is_null($model->getQuizType()) || empty($model->getQuizType())) {
             $this->addError("Quiz Type Id is required!");
         }
 		
@@ -107,10 +107,10 @@ class QuizService extends BaseService {
         if (is_null($model)) { return false; }
         $this->validateBase($model);
         
-        if (!is_null($model->getQuizId()) && !empty($model->getQuizId())) {
-            $QuizObj = $this->getQuiz($model->getQuizId());
+        if (!is_null($model->getId()) && !empty($model->getId())) {
+            $QuizObj = $this->getQuiz($model->getId());
             if (!is_null($QuizObj)) {
-                $this->addError("Data with code ".$model->getQuizId()." is already exist!");
+                $this->addError("Data with code ".$model->getId()." is already exist!");
             }
         }
         return $this->getServiceState();

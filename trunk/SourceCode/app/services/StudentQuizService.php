@@ -40,7 +40,7 @@ class StudentQuizService extends BaseService {
     public function UpdateStudentQuiz($StudentQuizObj, $Id) {
         try {
             if (!$this->validateOnUpdate($StudentQuizObj)) { return false; }
-            return $this->StudentAnswerDao->UpdateStudentQuiz($StudentQuizObj, $Id);
+            return $this->StudentQuizDao->UpdateStudentQuiz($StudentQuizObj, $Id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
@@ -63,11 +63,11 @@ class StudentQuizService extends BaseService {
     private function validateBase($model) {
         if (is_null($model)) { return false; }
         
-        if (is_null($model->getIdentityId()) || empty($model->getIdentityId())) {
+        if (is_null($model->getIdentity()) || empty($model->getIdentity())) {
             $this->addError("Identity Id is required!");
         }
         
-        if (is_null($model->getQuizId()) || empty($model->getQuizId())) {
+        if (is_null($model->getQuiz()) || empty($model->getQuiz())) {
             $this->addError("Quiz Id is required!");
         }
         
@@ -91,10 +91,10 @@ class StudentQuizService extends BaseService {
         if (is_null($model)) { return false; }
         $this->validateBase($model);
 		
-		if (!is_null($model->getStudentQuizId()) && !empty($model->getStudentQuizId())) {
-            $StudentQuizObj = $this->getStudentQuiz($model->getStudentQuizId());
+		if (!is_null($model->getStudentQuiz()) && !empty($model->getStudentQuiz())) {
+            $StudentQuizObj = $this->getStudentQuiz($model->getStudentQuiz());
             if (!is_null($StudentQuizObj)) {
-                $this->addError("Data with code ".$model->getStudentQuizId()." is already exist!");
+                $this->addError("Data with code ".$model->getStudentQuiz()." is already exist!");
             }
         }
         return $this->getServiceState();

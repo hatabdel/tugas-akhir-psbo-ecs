@@ -29,18 +29,18 @@ class QuizTypeDao extends BaseDao implements UserInterface, RemindableInterface 
     public function getQuizType($id) {
         return parent::getObject($id);
     }
-    /*
+    
     public function InsertQuizType($QuizTypeObj) {
 		$result = parent::InsertObjectReturnId($QuizTypeObj);
-        if (!is_null($result) && !is_null($QuizTypeObj)) { $QuizTypeObj->setId($result); }
+        if (!is_null($result) && !is_null($QuizTypeObj)) { $QuizTypeObj->setQuizType($result); }
 		return $QuizTypeObj;
     }
-    */
-	
+    
+	/*
     public function InsertQuizType($QuizTypeObj) {
         return parent::InsertObject($QuizTypeObj);
     }
-	
+	*/
     public function UpdateQuizType($QuizTypeObj, $Id) {
         return parent::UpdateObject($QuizTypeObj, $Id);
     }
@@ -52,7 +52,7 @@ class QuizTypeDao extends BaseDao implements UserInterface, RemindableInterface 
     function toObject($rowset) {
         $QuizTypeObj = new QuizType();
         
-        $QuizTypeObj->setId($rowset["id"]);
+        $QuizTypeObj->setQuizType($rowset["id"]);
         $QuizTypeObj->setName($rowset["name"]);
         return $QuizTypeObj;
     }

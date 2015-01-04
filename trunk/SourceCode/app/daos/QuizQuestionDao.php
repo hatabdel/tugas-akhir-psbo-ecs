@@ -15,8 +15,8 @@ class QuizQuestionDao extends BaseDao implements UserInterface, RemindableInterf
 	 * @var string
 	 */
 	protected $table = 'quiz_question';
-    protected $primary_key = 'quiz_question_id';
-    protected $fillable = array('quiz_question_id');
+    protected $primary_key = 'id';
+    protected $fillable = array('id');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -32,7 +32,7 @@ class QuizQuestionDao extends BaseDao implements UserInterface, RemindableInterf
     
     public function InsertQuizQuestion($QuizQuestionObj) {
 		$result = parent::InsertObjectReturnId($QuizQuestionObj);
-        if (!is_null($result) && !is_null($QuizQuestionObj)) { $QuizQuestionObj->setQuizQuestionId($result); }
+        if (!is_null($result) && !is_null($QuizQuestionObj)) { $QuizQuestionObj->setId($result); }
 		return $QuizQuestionObj;
     }
     
@@ -47,10 +47,10 @@ class QuizQuestionDao extends BaseDao implements UserInterface, RemindableInterf
     function toObject($rowset) {
         $QuizQuestionObj = new QuizQuestion();
         
-        $QuizQuestionObj->setQuizQuestionId($rowset["quiz_question_id"]);
-        $QuizQuestionObj->setQuizId($rowset["quiz_id"]);
+        $QuizQuestionObj->setId($rowset["id"]);
+        $QuizQuestionObj->setQuiz($rowset["quiz_id"]);
         $QuizQuestionObj->setQuestion($rowset["question"]);
-        $QuizQuestionObj->setAnswerTypeId($rowset["answer_type_id"]);
+        $QuizQuestionObj->setAnswerType($rowset["answer_type_id"]);
         $QuizQuestionObj->setScore($rowset["score"]);
         return $QuizQuestionObj;
     }

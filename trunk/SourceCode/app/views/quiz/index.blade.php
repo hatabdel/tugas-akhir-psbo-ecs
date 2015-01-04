@@ -17,7 +17,7 @@
                 <div class="clearfix"></div>
                 <a class='btn show-tooltip' style='margin-bottom:10px !important;' title='Create' href='<?php echo url()."/quiz/create"; ?>' ><i class='icon-plus'> Create</i></a>
                 @if (count($QuizList) > 0 && !is_null($QuizList))
-                <table class="table table-advance" id="table_user_info">
+                <table class="table table-advance" id="table_quiz">
                     <thead>
                         <tr>
                             <th>Quiz Id</th>
@@ -37,10 +37,10 @@
                     @foreach ($QuizList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
-                            <td class="QuizId"><a href="<?php echo url()."/quiz/detail/".$item->getQuizId(); ?>">{{ $item->getQuizId() }}</a></td>
+                            <td class="Id"><a href="<?php echo url()."/quiz/detail/".$item->getId(); ?>">{{ $item->getId() }}</a></td>
                             <td class="QuizName">{{ $item->getQuizName() }}</td>
                             <td class="CourseCode">{{ $item->getCourseCode() }}</td>
-                            <td class="QuizTypeId">{{ $item->getQuizTypeId() }}</td>
+                            <td class="QuizTypeId">{{ $item->getQuizType() }}</td>
                             <td class="StartDateTime">{{ $item->getStartDateTime() }}</td>
                             <td class="EndDateTime">{{ $item->getEndDateTime() }}</td>
                             <td class="CreatedDate">{{ $item->getCreatedDate() }}</td>
@@ -48,8 +48,8 @@
                             <td class="UpdateDate">{{ $item->getUpdateDate() }}</td>
                             <td class="UpdateUser">{{ $item->getUpdateUser() }}</td>
                             <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/quiz/edit/".$item->getQuizId(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/quiz/delete/".$item->getQuizId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/quiz/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
+                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/quiz/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
                             </td>
                         </tr>
                     @endforeach

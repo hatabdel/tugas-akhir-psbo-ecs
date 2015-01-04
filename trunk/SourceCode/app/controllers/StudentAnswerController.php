@@ -34,7 +34,7 @@ class StudentAnswerController extends BaseController {
                         $this->addErrors($this->StudentAnswerService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("studentanswer/detail/".$model->getStudentAnswerId());
+                    return Redirect::to("studentanswer/detail/".$model->getId());
                 }
             }
             return $this->createInputView($model);
@@ -57,12 +57,12 @@ class StudentAnswerController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
-                    $result = $this->StudentAnswerService->UpdateStudentAnswer($model, $model->getStudentAnswerId());
+                    $result = $this->StudentAnswerService->UpdateStudentAnswer($model, $model->getId());
                     if (!$result) {
                         $this->addErrors($this->StudentAnswerService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("studentanswer/detail/".$model->getStudentAnswerId());
+                    return Redirect::to("studentanswer/detail/".$model->getId());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -103,7 +103,7 @@ class StudentAnswerController extends BaseController {
         if ($mode == "create") {
             $this->data["action"] = "/studentanswer/".$mode;
         } else {
-            $this->data["action"] = "/studentanswer/".$mode."/".(!is_null($model) ? $model->getStudentAnswerId() : "");
+            $this->data["action"] = "/studentanswer/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
         $this->loadFunctionList();
@@ -115,12 +115,10 @@ class StudentAnswerController extends BaseController {
     
     private function initValidation() {
         $form_validation = array(
-            //"student_answer_id" => "required",
             "student_quiz_id" => "required",
             "quiz_question_id" => "required",
             "student_answer" => "required",
             "score" => "required"
-            //"is_correct" => "required"
         );
         return $form_validation;
     }
@@ -128,9 +126,9 @@ class StudentAnswerController extends BaseController {
     private function bindData($param) {
 	   $StudentAnswerObj = new StudentAnswer();
         if (!is_null($param) && count($param) > 0) {
-            $StudentAnswerObj->setStudentAnswerId($param["student_answer_id"]);
-            $StudentAnswerObj->setStudentQuizId($param["student_quiz_id"]);
-            $StudentAnswerObj->setQuizQuestionId($param["quiz_question_id"]);
+            $StudentAnswerObj->setId($param["id"]);
+            $StudentAnswerObj->setStudentQuiz($param["student_quiz_id"]);
+            $StudentAnswerObj->setQuizQuestion($param["quiz_question_id"]);
             $StudentAnswerObj->setStudentAnswer($param["student_answer"]);
             $StudentAnswerObj->setScore($param["score"]);
             $StudentAnswerObj->setIsCorrect($param["is_correct"]);

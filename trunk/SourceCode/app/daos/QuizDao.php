@@ -15,8 +15,8 @@ class QuizDao extends BaseDao implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'quiz';
-    protected $primary_key = 'quiz_id';
-    protected $fillable = array('quiz_id');
+    protected $primary_key = 'id';
+    protected $fillable = array('id');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -33,7 +33,7 @@ class QuizDao extends BaseDao implements UserInterface, RemindableInterface {
      public function InsertQuiz($QuizObj) {
 		try {
 		$result = parent::InsertObjectReturnId($QuizObj);
-        if (!is_null($result) && !is_null($QuizObj)) { $QuizObj->setQuizId($result); }
+        if (!is_null($result) && !is_null($QuizObj)) { $QuizObj->setId($result); }
 		return $QuizObj;
 		} catch (Exception $ex) {
             var_dump($ex->getMessage());
@@ -50,10 +50,10 @@ class QuizDao extends BaseDao implements UserInterface, RemindableInterface {
     
     function toObject($rowset) {
         $QuizObj = new Quiz();
-        $QuizObj->setQuizId($rowset["quiz_id"]);
+        $QuizObj->setId($rowset["id"]);
         $QuizObj->setQuizName($rowset["quiz_name"]);
         $QuizObj->setCourseCode($rowset["course_code"]);
-        $QuizObj->setQuizTypeId($rowset["quiz_type_id"]);
+        $QuizObj->setQuizType($rowset["quiz_type_id"]);
         $QuizObj->setStartDateTime($rowset["start_date_time"]);
         $QuizObj->setEndDateTime($rowset["end_date_time"]);
         $QuizObj->setCreatedDate($rowset["created_date"]);

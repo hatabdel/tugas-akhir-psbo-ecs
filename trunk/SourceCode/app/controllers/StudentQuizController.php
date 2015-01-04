@@ -29,12 +29,13 @@ class StudentQuizController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages());
                 } else {
+                    //$this->StudentQuizService->setStudentQuiz($this->mStudentQuiz);
                     $result = $this->StudentQuizService->InsertStudentQuiz($model);
                   if (!$result) {
                         $this->addErrors($this->StudentQuizService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("studentquiz/detail/".$model->getStudentQuizId());
+                    return Redirect::to("studentquiz/detail/".$model->getStudentQuiz());
                 }
             }
             return $this->createInputView($model);
@@ -57,12 +58,12 @@ class StudentQuizController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
-                    $result = $this->StudentQuizService->UpdateStudentQuiz($model, $model->getStudentQuizId());
+                    $result = $this->StudentQuizService->UpdateStudentQuiz($model, $model->getStudentQuiz());
                      if (!$result) {
                         $this->addErrors($this->StudentQuizService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("studentquiz/detail/".$model->getStudentQuizId());
+                    return Redirect::to("studentquiz/detail/".$model->getStudentQuiz());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -103,7 +104,7 @@ class StudentQuizController extends BaseController {
         if ($mode == "create") {
             $this->data["action"] = "/studentquiz/".$mode;
         } else {
-            $this->data["action"] = "/studentquiz/".$mode."/".(!is_null($model) ? $model->getStudentQuizId() : "");
+            $this->data["action"] = "/studentquiz/".$mode."/".(!is_null($model) ? $model->getStudentQuiz() : "");
         } 
 		
         $this->loadFunctionList();
@@ -127,9 +128,9 @@ class StudentQuizController extends BaseController {
     private function bindData($param) {
         $StudentQuizObj = new StudentQuiz();
         if (!is_null($param) && count($param) > 0) {
-			$StudentQuizObj->setStudentQuizId($param["student_quiz_id"]);
-			$StudentQuizObj->setIdentityId($param["identity_id"]);
-			$StudentQuizObj->setQuizId($param["quiz_id"]);
+			$StudentQuizObj->setStudentQuiz($param["id"]);
+			$StudentQuizObj->setIdentity($param["identity_id"]);
+			$StudentQuizObj->setQuiz($param["quiz_id"]);
 			$StudentQuizObj->setTotalScore($param["total_score"]);
 			$StudentQuizObj->setStartDateTime($param["start_date_time"]);
 			$StudentQuizObj->setEndDateTime($param["end_date_time"]);

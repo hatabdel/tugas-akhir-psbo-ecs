@@ -29,12 +29,12 @@ class AnswerController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages());
                 } else {
-                    $result = $this->AnswerService->InsertAnswer($model);
+					$result = $this->AnswerService->InsertAnswer($model);
                     if (!$result) {
                         $this->addErrors($this->AnswerService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("answer/detail/".$model->getId());
+                    return Redirect::to("answer/detail/".$model->getAnswer());
                 }
             }
             return $this->createInputView($model);
@@ -57,12 +57,12 @@ class AnswerController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
-                    $result = $this->AnswerService->UpdateAnswer($model, $model->getId());
+                    $result = $this->AnswerService->UpdateAnswer($model, $model->getAnswer());
                     if (!$result) {
                         $this->addErrors($this->AnswerService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("answer/detail/".$model->getId());
+                    return Redirect::to("answer/detail/".$model->getAnswer());
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -103,7 +103,7 @@ class AnswerController extends BaseController {
         if ($mode == "create") {
             $this->data["action"] = "/answer/".$mode;
         } else {
-            $this->data["action"] = "/answer/".$mode."/".(!is_null($model) ? $model->getId() : "");
+            $this->data["action"] = "/answer/".$mode."/".(!is_null($model) ? $model->getAnswer() : "");
         }
         
         $this->loadFunctionList();
@@ -125,9 +125,9 @@ class AnswerController extends BaseController {
     private function bindData($param) {
 	   $AnswerObj = new Answer();
         if (!is_null($param) && count($param) > 0) {
-            $AnswerObj->setId($param["id"]);
+            $AnswerObj->setAnswer($param["id"]);
             $AnswerObj->setSequence($param["sequence"]);
-            $AnswerObj->setQuizQuestionId($param["quiz_question_id"]);
+            $AnswerObj->setQuizQuestion($param["quiz_question_id"]);
             $AnswerObj->setContent($param["content"]);
             $AnswerObj->setIsCorrect($param["is_correct"]);
         }

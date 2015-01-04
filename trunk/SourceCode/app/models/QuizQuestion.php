@@ -1,26 +1,26 @@
 <?php
 
 class QuizQuestion {
-    private $mQuizQuestionId;
-    private $mQuizId;
+    private $mId;
+    private $mQuiz;
     private $mQuestion;
-    private $mAnswerTypeId;
+    private $mAnswerType;
     private $mScore;
     
-    public function setQuizQuestionId($value) {
-        $this->mQuizQuestionId = $value;
+    public function setId($value) {
+        $this->mId = $value;
     }
     
-    public function getQuizQuestionId() {
-        return $this->mQuizQuestionId;
+    public function getId() {
+        return $this->mId;
     }
     
-    public function setQuizId($value) {
-        $this->mQuizId = $value;
+    public function setQuiz($value) {
+        $this->mQuiz = $value;
     }
     
-    public function getQuizId() {
-        return $this->mQuizId;
+    public function getQuiz() {
+        return $this->mQuiz;
     }
     
     public function setQuestion($value) {
@@ -31,12 +31,12 @@ class QuizQuestion {
         return $this->mQuestion;
     }
     
-    public function setAnswerTypeId($value) {
-        $this->mAnswerTypeId = $value;
+    public function setAnswerType($value) {
+        $this->mAnswerType = $value;
     }
     
-    public function getAnswerTypeId() {
-        return $this->mAnswerTypeId;
+    public function getAnswerType() {
+        return $this->mAnswerType;
     }
 	
     public function setScore($value) {
@@ -49,10 +49,10 @@ class QuizQuestion {
     
     public function toArray() {
         return array(
-            "quiz_question_id" => $this->mQuizQuestionId,
-            "quiz_id" => $this->mQuizId,
+            "id" => $this->mId,
+            "quiz_id" => $this->mQuiz,
             "question" => $this->mQuestion,
-            "answer_type_id" => $this->mAnswerTypeId,
+            "answer_type_id" => $this->mAnswerType,
             "score" => $this->mScore
         );
     }
