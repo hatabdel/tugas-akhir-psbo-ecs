@@ -1,57 +1,55 @@
 <?php
 
-class QuizTypeService extends BaseService {
+class AnswerService extends BaseService {
     
-    private $QuizTypeDao;
+    private $AnswerDao;
     
     public function __construct() {
         parent::__construct();
-        $this->QuizTypeDao = new QuizTypeDao();
+        $this->AnswerDao = new AnswerDao();
     }
     
     public function getList() {
         try {
-            return $this->QuizTypeDao->getList();
+            return $this->AnswerDao->getList();
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
     }
     
-    public function getQuizType($id) {
+    public function getAnswer($id) {
         try { 
-            return $this->QuizTypeDao->getQuizType($id);
+            return $this->AnswerDao->getAnswer($id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
     }
     
-    public function InsertQuizType($QuizTypeObj) {
+    public function InsertAnswer($AnswerObj) {
         try {
-            if (!$this->validateOnInsert($QuizTypeObj)) { return false; }
-			
-		//var_dump($QuizTypeObj);	die();
-            return $this->QuizTypeDao->InsertQuizType($QuizTypeObj);
+            if (!$this->validateOnInsert($AnswerObj)) { return false; }
+            return $this->AnswerDao->InsertAnswer($AnswerObj);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
     }
     
-    public function UpdateQuizType($QuizTypeObj, $Id) {
+    public function UpdateAnswer($AnswerObj, $Id) {
         try {
-            if (!$this->validateOnUpdate($QuizTypeObj)) { return false; }
-            return $this->QuizTypeDao->UpdateQuizType($QuizTypeObj, $Id);
+            if (!$this->validateOnUpdate($AnswerObj)) { return false; }
+            return $this->AnswerDao->UpdateAnswer($AnswerObj, $Id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
     }
     
-    public function DeleteQuizType($Id) {
+    public function DeleteAnswer($Id) {
         try {
-            return $this->QuizTypeDao->DeleteQuizType($Id);
+            return $this->AnswerDao->DeleteAnswer($Id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
@@ -65,10 +63,20 @@ class QuizTypeService extends BaseService {
     private function validateBase($model) {
         if (is_null($model)) { return false; }
         
-        if (is_null($model->getName()) || empty($model->getName())) {
-            $this->addError("Name is required!");
+        if (is_null($model->getSequence()) || empty($model->getSequence())) {
+            $this->addError("Sequence is required!");
         }
-                
+        
+        
+        if (is_null($model->getQuizQuestionId()) || empty($model->getQuizQuestionId())) {
+            $this->addError("Quiz Question Id is required!");
+        }
+        
+        
+        if (is_null($model->getContent()) || empty($model->getContent())) {
+            $this->addError("Content is required!");
+        }
+        
         return $this->getServiceState();
     }
     
@@ -77,8 +85,8 @@ class QuizTypeService extends BaseService {
         $this->validateBase($model);
 		
 		if (!is_null($model->getId()) && !empty($model->getId())) {
-            $QuizTypeObj = $this->getQuizType($model->getId());
-            if (!is_null($QuizTypeObj)) {
+            $AnswerObj = $this->getAnswer($model->getId());
+            if (!is_null($AnswerObj)) {
                 $this->addError("Data with code ".$model->getId()." is already exist!");
             }
         }

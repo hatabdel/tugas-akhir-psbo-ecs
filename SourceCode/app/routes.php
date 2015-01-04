@@ -58,3 +58,45 @@ Route::any('comment/delete/{id}', 'CommentController@delete');
 Route::any('comment/detail/{id}', 'CommentController@detail');
 
 
+Route::any('quiz', 'QuizController@index');
+Route::any('quiz/popup', 'QuizController@popup');
+Route::any('quiz/create', 'QuizController@create');
+Route::any('quiz/edit/{id}', 'QuizController@edit');
+Route::any('quiz/delete/{id}', 'QuizController@delete');
+Route::any('quiz/detail/{id}', 'QuizController@detail');
+
+Route::any('quiztype', 'QuizTypeController@index');
+Route::any('quiztype/popup', 'QuizTypeController@popup');
+Route::any('quiztype/create', 'QuizTypeController@create');
+Route::any('quiztype/edit/{id}', 'QuizTypeController@edit');
+Route::any('quiztype/delete/{id}', 'QuizTypeController@delete');
+Route::any('quiztype/detail/{id}', 'QuizTypeController@detail');
+
+Route::any('studentquiz', 'StudentQuizController@index');
+Route::any('studentquiz/popup', 'StudentQuizController@popup');
+Route::any('studentquiz/create', 'StudentQuizController@create');
+Route::any('studentquiz/edit/{id}', 'StudentQuizController@edit');
+Route::any('studentquiz/delete/{id}', 'StudentQuizController@delete');
+Route::any('studentquiz/detail/{id}', 'StudentQuizController@detail');
+
+Route::any('studentanswer', 'StudentAnswerController@index');
+Route::any('studentanswer/popup', 'StudentAnswerController@popup');
+Route::any('studentanswer/create', 'StudentAnswerController@create');
+Route::any('studentanswer/edit/{id}', 'StudentAnswerController@edit');
+Route::any('studentanswer/delete/{id}', 'StudentAnswerController@delete');
+Route::any('studentanswer/detail/{id}', 'StudentAnswerController@detail');
+
+Route::any('quizquestion', 'QuizQuestionController@index');
+Route::any('quizquestion/popup', 'QuizQuestionController@popup');
+Route::any('quizquestion/create', 'QuizQuestionController@create');
+Route::any('quizquestion/edit/{id}', 'QuizQuestionController@edit');
+Route::any('quizquestion/delete/{id}', 'QuizQuestionController@delete');
+Route::any('quizquestion/detail/{id}', 'QuizQuestionController@detail');
+
+Route::any('answer', 'AnswerController@index');
+Route::any('answer/popup', 'AnswerController@popup');
+Route::any('answer/create', 'AnswerController@create');
+Route::any('answer/edit/{id}', 'AnswerController@edit');
+Route::any('answer/delete/{id}', 'AnswerController@delete');
+Route::any('answer/detail/{id}', 'AnswerController@detail');
+
