@@ -18,7 +18,12 @@
             <div class="control-group">
                 <label class="control-label">User Name</label>
                 <div class="controls">
+                    <?php if ($mode == "edit") { ?>
+                    <input type="hidden" name="user_name" value="<?php if(!is_null($model)) { echo $model->getUserName(); } ?>" />
+                    <label class=""><?php if(!is_null($model)) echo $model->getUserName(); ?></label>
+                    <?php } else {?>
                     <input type="text" name="user_name" value="<?php if(!is_null($model)) echo $model->getUserName(); ?>" />
+                    <?php } ?>
                 </div>
             </div>
             <div class="control-group">
@@ -35,7 +40,8 @@
                                 foreach($UserGroupList as $item) {
                                     if (is_null($item)) { continue; }
                                     $selected = "";
-                                    if ($item->getId() == $model->getUserGroup() ) { $selected = "selected=\"selected\""; }
+                                    $UserGroupId = (!is_null($model->getUserGroup()) ? $model->getUserGroup()->getId() : null);
+                                    if ($item->getId() == $UserGroupId) { $selected = "selected=\"selected\""; }
                         ?>
                         <option value="{{ $item->getId() }}" <?php echo $selected; ?>> {{ $item->getName() }}</option>
                         <?php   }

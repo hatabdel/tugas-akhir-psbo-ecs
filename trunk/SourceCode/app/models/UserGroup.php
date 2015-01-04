@@ -4,6 +4,7 @@ class UserGroup {
 
     private $mId;
     private $mName;
+    private $mIsLoaded;
     
     public function setId($value) {
         $this->mId = $value;
@@ -19,6 +20,14 @@ class UserGroup {
 
     public function getName() {
         return $this->mName;
+    }
+    
+    public function setIsLoaded($value) {
+        $this->mIsLoaded = $value;
+    }
+    
+    public function IsLoaded() {
+        return $this->mIsLoaded;
     }
     
     public function toArray() {

@@ -20,17 +20,23 @@
                 <table class="table table-advance" id="table_user_info">
                     <thead>
                         <tr>
-                            <th>User Name</th>
-                            <th>Created Date</th>
                             <th style="width:100px">Action</th>
+                            <th>User Name</th>
+                            <th>User Group</th>
+                            <th>Created Date</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($UserInfoList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
-                            <td class="UserName">{{ $item->getUserName() }}</th>
-                            <td class="CreatedDate">{{ $item->getCreatedDate() }}</th>
+                            <td>
+                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/userinfo/delete/".$item->getUserName(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/userinfo/edit/".$item->getUserName(); ?>'><i class='icon-edit'></i></a>
+                            </td>
+                            <td class="UserName"><a href="<?php echo url()."/userinfo/detail/".$item->getUserName(); ?>">{{ $item->getUserName() }}</a></td>
+                            <td class="UserGroup"><?php if(!is_null($item)) { echo (!is_null($item->getUserGroup()) ? $item->getUserGroup()->getName() : ""); } ?></td>
+                            <td class="CreatedDate">{{ $item->getCreatedDate() }}</td>
                         </tr>
                     @endforeach
                     </tbody>
