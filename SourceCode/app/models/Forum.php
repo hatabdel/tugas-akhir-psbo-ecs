@@ -59,6 +59,13 @@ class Forum
 	
 	public function getCreatedUser()
 	{
+		if (!is_null($this->mCreatedUser) && !empty($this->mCreatedUser)) {
+            if (!$this->mCreatedUser->IsLoaded()) {
+                $UserInfoDao = new UserInfoDao();
+                $this->mCreatedUser = $UserInfoDao->getUserInfo($this->mCreatedUse->getUserName());
+                if (!is_null($this->mCreatedUser)) { $this->mCreatedUser->setIsLoaded(true); }
+            }
+        }
 		return $this->mCreatedUser;
 	}
 	
@@ -89,6 +96,13 @@ class Forum
 	
 	public function getCourseCode()
 	{
+		if (!is_null($this->mCourseCode) && !empty($this->mCourseCode)) {
+            if (!$this->mCourseCode->IsLoaded()) {
+                $CourseDao = new CourseDao();
+                $this->mCourseCode = $CourseDao->getCourse($this->mCourseCode->getCode());
+                if (!is_null($this->mCourseCode)) { $this->mCourseCode->setIsLoaded(true); }
+            }
+        }
 		return $this->mCourseCode;
 	}
 	
@@ -118,10 +132,10 @@ class Forum
             "title" => $this->mTitle,
             "content" => $this->mContent,
             "created_date" => $this->mCreatedDate,
-            "created_user" => $this->mCreatedUser,
+            "created_user" => (!is_null($this->mCreatedUser) ? $this->mCreatedUser->getUserName() : null),
             "update_date" => $this->mUpdatedDate,
             "update_user" => $this->mUpdatedUser,
-            "course_code" => $this->mCourseCode,
+            "course_code" => (!is_null($this->mCourseCode) ? $this->mCourseCode->getCode() : null),
             "is_public" => $this->mIsPublic
         );
     }

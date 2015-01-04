@@ -29,6 +29,7 @@ class CommentService extends BaseService
         try {
             if (!$this->validateOnInsert($CommentObj)) { return false; }
 			$CommentObj->setCreatedDate(Date("YYYY-mm-dd H:i:s"));
+			$CommentObj->setCreatedUser($this->mUserInfo);
             return $this->CommentDao->InsertComment($CommentObj);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
@@ -38,7 +39,14 @@ class CommentService extends BaseService
     
     public function UpdateComment($CommentObj, $Id) {
         try {
-            if (!$this->CommentDao->UpdateComment($CommentObj, $Id));
+            if (!$this->validateOnUpdate($CommentObj)) { return false; }
+            $CommentObjOld = $this->getComment($Id);
+            if (!is_null($CommentObjOld)) {
+                $CommentObj->setCreatedDate($CommentObjOld->getCreatedDate());
+                $CommentObj->setCreatedUser($CommentObjOld->getCreatedUser());
+            }
+			$CommentObj->setUpdatedDate(Date("Y-m-d H:i:s"));
+            return $this->CommentDao->UpdateComment($CommentObj, $Id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
@@ -58,7 +66,7 @@ class CommentService extends BaseService
         
     }
     
-    /*private function validateBase($model) {
+    private function validateBase($model) {
         if (is_null($model)) { return false; }
         
         if (is_null($model->getTitle()) || empty($model->getTitle())) {
@@ -66,17 +74,23 @@ class CommentService extends BaseService
         }
         
         return $this->getServiceState();
-    }*/
+    }
     
     private function validateOnInsert($model) {
         if (is_null($model)) { return false; }
-        //$this->validateBase($model);
+        $this->validateBase($model);
+		if (!is_null($model->getId()) && !empty($model->getId())) {
+            $ForumObj = $this->getComment($model->getId());
+            if (!is_null($CommentObj)) {
+                $this->addError("Data with id ".$model->getId()." is already exist!");
+            }
+        }
         return $this->getServiceState();
     }
     
     private function validateOnUpdate($model) {
         if (is_null($model)) { return false; }
-        //$this->validateBase($model);
+        $this->validateBase($model);
         return $this->getServiceState();
     }
 }

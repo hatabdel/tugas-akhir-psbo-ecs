@@ -22,12 +22,14 @@ class ForumController extends BaseController {
         
         try {
             $input = Input::all();
+			$model = null;
             if (count($input) > 0) {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages());
                 } else {
+					$this->ForumService->setUserInfo($this->mUserInfo);
                     $result = $this->ForumService->InsertForum($model);
                     if (!$result) {
                         $this->addErrors($this->ForumService->getErrors());
@@ -38,6 +40,7 @@ class ForumController extends BaseController {
             }
             return $this->createInputView($model);
         } catch (Exception $ex) {
+			$this->addError($ex->getMessage());
             return $this->createInputView(null);
         }
     }
@@ -55,6 +58,7 @@ class ForumController extends BaseController {
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages(), "edit");
                 } else {
+					$this->ForumService->setUserInfo($this->mUserInfo);
                     $result = $this->ForumService->UpdateForum($model, $model->getId());
 					if (!$result) {
                         $this->addErrors($this->ForumService->getErrors());
@@ -65,6 +69,7 @@ class ForumController extends BaseController {
             }
             return $this->createInputView($model, null, "edit");
         } catch (Exception $ex) {
+			$this->addError($ex->getMessage());
             return $this->createInputView(null, null, "edit");
         }
     }
@@ -78,7 +83,8 @@ class ForumController extends BaseController {
             $this->ForumService->DeleteForum($id);
             return Redirect::to("forum");
         } catch (Exception $ex) {
-            var_dump($ex->messages()); die();
+			$this->addError($ex->getMessage());
+            return Redirect::to("forum");
         }
     }
     
@@ -102,6 +108,9 @@ class ForumController extends BaseController {
             $this->data["action"] = "/forum/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
+		//$this->loadFunctionList();
+        //$this->loadUsertGroupList();
+		
         $this->addErrorValidation($validation);
         return View::make("forum/input", $this->data);
     }

@@ -29,6 +29,7 @@ class ForumService extends BaseService
         try {
             if (!$this->validateOnInsert($ForumObj)) { return false; }
 			$ForumObj->setCreatedDate(Date("Y-m-d H:i:s"));
+			$ForumObj->setCreatedUser($this->mUserInfo);
             return $this->ForumDao->InsertForum($ForumObj);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
@@ -42,6 +43,7 @@ class ForumService extends BaseService
 			$ForumObjOld = $this->getForum($Id);
 			if (!is_null($ForumObjOld)) {
 				$ForumObj->setCreatedDate($ForumObjOld->getCreatedDate());
+				$ForumObj->setCreatedUser($ForumObjOld->getCreatedUser());
 			}
 			$ForumObj->setUpdatedDate(Date("Y-m-d H:i:s"));
             return $this->ForumDao->UpdateForum($ForumObj, $Id);
@@ -65,8 +67,6 @@ class ForumService extends BaseService
     }
     
     private function validateBase($model) {
-		echo "<pre>";
-		var_dump($model); die();
         if (is_null($model)) { return false; }
         
         if (is_null($model->getTitle()) || empty($model->getTitle())) {
@@ -79,6 +79,12 @@ class ForumService extends BaseService
     private function validateOnInsert($model) {
         if (is_null($model)) { return false; }
         $this->validateBase($model);
+		if (!is_null($model->getId()) && !empty($model->getId())) {
+            $ForumObj = $this->getForum($model->getId());
+            if (!is_null($ForumObj)) {
+                $this->addError("Data with id ".$model->getId()." is already exist!");
+            }
+        }
         return $this->getServiceState();
     }
     

@@ -51,6 +51,7 @@ class CommentDao extends BaseDao implements UserInterface, RemindableInterface
         $CommentObj->setId($rowset["id"]);
         $CommentObj->setTitle($rowset["title"]);
         $CommentObj->setContent($rowset["content"]);
+		$CommentObj->setCreatedDate($rowset["created_date"]);
         return $CommentObj;
     }
 

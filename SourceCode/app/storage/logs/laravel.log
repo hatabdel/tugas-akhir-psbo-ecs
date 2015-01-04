@@ -3749,3 +3749,11 @@ Stack trace:
 Stack trace:
 #0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
 #1 {main} [] []
+[2015-01-03 01:01:58] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'privat' (T_STRING), expecting function (T_FUNCTION)' in C:\xampp\htdocs\ecs_dev\app\controllers\CommentController.php:135
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-03 01:02:40] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'function' (T_FUNCTION)' in C:\xampp\htdocs\ecs_dev\app\controllers\CommentController.php:135
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

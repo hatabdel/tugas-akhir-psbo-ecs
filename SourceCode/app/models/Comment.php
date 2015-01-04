@@ -46,6 +46,13 @@ class Comment
 	
 	public function setCreatedUser($value)
 	{
+		if (!is_null($this->mCreatedUser) && !empty($this->mCreatedUser)) {
+            if (!$this->mCreatedUser->IsLoaded()) {
+                $UserInfoDao = new UserInfoDao();
+                $this->mCreatedUser = $UserInfoDao->getUserInfo($this->mCreatedUser->getId());
+                if (!is_null($this->mCreatedUser)) { $this->mCreatedUser->setIsLoaded(true); }
+            }
+        }
 		$this->mCreatedUser = $value;
 	}
 	
@@ -79,6 +86,13 @@ class Comment
     }
 
     public function getForumId() {
+		if (!is_null($this->mForumId) && !empty($this->mForumId)) {
+            if (!$this->mForumId->IsLoaded()) {
+                $ForumDao = new ForumDao();
+                $this->mForumId = $ForumDao->getForum($this->mForumId->getId());
+                if (!is_null($this->mForumId)) { $this->mForumId->setIsLoaded(true); }
+            }
+        }
         return $this->mForumId;
     }
 	
@@ -88,10 +102,10 @@ class Comment
             "title" => $this->mTitle,
             "content" => $this->mContent,
             "created_date" => $this->mCreatedDate,
-            "created_user" => $this->mCreatedUser,
-            "update_date" => $this->mUpdateDate,
-            "update_user" => $this->mUpdateUser,
-            "forum_id" => $this->mForumId
+            "created_user" => (!is_null($this->mCreatedUser) ? $this->mCreatedUser->getUserName() : null),
+            "update_date" => $this->mUpdatedDate,
+            "update_user" => $this->mUpdatedUser,
+            "forum_id" => (!is_null($this->mForumId) ? $this->mForumId->getId() : null)
         );
     }
 }
