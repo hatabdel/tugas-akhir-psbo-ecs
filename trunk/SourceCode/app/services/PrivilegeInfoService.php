@@ -63,11 +63,11 @@ class PrivilegeInfoService extends BaseService {
     private function validateBase($model) {
         if (is_null($model)) { return false; }
         
-        if (is_null($model->getFunctionId()) || empty($model->getFunctionId())) {
-            $this->addError("Function is required!");
+        if (is_null($model->getFunctionInfo()) || empty($model->getFunctionInfo())) {
+            $this->addError("Function Info is required!");
         }
         
-        if (is_null($model->getUserGroupId()) || empty($model->getUserGroupId())) {
+        if (is_null($model->getUserGroup()) || empty($model->getUserGroup())) {
             $this->addError("User Group is required!");
         }
         

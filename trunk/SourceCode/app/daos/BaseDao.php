@@ -6,14 +6,28 @@ class BaseDao extends Dao {
         parent::__construct();
     }
     
-    protected function getList() {
-        $list = parent::all();
-        $list_arr = $list->toArray();
-        $obj_arr = array();
-        foreach ($list_arr as $item) {
-            $obj_arr[] = $this->toObject($item);
+    protected function getList($filter = null) {
+        $list = null;
+        if (is_null($filter)) {
+            $list = parent::all();
+        } else {
+            $list = DB::table($this->table)->whereRaw($filter->getWhereQuery())->get();
         }
         
+        $obj_arr = array();
+        if (!is_null($list)) {
+            $list_arr = array();
+            if (is_array($list)) {
+                $list_arr = $list;
+            } else {
+                $list_arr = $list->toArray();
+            }
+
+            foreach ($list_arr as $item) {
+                if(!is_array($item)) { $item = get_object_vars($item); }
+                $obj_arr[] = $this->toObject($item);
+            }
+        }
         return $obj_arr;
     }
     

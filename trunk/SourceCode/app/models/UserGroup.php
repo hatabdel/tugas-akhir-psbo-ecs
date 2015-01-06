@@ -5,6 +5,7 @@ class UserGroup {
     private $mId;
     private $mName;
     private $mIsLoaded;
+    private $mPrivilegesInfos;
     
     public function setId($value) {
         $this->mId = $value;
@@ -20,6 +21,20 @@ class UserGroup {
 
     public function getName() {
         return $this->mName;
+    }
+    
+    public function setPrivilegeInfos($value) {
+        $this->mPrivilegesInfos = $value;
+    }
+    
+    public function getPrivilegeInfos() {
+        if (!is_null($this->mId) && is_null($this->mPrivilegesInfos)) {
+            $PrivilegeInfoFilter = new PrivilegeInfoFilter();
+            $PrivilegeInfoFilter->setUserGroupId($this->mId);
+            $PrivilegeInfoDao = new PrivilegeInfoDao();
+            $this->mPrivilegesInfos = $PrivilegeInfoDao->getList($PrivilegeInfoFilter);
+        }
+        return $this->mPrivilegesInfos;
     }
     
     public function setIsLoaded($value) {

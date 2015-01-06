@@ -20,15 +20,15 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Function Id</label>
+            <label class="control-label">Function Info</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getFunctionId(); } ?>
+                <?php if(!is_null($model)) { echo (!is_null($model->getFunctionInfo()) ? $model->getFunctionInfo()->getName() : ""); } ?>
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">User Group Id</label>
+            <label class="control-label">User Group</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getUserGroupId(); } ?>
+                <?php if(!is_null($model)) { echo (!is_null($model->getUserGroup()) ? $model->getUserGroup()->getName() : "" ); } ?>
             </div>
         </div>
         <div class="control-group">

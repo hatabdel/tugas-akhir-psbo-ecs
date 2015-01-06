@@ -20,23 +20,23 @@
                 <table class="table table-advance" id="table_user_info">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Function Id</th>
-                            <th>User Group Id</th>
                             <th style="width:100px">Action</th>
+                            <th>Id</th>
+                            <th>Function Info</th>
+                            <th>User Group</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($PrivilegeInfoList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
-                            <td class="Id">{{ $item->getId() }}</td>
-                            <td class="FunctionId"><a href="<?php echo url()."/privilegeinfo/detail/".$item->getId(); ?>">{{ $item->getFunctionId() }}</a></td>
-                            <td class="UserGroupId">{{ $item->getUserGroupId() }}</td>
                             <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/privilegeinfo/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
                                 <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/privilegeinfo/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/privilegeinfo/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
                             </td>
+                            <td class="Id">{{ $item->getId() }}</td>
+                            <td class="Function"><a href="<?php echo url()."/privilegeinfo/detail/".$item->getId(); ?>">{{ (!is_null($item->getFunctionInfo()) ? $item->getFunctionInfo()->getName() : "") }}</a></td>
+                            <td class="UserGroup">{{ (!is_null($item->getUserGroup()) ? $item->getUserGroup()->getName() : "") }}</td>
                         </tr>
                     @endforeach
                     </tbody>

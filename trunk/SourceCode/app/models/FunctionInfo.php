@@ -6,6 +6,11 @@ class FunctionInfo {
     private $mUrl;
     private $mIsActive;
     private $mIsShow;
+    private $mIsLoaded;
+    
+    public function __construct() {
+        $this->mIsLoaded = false;
+    }
     
     public function setFunctionId($value) {
         $this->mFunctionId = $value;
@@ -45,6 +50,14 @@ class FunctionInfo {
     
     public function IsShow() {
         return $this->mIsShow;
+    }
+    
+    public function setIsLoaded($value) {
+        $this->mIsLoaded = $value;
+    }
+    
+    public function IsLoaded() {
+        return $this->mIsLoaded;
     }
     
     public function toArray() {

@@ -22,8 +22,8 @@ class PrivilegeInfoDao extends BaseDao implements UserInterface, RemindableInter
 	 *
 	 * @var array
 	 */
-	public function getList() {
-        return parent::getList();
+	public function getList($filter = null) {
+        return parent::getList($filter);
     }
     
     public function getPrivilegeInfo($id) {
@@ -47,8 +47,14 @@ class PrivilegeInfoDao extends BaseDao implements UserInterface, RemindableInter
     function toObject($rowset) {
         $PrivilegeInfoObj = new PrivilegeInfo();
         $PrivilegeInfoObj->setId($rowset["id"]);
-        $PrivilegeInfoObj->setFunctionId($rowset["function_id"]);
-        $PrivilegeInfoObj->setUserGroupId($rowset["user_group_id"]);
+        $FunctionInfoObj = new FunctionInfo();
+        $FunctionInfoObj->setFunctionId($rowset["function_id"]);
+        $FunctionInfoObj->setIsLoaded(false);
+        $PrivilegeInfoObj->setFunctionInfo($FunctionInfoObj);
+        $UserGroupObj = new UserGroup();
+        $UserGroupObj->setId($rowset["user_group_id"]);
+        $UserGroupObj->setIsLoaded(false);
+        $PrivilegeInfoObj->setUserGroup($UserGroupObj);
         $PrivilegeInfoObj->setIsAllowRead($rowset["is_allow_read"]);
         $PrivilegeInfoObj->setIsAllowCreate($rowset["is_allow_create"]);
         $PrivilegeInfoObj->setIsAllowUpdate($rowset["is_allow_update"]);

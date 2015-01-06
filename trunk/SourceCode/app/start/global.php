@@ -18,6 +18,7 @@ ClassLoader::addDirectories(array(
 	app_path().'/models',
     app_path().'/services',
     app_path().'/daos',
+    app_path().'/filters',
 	app_path().'/database/seeds',
 
 ));
