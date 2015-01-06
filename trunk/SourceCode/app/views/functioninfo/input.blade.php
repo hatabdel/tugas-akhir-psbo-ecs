@@ -70,7 +70,7 @@
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
-                <button type="button" onclick='window.location.href="<?php echo url()."/function"; ?>"' class="btn btn-primary">Cancel</button>
+                <button type="button" onclick='window.location.href="<?php echo url()."/functioninfo"; ?>"' class="btn btn-primary">Cancel</button>
              </div>
         </form>
     </div>

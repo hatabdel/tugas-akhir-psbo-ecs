@@ -107,7 +107,7 @@ class PrivilegeInfoController extends BaseController {
         }
         
         $this->loadFunctionList();
-        $this->loadUsertGroupList();
+        $this->loadUserGroupList();
         
         $this->addErrorValidation($validation);
         return View::make("privilegeinfo/input", $this->data);
@@ -147,7 +147,7 @@ class PrivilegeInfoController extends BaseController {
         $this->data['FunctionInfoList'] = $FunctionInfoList;
     }
 
-    private function loadUsertGroupList() {
+    private function loadUserGroupList() {
         $UserGroupService = new UserGroupService();
         $UserGroupList = $UserGroupService->getList();
         $this->data['UserGroupList'] = $UserGroupList;

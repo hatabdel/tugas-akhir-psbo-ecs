@@ -20,27 +20,27 @@
                 <table class="table table-advance" id="table_user_info">
                     <thead>
                         <tr>
+                            <th style="width:100px">Action</th>
                             <th>Function Id</th>
                             <th>Name</th>
                             <th>URL</th>
                             <th>Is Active</th>
                             <th>Is Show</th>
-                            <th style="width:100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($FunctionInfoList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
+                            <td>
+                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/functioninfo/delete/".$item->getFunctionId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/functioninfo/edit/".$item->getFunctionId(); ?>'><i class='icon-edit'></i></a>
+                            </td>
                             <td class="FunctionId"><a href="<?php echo url()."/functioninfo/detail/".$item->getFunctionId(); ?>">{{ $item->getFunctionId() }}</a></td>
                             <td class="Url">{{ $item->getName() }}</td>
                             <td class="Url">{{ $item->getUrl() }}</td>
                             <td class="IsActive">{{ $item->IsActive() }}</td>
                             <td class="IsShow">{{ $item->IsShow() }}</td>
-                            <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/functioninfo/edit/".$item->getFunctionId(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/functioninfo/delete/".$item->getFunctionId(); ?>'><i class='icon-trash'></i></a>
-                            </td>
                         </tr>
                     @endforeach
                     </tbody>

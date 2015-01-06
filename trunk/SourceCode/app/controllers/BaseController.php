@@ -15,7 +15,11 @@ class BaseController extends Controller {
         $this->data["errors"] = "";
         $UserInfo = new UserInfo();
         $UserInfo->setUserName("bayu");
+        $UserGroup = new UserGroup();
+        $UserGroup->setId(3);
+        $UserInfo->setUserGroup($UserGroup);
         $this->mUserInfo = $UserInfo;
+        $this->data["UserInfo"] = $UserInfo;
     }
     
     /*

@@ -29,7 +29,7 @@
         <table class="table table-advance" id="table_user_info">
             <thead>
                 <tr>
-                    <th>Function Id</th>
+                    <th>Function Name</th>
                     <th>Is Allow Read</th>
                     <th>Is Allow Create</th>
                     <th>Is Allow Update</th>
