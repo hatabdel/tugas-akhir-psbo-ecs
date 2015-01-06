@@ -125,8 +125,14 @@ class PrivilegeInfoController extends BaseController {
         $PrivilegeInfoObj = new PrivilegeInfo();
         if (!is_null($param) && count($param) > 0) {
             $PrivilegeInfoObj->setId($param["id"]);
-            $PrivilegeInfoObj->setFunctionId($param["function_id"]);
-            $PrivilegeInfoObj->setUserGroupId($param["user_group_id"]);
+            $FunctionInfoObj = new FunctionInfo();
+            $FunctionInfoObj->setFunctionId($param["function_id"]);
+            $FunctionInfoObj->setIsLoaded(true);
+            $PrivilegeInfoObj->setFunctionInfo($FunctionInfoObj);
+            $UserGroupObj = new UserGroup();
+            $UserGroupObj->setId($param["user_group_id"]);
+            $UserGroupObj->setIsLoaded(true);
+            $PrivilegeInfoObj->setUserGroup($UserGroupObj);
             $PrivilegeInfoObj->setIsAllowRead($param["is_allow_read"]);
             $PrivilegeInfoObj->setIsAllowCreate($param["is_allow_create"]);
             $PrivilegeInfoObj->setIsAllowUpdate($param["is_allow_update"]);

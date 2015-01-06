@@ -12,7 +12,7 @@
             <a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
         </div>
     </div>
-    <div class="box-content" id="dialog-inputAdmin" title="Tambah Data User Group">
+    <div class="box-content" id="dialog-inputAdmin" title="Tambah Data Privilege Info">
         <?php echo $errors; ?>
         <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
             <div class="control-group" style="display:none">
@@ -22,14 +22,16 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Function</label>
+                <label class="control-label">Function Info</label>
                 <div class="controls">
                     <select name="function_id">
                         <?php if (!is_null($FunctionInfoList)) { 
                                 foreach($FunctionInfoList as $item) {
                                     if (is_null($item)) { continue; }
                                     $selected = "";
-                                    if ($item->getFunctionId() == $model->getFunctionId() ) { $selected = "selected=\"selected\""; }
+                                    $FunctionId = null;
+                                    if(!is_null($model->getFunctionInfo())) { $FunctionId = $model->getFunctionInfo()->getFunctionId(); }
+                                    if ($item->getFunctionId() == $FunctionId ) { $selected = "selected=\"selected\""; }
                         ?>
                         <option value="{{ $item->getFunctionId() }}" <?php echo $selected; ?>> {{ $item->getName() }}</option>
                         <?php   }
@@ -45,7 +47,9 @@
                                 foreach($UserGroupList as $item) {
                                     if (is_null($item)) { continue; }
                                     $selected = "";
-                                    if ($item->getId() == $model->getUserGroupId() ) { $selected = "selected=\"selected\""; }
+                                    $UserGroupId = null;
+                                    if (!is_null($model->getUserGroup())) { $UserGroupId = $model->getUserGroup()->getId(); }
+                                    if ($item->getId() == $UserGroupId ) { $selected = "selected=\"selected\""; }
                         ?>
                         <option value="{{ $item->getId() }}" <?php echo $selected; ?>> {{ $item->getName() }}</option>
                         <?php   }

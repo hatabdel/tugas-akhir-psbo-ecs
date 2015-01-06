@@ -3,8 +3,8 @@
 class PrivilegeInfo {
 
     private $mId;
-    private $mFunctionId;
-    private $mUserGroupId;
+    private $mFunctionInfo;
+    private $mUserGroup;
     private $mIsAllowRead;
 	private $mIsAllowCreate;
 	private $mIsAllowUpdate;
@@ -18,20 +18,34 @@ class PrivilegeInfo {
         return $this->mId;
     }
     
-    public function setFunctionId($value) {
-        $this->mFunctionId = $value;
+    public function setFunctionInfo($value) {
+        $this->mFunctionInfo = $value;
     }
 
-    public function getFunctionId() {
-        return $this->mFunctionId;
+    public function getFunctionInfo() {
+        if (!is_null($this->mFunctionInfo) && !empty($this->mFunctionInfo)) {
+            if (!$this->mFunctionInfo->IsLoaded()) {
+                $FunctionInfoDao = new FunctionInfoDao();
+                $this->mFunctionInfo = $FunctionInfoDao->getFunctionInfo($this->mFunctionInfo->getFunctionId());
+                if (!is_null($this->mFunctionInfo)) { $this->mFunctionInfo->setIsLoaded(true); }
+            }
+        }
+        return $this->mFunctionInfo;
     }
     
-    public function setUserGroupId($value) {
-        $this->mUserGroupId = $value;
+    public function setUserGroup($value) {
+        $this->mUserGroup = $value;
     }
 
-    public function getUserGroupId() {
-        return $this->mUserGroupId;
+    public function getUserGroup() {
+        if (!is_null($this->mUserGroup) && !empty($this->mUserGroup)) {
+            if (!$this->mUserGroup->IsLoaded()) {
+                $UserGroupDao = new UserGroupDao();
+                $this->mUserGroup = $UserGroupDao->getUserGroup($this->mUserGroup->getId());
+                if (!is_null($this->mUserGroup)) { $this->mUserGroup->setIsLoaded(true); }
+            }
+        }
+        return $this->mUserGroup;
     }
     
     public function setIsAllowRead($value) {
@@ -69,8 +83,8 @@ class PrivilegeInfo {
     public function toArray() {
         return array(
             "id" => $this->mId,
-            "function_id" => $this->mFunctionId,
-            "user_group_id" => $this->mUserGroupId,
+            "function_id" => (!is_null($this->mFunctionInfo) ? $this->mFunctionInfo->getFunctionId() : null),
+            "user_group_id" => (!is_null($this->mUserGroup) ? $this->mUserGroup->getId() : null),
             "is_allow_read" => +$this->mIsAllowRead,
             "is_allow_create" => +$this->mIsAllowCreate,
             "is_allow_update" => +$this->mIsAllowUpdate,
