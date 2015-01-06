@@ -2,6 +2,8 @@
 
 class BaseDao extends Dao {
     
+    private $error = "";
+    
     public function __construct() {
         parent::__construct();
     }
@@ -65,11 +67,11 @@ class BaseDao extends Dao {
     }
     
     protected function addError($message) {
-        $this->arr_error = $message;
+        $this->error = $message;
     }
     
     public function getError() {
-        return $this->arr_error;
+        return $this->error;
     }
     
     public function getDaoState() {

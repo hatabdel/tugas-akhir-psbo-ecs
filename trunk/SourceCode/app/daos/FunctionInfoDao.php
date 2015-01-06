@@ -31,7 +31,12 @@ class FunctionInfoDao extends BaseDao implements UserInterface, RemindableInterf
     }
     
     public function InsertFunctionInfo($FunctionInfoObj) {
-        return parent::InsertObject($FunctionInfoObj);
+        try {
+            return parent::InsertObject($FunctionInfoObj);
+        } catch (Exception $ex) {
+            $this->addError($ex->getMessage());
+            throw new Exception($ex->getMessage());
+        }
     }
     
     public function UpdateFunctionInfo($FunctionInfoObj, $Id) {
