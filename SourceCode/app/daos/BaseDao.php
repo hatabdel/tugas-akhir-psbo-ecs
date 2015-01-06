@@ -2,9 +2,10 @@
 
 class BaseDao extends Dao {
     
-    private $error = "";
+    private $error;
     
     public function __construct() {
+        $this->error = "";
         parent::__construct();
     }
     

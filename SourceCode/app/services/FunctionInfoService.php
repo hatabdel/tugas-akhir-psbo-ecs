@@ -60,11 +60,7 @@ class FunctionInfoService extends BaseService {
             throw new Exception($ex->getMessage());
         }
     }
-    
-    private function createCriteria($filter) {
-        
-    }
-    
+  
     private function validateBase($model) {
         if (is_null($model)) { return false; }
         
