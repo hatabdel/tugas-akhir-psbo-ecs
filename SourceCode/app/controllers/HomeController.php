@@ -19,7 +19,7 @@ class HomeController extends BaseController {
     }
     
     public function Index() {
-        return View::make('home/index');
+        return View::make('home/index', $this->data);
     }
     
 	public function showWelcome()

@@ -122,7 +122,7 @@ class FunctionInfoController extends BaseController {
         $FuntionInfoObj = new FunctionInfo();
         if (!is_null($param) && count($param) > 0) {
             $FuntionInfoObj->setFunctionId($param["function_id"]);
-            $FuntionInfoObj->setUrl($param["name"]);
+            $FuntionInfoObj->setName($param["name"]);
             $FuntionInfoObj->setUrl($param["url"]);
             $FuntionInfoObj->setIsActive($param["is_active"]);
             $FuntionInfoObj->setIsShow($param["is_show"]);

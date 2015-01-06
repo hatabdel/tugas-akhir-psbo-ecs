@@ -59,6 +59,7 @@
         </div>
         <div class="form-actions">
             <button type="button" onclick='window.location.href="<?php echo url()."/functioninfo/edit/".(!is_null($model) ? $model->getFunctionId() : ""); ?>"' class="btn btn-primary">Edit</button>
+            <button type="button" onclick='window.location.href="<?php echo url()."/functioninfo/create"; ?>"' class="btn btn-primary">Create</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/functioninfo"; ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>

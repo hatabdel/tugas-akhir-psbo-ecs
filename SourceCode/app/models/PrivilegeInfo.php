@@ -9,6 +9,11 @@ class PrivilegeInfo {
 	private $mIsAllowCreate;
 	private $mIsAllowUpdate;
 	private $mIsAllowDelete;
+    private $mIsLoaded;
+    
+    public function __construct() {
+        $this->mIsLoaded = false;
+    }
     
     public function setId($value) {
         $this->mId = $value;
@@ -80,7 +85,15 @@ class PrivilegeInfo {
         return $this->mIsAllowDelete;
     }
     
-    public function toArray() {
+    public function setIsLoaded($value) {
+        $this->mIsLoaded = $value;
+    }
+    
+    public function IsLoaded() {
+        return $this->mIsLoaded;
+    }
+
+        public function toArray() {
         return array(
             "id" => $this->mId,
             "function_id" => (!is_null($this->mFunctionInfo) ? $this->mFunctionInfo->getFunctionId() : null),

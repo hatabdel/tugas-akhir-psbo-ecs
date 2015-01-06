@@ -102,6 +102,7 @@ class UserGroupController extends BaseController {
             $this->data["action"] = "/usergroup/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
+        $this->loadFunctionList();
         $this->addErrorValidation($validation);
         return View::make("usergroup/input", $this->data);
     }
@@ -118,8 +119,46 @@ class UserGroupController extends BaseController {
         if (!is_null($param) && count($param) > 0) {
             $UserGroupObj->setId($param["id"]);
             $UserGroupObj->setName($param["name"]);
+            $PrivilegeInfos = $this->bindDataPrivilegeInfo($param);
+            $UserGroupObj->setPrivilegeInfos($PrivilegeInfos);
         }
         return $UserGroupObj;
+    }
+    
+    private function bindDataPrivilegeInfo($param) {
+        $PrivilegesInfos = array();
+        $arr_Details = $param["details"];
+        $arr_PrivilgeInfoId = $param["privilege_info_id"];
+        $arr_FunctionInfoId = $param["function_info"];
+        $arr_IsAllowRead = $param["is_allow_read"];
+        $arr_IsAllowCreate = $param["is_allow_create"];
+        $arr_IsAllowUpdate = $param["is_allow_update"];
+        $arr_IsAllowDelete = $param["is_allow_delete"];
+        
+        if (count($arr_Details) > 0) {
+            for($i = 0;$i < count($arr_Details);$i++) {
+                $PrivilegeInfoObj = new PrivilegeInfo();
+                $PrivilegeInfoObj->setId($arr_PrivilgeInfoId[$i]);
+                $FunctionInfoObj = new FunctionInfo();
+                $FunctionInfoObj->setFunctionId($arr_FunctionInfoId[$i]);
+                $FunctionInfoObj->setIsLoaded(true);
+                $PrivilegeInfoObj->setFunctionInfo($FunctionInfoObj);
+                $PrivilegeInfoObj->setIsAllowRead($arr_IsAllowRead[$i]);
+                $PrivilegeInfoObj->setIsAllowCreate($arr_IsAllowCreate[$i]);
+                $PrivilegeInfoObj->setIsAllowUpdate($arr_IsAllowUpdate[$i]);
+                $PrivilegeInfoObj->setIsAllowDelete($arr_IsAllowDelete[$i]);
+                $PrivilegeInfoObj->setIsLoaded(true);
+                $PrivilegesInfos[] = $PrivilegeInfoObj;
+            }
+        }
+        
+        return $PrivilegesInfos;
+    }
+    
+    private function loadFunctionList() {
+        $FunctionInfoService = new FunctionInfoService();
+        $FunctionInfoList = $FunctionInfoService->getList();
+        $this->data['FunctionInfoList'] = $FunctionInfoList;
     }
     
     private function loadDefaultValue() {

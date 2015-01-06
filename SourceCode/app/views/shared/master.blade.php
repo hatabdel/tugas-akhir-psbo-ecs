@@ -36,6 +36,7 @@
         
         <!--flaty scripts-->
         <script type="text/javascript" src="<?php echo url()."/public/scripts/flaty/flaty.js"; ?>"></script>
+        <script type="text/javascript" src="<?php echo url()."/public/scripts/aztable/azTable.js"; ?>"></script>
         <script type="text/javascript">
             $(document).ready(function () { 
                 if ($('#main-content').height() < $(window).height()) $('#main-content').css("min-height",$(window).height()); 
