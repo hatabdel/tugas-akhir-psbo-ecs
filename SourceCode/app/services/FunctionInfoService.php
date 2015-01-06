@@ -13,6 +13,7 @@ class FunctionInfoService extends BaseService {
         try {
             return $this->FunctionInfoDao->getList();
         } catch (Exception $ex) {
+            if (!empty($this->FunctionInfoDao->getError())) { $this->addError($this->FunctionInfoDao->getError()); }
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
@@ -22,6 +23,7 @@ class FunctionInfoService extends BaseService {
         try { 
             return $this->FunctionInfoDao->getFunctionInfo($id);
         } catch (Exception $ex) {
+            if (!empty($this->FunctionInfoDao->getError())) { $this->addError($this->FunctionInfoDao->getError()); }
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
@@ -32,6 +34,7 @@ class FunctionInfoService extends BaseService {
             if (!$this->validateOnInsert($FunctionInfoObj)) { return false; }
             return $this->FunctionInfoDao->InsertFunctionInfo($FunctionInfoObj);
         } catch (Exception $ex) {
+            if (!empty($this->FunctionInfoDao->getError())) { $this->addError($this->FunctionInfoDao->getError()); }
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
@@ -42,6 +45,7 @@ class FunctionInfoService extends BaseService {
             if (!$this->validateOnUpdate($FunctionInfoObj)) { return false; }
             return $this->FunctionInfoDao->UpdateFunctionInfo($FunctionInfoObj, $Id);
         } catch (Exception $ex) {
+            if (!empty($this->FunctionInfoDao->getError())) { $this->addError($this->FunctionInfoDao->getError()); }
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
@@ -51,6 +55,7 @@ class FunctionInfoService extends BaseService {
         try {
             return $this->FunctionInfoDao->DeleteFunctionInfo($Id);
         } catch (Exception $ex) {
+            if (!empty($this->FunctionInfoDao->getError())) { $this->addError($this->FunctionInfoDao->getError()); }
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
