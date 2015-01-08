@@ -3765,3 +3765,286 @@ Stack trace:
 Stack trace:
 #0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
 #1 {main} [] []
+[2015-01-06 13:35:23] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'functio' (T_STRING), expecting variable (T_VARIABLE)' in C:\xampp\htdocs\ecsdev\app\controllers\ForumController.php:138
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-06 13:35:54] production.ERROR: exception 'ErrorException' with message 'Declaration of ForumDao::getList() should be compatible with BaseDao::getList($filter = NULL)' in C:\xampp\htdocs\ecsdev\app\daos\ForumDao.php:7
+Stack trace:
+#0 C:\xampp\htdocs\ecsdev\app\daos\ForumDao.php(7): Illuminate\Exception\Handler->handleError(2048, 'Declaration of ...', 'C:\\xampp\\htdocs...', 7, Array)
+#1 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(13): require_once('C:\\xampp\\htdocs...')
+#2 [internal function]: Illuminate\Support\ClassLoader::load('ForumDao')
+#3 C:\xampp\htdocs\ecsdev\app\services\ForumService.php(8): spl_autoload_call('ForumDao')
+#4 C:\xampp\htdocs\ecsdev\app\controllers\ForumController.php(165): ForumService->__construct()
+#5 C:\xampp\htdocs\ecsdev\app\controllers\ForumController.php(10): ForumController->loadDefaultService()
+#6 [internal function]: ForumController->__construct()
+#7 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(247): ReflectionClass->newInstanceArgs(Array)
+#8 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(205): Illuminate\Container\Container->build('ForumController', Array)
+#9 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(583): Illuminate\Container\Container->make('ForumController', Array)
+#10 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5771): Illuminate\Foundation\Application->make('ForumController')
+#11 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5760): Illuminate\Routing\ControllerDispatcher->makeController('ForumController')
+#12 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4971): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'ForumController', 'index')
+#13 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#14 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5329): call_user_func_array(Object(Closure), Array)
+#15 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4996): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#16 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#17 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#19 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#20 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#21 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#22 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#23 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ecsdev\index.php(49): Illuminate\Foundation\Application->run()
+#25 {main} [] []
+[2015-01-06 13:41:11] production.ERROR: exception 'ErrorException' with message 'Declaration of CommentDao::getList() should be compatible with BaseDao::getList($filter = NULL)' in C:\xampp\htdocs\ecsdev\app\daos\CommentDao.php:8
+Stack trace:
+#0 C:\xampp\htdocs\ecsdev\app\daos\CommentDao.php(8): Illuminate\Exception\Handler->handleError(2048, 'Declaration of ...', 'C:\\xampp\\htdocs...', 8, Array)
+#1 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(13): require_once('C:\\xampp\\htdocs...')
+#2 [internal function]: Illuminate\Support\ClassLoader::load('CommentDao')
+#3 C:\xampp\htdocs\ecsdev\app\services\CommentService.php(8): spl_autoload_call('CommentDao')
+#4 C:\xampp\htdocs\ecsdev\app\controllers\ForumController.php(155): CommentService->__construct()
+#5 C:\xampp\htdocs\ecsdev\app\controllers\ForumController.php(113): ForumController->loadCommentList()
+#6 C:\xampp\htdocs\ecsdev\app\controllers\ForumController.php(44): ForumController->createInputView(NULL)
+#7 [internal function]: ForumController->create()
+#8 C:\xampp\htdocs\ecsdev\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5776): Illuminate\Routing\Controller->callAction('create', Array)
+#10 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5764): Illuminate\Routing\ControllerDispatcher->call(Object(ForumController), Object(Illuminate\Routing\Route), 'create')
+#11 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4971): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'ForumController', 'create')
+#12 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#13 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5329): call_user_func_array(Object(Closure), Array)
+#14 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4996): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#16 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#17 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#19 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#20 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#21 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#22 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#23 C:\xampp\htdocs\ecsdev\index.php(49): Illuminate\Foundation\Application->run()
+#24 {main} [] []
+[2015-01-06 13:41:57] production.ERROR: exception 'ErrorException' with message 'Declaration of CommentDao::getList() should be compatible with BaseDao::getList($filter = NULL)' in C:\xampp\htdocs\ecsdev\app\daos\CommentDao.php:8
+Stack trace:
+#0 C:\xampp\htdocs\ecsdev\app\daos\CommentDao.php(8): Illuminate\Exception\Handler->handleError(2048, 'Declaration of ...', 'C:\\xampp\\htdocs...', 8, Array)
+#1 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(13): require_once('C:\\xampp\\htdocs...')
+#2 [internal function]: Illuminate\Support\ClassLoader::load('CommentDao')
+#3 C:\xampp\htdocs\ecsdev\app\services\CommentService.php(8): spl_autoload_call('CommentDao')
+#4 C:\xampp\htdocs\ecsdev\app\controllers\ForumController.php(155): CommentService->__construct()
+#5 C:\xampp\htdocs\ecsdev\app\controllers\ForumController.php(113): ForumController->loadCommentList()
+#6 C:\xampp\htdocs\ecsdev\app\controllers\ForumController.php(44): ForumController->createInputView(NULL)
+#7 [internal function]: ForumController->create()
+#8 C:\xampp\htdocs\ecsdev\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5776): Illuminate\Routing\Controller->callAction('create', Array)
+#10 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5764): Illuminate\Routing\ControllerDispatcher->call(Object(ForumController), Object(Illuminate\Routing\Route), 'create')
+#11 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4971): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'ForumController', 'create')
+#12 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#13 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5329): call_user_func_array(Object(Closure), Array)
+#14 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4996): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#16 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#17 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#19 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#20 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#21 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#22 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#23 C:\xampp\htdocs\ecsdev\index.php(49): Illuminate\Foundation\Application->run()
+#24 {main} [] []
+[2015-01-06 14:05:05] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:67
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-06 14:06:59] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:68
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-06 14:07:11] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:68
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-06 14:09:01] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:69
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-06 14:09:30] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:69
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-06 14:10:49] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Forum::getComment()' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:34
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-06 14:25:40] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Forum::getComment()' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:34
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-06 14:27:02] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Forum::getComment()' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:34
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-06 14:29:10] production.ERROR: exception 'ErrorException' with message 'Undefined property: Forum::$mComments' in C:\xampp\htdocs\ecsdev\app\models\Forum.php:129
+Stack trace:
+#0 C:\xampp\htdocs\ecsdev\app\models\Forum.php(129): Illuminate\Exception\Handler->handleError(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 129, Array)
+#1 C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b(34): Forum->getComments()
+#2 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9798): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\ecsdev\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('C:\\xampp\\htdocs...', Array)
+#4 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9676): Illuminate\View\Engines\CompilerEngine->get('C:\\xampp\\htdocs...', Array)
+#5 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9663): Illuminate\View\View->getContents()
+#6 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9654): Illuminate\View\View->renderContents()
+#7 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10357): Illuminate\View\View->render()
+#8 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9886): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#9 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5189): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#10 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4998): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#11 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#13 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#14 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#17 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#19 C:\xampp\htdocs\ecsdev\index.php(49): Illuminate\Foundation\Application->run()
+#20 {main}
+
+Next exception 'ErrorException' with message 'Undefined property: Forum::$mComments (View: C:\xampp\htdocs\ecsdev\app\views\forum\detail.blade.php)' in C:\xampp\htdocs\ecsdev\app\models\Forum.php:129
+Stack trace:
+#0 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9800): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException), 1)
+#1 C:\xampp\htdocs\ecsdev\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('C:\\xampp\\htdocs...', Array)
+#2 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9676): Illuminate\View\Engines\CompilerEngine->get('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9663): Illuminate\View\View->getContents()
+#4 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9654): Illuminate\View\View->renderContents()
+#5 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10357): Illuminate\View\View->render()
+#6 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9886): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#7 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5189): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#8 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4998): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#9 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#13 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#17 C:\xampp\htdocs\ecsdev\index.php(49): Illuminate\Foundation\Application->run()
+#18 {main} [] []
+[2015-01-08 14:26:59] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Comment::getComments()' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:51
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-08 14:35:47] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Comment::getComment()' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:51
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-08 14:43:42] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:51
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-08 14:47:54] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '{'' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:51
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-08 14:48:21] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ')'' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:51
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-08 14:48:44] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Comment::getComment()' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:52
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-08 14:51:18] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '{'' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:52
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-08 14:52:00] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Comment::getComment()' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:54
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-08 16:13:28] production.ERROR: exception 'ErrorException' with message 'Undefined variable: CommentList' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:37
+Stack trace:
+#0 C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b(37): Illuminate\Exception\Handler->handleError(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 37, Array)
+#1 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9798): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ecsdev\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9676): Illuminate\View\Engines\CompilerEngine->get('C:\\xampp\\htdocs...', Array)
+#4 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9663): Illuminate\View\View->getContents()
+#5 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9654): Illuminate\View\View->renderContents()
+#6 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10357): Illuminate\View\View->render()
+#7 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9886): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#8 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5189): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#9 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4998): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#10 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#17 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ecsdev\index.php(49): Illuminate\Foundation\Application->run()
+#19 {main}
+
+Next exception 'ErrorException' with message 'Undefined variable: CommentList (View: C:\xampp\htdocs\ecsdev\app\views\forum\detail.blade.php)' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:37
+Stack trace:
+#0 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9800): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException), 1)
+#1 C:\xampp\htdocs\ecsdev\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('C:\\xampp\\htdocs...', Array)
+#2 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9676): Illuminate\View\Engines\CompilerEngine->get('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9663): Illuminate\View\View->getContents()
+#4 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9654): Illuminate\View\View->renderContents()
+#5 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10357): Illuminate\View\View->render()
+#6 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9886): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#7 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5189): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#8 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4998): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#9 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#13 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#17 C:\xampp\htdocs\ecsdev\index.php(49): Illuminate\Foundation\Application->run()
+#18 {main} [] []
+[2015-01-08 16:18:57] production.ERROR: exception 'ErrorException' with message 'Undefined variable: CommentList' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:37
+Stack trace:
+#0 C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b(37): Illuminate\Exception\Handler->handleError(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 37, Array)
+#1 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9798): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ecsdev\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9676): Illuminate\View\Engines\CompilerEngine->get('C:\\xampp\\htdocs...', Array)
+#4 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9663): Illuminate\View\View->getContents()
+#5 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9654): Illuminate\View\View->renderContents()
+#6 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10357): Illuminate\View\View->render()
+#7 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9886): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#8 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5189): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#9 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4998): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#10 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#17 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ecsdev\index.php(49): Illuminate\Foundation\Application->run()
+#19 {main}
+
+Next exception 'ErrorException' with message 'Undefined variable: CommentList (View: C:\xampp\htdocs\ecsdev\app\views\forum\detail.blade.php)' in C:\xampp\htdocs\ecsdev\app\storage\views\32d59a3569de95f7c070921144cef64b:37
+Stack trace:
+#0 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9800): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException), 1)
+#1 C:\xampp\htdocs\ecsdev\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('C:\\xampp\\htdocs...', Array)
+#2 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9676): Illuminate\View\Engines\CompilerEngine->get('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9663): Illuminate\View\View->getContents()
+#4 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9654): Illuminate\View\View->renderContents()
+#5 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10357): Illuminate\View\View->render()
+#6 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(9886): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#7 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(5189): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#8 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4998): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#9 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#13 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\ecsdev\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#17 C:\xampp\htdocs\ecsdev\index.php(49): Illuminate\Foundation\Application->run()
+#18 {main} [] []

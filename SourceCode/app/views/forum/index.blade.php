@@ -30,7 +30,7 @@
                         @if (is_null($item)) continue @endif
                         <tr>
 							<!--<td class="Id">{{ $item->getId() }}</td>-->
-                            <td class="Title"><a href="<?php echo url()."/forum/detail/".$item->getId(); ?>">{{ $item->getTitle() }}</a>
+                            <td class="Title"><a href="<?php echo url()."/forum/detilforum/".$item->getId(); ?>">{{ $item->getTitle() }}</a>
 							</td>
 							<td class="CreatedDate">{{ $item->getCreatedDate() }}</td>
                             <td>

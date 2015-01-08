@@ -108,8 +108,9 @@ class ForumController extends BaseController {
             $this->data["action"] = "/forum/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
-		//$this->loadFunctionList();
+		$this->loadFunctionList();
         $this->loadCourseList();
+		$this->loadCommentList();
 		
         $this->addErrorValidation($validation);
         return View::make("forum/input", $this->data);
@@ -133,17 +134,32 @@ class ForumController extends BaseController {
         }
         return $ForumObj;
     }
-    
-    private function loadDefaultValue() {
-        $this->data["_MODULE_NAME"] = "Forum - ";
-    }
-    
+	
+	private function loadFunctionList()
+	{
+		$FunctionInfoService = new FunctionInfoService();
+        $FunctionInfoList = $FunctionInfoService->getList();
+        $this->data['FunctionInfoList'] = $FunctionInfoList;
+ 
+	}
+	
 	private function loadCourseList()
 	{
 		$CourseService = new CourseService();
 		$CourseList = $CourseService->getList(); 
 		$this->data['CourseList'] = $CourseList;
 	}
+	
+	private function loadCommentList()
+	{
+		$CommentService = new CommentService();
+		$CommentList = $CommentService->getList();
+		$this->data['CommentList'] = $CommentList;
+	}
+    
+    private function loadDefaultValue() {
+        $this->data["_MODULE_NAME"] = "Forum - ";
+    }
 	
     private function loadDefaultService() {
         $this->ForumService = new ForumService();
