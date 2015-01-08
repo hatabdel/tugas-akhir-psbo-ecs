@@ -23,8 +23,8 @@ class CommentDao extends BaseDao implements UserInterface, RemindableInterface
 	 *
 	 * @var array
 	 */
-	public function getList() {
-        return parent::getList();
+	public function getList($filter=null) {
+        return parent::getList($filter);
     }
     
     public function getComment($id) {

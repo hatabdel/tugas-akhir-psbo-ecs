@@ -9,7 +9,7 @@ class Forum
 	private $mUpdatedDate;
 	private $mUpdatedUser;
 	private $mCourse;
-	private $mListOfComments;
+	private $mComments;
 	private $mIsPublic;
 	private $mIsLoaded;
 	
@@ -119,14 +119,21 @@ class Forum
 		return $this->mCourse;
 	}
 	
-	public function setListOfComments($value)
+	public function setComments($value)
 	{
-		$this->mListOfComments = $value;
+		$this->mComments = $value;
 	}
 	
-	public function getListOfComments()
+	public function getComments()
 	{
-		//return $this->mListOfCourse;
+		if(!is_null($this->mId) && is_null($this->mComments))
+		{
+			$CommentFilter = new CommentFilter();
+			$CommentFilter->setForumId($this->mId);
+			$CommentDao = new CommentDao();
+			$this->mComments = $CommentDao->getList($CommentFilter);
+		}
+		return $this->mComments;
 	}
 	
 	public function setIsPublic($value)
