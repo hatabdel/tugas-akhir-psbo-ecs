@@ -3,24 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/laravel/app/models/FunctionInfo.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/views/functioninfo/index.blade.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/views/privilegeinfo/index.blade.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/views/privilegeinfo/detail.blade.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/services/UserGroupService.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/controllers/FunctionInfoController.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/models/PrivilegeInfo.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/models/UserGroup.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/daos/UserGroupDao.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/models/Attendance.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/daos/QuizQuestionDao.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/models/Webinar.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/services/WebinarService.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/views/course/index.blade.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/daos/ForumDao.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/services/AttendanceService.php</file>
             <file>file:/C:/xampp/htdocs/laravel/app/daos/PrivilegeInfoDao.php</file>
             <file>file:/C:/xampp/htdocs/laravel/app/daos/FunctionInfoDao.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/services/PrivilegeInfoService.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/controllers/UserInfoController.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/views/webinar/index.blade.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/views/webinar/detail.blade.php</file>
             <file>file:/C:/xampp/htdocs/laravel/app/routes.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/controllers/PrivilegeInfoController.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/views/functioninfo/input.blade.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/views/privilegeinfo/input.blade.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/views/functioninfo/detail.blade.php</file>
-            <file>file:/C:/xampp/htdocs/laravel/app/controllers/UserGroupController.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/controllers/WebinarController.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/daos/AttendanceDao.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/views/quizquestion/index.blade.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/daos/WebinarDao.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/controllers/AttendanceController.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/models/Course.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/views/webinar/input.blade.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/app/models/UserInfo.php</file>
         </group>
     </open-files>
 </project-private>

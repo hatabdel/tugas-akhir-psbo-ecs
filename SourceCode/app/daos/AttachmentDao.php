@@ -20,8 +20,8 @@ class AttachmentDao extends BaseDao implements UserInterface, RemindableInterfac
 	 *
 	 * @var array
 	 */
-	public function getList() {
-        return parent::getList();
+	public function getList($filter = null) {
+        return parent::getList($filter);
     }
     
     public function getAttachment($id) {

@@ -3,6 +3,7 @@
 class CommentController extends BaseController {
     
     private $CommentService;
+    protected $function_id = "comment";
     
     public function __construct() {
         parent::__construct();
@@ -11,6 +12,9 @@ class CommentController extends BaseController {
     }
     
     public function index() {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
         $CommentList = $this->CommentService->getList();
         $this->data['CommentList'] = $CommentList;
         return View::make("comment/index", $this->data);

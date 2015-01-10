@@ -3,6 +3,7 @@
 class PrivilegeInfoController extends BaseController {
     
     private $PrivilegeInfoService;
+    protected $function_id = "privilege_info";
     
     public function __construct() {
         parent::__construct();
@@ -11,6 +12,9 @@ class PrivilegeInfoController extends BaseController {
     }
     
     public function index() {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
         $PrivilegeInfoList = $this->PrivilegeInfoService->getList();
         $this->data['PrivilegeInfoList'] = $PrivilegeInfoList;
         return View::make("privilegeinfo/index", $this->data);

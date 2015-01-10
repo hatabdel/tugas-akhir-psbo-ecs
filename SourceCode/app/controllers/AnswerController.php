@@ -3,6 +3,7 @@
 class AnswerController extends BaseController {
     
     private $AnswerService;
+    protected $function_id = "answer";
     
     public function __construct() {
         parent::__construct();
@@ -11,6 +12,9 @@ class AnswerController extends BaseController {
     }
     
     public function index() {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
         $AnswerList = $this->AnswerService->getList();
         $this->data['AnswerList'] = $AnswerList;
         return View::make("answer/index", $this->data);

@@ -12,6 +12,9 @@
 */
 
 Route::any('/', 'HomeController@Index');
+Route::any('accessdenied', 'AccessDeniedController@index');
+Route::any('login', 'LoginController@index');
+Route::any('login/logout', 'LoginController@logout');
 
 Route::any('userinfo', 'UserInfoController@index');
 Route::any('userinfo/popup', 'UserInfoController@popup');
@@ -56,15 +59,12 @@ Route::any('forum/delete/{id}', 'ForumController@delete');
 Route::any('forum/detail/{id}', 'ForumController@detail');
 Route::any('/forum/detilforum/{id}', 'ForumController@detail');
 
-
-
 Route::any('comment', 'CommentController@index');
 Route::any('comment/popup', 'CommentController@popup');
 Route::any('comment/create', 'CommentController@create');
 Route::any('comment/edit/{id}', 'CommentController@edit');
 Route::any('comment/delete/{id}', 'CommentController@delete');
 Route::any('comment/detail/{id}', 'CommentController@detail');
-
 
 Route::any('quiz', 'QuizController@index');
 Route::any('quiz/popup', 'QuizController@popup');
@@ -103,7 +103,42 @@ Route::any('quizquestion/detail/{id}', 'QuizQuestionController@detail');
 
 Route::any('answer', 'AnswerController@index');
 Route::any('answer/popup', 'AnswerController@popup');
-Route::any('answer/create/forum_id?', 'AnswerController@create');
+Route::any('answer/create', 'AnswerController@create');
 Route::any('answer/edit/{id}', 'AnswerController@edit');
 Route::any('answer/delete/{id}', 'AnswerController@delete');
 Route::any('answer/detail/{id}', 'AnswerController@detail');
+
+Route::any('answertype', 'AnswerTypeController@index');
+Route::any('answertype/popup', 'AnswerTypeController@popup');
+Route::any('answertype/create/forum_id?', 'AnswerTypeController@create');
+Route::any('answertype/edit/{id}', 'AnswerTypeController@edit');
+Route::any('answertype/delete/{id}', 'AnswerTypeController@delete');
+Route::any('answertype/detail/{id}', 'AnswerTypeController@detail');
+
+Route::any('attachment', 'AttachmentController@index');
+Route::any('attachment/popup', 'AttachmentController@popup');
+Route::any('attachment/create/forum_id?', 'AttachmentController@create');
+Route::any('attachment/edit/{id}', 'AttachmentController@edit');
+Route::any('attachment/delete/{id}', 'AttachmentController@delete');
+Route::any('attachment/detail/{id}', 'AttachmentController@detail');
+
+Route::any('coursedetail', 'CourseDetailController@index');
+Route::any('coursedetail/popup', 'CourseDetailController@popup');
+Route::any('coursedetail/create/forum_id?', 'CourseDetailController@create');
+Route::any('coursedetail/edit/{id}', 'CourseDetailController@edit');
+Route::any('coursedetail/delete/{id}', 'CourseDetailController@delete');
+Route::any('coursedetail/detail/{id}', 'CourseDetailController@detail');
+
+Route::any('quizquestion', 'QuizQuestionController@index');
+Route::any('quizquestion/popup', 'QuizQuestionController@popup');
+Route::any('quizquestion/create/forum_id?', 'QuizQuestionController@create');
+Route::any('quizquestion/edit/{id}', 'QuizQuestionController@edit');
+Route::any('quizquestion/delete/{id}', 'QuizQuestionController@delete');
+Route::any('quizquestion/detail/{id}', 'QuizQuestionController@detail');
+
+Route::any('webinar', 'WebinarController@index');
+Route::any('webinar/popup', 'WebinarController@popup');
+Route::any('webinar/create', 'WebinarController@create');
+Route::any('webinar/edit/{id}', 'WebinarController@edit');
+Route::any('webinar/delete/{id}', 'WebinarController@delete');
+Route::any('webinar/detail/{id}', 'WebinarController@detail');

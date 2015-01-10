@@ -1,6 +1,12 @@
 <!-- Begin Navlist -->
 <ul class="nav nav-list">
-    <li class="active">
+    <?php
+        $class = "";
+        if ($function_id == "home") {
+            $class = "active";
+        }
+    ?>
+    <li class="<?php echo $class; ?>">
         <a href="<?php echo url(); ?>">
             <i class="icon-home"></i>
             <span>Home</span>
@@ -16,8 +22,12 @@
                         if (is_null($item)) { continue; }
                         $FunctionInfo = $item->getFunctionInfo();
                         if (is_null($FunctionInfo)) { continue; }
+                        $class = "";
+                        if ($FunctionInfo->getFunctionId() == $function_id) {
+                            $class = "active";
+                        }
     ?>
-    <li>
+    <li class="<?php echo $class; ?>">
         <a href="<?php echo url()."/".$FunctionInfo->getUrl(); ?>">
             <i class=""></i>
             <span><?php echo $FunctionInfo->getName(); ?></span>

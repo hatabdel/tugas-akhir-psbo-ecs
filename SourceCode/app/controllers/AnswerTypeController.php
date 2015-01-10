@@ -2,8 +2,8 @@
 
 class AnswerTypeController extends BaseController
 {
-	private $AnswerTypeService = null;
-	
+	private $AnswerTypeService;
+	protected $function_id = "answer_type";
 	public function __contruct()
 	{
 		parent::__construct();
@@ -12,15 +12,20 @@ class AnswerTypeController extends BaseController
 	
 	public function index()
 	{
-		$AnswerTypeList = $this->AnswerTypeService->getList();
-		$this->data['AnswerTypeList'] = $AnswerTypeList;
-		
-		return View::make("answertype\index", $this->data);
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        return View::make("shared\commingsoon", $this->data);
 	}
 	
 	public function create()
 	{
-		$param = Input::all();
+		if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowCreate()) { return Redirect::to("access_denied"); }
+        
+        return View::make("shared\commingsoon", $this->data);
+        
+        $param = Input::all();
 		$model = $this->bindData($param);
 		return $this->createInputView($model);
 	}
@@ -42,5 +47,3 @@ class AnswerTypeController extends BaseController
 		$this->AnswerTypeService = new AnswerTypeService();
 	}
 }
-
-?>

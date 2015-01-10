@@ -77,9 +77,8 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="logout.php">
+                            <a href="<?php echo url()."/login/logout"; ?>">
                                 <i class="icon-off"></i>
-                                Logout
                             </a>
                         </li>
                         <!-- END Button User -->

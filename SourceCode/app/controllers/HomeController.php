@@ -14,11 +14,15 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-    public function __construct() {
+    
+   protected $function_id = "home";
+
+   public function __construct() {
        parent::__construct();
     }
     
     public function Index() {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
         return View::make('home/index', $this->data);
     }
     
