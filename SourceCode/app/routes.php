@@ -13,6 +13,7 @@
 
 Route::any('/', 'HomeController@Index');
 Route::any('accessdenied', 'AccessDeniedController@index');
+Route::any('access_denied', 'AccessDeniedController@index');
 Route::any('login', 'LoginController@index');
 Route::any('login/logout', 'LoginController@logout');
 

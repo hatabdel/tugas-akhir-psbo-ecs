@@ -17,29 +17,28 @@
                 <div class="clearfix"></div>
                 <a class='btn show-tooltip' style='margin-bottom:10px !important;' title='Create' href='<?php echo url()."/comment/create"; ?>' ><i class='icon-plus'> Create</i></a>
                 @if (count($CommentList) > 0 && !is_null($CommentList))
-                <table class="table table-advance" id="table_comment" border="1">
-                 <!--   <thead>
+                <table class="table table-advance" id="table_comment">
+                   <thead>
                         <tr>
+                            <th style="width:100px">Action</th>
                             <th>Title</th>
                             <th>Created Date</th>
-                            <th style="width:100px">Action</th>
                         </tr>
-                    </thead>-->
-                    
+                   </thead>
+                   <tbody>
                     @foreach ($CommentList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
-							<!--<td class="Id">{{ $item->getId() }}</td>-->
+							<td>
+                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/comment/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/comment/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
+                            </td>
                             <td class="Title"><a href="<?php echo url()."/comment/detail/".$item->getId(); ?>">{{ $item->getTitle() }}</a>
 							</td>
 							<td class="CreatedDate">{{ $item->getCreatedDate() }}</td>
-                            <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/comment/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/comment/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
-                            </td>
                         </tr>
 						@endforeach
-                    
+                    </tbody>
                 </table>
                 @else
                 <h3>There is no data in database</h3>

@@ -106,7 +106,6 @@ class BaseController extends Controller {
         $PrivilegeInfoFilter = new PrivilegeInfoFilter();
         $PrivilegeInfoFilter->setUserGroupId($UserGroupId);
         $PrivilegeInfoFilter->setFunctionId($FunctionId);
-        
         $PrivilegeInfoService = new PrivilegeInfoService();
         $PrivilegeInfoList =  $PrivilegeInfoService->getList($PrivilegeInfoFilter);
         
