@@ -20,6 +20,7 @@
                 <table class="table table-advance" id="table_quiz">
                     <thead>
                         <tr>
+                            <th style="width:100px">Action</th>
                             <th>Quiz Id</th>
                             <th>Quiz Name</th>
                             <th>Course Code</th>
@@ -30,13 +31,16 @@
                             <th>Created User</th>
                             <th>Update Date</th>
                             <th>Update User</th>
-                            <th style="width:100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($QuizList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
+                            <td>
+                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/quiz/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/quiz/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
+                            </td>
                             <td class="Id"><a href="<?php echo url()."/quiz/detail/".$item->getId(); ?>">{{ $item->getId() }}</a></td>
                             <td class="QuizName">{{ $item->getQuizName() }}</td>
                             <td class="CourseCode">{{ $item->getCourseCode() }}</td>
@@ -47,10 +51,7 @@
                             <td class="CreatedUser">{{ $item->getCreatedUser() }}</td>
                             <td class="UpdateDate">{{ $item->getUpdateDate() }}</td>
                             <td class="UpdateUser">{{ $item->getUpdateUser() }}</td>
-                            <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/quiz/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/quiz/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
-                            </td>
+                            
                         </tr>
                     @endforeach
                     </tbody>

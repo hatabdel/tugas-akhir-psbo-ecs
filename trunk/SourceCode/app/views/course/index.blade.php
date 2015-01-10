@@ -20,21 +20,21 @@
                 <table class="table table-advance" id="table_user_info">
                     <thead>
                         <tr>
+                            <th style="width:100px">Action</th>
                             <th>Code</th>
                             <th>Name</th>
-                            <th style="width:100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($CourseList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
+                            <td>
+                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/course/delete/".$item->getCode(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/course/edit/".$item->getCode(); ?>'><i class='icon-edit'></i></a>
+                            </td>
                             <td class="Code">{{ $item->getCode() }}</td>
                             <td class="Name"><a href="<?php echo url()."/course/detail/".$item->getCode(); ?>">{{ $item->getName() }}</a></td>
-                            <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/course/edit/".$item->getCode(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/course/delete/".$item->getCode(); ?>'><i class='icon-trash'></i></a>
-                            </td>
                         </tr>
                     @endforeach
                     </tbody>

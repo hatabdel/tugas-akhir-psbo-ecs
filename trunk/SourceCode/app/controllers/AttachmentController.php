@@ -15,6 +15,7 @@ class AttachmentController extends BaseController {
 	|
 	*/
     private $AttachmentService = null;
+    protected $function_id = "attachment";
     
     public function __construct() {
        parent::__construct();
@@ -23,6 +24,11 @@ class AttachmentController extends BaseController {
    
 	public function index()
 	{
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        return View::make("shared\commingsoon", $this->data);
+        
         $AttachmentList = $this->AttachmentService->getList();
         $this->data['AttachmentList'] = $AttachmentList;
         return View::make("attachment\index", $this->data);
@@ -30,6 +36,11 @@ class AttachmentController extends BaseController {
     
     public function create()
 	{
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowCreate()) { return Redirect::to("access_denied"); }
+        
+        return View::make("shared\commingsoon", $this->data);
+        
         $param = Input::all();
         $model = $this->bindData($param);
         return $this->createInputView($model);

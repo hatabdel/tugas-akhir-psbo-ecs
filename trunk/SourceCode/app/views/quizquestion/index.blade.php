@@ -20,27 +20,27 @@
                 <table class="table table-advance" id="table_quiz_question">
                     <thead>
                         <tr>
+                            <th style="width:100px">Action</th>
                             <th>Quiz Question Id</th>
                             <th>Quiz Id</th>
                             <th>Question</th>
                             <th>Answer Type Id</th>
                             <th>Score</th>
-                            <th style="width:100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($QuizQuestionList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
+                            <td>
+                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/quizquestion/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/quizquestion/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
+                            </td>
                             <td class="Id"><a href="<?php echo url()."/quizquestion/detail/".$item->getId(); ?>">{{ $item->getId() }}</a></td>
                             <td class="Quiz">{{ $item->getQuiz() }}</td>
                             <td class="Question">{{ $item->getQuestion() }}</td>
                             <td class="AnswerType">{{ $item->getAnswerType() }}</td>
                             <td class="Score">{{ $item->getScore() }}</td>
-                            <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/quizquestion/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/quizquestion/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
-                            </td>
                         </tr>
                     @endforeach
                     </tbody>

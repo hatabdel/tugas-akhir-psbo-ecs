@@ -10,6 +10,11 @@ class Course {
     private $mCreatedDate;
     private $mCreatedUser;
     private $mIsActive;
+    private $mIsLoaded;
+    
+    public function __construct() {
+        $this->mIsLoaded = false;
+    }
     
     public function setCode($value) {
         $this->mCode = $value;
@@ -80,6 +85,14 @@ class Course {
 
     public function IsActive() {
         return $this->mIsActive;
+    }
+    
+    public function setIsLoaded($value) {
+        $this->mIsLoaded = $value;
+    }
+
+    public function IsLoaded() {
+        return $this->mIsLoaded;
     }
     
     public function toArray() {

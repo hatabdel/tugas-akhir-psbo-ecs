@@ -70,8 +70,13 @@ class PrivilegeInfoFilter {
         $where = "";
         
         if (!is_null($this->mUserGroupId) && !empty($this->mUserGroupId)) {
-            if (!empty($where)) { $where = " AND "; }
+            if (!empty($where)) { $where .= " AND "; }
             $where .= " user_group_id = '".stripslashes($this->mUserGroupId)."'";
+        }
+        
+        if (!is_null($this->mFunctionId) && !empty($this->mFunctionId)) {
+            if (!empty($where)) { $where .= " AND "; }
+            $where .= " function_id = '".stripslashes($this->mFunctionId)."'";
         }
         
         return $where; 

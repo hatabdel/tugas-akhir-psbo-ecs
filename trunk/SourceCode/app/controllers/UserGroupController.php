@@ -3,6 +3,7 @@
 class UserGroupController extends BaseController {
     
     private $UserGroupService;
+    protected $function_id = "user_group";
     
     public function __construct() {
         parent::__construct();
@@ -11,6 +12,9 @@ class UserGroupController extends BaseController {
     }
     
     public function index() {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
         $UserGroupList = $this->UserGroupService->getList();
         $this->data['UserGroupList'] = $UserGroupList;
         return View::make("usergroup/index", $this->data);

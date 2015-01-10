@@ -3,6 +3,7 @@
 class QuizQuestionController extends BaseController {
     
     private $QuizQuestionService;
+    protected $function_id = "quiz_question";
     
     public function __construct() {
         parent::__construct();
@@ -11,6 +12,9 @@ class QuizQuestionController extends BaseController {
     }
     
     public function index() {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
         $QuizQuestionList = $this->QuizQuestionService->getList();
         $this->data['QuizQuestionList'] = $QuizQuestionList;
         return View::make("quizquestion/index", $this->data);

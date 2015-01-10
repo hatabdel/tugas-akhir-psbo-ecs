@@ -14,7 +14,7 @@ class UserInfoController extends BaseController {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
-        $UserInfoList = $this->UserInfoService->getList();
+        $UserInfoList = $this->UserInfoService->getList(null);
         $this->data['UserInfoList'] = $UserInfoList;
         return View::make("userinfo/index", $this->data);
     }

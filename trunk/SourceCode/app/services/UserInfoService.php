@@ -9,9 +9,9 @@ class UserInfoService extends BaseService {
         $this->UserInfoDao = new UserInfoDao();
     }
     
-    public function getList() {
+    public function getList($filter) {
         try {
-            return $this->UserInfoDao->getList();
+            return $this->UserInfoDao->getList($filter);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
@@ -73,8 +73,19 @@ class UserInfoService extends BaseService {
         }
     }
     
-    private function createCriteria($filter) {
+    public function CheckUserLogin($username, $password) {
+        $UserInfoFilter = new UserInfoFilter();
+        $UserInfoFilter->setUserName($username);
+        $UserInfoFilter->setPassword(md5($password));
         
+        $UserInfoList = $this->getList($UserInfoFilter);
+        if (!is_null($UserInfoList)) {
+            if (count($UserInfoList) > 0) {
+                return $UserInfoList[0];
+            }
+        }
+        
+        return null;       
     }
     
     private function validateBase($model) {

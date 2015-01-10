@@ -3,6 +3,7 @@
 class CourseController extends BaseController {
     
     private $CourseService;
+    protected $function_id = "course";
     
     public function __construct() {
         parent::__construct();
@@ -11,6 +12,9 @@ class CourseController extends BaseController {
     }
     
     public function index() {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
         $CourseList = $this->CourseService->getList();
         $this->data['CourseList'] = $CourseList;
         return View::make("course/index", $this->data);
