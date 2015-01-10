@@ -9,9 +9,9 @@ class PrivilegeInfoService extends BaseService {
         $this->PrivilegeInfoDao = new PrivilegeInfoDao();
     }
     
-    public function getList() {
+    public function getList($filter = null) {
         try {
-            return $this->PrivilegeInfoDao->getList();
+            return $this->PrivilegeInfoDao->getList($filter);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());

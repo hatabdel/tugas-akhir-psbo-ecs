@@ -2,6 +2,7 @@
 
 class AccessDeniedController extends BaseController {
     
+    protected $function_id = "access_denied";
     public function __construct() {
         parent::__construct();
         $this->loadDefaultValue();

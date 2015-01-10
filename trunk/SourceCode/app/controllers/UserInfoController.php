@@ -3,6 +3,7 @@
 class UserInfoController extends BaseController {
     
     private $UserInfoService;
+    protected $function_id = "user_info";
     
     public function __construct() {
         parent::__construct();
