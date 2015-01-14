@@ -36,7 +36,7 @@
 			 <div class="control-group">
                 <label class="control-label">Forum Id</label>
                 <div class="controls">
-                    <input type="text" name="forumid" value="<?php if(!is_null($model)) echo $model->getForumId(); ?>" />
+                    <input type="text" name="forum_id" value="<?php if(!is_null($model)) echo $model->getForumId(); ?>" />
                 </div>
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>

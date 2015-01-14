@@ -112,7 +112,7 @@ class CommentController extends BaseController {
             $this->data["action"] = "/comment/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
-        //$this->loadFunctionList();
+        $this->loadFunctionList();
         //$this->loadUsertGroupList();
 		
         $this->addErrorValidation($validation);
@@ -132,11 +132,24 @@ class CommentController extends BaseController {
             $CommentObj->setId($param["id"]);
 			$CommentObj->setTitle($param["title"]);
 			$CommentObj->setContent($param["content"]);
+			$ForumObj = new Forum();
+			$ForumObj->setId($param["forum_id"]);
+			$CommentObj->setIsLoaded(true);
+			$CommentObj->setForumId($ForumObj); 
+			
 			
         }
         return $CommentObj;
     }
     
+	private function loadFunctionList()
+	{
+		$FunctionInfoService = new FunctionInfoService();
+        $FunctionInfoList = $FunctionInfoService->getList();
+        $this->data['FunctionInfoList'] = $FunctionInfoList;
+ 
+	}
+	
     private function loadDefaultValue() {
         $this->data["_MODULE_NAME"] = "Comment - ";
     }
