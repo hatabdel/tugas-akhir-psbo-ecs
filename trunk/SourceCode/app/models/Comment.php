@@ -106,6 +106,7 @@ class Comment
                 if (!is_null($this->mForumId)) { $this->mForumId->setIsLoaded(true); }
             }
         }
+		
         return $this->mForumId;
     }
 	
@@ -119,8 +120,9 @@ class Comment
 		return $this->mIsLoaded;
 	}
 	
+	
 	public function toArray() {
-        return array(
+    return array(
             "id" => $this->mId,
             "title" => $this->mTitle,
             "content" => $this->mContent,
