@@ -15,6 +15,8 @@ class AttachmentDao extends BaseDao implements UserInterface, RemindableInterfac
 	 * @var string
 	 */
 	protected $table = 'attachment';
+    protected $primary_key = 'id';
+    protected $fillable = array('id');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -29,7 +31,9 @@ class AttachmentDao extends BaseDao implements UserInterface, RemindableInterfac
     }
     
     public function InsertAttachment($AttachmentObj) {
-        return parent::InsertObject($AttachmentObj);
+        $result = parent::InsertObjectReturnId($AttachmentObj);
+        if (!is_null($result) && !is_null($AttachmentObj)) { $AttachmentObj->setId($result); }
+        return $AttachmentObj;
     }
     
     public function UpdateAttachment($AttachmentObj, $Id) {
@@ -42,10 +46,19 @@ class AttachmentDao extends BaseDao implements UserInterface, RemindableInterfac
     
     function toObject($rowset) {
         $AttachmentObj = new Attachment();
-        $AttachmentObj->setUserName($rowset["user_name"]);
-        $AttachmentObj->setPassword($rowset["password"]);
+        $AttachmentObj->setId($rowset["id"]);
+        $AttachmentObj->setFunctionId($rowset["function_id"]);
+        $AttachmentObj->setRecordId($rowset["record_id"]);
+        $AttachmentObj->setFileName($rowset["file_name"]);
+        $AttachmentObj->setFileType($rowset["file_type"]);
+        $AttachmentObj->setFileExtention($rowset["file_extention"]);
+        $AttachmentObj->setFilePath($rowset["file_path"]);
+        $AttachmentObj->setDescription($rowset["description"]);
         $AttachmentObj->setCreatedDate($rowset["created_date"]);
-        $AttachmentObj->setIsActive($rowset["is_active"]);
+        $UserInfoObj = new UserInfo();
+        $UserInfoObj->setUserName($rowset["created_user"]);
+        $UserInfoObj->setIsLoaded(false);
+        $AttachmentObj->setCreatedDate($UserInfoObj);
         return $AttachmentObj;
     }
 

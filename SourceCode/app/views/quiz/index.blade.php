@@ -38,7 +38,7 @@
                         @if (is_null($item)) continue @endif
                         <tr>
                             <td>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/quiz/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small btn-danger show-tooltip btnDelete' id="btnDelete" title='Delete' href='<?php echo url()."/quiz/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
                                 <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/quiz/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
                             </td>
                             <td class="Id"><a href="<?php echo url()."/quiz/detail/".$item->getId(); ?>">{{ $item->getId() }}</a></td>
@@ -65,6 +65,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    jQuery("#btnDelete").click(function() { return confirm("Are you sure want to delete this data?"); })
+    jQuery(".btnDelete").click(function() { return confirm("Are you sure want to delete this data?"); })
 </script>
 @stop

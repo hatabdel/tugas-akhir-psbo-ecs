@@ -33,16 +33,16 @@
                     @foreach ($StudentQuizList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
+                            <td>
+                                <a class='btn btn-small btn-danger show-tooltip btnDelete' id="btnDelete" title='Delete' href='<?php echo url()."/studentquiz/delete/".$item->getStudentQuiz(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/studentquiz/edit/".$item->getStudentQuiz(); ?>'><i class='icon-edit'></i></a>
+                            </td>
                             <td class="Id"><a href="<?php echo url()."/studentquiz/detail/".$item->getStudentQuiz(); ?>">{{ $item->getStudentQuiz() }}</a></td>
                             <td class="IdentityId">{{ $item->getIdentity() }}</td>
                             <td class="QuizId">{{ $item->getQuiz() }}</td>
                             <td class="TotalScore">{{ $item->getTotalScore() }}</td>
                             <td class="StartDateTime">{{ $item->getStartDateTime() }}</td>
                             <td class="EndDateTime">{{ $item->getEndDateTime() }}</td>
-                            <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/studentquiz/edit/".$item->getStudentQuiz(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/studentquiz/delete/".$item->getStudentQuiz(); ?>'><i class='icon-trash'></i></a>
-                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -56,6 +56,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    jQuery("#btnDelete").click(function() { return confirm("Are you sure want to delete this data?"); })
+    jQuery(".btnDelete").click(function() { return confirm("Are you sure want to delete this data?"); })
 </script>
 @stop

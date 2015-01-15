@@ -20,7 +20,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    jQuery("#btnDelete").click(function() { return confirm("Are you sure want to delete this data?"); })
-</script>
 @stop

@@ -32,7 +32,7 @@
                         @if (is_null($item)) continue @endif
                         <tr>
                             <td>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/webinar/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small btn-danger show-tooltip btnDelete btnDelete' itle='Delete' href='<?php echo url()."/webinar/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
                                 <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/webinar/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
                             </td>
                             <td class="Title"><a href="<?php echo url()."/webinar/detail/".$item->getId(); ?>">{{ $item->getTitle() }}</a></td>
@@ -51,4 +51,7 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    jQuery(".btnDelete").click(function() { return confirm("Are you sure want to delete this data?"); })
+</script>
 @stop

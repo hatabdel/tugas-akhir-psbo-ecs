@@ -3,7 +3,7 @@
 class AnswerTypeController extends BaseController {
     
     private $AnswerTypeService;
-    protected $function_id = "quiz_type";
+    protected $function_id = "answer_type";
     
     public function __construct() {
         parent::__construct();

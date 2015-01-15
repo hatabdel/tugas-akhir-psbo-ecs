@@ -157,3 +157,4 @@ if (!is_null($FunctionInfoList) && count($FunctionInfoList) > 0) {
     Route::any('webinar/delete/{id}', 'WebinarController@delete');
     Route::any('webinar/detail/{id}', 'WebinarController@detail');
 }
+Route::any('attachment/download/{id}', 'AttachmentController@download');
