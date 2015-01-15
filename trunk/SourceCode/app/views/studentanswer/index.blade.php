@@ -20,29 +20,29 @@
                 <table class="table table-advance" id="table_student_answer">
                     <thead>
                         <tr>
+                            <th style="width:100px">Action</th>
                             <th>Student Answer Id</th>
                             <th>Student Quiz Id</th>
                             <th>Quiz Question Id</th>
                             <th>Student Answer</th>
                             <th>Score</th>
                             <th>Is Correct</th>
-                            <th style="width:100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($StudentAnswerList as $item)
                         @if (is_null($item)) continue @endif
                         <tr>
+                            <td>
+                                <a class='btn btn-small btn-danger show-tooltip btnDelete' id="btnDelete" title='Delete' href='<?php echo url()."/studentanswer/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/studentanswer/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
+                            </td>
                             <td class="Id"><a href="<?php echo url()."/studentanswer/detail/".$item->getId(); ?>">{{ $item->getId() }}</a></td>
                             <td class="StudentQuiz">{{ $item->getStudentQuiz() }}</td>
                             <td class="QuizQuestion">{{ $item->getQuizQuestion() }}</td>
                             <td class="StudentAnswer">{{ $item->getStudentAnswer() }}</td>
                             <td class="Score">{{ $item->getScore() }}</td>
                             <td class="IsCorrect">{{ $item->IsCorrect() }}</td>
-                            <td>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/studentanswer/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
-                                <a class='btn btn-small btn-danger show-tooltip' id="btnDelete" title='Delete' href='<?php echo url()."/studentanswer/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
-                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -56,6 +56,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    jQuery("#btnDelete").click(function() { return confirm("Are you sure want to delete this data?"); })
+    jQuery(".btnDelete").click(function() { return confirm("Are you sure want to delete this data?"); })
 </script>
 @stop

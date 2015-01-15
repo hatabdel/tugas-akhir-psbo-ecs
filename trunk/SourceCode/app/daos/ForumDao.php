@@ -13,7 +13,7 @@ class ForumDao extends BaseDao implements UserInterface, RemindableInterface
 	 * @var string
 	 */
 	protected $table = 'forum';
-	 protected $primary_key = 'id';
+	protected $primary_key = 'id';
     protected $fillable = array('id');
 	/**
 	 * The attributes excluded from the model's JSON form.

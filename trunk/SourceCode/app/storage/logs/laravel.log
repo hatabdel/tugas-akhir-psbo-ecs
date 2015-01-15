@@ -4318,3 +4318,68 @@ Stack trace:
 Stack trace:
 #0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
 #1 {main} [] []
+[2015-01-15 05:54:45] production.ERROR: exception 'Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column '' in 'where clause' (SQL: select * from `attachment` where `` = 1)' in C:\xampp\htdocs\laravel\app\services\AttachmentService.php:31
+Stack trace:
+#0 C:\xampp\htdocs\laravel\app\controllers\AttachmentController.php(98): AttachmentService->getAttachment('1')
+#1 [internal function]: AttachmentController->detail('1')
+#2 C:\xampp\htdocs\laravel\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5776): Illuminate\Routing\Controller->callAction('detail', Array)
+#4 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5764): Illuminate\Routing\ControllerDispatcher->call(Object(AttachmentController), Object(Illuminate\Routing\Route), 'detail')
+#5 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4971): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'AttachmentContr...', 'detail')
+#6 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}('1')
+#7 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5329): call_user_func_array(Object(Closure), Array)
+#8 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4996): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\laravel\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\laravel\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\laravel\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#13 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\laravel\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\laravel\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#17 C:\xampp\htdocs\laravel\index.php(49): Illuminate\Foundation\Application->run()
+#18 {main} [] []
+[2015-01-15 05:55:17] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Attachment::getName()' in C:\xampp\htdocs\laravel\app\storage\views\731dccece8bbf2815715b17338e8372b:23
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-15 06:14:33] production.ERROR: exception 'Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException' with message 'The file "C:\xampp\htdocs\laravel\public" does not exist' in C:\xampp\htdocs\laravel\vendor\symfony\http-foundation\Symfony\Component\HttpFoundation\File\File.php:41
+Stack trace:
+#0 C:\xampp\htdocs\laravel\vendor\symfony\http-foundation\Symfony\Component\HttpFoundation\BinaryFileResponse.php(90): Symfony\Component\HttpFoundation\File\File->__construct('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\laravel\vendor\symfony\http-foundation\Symfony\Component\HttpFoundation\BinaryFileResponse.php(49): Symfony\Component\HttpFoundation\BinaryFileResponse->setFile('C:\\xampp\\htdocs...', 'attachment', false, true)
+#2 C:\xampp\htdocs\laravel\vendor\laravel\framework\src\Illuminate\Support\Facades\Response.php(102): Symfony\Component\HttpFoundation\BinaryFileResponse->__construct('C:\\xampp\\htdocs...', 200, Array, true, 'attachment')
+#3 C:\xampp\htdocs\laravel\app\controllers\AttachmentController.php(113): Illuminate\Support\Facades\Response::download('C:\\xampp\\htdocs...', 'dasdsa.', Array)
+#4 [internal function]: AttachmentController->download('5')
+#5 C:\xampp\htdocs\laravel\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5776): Illuminate\Routing\Controller->callAction('download', Array)
+#7 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5764): Illuminate\Routing\ControllerDispatcher->call(Object(AttachmentController), Object(Illuminate\Routing\Route), 'download')
+#8 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4971): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'AttachmentContr...', 'download')
+#9 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}('5')
+#10 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5329): call_user_func_array(Object(Closure), Array)
+#11 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4996): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#13 C:\xampp\htdocs\laravel\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#14 C:\xampp\htdocs\laravel\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\laravel\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#17 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#18 C:\xampp\htdocs\laravel\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#19 C:\xampp\htdocs\laravel\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\laravel\index.php(49): Illuminate\Foundation\Application->run()
+#21 {main} [] []
+[2015-01-15 06:16:58] production.ERROR: exception 'LogicException' with message 'Unable to guess the mime type as no guessers are available (Did you enable the php_fileinfo extension?)' in C:\xampp\htdocs\laravel\vendor\symfony\http-foundation\Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser.php:123
+Stack trace:
+#0 C:\xampp\htdocs\laravel\vendor\symfony\http-foundation\Symfony\Component\HttpFoundation\File\File.php(87): Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser->guess('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\laravel\vendor\symfony\http-foundation\Symfony\Component\HttpFoundation\BinaryFileResponse.php(176): Symfony\Component\HttpFoundation\File\File->getMimeType()
+#2 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5191): Symfony\Component\HttpFoundation\BinaryFileResponse->prepare(Object(Illuminate\Http\Request))
+#3 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4998): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpFoundation\BinaryFileResponse))
+#4 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#5 C:\xampp\htdocs\laravel\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#6 C:\xampp\htdocs\laravel\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\laravel\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#10 C:\xampp\htdocs\laravel\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#11 C:\xampp\htdocs\laravel\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\laravel\index.php(49): Illuminate\Foundation\Application->run()
+#13 {main} [] []
