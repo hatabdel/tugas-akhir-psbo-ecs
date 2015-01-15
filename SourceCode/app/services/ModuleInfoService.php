@@ -1,65 +1,70 @@
 <?php
 
-class QuizTypeService extends BaseService {
+class ModuleInfoService extends BaseService {
     
-    private $QuizTypeDao;
+    private $ModuleInfoDao;
     
     public function __construct() {
         parent::__construct();
-        $this->QuizTypeDao = new QuizTypeDao();
+        $this->ModuleInfoDao = new ModuleInfoDao();
     }
     
     public function getList() {
         try {
-            return $this->QuizTypeDao->getList();
+            return $this->ModuleInfoDao->getList();
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
     }
     
-    public function getQuizType($id) {
+    public function getModuleInfo($id) {
         try { 
-            return $this->QuizTypeDao->getQuizType($id);
+            return $this->ModuleInfoDao->getModuleInfo($id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
     }
     
-    public function InsertQuizType($QuizTypeObj) {
+    public function InsertModuleInfo($ModuleInfoObj) {
         try {
-            if (!$this->validateOnInsert($QuizTypeObj)) { return false; }
-			
-		//var_dump($QuizTypeObj);	die();
-            return $this->QuizTypeDao->InsertQuizType($QuizTypeObj);
+            if (!$this->validateOnInsert($ModuleInfoObj)) { return false; }
+            $Result = $this->ModuleInfoDao->InsertModuleInfo($ModuleInfoObj);
+            
+            if (count($ModuleInfoObj->getPrivilegeInfos()) > 0) {
+                foreach ($ModuleInfoObj->getPrivilegeInfos() as $item) {
+                    if (is_null($item)) { continue; }
+                    $item->setModuleInfo($Result);
+                    $PrivilegeInfoDao = new PrivilegeInfoDao();
+                    $PrivilegeInfoDao->InsertPrivilegeInfo($item);
+                }
+            }
+            
+            return $Result;
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
     }
     
-    public function UpdateQuizType($QuizTypeObj, $Id) {
+    public function UpdateModuleInfo($ModuleInfoObj, $Id) {
         try {
-            if (!$this->validateOnUpdate($QuizTypeObj)) { return false; }
-            return $this->QuizTypeDao->UpdateQuizType($QuizTypeObj, $Id);
+            if (!$this->validateOnUpdate($ModuleInfoObj)) { return false; }
+            return $this->ModuleInfoDao->UpdateModuleInfo($ModuleInfoObj, $Id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
     }
     
-    public function DeleteQuizType($Id) {
+    public function DeleteModuleInfo($Id) {
         try {
-            return $this->QuizTypeDao->DeleteQuizType($Id);
+            return $this->ModuleInfoDao->DeleteModuleInfo($Id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
         }
-    }
-    
-    private function createCriteria($filter) {
-        
     }
     
     private function validateBase($model) {
@@ -68,14 +73,13 @@ class QuizTypeService extends BaseService {
         if (is_null($model->getName()) || empty($model->getName())) {
             $this->addError("Name is required!");
         }
-                
+        
         return $this->getServiceState();
     }
     
     private function validateOnInsert($model) {
         if (is_null($model)) { return false; }
         $this->validateBase($model);
-		
         return $this->getServiceState();
     }
     

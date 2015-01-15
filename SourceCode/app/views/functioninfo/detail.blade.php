@@ -26,6 +26,18 @@
             </div>
         </div>
         <div class="control-group">
+            <label class="control-label">Route</label>
+            <div class="controls">
+                <?php if(!is_null($model)) { echo $model->getRoute(); } ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Module Info</label>
+            <div class="controls">
+                <?php echo (!is_null($model) ? (!is_null($model->getModuleInfo()) ? $model->getModuleInfo()->getName() : "") : ""); ?>
+            </div>
+        </div>
+        <div class="control-group">
             <label class="control-label">URL</label>
             <div class="controls">
                 <?php if(!is_null($model)) { echo $model->getUrl(); } ?>

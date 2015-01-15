@@ -28,9 +28,56 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label">Route</label>
+                <div class="controls">
+                    <input type="text" name="route" value="<?php if(!is_null($model)) echo $model->getRoute(); ?>" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Module Info</label>
+                <div class="controls">
+                    <select name="module_info_id">
+                        <?php if (!is_null($ModuleInfoList)) { 
+                                foreach($ModuleInfoList as $item) {
+                                    if (is_null($item)) { continue; }
+                                    $selected = "";
+                                    $ModuleInfoId = null;
+                                    if (!is_null($model->getModuleInfo())) { $ModuleInfoId = $model->getModuleInfo()->getId(); }
+                                    if ($item->getId() == $ModuleInfoId ) { $selected = "selected=\"selected\""; }
+                        ?>
+                        <option value="{{ $item->getId() }}" <?php echo $selected; ?>> {{ $item->getName() }}</option>
+                        <?php   }
+                              }?>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label">URL</label>
                 <div class="controls">
                     <input type="text" name="url" value="<?php if(!is_null($model)) echo $model->getUrl(); ?>" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Icon</label>
+                <div class="controls">
+                    <select name="icon" id="icon">
+                        <?php if (!is_null($IconList)) { 
+                                foreach($IconList as $item) {
+                                    if (is_null($item)) { continue; }
+                                    $selected = "";
+                                    $IconId = $model->getIcon();
+                                    if ($item->getId() == $IconId) { $selected = "selected=\"selected\""; }
+                        ?>
+                        <option value="{{ $item->getId() }}" <?php echo $selected; ?>><i class="<?php echo $item->getId(); ?>"></i> {{ $item->getName() }}</option>
+                        <?php   }
+                              }?>
+                    </select>
+                    <span id="icon-preview"></span>
+                    <script type="text/javascript">
+                        $("#icon").change(function() {
+                            $("#icon-preview").html("<i class='" + $(this).val() + "'></i>");
+                        });
+                    </script>
                 </div>
             </div>
             <div class="control-group">
