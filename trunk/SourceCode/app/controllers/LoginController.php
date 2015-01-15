@@ -2,6 +2,8 @@
 
 class LoginController extends BaseController {
     
+    protected $function_id = "login";
+    
     public function __construct() {
         parent::__construct();
     }

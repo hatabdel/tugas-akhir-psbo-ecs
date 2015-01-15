@@ -2,6 +2,7 @@
 <ul class="nav nav-list">
     <?php
         $class = "";
+        if (!isset($function_id)) { $function_id = "login"; }
         if ($function_id == "home") {
             $class = "active";
         }
