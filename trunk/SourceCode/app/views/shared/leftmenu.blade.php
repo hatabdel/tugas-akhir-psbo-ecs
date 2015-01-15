@@ -13,28 +13,70 @@
         </a>
     </li>
     <?php 
+    $ModuleInfo = array();
+    $Selected = "";
+    if (isset($UserInfo)) {
+        if (!is_null($UserInfo)) {
+                if (!is_null($UserInfo->getUserGroup())) {
+                    $PrivilegeInfos = $UserInfo->getUserGroup()->getPrivilegeInfos();
+                    if (!is_null($PrivilegeInfos) && count($PrivilegeInfos) > 0) {
+                        foreach($PrivilegeInfos as $item) {
+                            if (is_null($item)) { continue; }
+                            $FunctionInfo = $item->getFunctionInfo();
+                            if (is_null($FunctionInfo)) { continue; }
+                            $ModuleInfoId = (!is_null($FunctionInfo->getModuleInfo()) ? $FunctionInfo->getModuleInfo()->getId() : "");
+                            if (!key_exists($ModuleInfoId, $ModuleInfo)) {
+                                $ModuleInfo[$ModuleInfoId] = $FunctionInfo->getModuleInfo();
+                            }
+                            if ($FunctionInfo->getFunctionId() == $function_id) {
+                                $Selected = $ModuleInfoId;
+                            }
+                        }
+                    }
+                }
+        }
+    }
+    
     if (isset($UserInfo)) {
     if (!is_null($UserInfo)) {
             if (!is_null($UserInfo->getUserGroup())) {
                 $PrivilegeInfos = $UserInfo->getUserGroup()->getPrivilegeInfos();
                 if (!is_null($PrivilegeInfos) && count($PrivilegeInfos) > 0) {
-                    foreach($PrivilegeInfos as $item) {
-                        if (is_null($item)) { continue; }
-                        $FunctionInfo = $item->getFunctionInfo();
-                        if (is_null($FunctionInfo)) { continue; }
-                        $class = "";
-                        if ($FunctionInfo->getFunctionId() == $function_id) {
-                            $class = "active";
+                    foreach ($ModuleInfo as $key => $value) {
+                        if (is_null($value)) { continue; }
+    ?>
+    <li class="<?php echo ($key == $Selected ? "active" : ""); ?>">
+        <a href="#" class="dropdown-toggle">
+            <i class="<?php echo $value->getIcon(); ?>" ></i>
+            <span><?php echo $value->getName(); ?></span>
+            <b class="arrow icon-angle-<?php echo ($key == $Selected ? "down" : "right"); ?>"></b>
+        </a>
+        <ul class="submenu" <?php echo ($key == $Selected ? "style=\"display:block\"" : "style=\"display:none\""); ?>>
+    <?php
+                        foreach($PrivilegeInfos as $item) {
+                            if (is_null($item)) { continue; }
+                            $FunctionInfo = $item->getFunctionInfo();
+                            if (is_null($FunctionInfo)) { continue; }
+                            $class = "";
+                            if ($FunctionInfo->getFunctionId() == $function_id) {
+                                $class = "active";
+                            }
+                            $ModuleInfoId = (!is_null($FunctionInfo->getModuleInfo()) ? $FunctionInfo->getModuleInfo()->getId() : "");
+                            if ($ModuleInfoId != $value->getId()) { continue; }
+    ?>
+        <li class="<?php echo $class; ?>">
+            <a href="<?php echo url()."/".$FunctionInfo->getUrl(); ?>">
+                <i class="<?php echo url()."/".$FunctionInfo->getIcon(); ?>"></i>
+                <span><?php echo $FunctionInfo->getName(); ?></span>
+            </a>
+        </li>
+    <?php
                         }
     ?>
-    <li class="<?php echo $class; ?>">
-        <a href="<?php echo url()."/".$FunctionInfo->getUrl(); ?>">
-            <i class=""></i>
-            <span><?php echo $FunctionInfo->getName(); ?></span>
-        </a>
+        </ul>
     </li>
     <?php
-                    }
+                }
                 }
             }
     }

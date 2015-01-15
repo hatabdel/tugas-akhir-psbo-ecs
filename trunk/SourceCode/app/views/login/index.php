@@ -77,8 +77,8 @@
         }
         h3 {
             font-family: 'akashiregular';
-            font-size: 24pt;
-            color: #a30000 !important;
+            font-size: 22pt;
+            color: #0E6390 !important;
         }
     </style>
 </head>
@@ -109,7 +109,7 @@
                 </div>
                 <br />
                 <div class="form-group">                    
-                    <input type="submit" class="btn btn-danger btn-sm" value="Login" />
+                    <input type="submit" class="btn show-tooltip" value="Login" />
                 </div>
                 </form>
             </td>

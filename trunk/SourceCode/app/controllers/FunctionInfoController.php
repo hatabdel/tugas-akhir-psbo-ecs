@@ -3,6 +3,7 @@
 class FunctionInfoController extends BaseController {
     
     private $FunctionInfoService;
+    protected $function_id = "function_info";
     
     public function __construct() {
         parent::__construct();
@@ -105,6 +106,8 @@ class FunctionInfoController extends BaseController {
             $this->data["action"] = "/functioninfo/".$mode."/".(!is_null($model) ? $model->getFunctionId() : "");
         }
         
+        $this->loadModuleInfoList();
+        $this->loadIconList();
         $this->addErrorValidation($validation);
         return View::make("functioninfo/input", $this->data);
     }
@@ -124,10 +127,28 @@ class FunctionInfoController extends BaseController {
             $FuntionInfoObj->setFunctionId($param["function_id"]);
             $FuntionInfoObj->setName($param["name"]);
             $FuntionInfoObj->setUrl($param["url"]);
+            $FuntionInfoObj->setRoute($param["route"]);
+            $FuntionInfoObj->setIcon($param["icon"]);
+            $ModuleInfo = new ModuleInfo();
+            $ModuleInfo->setId($param["module_info_id"]);
+            $ModuleInfo->setIsLoaded(true);
+            $FuntionInfoObj->setModuleInfo($ModuleInfo);
             $FuntionInfoObj->setIsActive($param["is_active"]);
             $FuntionInfoObj->setIsShow($param["is_show"]);
         }
         return $FuntionInfoObj;
+    }
+    
+    private function loadModuleInfoList() {
+        $ModuleInfoService = new ModuleInfoService();
+        $ModuleInfoList = $ModuleInfoService->getList();
+        $this->data['ModuleInfoList'] = $ModuleInfoList;
+    }
+    
+    private function loadIconList() {
+        $IconService = new IconService();
+        $IconList = $IconService->getList();
+        $this->data['IconList'] = $IconList;
     }
     
     private function loadDefaultValue() {

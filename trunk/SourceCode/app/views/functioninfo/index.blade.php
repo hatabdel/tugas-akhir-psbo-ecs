@@ -39,8 +39,8 @@
                             <td class="FunctionId"><a href="<?php echo url()."/functioninfo/detail/".$item->getFunctionId(); ?>">{{ $item->getFunctionId() }}</a></td>
                             <td class="Url">{{ $item->getName() }}</td>
                             <td class="Url">{{ $item->getUrl() }}</td>
-                            <td class="IsActive">{{ $item->IsActive() }}</td>
-                            <td class="IsShow">{{ $item->IsShow() }}</td>
+                            <td class="IsActive">{{ ($item->IsActive() == 1 ? "Yes" : "No") }}</td>
+                            <td class="IsShow">{{ ($item->IsShow() == 1 ? "Yes" : "No") }}</td>
                         </tr>
                     @endforeach
                     </tbody>

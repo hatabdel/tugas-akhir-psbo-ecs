@@ -14,19 +14,19 @@
     </div>
     <div class="box-content" id="dialog-detailQuizType" title="Detail Quiz Type">
         <div class="control-group">
-            <label class="control-label">Quiz Type Id</label>
+            <label class="control-label">Id</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getQuizType(); } ?>
+                <?php if(!is_null($model)) { echo $model->getId(); } ?>
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Quiz Name</label>
+            <label class="control-label">Name</label>
             <div class="controls">
                 <?php if(!is_null($model)) { echo $model->getName(); } ?>
             </div>
         </div>
         <div class="form-actions">
-            <button type="button" onclick='window.location.href="<?php echo url()."/quiztype/edit/".(!is_null($model) ? $model->getQuizType() : ""); ?>"' class="btn btn-primary">Edit</button>
+            <button type="button" onclick='window.location.href="<?php echo url()."/quiztype/edit/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Edit</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/quiztype"; ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>
