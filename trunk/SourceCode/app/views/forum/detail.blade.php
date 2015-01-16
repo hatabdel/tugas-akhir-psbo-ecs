@@ -39,9 +39,9 @@
             </div>
         </div>
 	</tr>
-	
+	</table>
         <div class="form-actions">
-            <button type="button" onclick='window.location.href="<?php echo url()."/comment/create/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Comment</button>
+            <button type="button" onclick='window.location.href="<?php echo url()."/forum/edit/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Edit</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/forum"; ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>

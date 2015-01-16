@@ -20,7 +20,7 @@ class CommentController extends BaseController {
         return View::make("comment/index", $this->data);
     }
     
-    public function create() {
+    public function create($id) {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowCreate()) { return Redirect::to("access_denied"); }
         
