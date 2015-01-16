@@ -71,7 +71,7 @@ if (!is_null($FunctionInfoList) && count($FunctionInfoList) > 0) {
     Route::any('forum/edit/{id}', 'ForumController@edit');
     Route::any('forum/delete/{id}', 'ForumController@delete');
     Route::any('forum/detail/{id}', 'ForumController@detail');
-    Route::any('/forum/detilforum/{id}', 'ForumController@detail');
+    Route::any('forum/detilforum/{id}', 'ForumController@detail');
 
     Route::any('comment', 'CommentController@index');
     Route::any('comment/popup', 'CommentController@popup');
@@ -159,3 +159,5 @@ if (!is_null($FunctionInfoList) && count($FunctionInfoList) > 0) {
 }
 Route::any('attachment/download/{id}', 'AttachmentController@download');
 Route::any('login/logout', 'LoginController@logout');
+Route::any('forum/detilforum/{id}', 'ForumController@detail');
+Route::any('comment/create/{id}', 'CommentController@create');
