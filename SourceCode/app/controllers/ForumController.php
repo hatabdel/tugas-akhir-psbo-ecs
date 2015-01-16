@@ -96,7 +96,7 @@ class ForumController extends BaseController {
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
         $this->data["model"] = $this->ForumService->getForum($id);
-        return View::make("forum/detail", $this->data);
+        return View::make("forum/detilforum", $this->data);
     }
     
     private function createInputView($model, $validation = null, $mode = "create") {

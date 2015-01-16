@@ -28,7 +28,7 @@ class CommentService extends BaseService
     public function InsertComment($CommentObj) {
         try {
             if (!$this->validateOnInsert($CommentObj)) { return false; }
-			$CommentObj->setCreatedDate(Date("YYYY-mm-dd H:i:s"));
+			$CommentObj->setCreatedDate(Date("Y-m-d H:i:s"));
 			$CommentObj->setCreatedUser($this->mUserInfo);
             return $this->CommentDao->InsertComment($CommentObj);
         } catch (Exception $ex) {
@@ -80,7 +80,7 @@ class CommentService extends BaseService
         if (is_null($model)) { return false; }
         $this->validateBase($model);
 		if (!is_null($model->getId()) && !empty($model->getId())) {
-            $ForumObj = $this->getComment($model->getId());
+            $CommentObj = $this->getComment($model->getId());
             if (!is_null($CommentObj)) {
                 $this->addError("Data with id ".$model->getId()." is already exist!");
             }
