@@ -8,7 +8,7 @@ class Comment
 	private $mCreatedUser;
 	private $mUpdatedDate;
 	private $mUpdatedUser;
-	private $mForumId;
+	private $mForum;
 	private $mIsLoaded;
 	
 	public function __construct()
@@ -94,20 +94,20 @@ class Comment
 		return $this->mUpdatedUser;
 	}
     
-    public function setForumId($value) {
-        $this->mForumId = $value;
+    public function setForum($value) {
+        $this->mForum = $value;
     }
 
-    public function getForumId() {
-		if (!is_null($this->mForumId) && !empty($this->mForumId)) {
-            if (!$this->mForumId->IsLoaded()) {
+    public function getForum() {
+		if (!is_null($this->mForum) && !empty($this->mForum)) {
+            if (!$this->mForum->IsLoaded()) {
                 $ForumDao = new ForumDao();
-                $this->mForumId = $ForumDao->getForum($this->mForumId->getId());
-                if (!is_null($this->mForumId)) { $this->mForumId->setIsLoaded(true); }
+                $this->mForum = $ForumDao->getForum($this->mForum->getId());
+                if (!is_null($this->mForum)) { $this->mForum->setIsLoaded(true); }
             }
         }
 		
-        return $this->mForumId;
+        return $this->mForum;
     }
 	
 	public function setIsLoaded($value)
@@ -130,7 +130,7 @@ class Comment
             "created_user" => (!is_null($this->mCreatedUser) ? $this->mCreatedUser->getUserName() : null),
             "update_date" => $this->mUpdatedDate,
             "update_user" => $this->mUpdatedUser,
-            "forum_id" => (!is_null($this->mForumId) ? $this->mForumId->getId() : null)
+            "forum_id" => (!is_null($this->mForum) ? $this->mForum->getId() : null)
         );
     }
 }

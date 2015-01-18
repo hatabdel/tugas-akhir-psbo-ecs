@@ -13,24 +13,25 @@
         </div>
     </div>
     <div class="box-content" id="dialog-detailForum" title="Detail Forum">
-        <div class="control-group">
-            <!--<label class="control-label">Function Id</label>-->
-            <div class="controls">
-                <?php if(!is_null($model)) { $model->getId(); } ?>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Title</label>
-            <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getTitle(); } ?>
-            </div>
-        </div>
-		<div class="control-group">
-            <label class="control-label">Content</label>
-            <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getContent(); } ?>
-            </div>
-        </div>
+        <table>
+			<div class="forum-title">
+				<div class="title">
+					<tr>
+						<td><?php if(!is_null($model)) { echo $model->getTitle(); } ?></td>
+						<td><?php if(!is_null($model)) { echo $model->getCreatedDate(); } ?></td>
+					</tr>
+					<tr>
+						<td colspan=2><hr/></td>
+					</tr>
+				</div>
+			</div>
+			<div class="forum-content">
+				<div class="content">
+					<tr>
+						<td colspan=2 class="Content"><?php if(!is_null($model)) { echo $model->getContent(); } ?></td>
+					</tr>
+				</div>
+			</div>
 		</table>
 		<?php
 			$CommentList = array();
@@ -39,28 +40,22 @@
 		
 		@if (count($CommentList) > 0 && !is_null($CommentList))
 		<table class="table table-advance" id="table_comment">
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Comment</th>
-				<th>Created Date</th>
-				<th>Created User</th>
-			</tr>
-		</thead>
 		<tbody>
 		@foreach ($CommentList as $item)
 			@if(is_null($item)) continue @endif
 			<tr>
 				<td class="Title"><?php if (!is_null($item->getTitle())) {echo $item->getTitle();}?> </td>
-				<td class="Content"><?php if (!is_null($item->getContent())) {echo $item->getContent();}?> </td>
 				<td class="CreatedDate"><?php if (!is_null($item->getCreatedDate())) { echo $item->getCreatedDate();}?> </td>
+			</tr>
+			<tr>
 				<td class="CreatedUser"><?php if (!is_null($item->getCreatedUser())) { echo $item->getCreatedUser();}?> </td>
+				<td class="Content"><?php if (!is_null($item->getContent())) {echo $item->getContent();}?> </td>
 			</tr>
 			@endforeach
 		</tbody>
 		</table>
 		@else
-		<h3>There is no comment data in database</h3>
+		<!--<h3>There is no comment data in database</h3>-->
 		@endif
         <div class="form-actions">
             <button type="button" onclick='window.location.href="<?php echo url()."/comment/create/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Comment</button>

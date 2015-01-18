@@ -18,7 +18,7 @@
             <div class="control-group">
                 <label class="control-label">Comment Id</label>
                 <div class="controls">
-                    <input type="text" name="id" value=" " />
+                    <input type="text" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
                 </div>
             </div>
             <div class="control-group">
@@ -34,9 +34,10 @@
                 </div>
             </div>
 			 <div class="control-group">
-                <label class="control-label">Forum Id</label>
+                <label class="control-label">Forum</label>
                 <div class="controls">
-                    <input type="text" name="forum_id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
+				<?php echo(!is_null($model) ? (!is_null($model->getForum())?$model->getForum()->getTitle():""):""); ?>
+                    <input type="hidden" name="forum_id" value="<?php echo(!is_null($model) ? (!is_null($model->getForum())?$model->getForum()->getId():""):""); ?>" />
                 </div>
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
