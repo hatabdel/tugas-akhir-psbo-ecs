@@ -61,6 +61,7 @@ class BaseController extends Controller {
             $this->loadPrivileges();
         }
         if (!is_null($this->active_privilege)) {
+            $this->setPrivilegeData();
             return boolval($this->active_privilege->IsAllowRead());
         } else {
             return false;
@@ -72,6 +73,7 @@ class BaseController extends Controller {
             $this->loadPrivileges();
         }
         if (!is_null($this->active_privilege)) {
+            $this->setPrivilegeData();
             return boolval($this->active_privilege->IsAllowCreate());
         } else {
             return false;
@@ -83,6 +85,7 @@ class BaseController extends Controller {
             $this->loadPrivileges();
         }
         if (!is_null($this->active_privilege)) {
+            $this->setPrivilegeData();
             return boolval($this->active_privilege->IsAllowUpdate());
         } else {
             return false;
@@ -94,15 +97,21 @@ class BaseController extends Controller {
             $this->loadPrivileges();
         }
         if (!is_null($this->active_privilege)) {
+            $this->setPrivilegeData();
             return boolval($this->active_privilege->IsAllowDelete());
         } else {
             return false;
         }
     }
     
+    protected function getUserGroup() {
+        return (!is_null($this->mUserInfo) ? (!is_null($this->mUserInfo->getUserGroup()) ?  $this->mUserInfo->getUserGroup()->getId() : "") : "");
+    }
+    
     protected function loadPrivileges() {
         $UserGroupId = (!is_null($this->mUserInfo) ? (!is_null($this->mUserInfo->getUserGroup()) ?  $this->mUserInfo->getUserGroup()->getId() : "") : "");
         $FunctionId = $this->function_id;
+        
         $PrivilegeInfoFilter = new PrivilegeInfoFilter();
         $PrivilegeInfoFilter->setUserGroupId($UserGroupId);
         $PrivilegeInfoFilter->setFunctionId($FunctionId);
@@ -115,6 +124,14 @@ class BaseController extends Controller {
             }
         }
         
+    }
+    
+    protected function setPrivilegeData() {
+        $this->data["is_allow_read"] = $this->active_privilege->IsAllowRead();
+        $this->data["is_allow_create"] = $this->active_privilege->IsAllowCreate();
+        $this->data["is_allow_update"] = $this->active_privilege->IsAllowUpdate();
+        $this->data["is_allow_delete"] = $this->active_privilege->IsAllowDelete();
+        $this->data["user_group"] = $this->getUserGroup();
     }
 
     protected function addError($err) {

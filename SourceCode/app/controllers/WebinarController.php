@@ -26,6 +26,7 @@ class WebinarController extends BaseController {
         
         try {
             $input = Input::all();
+            $model = null;
             if (count($input) > 0) {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
@@ -98,6 +99,50 @@ class WebinarController extends BaseController {
         return View::make("webinar/detail", $this->data);
     }
     
+    public function join($id) {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        $this->WebinarService->setUserInfo($this->mUserInfo);
+        $webinarObj = $this->WebinarService->getWebinar($id);
+        if (is_null($webinarObj)) { return Redirect::to("webinar"); }
+
+        if ($this->WebinarService->CheckWebinarIsRunning($id)) {
+            $url = $this->WebinarService->getWebinarUrl($id);
+            return Redirect::to($url);
+        } else {
+            $this->data["model"] = $webinarObj;
+            return View::make("webinar/join", $this->data);
+        }
+    }
+    
+    public function start($id) {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        $this->WebinarService->setUserInfo($this->mUserInfo);
+        $webinarObj = $this->WebinarService->getWebinar($id);
+        if (is_null($webinarObj)) { return Redirect::to("webinar"); }
+        
+        $CreatedUser = (!is_null($webinarObj->getCreatedUser()) ? $webinarObj->getCreatedUser()->getUserName() : null);
+        if ($CreatedUser == $this->mUserInfo->getUserName()) {
+            $url = $this->WebinarService->getWebinarUrl($id);
+            return Redirect::to($url);
+        }
+        
+        return Redirect::to("access_denied");
+    }
+    
+    public function webinars() {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        echo "<pre>";
+        $this->WebinarService->getMeetings();
+        echo "</pre>";
+    }
+
+
     private function createInputView($model, $validation = null, $mode = "create") {
         if (!is_null($model)) {
             $this->data["model"] = $model;

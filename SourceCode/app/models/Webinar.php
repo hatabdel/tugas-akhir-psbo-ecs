@@ -9,6 +9,7 @@ class Webinar {
     private $mCreatedUser;
     private $mStartDate;
     private $mEndDate;
+    private $mMeetingId;
     private $mIsLoaded;
     
     public function __construct() {
@@ -85,6 +86,14 @@ class Webinar {
         return $this->mEndDate;
     }
     
+    public function setMeetingId($value) {
+        $this->mMeetingId = $value;
+    }
+
+    public function getMeetingId() {
+        return $this->mMeetingId;
+    }
+    
     public function setIsLoaded($value) {
         $this->mIsLoaded = $value;
     }
@@ -101,7 +110,8 @@ class Webinar {
             "created_date" => $this->mCreatedDate,
             "created_user" => (!is_null($this->mCreatedUser) ? $this->mCreatedUser->getUserName() : null),
             "start_date" => $this->mStartDate,
-            "end_date" => $this->mEndDate
+            "end_date" => $this->mEndDate,
+            "meeting_id" => $this->mMeetingId
         );
     }
         
