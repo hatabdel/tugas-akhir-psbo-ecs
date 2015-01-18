@@ -25,16 +25,21 @@ class CommentController extends BaseController {
         if (!$this->IsAllowCreate()) { return Redirect::to("access_denied"); }
         
         try {
+			
             $input = Input::all();
 			$model = null;
+			$ForumService = new ForumService();
+			$ForumObj = $ForumService->getForum($id);
             if (count($input) > 0) {
+			
                 $model = $this->bindData($input);
+				$model->setForum($ForumObj);
                 $validation = Validator::make($input, $this->initValidation());
                 if ($validation->fails()) {
                     return $this->createInputView($model, $validation->messages());
                 } else {
 					$this->CommentService->setUserInfo($this->mUserInfo);
-                    $result = $this->CommentService->InsertComment($model);
+					$result = $this->CommentService->InsertComment($model);
                     if (!$result) {
                         $this->addErrors($this->CommentService->getErrors());
                         return $this->createInputView($model, $validation->messages());
@@ -42,7 +47,7 @@ class CommentController extends BaseController {
                     return Redirect::to("comment/detail/".$model->getId());
                 }
             }
-            return $this->createInputView($model);
+            return $this->createInputView($model, NULL, "create", $ForumObj);
         } catch (Exception $ex) {
 			$this->addError($ex->getMessage());
             return $this->createInputView(null);
@@ -100,14 +105,17 @@ class CommentController extends BaseController {
         return View::make("comment/detail", $this->data);
     }
     
-    private function createInputView($model, $validation = null, $mode = "create") {
+    private function createInputView($model, $validation = null, $mode = "create", $Forum= NULL) {
         if (!is_null($model)) {
             $this->data["model"] = $model;
         } else {
             $this->data["model"] = new Comment();
         }
+		if(!is_null($Forum))
+		{
+		$this->data["model"]->setForum($Forum);}
         if ($mode == "create") {
-            $this->data["action"] = "/comment/".$mode;
+            $this->data["action"] = "/comment/".$mode."/".(!is_null($this->data["model"]) ? (!is_null($this->data["model"]->getForum())?$this->data["model"]->getForum()->getId():""):"");
         } else {
             $this->data["action"] = "/comment/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
@@ -134,9 +142,8 @@ class CommentController extends BaseController {
 			$CommentObj->setContent($param["content"]);
 			$ForumObj = new Forum();
 			$ForumObj->setId($param["forum_id"]);
-			$CommentObj->setIsLoaded(true);
-			$CommentObj->setForumId($ForumObj); 
-			
+			$ForumObj->setIsLoaded(true);
+			$CommentObj->setForum($ForumObj); 
 			
         }
         return $CommentObj;
