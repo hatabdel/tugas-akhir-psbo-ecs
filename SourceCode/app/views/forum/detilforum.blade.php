@@ -17,8 +17,8 @@
 			<div class="forum-title">
 				<div class="title">
 					<tr>
-						<td><?php if(!is_null($model)) { echo $model->getTitle(); } ?></td>
-						<td><?php if(!is_null($model)) { echo $model->getCreatedDate(); } ?></td>
+						<td width="80%"><?php if(!is_null($model)) { echo $model->getTitle(); } ?></td>
+						<td align="right"><?php if(!is_null($model)) { echo $model->getCreatedDate(); } ?></td>
 					</tr>
 					<tr>
 						<td colspan=2><hr/></td>
@@ -39,17 +39,17 @@
 		?>
 		
 		@if (count($CommentList) > 0 && !is_null($CommentList))
-		<table class="table table-advance" id="table_comment">
+		<table class="table table-advance" id="table_comment" border=1>
 		<tbody>
 		@foreach ($CommentList as $item)
 			@if(is_null($item)) continue @endif
 			<tr>
-				<td class="Title"><?php if (!is_null($item->getTitle())) {echo $item->getTitle();}?> </td>
-				<td class="CreatedDate"><?php if (!is_null($item->getCreatedDate())) { echo $item->getCreatedDate();}?> </td>
+				<td class="Title" colspan="2" width="80%"><?php if (!is_null($item->getTitle())) {echo $item->getTitle();}?> </td>
+				<td class="CreatedDate" align="right"><?php if (!is_null($item->getCreatedDate())) { echo $item->getCreatedDate();}?> </td>
 			</tr>
 			<tr>
-				<td class="CreatedUser"><?php if (!is_null($item->getCreatedUser())) { echo $item->getCreatedUser();}?> </td>
-				<td class="Content"><?php if (!is_null($item->getContent())) {echo $item->getContent();}?> </td>
+				<td class="CreatedUser" align="left" width="20%"><?php if (!is_null($item->getCreatedUser())) { echo $item->getCreatedUser();}?> </td>
+				<td class="Content" colspan="2"><?php if (!is_null($item->getContent())) {echo $item->getContent();}?> </td>
 			</tr>
 			@endforeach
 		</tbody>
