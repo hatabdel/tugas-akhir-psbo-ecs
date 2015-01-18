@@ -44,6 +44,7 @@
             </div>
         </div>
         <div class="form-actions">
+            <button type="button" onclick='window.location.href="<?php echo url()."/course/join/".(!is_null($model) ? $model->getCode() : ""); ?>"' class="btn btn-primary">Join</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/course/edit/".(!is_null($model) ? $model->getCode() : ""); ?>"' class="btn btn-primary">Edit</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/course"; ?>"' class="btn btn-primary">Close</button>
          </div>

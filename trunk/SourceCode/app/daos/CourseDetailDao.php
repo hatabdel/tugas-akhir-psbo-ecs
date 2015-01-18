@@ -14,14 +14,14 @@ class CourseDetailDao extends BaseDao implements UserInterface, RemindableInterf
 	 *
 	 * @var string
 	 */
-	protected $table = 'user_info';
+	protected $table = 'course_detail';
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	public function getList() {
-        return parent::getList();
+	public function getList($filter = null) {
+        return parent::getList($filter);
     }
     
     public function getCourseDetail($id) {
@@ -29,7 +29,9 @@ class CourseDetailDao extends BaseDao implements UserInterface, RemindableInterf
     }
     
     public function InsertCourseDetail($CourseDetailObj) {
-        return parent::InsertObject($CourseDetailObj);
+        $result = parent::InsertObjectReturnId($CourseDetailObj);
+        if (!is_null($result) && !is_null($CourseDetailObj)) { $CourseDetailObj->setId($result); }
+        return $CourseDetailObj;
     }
     
     public function UpdateCourseDetail($CourseDetailObj, $Id) {
@@ -43,9 +45,15 @@ class CourseDetailDao extends BaseDao implements UserInterface, RemindableInterf
     function toObject($rowset) {
         $CourseDetailObj = new CourseDetail();
         $CourseDetailObj->setId($rowset["id"]);
-        $CourseDetailObj->setIdentityId($rowset["identity_id"]);
-        $CourseDetailObj->setCourseCode($rowset["course_code"]);
-        $CourseDetailObj->setCreatedDate($rowset["created_date"]);
+        $UserInfo = new UserInfo();
+        $UserInfo->setUserName($rowset["user_name"]);
+        $UserInfo->setIsLoaded(false);
+        $CourseDetailObj->setUserInfo();
+        $Course = new Course();
+        $Course->setCode($rowset["course_code"]);
+        $Course->setIsLoaded(false);
+        $CourseDetailObj->setCourse($Course);
+        $CourseDetailObj->setJoinDate($rowset["join_date"]);
         return $CourseDetailObj;
     }
 

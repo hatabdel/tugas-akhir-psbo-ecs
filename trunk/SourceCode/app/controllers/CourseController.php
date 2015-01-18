@@ -100,6 +100,37 @@ class CourseController extends BaseController {
         return View::make("course/detail", $this->data);
     }
     
+    public function join($id) {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        $CourseObj = $this->CourseService->getCourse($id);
+        $StartDate = $CourseObj->getStartDate();
+        $DateNow = Date("Y-m-d");
+        if ($DateNow < $StartDate) {
+            $this->addError("Maaf, Course ini belum dibuka.");
+        } else {
+            
+            $CourseDetail = new CourseDetail();
+            $CourseObj->setIsLoaded(true);
+            $CourseDetail->setCourse($CourseObj);
+            $UserInfo = $this->mUserInfo;
+            $UserInfo->setIsLoaded(true);
+            $CourseDetail->setUserInfo($UserInfo);
+            $CourseDetail->setJoinDate($DateNow);
+            
+            $CourseDetailService = new CourseDetailService();
+            $result = $CourseDetailService->InsertCourseDetail($CourseDetail);
+            if (!$result) {
+                $this->addError("Maaf, terjadi kesalahan");
+            } else {
+                $this->data["success"] = "Selamat Bergabung";
+            }
+        }
+        $this->data["model"] = $CourseObj;
+        return View::make("course/join", $this->data);
+    }
+    
     private function createInputView($model, $validation = null, $mode = "create") {
         if (!is_null($model)) {
             $this->data["model"] = $model;

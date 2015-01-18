@@ -159,5 +159,11 @@ if (!is_null($FunctionInfoList) && count($FunctionInfoList) > 0) {
 }
 Route::any('attachment/download/{id}', 'AttachmentController@download');
 Route::any('login/logout', 'LoginController@logout');
+Route::any('course/join/{id}', 'CourseController@join');
+Route::any('webinar/join/{id}', 'WebinarController@join');
+Route::any('webinar/webinars', 'WebinarController@webinars');
+Route::any('webinar/start/{id}', 'WebinarController@start');
+Route::any('access_denied', 'AccessDeniedController@index');
+Route::any('accessdenied', 'AccessDeniedController@index');Route::any('login/logout', 'LoginController@logout');
 Route::any('forum/detilforum/{id}', 'ForumController@detail');
 Route::any('comment/create/{id}', 'CommentController@create');

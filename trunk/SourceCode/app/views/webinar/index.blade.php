@@ -15,7 +15,9 @@
             </div>
             <div class="box-content">
                 <div class="clearfix"></div>
+                <?php if ($is_allow_create) { ?>
                 <a class='btn show-tooltip' style='margin-bottom:10px !important;' title='Create' href='<?php echo url()."/webinar/create"; ?>' ><i class='icon-plus'> Create</i></a>
+                <?php } ?>
                 @if (count($WebinarList) > 0 && !is_null($WebinarList))
                 <table class="table table-advance" id="table_webinar">
                     <thead>
@@ -46,7 +48,9 @@
                 @else
                 <h3>There is no data in database</h3>
                 @endif
+                <?php if ($is_allow_create) { ?>
                 <a class='btn show-tooltip' style='margin-top:10px !important;' title='Create' href='<?php echo url()."/webinar/create"; ?>'><i class='icon-plus'> Create</i></a>
+                <?php } ?>
             </div>
         </div>
     </div>
