@@ -31,9 +31,15 @@
                 <?php if(!is_null($model)) { echo $model->getContent(); } ?>
             </div>
         </div>
+		<div class="control-group">
+            <label class="control-label">Forum</label>
+            <div class="controls">
+                <?php if(!is_null($model)) { echo $model->getForum(); } ?>
+            </div>
+        </div>
         <div class="form-actions">
             <button type="button" onclick='window.location.href="<?php echo url()."/comment/edit/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Edit</button>
-            <button type="button" onclick='window.location.href="<?php echo url()."/comment"; ?>"' class="btn btn-primary">Close</button>
+            <button type="button" onclick='window.location.href="<?php echo url()."/forum/detilforum/".(!is_null($model->getForum()) ? $model->getForum()->getId():""); ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>
 </div>

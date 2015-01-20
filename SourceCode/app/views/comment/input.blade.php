@@ -16,9 +16,9 @@
         <?php echo $errors; ?>
         <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Comment Id</label>
+                <!--<label class="control-label">Comment Id</label>-->
                 <div class="controls">
-                    <input type="text" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
+                    <input type="hidden" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
                 </div>
             </div>
             <div class="control-group">
@@ -42,7 +42,7 @@
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
-                <button type="button" onclick='window.location.href="<?php echo url()."/comment"; ?>"' class="btn btn-primary">Cancel</button>
+                <button type="button" onclick='window.location.href="<?php echo url()."/forum/detilforum/".(!is_null($model->getForum())?$model->getForum()->getId():""); ?>"' class="btn btn-primary">Cancel</button>
              </div>
         </form>
     </div>
