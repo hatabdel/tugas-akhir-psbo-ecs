@@ -7,7 +7,7 @@
             <div class="box-title">
                 <h3>
                     <i class="icon-table"></i>
-                    Quiz Type
+                    Attachment
                 </h3>
                 <div class="box-tool">
                     <a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
