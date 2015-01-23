@@ -23,6 +23,11 @@ class HomeController extends BaseController {
     
     public function Index() {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
+        
+        $CourseService = new CourseService();
+		$CourseList = $CourseService->getList(); 
+		$this->data['CourseList'] = $CourseList;
+        
         return View::make('home/index', $this->data);
     }
     

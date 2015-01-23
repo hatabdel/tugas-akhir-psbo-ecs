@@ -18,7 +18,9 @@
                 echo $success;
             }
         ?>
-        
+        <div>
+            <button type="button" onclick='window.location.href="<?php echo url()."/"; ?>"' class="btn btn-primary">Back</button>
+        </div>
     </div>
 </div>
 @stop

@@ -16,9 +16,11 @@
     <?php 
     $ModuleInfo = array();
     $Selected = "";
+    $UserGroupId = "";
     if (isset($UserInfo)) {
         if (!is_null($UserInfo)) {
                 if (!is_null($UserInfo->getUserGroup())) {
+                    $UserGroupId = $UserInfo->getUserGroup()->getName();
                     $PrivilegeInfos = $UserInfo->getUserGroup()->getPrivilegeInfos();
                     if (!is_null($PrivilegeInfos) && count($PrivilegeInfos) > 0) {
                         foreach($PrivilegeInfos as $item) {
@@ -40,6 +42,7 @@
     
     if (isset($UserInfo)) {
     if (!is_null($UserInfo)) {
+        if ($UserGroupId != "student") {
             if (!is_null($UserInfo->getUserGroup())) {
                 $PrivilegeInfos = $UserInfo->getUserGroup()->getPrivilegeInfos();
                 if (!is_null($PrivilegeInfos) && count($PrivilegeInfos) > 0) {
@@ -81,6 +84,7 @@
                 }
                 }
             }
+        }
         $UserGroup = (!is_null($UserInfo->getUserGroup()) ? $UserInfo->getUserGroup()->getName() : "");
         if ($UserGroup == "student") {
             if (!is_null($UserInfo->getCourseDetail())) {

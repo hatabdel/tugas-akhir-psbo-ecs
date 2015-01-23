@@ -45,8 +45,12 @@
         </div>
         <div class="form-actions">
             <button type="button" onclick='window.location.href="<?php echo url()."/course/join/".(!is_null($model) ? $model->getCode() : ""); ?>"' class="btn btn-primary">Join</button>
+            <?php if ($UserGroup != "student") { ?>
             <button type="button" onclick='window.location.href="<?php echo url()."/course/edit/".(!is_null($model) ? $model->getCode() : ""); ?>"' class="btn btn-primary">Edit</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/course"; ?>"' class="btn btn-primary">Close</button>
+            <?php } else { ?>
+            <button type="button" onclick='window.location.href="<?php echo url()."/"; ?>"' class="btn btn-primary">Close</button>
+            <?php } ?>
          </div>
     </div>
 </div>

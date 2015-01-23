@@ -22,8 +22,7 @@
                         <tr>
                             <th style="width:100px">Action</th>
                             <th>Answer Id</th>
-                            <th>Sequence</th>
-                            <th>Quiz Question Id</th>
+                            <th>Quiz Question</th>
                             <th>Content</th>
                             <th>Is Correct</th>
                         </tr>
@@ -33,12 +32,11 @@
                         @if (is_null($item)) continue @endif
                         <tr>
                             <td>
-                                <a class='btn btn-small btn-danger show-tooltip btnDelete' id="btnDelete" title='Delete' href='<?php echo url()."/answer/delete/".$item->getAnswer(); ?>'><i class='icon-trash'></i></a>
-                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/answer/edit/".$item->getAnswer(); ?>'><i class='icon-edit'></i></a>
+                                <a class='btn btn-small btn-danger show-tooltip btnDelete' id="btnDelete" title='Delete' href='<?php echo url()."/answer/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
+                                <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/answer/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
                             </td>
-                            <td class="Answer"><a href="<?php echo url()."/answer/detail/".$item->getAnswer(); ?>">{{ $item->getAnswer() }}</a></td>
-                            <td class="Sequence">{{ $item->getSequence() }}</td>
-                            <td class="QuizQuestion">{{ $item->getQuizQuestion() }}</td>
+                            <td class="Answer"><a href="<?php echo url()."/answer/detail/".$item->getId(); ?>">{{ $item->getId() }}</a></td>
+                            <td class="QuizQuestion">{{ (!is_null($item->getQuizQuestion()) ? $item->getQuizQuestion()->getQuestion() : "")  }}</td>
                             <td class="Content">{{ $item->getContent() }}</td>
                             <td class="IsCorrect">{{ $item->IsCorrect() }}</td>
                         </tr>

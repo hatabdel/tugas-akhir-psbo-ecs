@@ -58,7 +58,9 @@
                         </table>
                         @endif
                     </div>
+                    <?php if ($UserGroup != "student") { ?>
                     <a class='btn show-tooltip' style='margin-top:10px !important;' title='Create' href='<?php echo url()."/attachment/create?course_code=".(!is_null($model) ? $model->getCode() : "")."&back_url=/course/dashboard/".(!is_null($model) ? $model->getCode() : ""); ?>'><i class='icon-plus'> Upload</i></a>
+                    <?php } ?>
                 </td>
                 <td style="width:50%">
                     <div id="forum_instructor">
@@ -78,7 +80,9 @@
                         </table>
                         @endif
                     </div>
+                    <?php if ($UserGroup != "student") { ?>
                     <a class='btn show-tooltip' style='margin-top:10px !important;' title='Create' href='<?php echo url()."/webinar/create?course_code=".(!is_null($model) ? $model->getCode() : "")."&back_url=/course/dashboard/".(!is_null($model) ? $model->getCode() : ""); ?>'><i class='icon-plus'> Create</i></a>
+                    <?php } ?>
                 </td>
             </tr>
         </table>
@@ -92,10 +96,10 @@
                 </td>
             </tr>
             <tr>
-                <td style="width:50%">
+                <td style="width:50%; vertical-align: top;">
                     <div id="forum_student">
                         @if (count($ForumStudentList) > 0 && !is_null($ForumStudentList))
-                        <table class="table table-advance" id="table_forum" style="border: none">
+                        <table class="table table-advance" id="table_forum">
                             <tbody>
                             @foreach ($ForumStudentList as $item)
                                 @if (is_null($item)) continue @endif
@@ -111,7 +115,7 @@
                     </div>
                     <a class='btn show-tooltip' style='margin-top:10px !important;' title='Create' href='<?php echo url()."/forum/create"; ?>'><i class='icon-plus'> Create</i></a>
                 </td>
-                <td style="width:50%">
+                <td style="width:50%; vertical-align: top;">
                     <div id="forum_instructor">
                         @if (count($ForumInstructorList) > 0 && !is_null($ForumInstructorList))
                         <table class="table table-advance" id="table_forum" style="border: none">
@@ -128,7 +132,9 @@
                         </table>
                         @endif
                     </div>
+                    <?php if ($UserGroup != "student") { ?>
                     <a class='btn show-tooltip' style='margin-top:10px !important;' title='Create' href='<?php echo url()."/forum/create"; ?>'><i class='icon-plus'> Create</i></a>
+                    <?php } ?>
                 </td>
             </tr>
         </table>
