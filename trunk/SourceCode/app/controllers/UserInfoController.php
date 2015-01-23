@@ -81,8 +81,9 @@ class UserInfoController extends BaseController {
             if (is_null($user_type) || empty($user_type)) {
                 return Redirect::to("login");
             }
+            $model = null;
             $this->data["user_type"] = $user_type;
-            if (count($input) > 0) {
+            if (count($input) > 0 && isset($input["user_name"])) {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
                 if ($validation->fails()) {
@@ -180,11 +181,11 @@ class UserInfoController extends BaseController {
     private function bindData($param) {
         $UserInfoObj = new UserInfo();
         if (!is_null($param) && count($param) > 0) {
-            $UserInfoObj->setUserName($param["user_name"]);
-            $UserInfoObj->setPassword($param["password"]);
-            $UserInfoObj->setFirstName($param["first_name"]);
-            $UserInfoObj->setLastName($param["last_name"]);
-            $UserInfoObj->setEmail($param["email"]);
+            $UserInfoObj->setUserName((isset($param["user_name"]) ? $param["user_name"] : ""));
+            $UserInfoObj->setPassword((isset($param["password"]) ? $param["password"] : ""));
+            $UserInfoObj->setFirstName((isset($param["first_name"]) ? $param["first_name"] : ""));
+            $UserInfoObj->setLastName((isset($param["last_name"]) ? $param["last_name"] : ""));
+            $UserInfoObj->setEmail((isset($param["email"]) ? $param["email"] : ""));
             if (isset($param["is_active"])) {
                 $UserInfoObj->setIsActive($param["is_active"]);
             }

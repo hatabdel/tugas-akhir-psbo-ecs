@@ -7,7 +7,9 @@
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/bootstrap/bootstrap-responsive.min.css"; ?>" />
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/font-awesome/css/font-awesome.min.css"; ?>" />
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/normalize/normalize.css"; ?>" />
-        
+        <script type="text/javascript">
+            var imageFilesPath = "<?php echo url()."/public/images/"; ?>";
+        </script>
          <!--page specific css styles-->
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/data-tables/DT_bootstrap.css"; ?>" />
 

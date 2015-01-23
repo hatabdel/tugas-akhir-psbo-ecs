@@ -2,7 +2,7 @@
 class CourseDetailFilter
 {
 	private $mUserName;
-	private $mPassword;
+	private $mCourseCode;
     private $mIsActive;
 	
 	public function setUserName($value) {
@@ -13,12 +13,12 @@ class CourseDetailFilter
         return $this->mUserName;
     }
     
-    public function setPassword($value) {
-        $this->mPassword = $value;
+    public function setCourseCode($value) {
+        $this->mCourseCode = $value;
     }
 
-    public function getPassword() {
-        return $this->mPassword;
+    public function getCourseCode() {
+        return $this->mCourseCode;
     }
     
     public function setIsActive($value) {
@@ -37,10 +37,10 @@ class CourseDetailFilter
 			$where .= " user_name = '".stripslashes($this->mUserName)."'";
 	   }
        
-       if(!is_null($this->mPassword) && !empty($this->mPassword))
+       if(!is_null($this->mCourseCode) && !empty($this->mCourseCode))
 	   {
 			if(!empty($where)) { $where .= " AND ";}
-			$where .= " password = '".stripslashes($this->mPassword)."'";
+			$where .= " course_code = '".stripslashes($this->mCourseCode)."'";
 	   }
        
        if(!is_null($this->mIsActive) && !empty($this->mIsActive))

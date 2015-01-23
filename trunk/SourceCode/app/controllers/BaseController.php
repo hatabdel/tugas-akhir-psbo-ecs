@@ -10,7 +10,7 @@ class BaseController extends Controller {
     protected $function_id;
     protected $active_privilege = null;
     protected $_ROW_PER_PAGE = 10;
-
+    protected $mUserGroup = null;
     public function __construct() {
         $this->setupLayout();
         $this->login_url = url();
@@ -52,6 +52,8 @@ class BaseController extends Controller {
         }
         if (!is_null($this->mUserInfo)) {
             $this->data["UserInfo"] = $this->mUserInfo;
+            $this->mUserGroup = (!is_null($this->mUserInfo->getUserGroup()) ? $this->mUserInfo->getUserGroup()->getName() : "");
+            $this->data["UserGroup"] = $this->mUserGroup;
             return true;
         }
         return false;

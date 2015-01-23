@@ -131,31 +131,49 @@ class CourseController extends BaseController {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
-        $CourseObj = $this->CourseService->getCourse($id);
-        $StartDate = $CourseObj->getStartDate();
-        $DateNow = Date("Y-m-d");
-        if ($DateNow < $StartDate) {
-            $this->addError("Maaf, Course ini belum dibuka.");
-        } else {
-            
-            $CourseDetail = new CourseDetail();
-            $CourseObj->setIsLoaded(true);
-            $CourseDetail->setCourse($CourseObj);
-            $UserInfo = $this->mUserInfo;
-            $UserInfo->setIsLoaded(true);
-            $CourseDetail->setUserInfo($UserInfo);
-            $CourseDetail->setJoinDate($DateNow);
-            
+        try {
             $CourseDetailService = new CourseDetailService();
-            $result = $CourseDetailService->InsertCourseDetail($CourseDetail);
-            if (!$result) {
-                $this->addError("Maaf, terjadi kesalahan");
-            } else {
-                $this->data["success"] = "Selamat Bergabung";
+            $CourseDetailFilter = new CourseDetailFilter();
+            $CourseDetailFilter->setUserName((!is_null($this->mUserInfo) ? $this->mUserInfo->getUserName() : ""));
+            $CourseDetailFilter->setCourseCode($id);
+            $CourseDetailObj = $CourseDetailService->getList($CourseDetailFilter);
+
+            if (!is_null($CourseDetailObj)) {
+                if (count($CourseDetailObj)) {
+                    $this->addError("Anda sudah mengikuti course ini.");
+                    throw new Exception("error");
+                }
             }
+
+            $CourseObj = $this->CourseService->getCourse($id);
+            $StartDate = $CourseObj->getStartDate();
+            $DateNow = Date("Y-m-d");
+            
+            if ($DateNow < $StartDate) {
+                $this->addError("Maaf, Course ini belum dibuka.");
+            } else {
+
+                $CourseDetail = new CourseDetail();
+                $CourseObj->setIsLoaded(true);
+                $CourseDetail->setCourse($CourseObj);
+                $UserInfo = $this->mUserInfo;
+                $UserInfo->setIsLoaded(true);
+                $CourseDetail->setUserInfo($UserInfo);
+                $CourseDetail->setJoinDate($DateNow);
+
+                $CourseDetailService = new CourseDetailService();
+                $result = $CourseDetailService->InsertCourseDetail($CourseDetail);
+                if (!$result) {
+                    $this->addError("Maaf, terjadi kesalahan");
+                } else {
+                    $this->data["success"] = "Selamat Bergabung";
+                }
+            }
+            $this->data["model"] = $CourseObj;
+            return View::make("course/join", $this->data);
+        } catch (Exception $ex) {
+            return View::make("course/join", $this->data);
         }
-        $this->data["model"] = $CourseObj;
-        return View::make("course/join", $this->data);
     }
     
     private function createInputView($model, $validation = null, $mode = "create") {
