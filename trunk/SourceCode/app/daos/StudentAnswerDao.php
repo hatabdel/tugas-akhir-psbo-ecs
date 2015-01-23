@@ -22,8 +22,8 @@ class StudentAnswerDao extends BaseDao implements UserInterface, RemindableInter
 	 *
 	 * @var array
 	 */
-	public function getList() {
-        return parent::getList();
+	public function getList($filter = null) {
+        return parent::getList($filter);
     }
     
     public function getStudentAnswer($id) {
@@ -48,9 +48,18 @@ class StudentAnswerDao extends BaseDao implements UserInterface, RemindableInter
         $StudentAnswerObj = new StudentAnswer();
         
         $StudentAnswerObj->setId($rowset["id"]);
-        $StudentAnswerObj->setStudentQuiz($rowset["student_quiz_id"]);
-        $StudentAnswerObj->setQuizQuestion($rowset["quiz_question_id"]);
-        $StudentAnswerObj->setStudentAnswer($rowset["student_answer"]);
+        $StudentQuizObj = new StudentQuiz();
+        $StudentQuizObj->setId($rowset["student_quiz_id"]);
+        $StudentQuizObj->setIsLoaded(false);
+        $StudentAnswerObj->setStudentQuiz($StudentQuizObj);
+        $QuizQuestionObj = new QuizQuestion();
+        $QuizQuestionObj->setId($rowset["quiz_question_id"]);
+        $QuizQuestionObj->setIsLoaded(false);
+        $StudentAnswerObj->setQuizQuestion($QuizQuestionObj);
+        $AnswerObj = new Answer();
+        $AnswerObj->setId($rowset["answer_id"]);
+        $AnswerObj->setIsLoaded(false);
+        $StudentAnswerObj->setAnswer($AnswerObj);
         $StudentAnswerObj->setScore($rowset["score"]);
         $StudentAnswerObj->setIsCorrect($rowset["is_correct"]);
         return $StudentAnswerObj;

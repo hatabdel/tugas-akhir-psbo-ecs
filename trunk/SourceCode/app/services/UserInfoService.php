@@ -77,8 +77,9 @@ class UserInfoService extends BaseService {
         $UserInfoFilter = new UserInfoFilter();
         $UserInfoFilter->setUserName($username);
         $UserInfoFilter->setPassword(md5($password));
-        
+        $UserInfoFilter->setIsActive(1);
         $UserInfoList = $this->getList($UserInfoFilter);
+        
         if (!is_null($UserInfoList)) {
             if (count($UserInfoList) > 0) {
                 return $UserInfoList[0];

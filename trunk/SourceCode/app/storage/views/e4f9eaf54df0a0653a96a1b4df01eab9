@@ -1,0 +1,15 @@
+<?php $__env->startSection('title'); ?>
+    404 - Not Found
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main_content'); ?>
+<div class="box">
+    <div class="box-content" id="dialog-detailFunctionInfo" title="Detail User Group">
+        <h3>Page Not Found</h3>
+        <div class="form-actions">
+            <button type="button" onclick='window.location.href="<?php echo url()."/"; ?>"' class="btn btn-primary">Home</button>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('shared.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

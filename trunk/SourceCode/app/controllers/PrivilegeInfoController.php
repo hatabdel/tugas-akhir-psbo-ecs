@@ -15,7 +15,16 @@ class PrivilegeInfoController extends BaseController {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
-        $PrivilegeInfoList = $this->PrivilegeInfoService->getList();
+        
+        $param = Input::all();
+        $row_count = $this->PrivilegeInfoService->getListCount();
+        $this->data['paging'] = $this->generatePagingLink("privilegeinfo", "", $row_count, $param);
+        
+        $limit = 10;
+        $offset = (isset($param['page']) ? $limit * ($param['page'] - 1) : 0);
+        
+        $PrivilegeInfoList = $this->PrivilegeInfoService->getListPaging(null, $limit, $offset);
+        
         $this->data['PrivilegeInfoList'] = $PrivilegeInfoList;
         return View::make("privilegeinfo/index", $this->data);
     }

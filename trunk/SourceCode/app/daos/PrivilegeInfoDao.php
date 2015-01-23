@@ -26,6 +26,14 @@ class PrivilegeInfoDao extends BaseDao implements UserInterface, RemindableInter
         return parent::getList($filter);
     }
     
+    public function getListPaging($filter = null, $limit = 0, $offset = 0) {
+        return parent::getListPaging($filter, $limit, $offset);
+    }
+    
+    public function getListCount($filter = null) {
+        return parent::getRowCount($filter);
+    }
+    
     public function getPrivilegeInfo($id) {
         return parent::getObject($id);
     }

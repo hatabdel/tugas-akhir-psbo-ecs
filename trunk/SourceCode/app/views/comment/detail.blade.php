@@ -34,7 +34,7 @@
 		<div class="control-group">
             <label class="control-label">Forum</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getForum(); } ?>
+                <?php if(!is_null($model)) { echo (!is_null($model->getForum()) ? $model->getForum()->getTitle() : ""); } ?>
             </div>
         </div>
         <div class="form-actions">

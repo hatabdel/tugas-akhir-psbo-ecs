@@ -34,7 +34,7 @@
                 </div>
             </div>
 			<div class="control-group">
-                <label class="control-label">Course Code</label>
+                <label class="control-label">Course</label>
 				<div class="controls">
 					<select name="course_code">
 						<?php if(!is_null($CourseList))
@@ -53,7 +53,7 @@
 					</select>
 				</div>   
             </div>
-            <div class="control-group">
+            <div class="control-group" style="display: none;">
                 <label class="control-label">Is Public</label>
                 <?php 
                     $is_public_yes = "";

@@ -16,11 +16,17 @@
         <?php echo $errors; ?>
         <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
             <div class="control-group">
-                <!--<label class="control-label">Comment Id</label>-->
                 <div class="controls">
                     <input type="hidden" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
                 </div>
             </div>
+            <div class="control-group">
+                <label class="control-label">Forum</label>
+                <div class="controls">
+				<?php echo(!is_null($model) ? (!is_null($model->getForum())?$model->getForum()->getTitle():""):""); ?>
+                    <input type="hidden" name="forum_id" value="<?php echo(!is_null($model) ? (!is_null($model->getForum())?$model->getForum()->getId():""):""); ?>" />
+                </div>
+             </div>
             <div class="control-group">
                 <label class="control-label">Title Comment</label>
                 <div class="controls">
@@ -30,15 +36,9 @@
              <div class="control-group">
                 <label class="control-label">Comment</label>
                 <div class="controls">
-                    <textarea rows="10" class="span10" cols="50" name="content"><?php if(!is_null($model)) echo $model->getContent(); ?></textarea>
+                    <textarea rows="10" class="span10" cols="50" name="content"><?php if(!is_null($model)) echo str_replace("<br />", "\n", $model->getContent()); ?></textarea>
                 </div>
             </div>
-			 <div class="control-group">
-                <label class="control-label">Forum</label>
-                <div class="controls">
-				<?php echo(!is_null($model) ? (!is_null($model->getForum())?$model->getForum()->getTitle():""):""); ?>
-                    <input type="hidden" name="forum_id" value="<?php echo(!is_null($model) ? (!is_null($model->getForum())?$model->getForum()->getId():""):""); ?>" />
-                </div>
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
                 <button type="reset" class="btn btn-primary">Reset</button>

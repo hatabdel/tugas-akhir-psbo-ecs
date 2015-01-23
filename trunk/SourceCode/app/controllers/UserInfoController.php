@@ -74,6 +74,45 @@ class UserInfoController extends BaseController {
         }
     }
     
+    public function register() {
+        try {
+            $input = Input::all();
+            $user_type = (isset($input["user_type"]) ? $input["user_type"] : null);
+            if (is_null($user_type) || empty($user_type)) {
+                return Redirect::to("login");
+            }
+            $this->data["user_type"] = $user_type;
+            if (count($input) > 0) {
+                $model = $this->bindData($input);
+                $validation = Validator::make($input, $this->initValidation());
+                if ($validation->fails()) {
+                    return $this->createInputView($model, $validation->messages(), "register");
+                } else {
+                    $this->UserInfoService->setUserInfo($this->mUserInfo);
+                    $result = $this->UserInfoService->InsertUserInfo($model);
+                    
+                    if (!$result) {
+                        $this->addErrors($this->UserInfoService->getErrors());
+                        return $this->createInputView($model, $validation->messages(), "register");
+                    }
+                    
+                    if ($user_type == "instructor") {
+                        $InstructorObj = $this->bindDataInstructor($input);
+                        $InstructorService = new InstructorService();
+                        $InstructorService->setUserInfo($this->mUserInfo);
+                        $result = $InstructorService->InsertInstructor($InstructorObj);
+                    }
+                    
+                    return Redirect::to("userinfo/detail/".$model->getUserName());
+                }
+            }
+            return $this->createInputView($model, null, "register");
+        } catch (Exception $ex) {
+            $this->addError($ex->getMessage());
+            return $this->createInputView(null, null, "register");
+        }
+    }
+    
     public function delete($id) {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowDelete()) { return Redirect::to("access_denied"); }
@@ -89,10 +128,20 @@ class UserInfoController extends BaseController {
     
     public function detail($id) {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
-        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        if (!$this->IsAllowUpdate()) { return Redirect::to("access_denied"); }
         
         $this->data["model"] = $this->UserInfoService->getUserInfo($id);
         return View::make("userinfo/detail", $this->data);
+    }
+    
+    public function active($id) {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        $model = $this->UserInfoService->getUserInfo($id);
+        $model->setIsActive(true);
+        $this->UserInfoService->UpdateUserInfo($model, $id);
+        return Redirect::to("userinfo");
     }
     
     private function createInputView($model, $validation = null, $mode = "create") {
@@ -103,12 +152,16 @@ class UserInfoController extends BaseController {
         }
         if ($mode == "create") {
             $this->data["action"] = "/userinfo/".$mode;
+        } else if ($mode == "register") {
+            $this->data["action"] = "/".$mode;
         } else {
             $this->data["action"] = "/userinfo/".$mode."/".(!is_null($model) ? $model->getUserName() : "");
         }
+        
+        $this->data["user_group"] = (is_null($this->mUserInfo) ? "" : (!is_null($this->mUserInfo->getUserGroup()) ? $this->mUserInfo->getUserGroup()->getName() : ""));
         $this->data["mode"] = $mode;
         $this->loadUserGroupList();
-        
+        $this->loadCourseList();
         $this->addErrorValidation($validation);
         return View::make("userinfo/input", $this->data);
     }
@@ -116,25 +169,63 @@ class UserInfoController extends BaseController {
     private function initValidation() {
         $form_validation = array(
             "user_name" => "required",
-            "password" => "required"
+            "password" => "required",
+            "first_name" => "required",
+            "last_name" => "required",
+            "email" => "required|email"
         );
         return $form_validation;
     }
     
     private function bindData($param) {
         $UserInfoObj = new UserInfo();
-        
         if (!is_null($param) && count($param) > 0) {
             $UserInfoObj->setUserName($param["user_name"]);
             $UserInfoObj->setPassword($param["password"]);
-            $UserInfoObj->setIsActive($param["is_active"]);
-            $UserGroupObj = new UserGroup();
-            $UserGroupObj->setId($param["user_group_id"]);
-            $UserGroupObj->setIsLoaded(true);
-            $UserInfoObj->setUserGroup($UserGroupObj);
+            $UserInfoObj->setFirstName($param["first_name"]);
+            $UserInfoObj->setLastName($param["last_name"]);
+            $UserInfoObj->setEmail($param["email"]);
+            if (isset($param["is_active"])) {
+                $UserInfoObj->setIsActive($param["is_active"]);
+            }
+            if (isset($param["user_group_id"])) {
+                $UserGroupObj = new UserGroup();
+                $UserGroupObj->setId($param["user_group_id"]);
+                $UserGroupObj->setIsLoaded(true);
+                $UserInfoObj->setUserGroup($UserGroupObj);
+            }
+            if (isset($param["user_type"])) {
+                if ($param["user_type"] == "student") {
+                    $UserGroupObj = new UserGroup();
+                    $UserGroupObj->setId("5");
+                    $UserGroupObj->setIsLoaded(true);
+                    $UserInfoObj->setUserGroup($UserGroupObj);
+                    $UserInfoObj->setIsActive(true);
+                } else if ($param["user_type"] == "instructor") {
+                    $UserGroupObj = new UserGroup();
+                    $UserGroupObj->setId("4");
+                    $UserGroupObj->setIsLoaded(true);
+                    $UserInfoObj->setUserGroup($UserGroupObj);
+                    $UserInfoObj->setIsActive(false);
+                }
+            }
         }
         
         return $UserInfoObj;
+    }
+    
+    private function bindDataInstructor($param) {
+        $instructorObj = new Instructor();
+        $UserInfoObj = new UserInfo();
+        $UserInfoObj->setUserName($param["user_name"]);
+        $UserInfoObj->setIsLoaded(true);
+        $instructorObj->setUserInfo($UserInfoObj);
+        $Course = new Course();
+        $Course->setCode($param['course_code']);
+        $Course->setIsLoaded(true);
+        $instructorObj->setCourse($Course);
+        
+        return $instructorObj;
     }
     
     private function loadDefaultValue() {
@@ -146,6 +237,13 @@ class UserInfoController extends BaseController {
         $UserGroupList = $UserGroupService->getList();
         $this->data['UserGroupList'] = $UserGroupList;
     }
+    
+    private function loadCourseList()
+	{
+		$CourseService = new CourseService();
+		$CourseList = $CourseService->getList(); 
+		$this->data['CourseList'] = $CourseList;
+	}
     
     private function loadDefaultService() {
         $this->UserInfoService = new UserInfoService();

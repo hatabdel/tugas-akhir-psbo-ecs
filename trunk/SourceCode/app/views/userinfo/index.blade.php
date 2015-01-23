@@ -24,6 +24,7 @@
                             <th>User Name</th>
                             <th>User Group</th>
                             <th>Created Date</th>
+                            <th>Activate</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,11 @@
                             <td class="UserName"><a href="<?php echo url()."/userinfo/detail/".$item->getUserName(); ?>">{{ $item->getUserName() }}</a></td>
                             <td class="UserGroup"><?php if(!is_null($item)) { echo (!is_null($item->getUserGroup()) ? $item->getUserGroup()->getName() : ""); } ?></td>
                             <td class="CreatedDate">{{ $item->getCreatedDate() }}</td>
+                            <td class="Activate">
+                                <?php if (!$item->IsActive()) { ?>
+                                <a class="btn" href="<?php echo url()."/userinfo/active/".$item->getUserName(); ?>">Approved</a>
+                                <?php } ?>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

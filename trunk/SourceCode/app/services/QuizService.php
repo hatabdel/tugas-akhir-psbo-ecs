@@ -30,6 +30,8 @@ class QuizService extends BaseService {
     public function InsertQuiz($QuizObj) {//var_dump($QuizObj); die();
         try {
             if (!$this->validateOnInsert($QuizObj)) { return false; }//var_dump($QuizObj);	die();
+            $QuizObj->setCreatedDate(Date("Y-m-d H:i:s"));
+			$QuizObj->setCreatedUser($this->mUserInfo);
             return $this->QuizDao->InsertQuiz($QuizObj);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
@@ -40,6 +42,12 @@ class QuizService extends BaseService {
     public function UpdateQuiz($QuizObj, $Id) {
         try {
             if (!$this->validateOnUpdate($QuizObj)) { return false; }
+            $QuizObjOld = $this->getQuiz($Id);
+            if (!is_null($QuizObjOld)) {
+				$QuizObj->setCreatedDate($QuizObjOld->getCreatedDate());
+				$QuizObj->setCreatedUser($QuizObjOld->getCreatedUser());
+			}
+			$QuizObj->setUpdatedDate(Date("Y-m-d H:i:s"));
             return $this->QuizDao->UpdateQuiz($QuizObj, $Id);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
@@ -67,13 +75,13 @@ class QuizService extends BaseService {
             $this->addError("Quiz Name is required!");
         }
                 
-        if (is_null($model->getCourseCode()) || empty($model->getCourseCode())) {
-            $this->addError("Course Code is required!");
+        if (is_null($model->getCourse()) || empty($model->getCourse())) {
+            $this->addError("Course is required!");
         }
         
         
         if (is_null($model->getQuizType()) || empty($model->getQuizType())) {
-            $this->addError("Quiz Type Id is required!");
+            $this->addError("Quiz Type is required!");
         }
 		
         if (is_null($model->getStartDateTime()) || empty($model->getStartDateTime())) {
@@ -83,22 +91,6 @@ class QuizService extends BaseService {
         if (is_null($model->getEndDateTime()) || empty($model->getEndDateTime())) {
             $this->addError("End Date Time is required!");
         }
-          
-        if (is_null($model->getCreatedDate()) || empty($model->getCreatedDate())) {
-            $this->addError("Created Date is required!");
-        }
-          
-        if (is_null($model->getCreatedUser()) || empty($model->getCreatedUser())) {
-            $this->addError("Created User is required!");
-        }
-        
-        if (is_null($model->getUpdateDate()) || empty($model->getUpdateDate())) {
-            $this->addError("Update Date is required!");
-        }
-          
-        if (is_null($model->getUpdateUser()) || empty($model->getUpdateUser())) {
-            $this->addError("Update User is required!");
-        }
         
         return $this->getServiceState();
     }
@@ -107,12 +99,6 @@ class QuizService extends BaseService {
         if (is_null($model)) { return false; }
         $this->validateBase($model);
         
-        if (!is_null($model->getId()) && !empty($model->getId())) {
-            $QuizObj = $this->getQuiz($model->getId());
-            if (!is_null($QuizObj)) {
-                $this->addError("Data with code ".$model->getId()." is already exist!");
-            }
-        }
         return $this->getServiceState();
     }
     

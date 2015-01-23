@@ -95,6 +95,14 @@ class StudentQuizController extends BaseController {
         return View::make("studentquiz/detail", $this->data);
     }
     
+    public function result($id) {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        $this->data["model"] = $this->StudentQuizService->getStudentQuiz($id);
+        return View::make("studentquiz/detail", $this->data);
+    }
+    
     private function createInputView($model, $validation = null, $mode = "create") {
         if (!is_null($model)) {
             $this->data["model"] = $model;

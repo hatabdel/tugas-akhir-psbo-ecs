@@ -27,6 +27,14 @@ class CommentDao extends BaseDao implements UserInterface, RemindableInterface
         return parent::getList($filter);
     }
     
+    public function getListPaging($filter = null, $limit = 0, $offset = 0) {
+        return parent::getListPaging($filter, $limit, $offset);
+    }
+    
+    public function getListCount($filter = null) {
+        return parent::getRowCount($filter);
+    }
+    
     public function getComment($id) {
         return parent::getObject($id);
     }
@@ -51,8 +59,15 @@ class CommentDao extends BaseDao implements UserInterface, RemindableInterface
         $CommentObj->setId($rowset["id"]);
         $CommentObj->setTitle($rowset["title"]);
         $CommentObj->setContent($rowset["content"]);
+        $CreatedUser = new UserInfo();
+        $CreatedUser->setUserName($rowset['created_user']);
+        $CreatedUser->setIsLoaded(false);
+        $CommentObj->setCreatedUser($CreatedUser);
 		$CommentObj->setCreatedDate($rowset["created_date"]);
-		$CommentObj->setForum($rowset["forum_id"]);
+        $ForumObj = new Forum();
+        $ForumObj->setId($rowset["forum_id"]);
+        $ForumObj->setIsLoaded(false);
+		$CommentObj->setForum($ForumObj);
         return $CommentObj;
     }
 

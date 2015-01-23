@@ -12,7 +12,7 @@
             <a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
         </div>
     </div>
-    <div class="box-content" id="dialog-inputAdmin" title="Tambah User Info">
+    <div class="box-content" id="dialog-inputAdmin">
         <?php echo $errors; ?>
         <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
             <div class="control-group">
@@ -32,6 +32,7 @@
                     <input type="password" name="password" value="" />
                 </div>
             </div>
+            <?php if ($user_group == "admin") { ?>
             <div class="control-group">
                 <label class="control-label">User Group</label>
                 <div class="controls">
@@ -64,6 +65,52 @@
                         <option value="1" <?php echo $is_active_yes; ?>>Yes</option>
                         <option value="0" <?php echo $is_active_no; ?>>No</option>
                     </select>
+                </div>
+            </div>
+            <?php } else { ?>
+            <input type="hidden" name="user_type" value="<?php echo (isset($user_type) ? $user_type : ""); ?>" />
+            <?php } ?>
+            <?php 
+                $usertype = (isset($user_type) ? $user_type : "");
+                if ($usertype == "instructor") { 
+            ?>
+            <div class="control-group">
+                <label class="control-label">Course</label>
+				<div class="controls">
+					<select name="course_code">
+						<?php if(!is_null($CourseList))
+						{
+							foreach($CourseList as $item)
+							{
+								if(is_null($item)){continue;}
+								$selected = "";
+								/*if($item->getCode() == $model->getCourse()) 
+									{
+										$selected = "selected=\"selected\"";
+									}*/?>
+						<option value="{{ $item->getCode() }}" <?php echo $selected;?>> {{ $item->getName() }} </option>
+						<?php }
+						}?>
+					</select>
+				</div>   
+            </div>
+            <?php } ?>
+            <div class="control-group">
+                <label class="control-label">First Name</label>
+                <div class="controls">
+                    <input type="text" name="first_name" value="<?php if(!is_null($model)) echo $model->getFirstName(); ?>" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Last Name</label>
+                <div class="controls">
+                    <input type="text" name="last_name" value="<?php if(!is_null($model)) echo $model->getLastName(); ?>" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Email</label>
+                <div class="controls">
+                    <input type="text" name="email" value="<?php if(!is_null($model)) echo $model->getEmail(); ?>" />
                 </div>
             </div>
             <div class="form-actions">

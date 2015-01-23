@@ -135,10 +135,10 @@
                             var obj_data<?php echo $count; ?> = {
                                 Id: '<?php echo $item->getId(); ?>',
                                 FunctionInfoId: '<?php echo (!is_null($item->getFunctionInfo()) ? $item->getFunctionInfo()->getFunctionId() : "" ); ?>',
-                                IsAllowRead: <?php echo (!empty($item->IsAllowRead()) ? $item->IsAllowRead() : "''"); ?>,
-                                IsAllowCreate: <?php echo (!empty($item->IsAllowCreate()) ? $item->IsAllowCreate() : "''"); ?>,
-                                IsAllowUpdate: <?php echo (!empty($item->IsAllowUpdate()) ? $item->IsAllowUpdate() : "''"); ?>,
-                                IsAllowDelete: <?php echo (!empty($item->IsAllowDelete()) ? $item->IsAllowDelete() : "''"); ?>
+                                IsAllowRead: <?php echo (!empty($item->IsAllowRead()) ? $item->IsAllowRead() : "0"); ?>,
+                                IsAllowCreate: <?php echo (!empty($item->IsAllowCreate()) ? $item->IsAllowCreate() : "0"); ?>,
+                                IsAllowUpdate: <?php echo (!empty($item->IsAllowUpdate()) ? $item->IsAllowUpdate() : "0"); ?>,
+                                IsAllowDelete: <?php echo (!empty($item->IsAllowDelete()) ? $item->IsAllowDelete() : "0"); ?>
                             };
                             
                             addRowtblPrivilegeInfo("tblPrivilegeInfo", obj_data<?php echo $count; ?>);

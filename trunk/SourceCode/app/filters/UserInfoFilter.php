@@ -3,6 +3,7 @@ class UserInfoFilter
 {
 	private $mUserName;
 	private $mPassword;
+    private $mIsActive;
 	
 	public function setUserName($value) {
         $this->mUserName = $value;
@@ -20,6 +21,13 @@ class UserInfoFilter
         return $this->mPassword;
     }
     
+    public function setIsActive($value) {
+        $this->mIsActive = $value;
+    }
+
+    public function IsActive() {
+        return $this->mIsActive;
+    }
 	
 	public function getWhereQuery() {
        $where = "";
@@ -33,6 +41,12 @@ class UserInfoFilter
 	   {
 			if(!empty($where)) { $where .= " AND ";}
 			$where .= " password = '".stripslashes($this->mPassword)."'";
+	   }
+       
+       if(!is_null($this->mIsActive) && !empty($this->mIsActive))
+	   {
+			if(!empty($where)) { $where .= " AND ";}
+			$where .= " is_active = '".stripslashes($this->mIsActive)."'";
 	   }
 	   return $where;
     }

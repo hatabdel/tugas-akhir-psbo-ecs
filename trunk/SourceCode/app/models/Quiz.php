@@ -3,14 +3,18 @@
 class Quiz {
     private $mId;
     private $mQuizName;
-    private $mCourseCode;
+    private $mCourse;
     private $mQuizType;
     private $mStartDateTime;
     private $mEndDateTime;
+    private $mQuizTime;
     private $mCreatedDate;
     private $mCreatedUser;
-    private $mUpdateDate;
-    private $mUpdateUser;
+    private $mUpdatedDate;
+    private $mUpdatedUser;
+    private $mQuizDetails;
+    private $mTotalScore;
+    private $mIsLoaded;
 	
     public function setId($value) {
         $this->mId = $value;
@@ -28,12 +32,19 @@ class Quiz {
         return $this->mQuizName;
     }
     
-    public function setCourseCode($value) {
-        $this->mCourseCode = $value;
+    public function setCourse($value) {
+        $this->mCourse = $value;
     }
     
-    public function getCourseCode() {
-        return $this->mCourseCode;
+    public function getCourse() {
+        if (!is_null($this->mCourse) && !empty($this->mCourse)) {
+            if (!$this->mCourse->IsLoaded()) {
+                $CourseDao = new CourseDao();
+                $this->mCourse = $CourseDao->getCourse($this->mCourse->getCode());
+                if (!is_null($this->mCourse)) { $this->mCourse->setIsLoaded(true); }
+            }
+        }
+		return $this->mCourse;
     }
     
     public function setQuizType($value) {
@@ -41,7 +52,14 @@ class Quiz {
     }
     
     public function getQuizType() {
-        return $this->mQuizType;
+        if (!is_null($this->mQuizType) && !empty($this->mQuizType)) {
+            if (!$this->mQuizType->IsLoaded()) {
+                $QuizTypeDao = new QuizTypeDao();
+                $this->mQuizType = $QuizTypeDao->getQuizType($this->mQuizType->getId());
+                if (!is_null($this->mQuizType)) { $this->mQuizType->setIsLoaded(true); }
+            }
+        }
+		return $this->mQuizType;
     }
 	
     public function setStartDateTime($value) {
@@ -60,6 +78,14 @@ class Quiz {
         return $this->mEndDateTime;
     }
 	
+    public function setQuizTime($value) {
+        $this->mQuizTime = $value;
+    }
+    
+    public function getQuizTime() {
+        return $this->mQuizTime;
+    }
+    
     public function setCreatedDate($value) {
         $this->mCreatedDate = $value;
     }
@@ -73,37 +99,86 @@ class Quiz {
     }
     
     public function getCreatedUser() {
-        return $this->mCreatedUser;
+        if (!is_null($this->mCreatedUser) && !empty($this->mCreatedUser)) {
+            if (!$this->mCreatedUser->IsLoaded()) {
+                $UserInfoDao = new UserInfoDao();
+                $this->mCreatedUser = $UserInfoDao->getUserInfo($this->mCreatedUser->getUserName());
+                if (!is_null($this->mCreatedUser)) { $this->mCreatedUser->setIsLoaded(true); }
+            }
+        }
+		return $this->mCreatedUser;
     }
 	
-    public function setUpdateDate($value) {
-        $this->mUpdateDate = $value;
+    public function setUpdatedDate($value) {
+        $this->mUpdatedDate = $value;
     }
     
-    public function getUpdateDate() {
-        return $this->mUpdateDate;
+    public function getUpdatedDate() {
+        return $this->mUpdatedDate;
     }
 	
-    public function setUpdateUser($value) {
-        $this->mUpdateUser = $value;
+    public function setUpdatedUser($value) {
+        $this->mUpdatedUser = $value;
     }
     
     public function getUpdateUser() {
-        return $this->mUpdateUser;
+        if (!is_null($this->mUpdatedUser) && !empty($this->mUpdatedUser)) {
+            if (!$this->mUpdatedUser->IsLoaded()) {
+                $UserInfoDao = new UserInfoDao();
+                $this->mUpdatedUser = $UserInfoDao->getUserInfo($this->mUpdatedUser->getUserName());
+                if (!is_null($this->mUpdatedUser)) { $this->mUpdatedUser->setIsLoaded(true); }
+            }
+        }
+		return $this->mUpdatedUser;
+    }
+    
+    public function setIsLoaded($value) {
+        $this->mIsLoaded = $value;
+    }
+    
+    public function IsLoaded() {
+        return $this->mIsLoaded;
+    }
+    
+    public function getQuizDetail() {
+        if (!is_null($this->mId)) {
+            $QuizQuestionFilter = new QuizQuestionFilter();
+            $QuizQuestionFilter->setQuizId($this->mId);
+            $QuizQuestionDao = new QuizQuestionDao();
+            $this->mQuizDetails = $QuizQuestionDao->getList($QuizQuestionFilter);
+        }
+        return $this->mQuizDetails;
     }
 	
+    public function getTotalScore() {
+        if (!is_null($this->mId)) {
+            $QuizQuestionFilter = new QuizQuestionFilter();
+            $QuizQuestionFilter->setQuizId($this->mId);
+            $QuizQuestionDao = new QuizQuestionDao();
+            $result = $QuizQuestionDao->getList($QuizQuestionFilter);
+            $this->mTotalScore = 0;
+            if (!is_null($result)) {
+                foreach($result as $item) {
+                    $this->mTotalScore += $item->getScore();
+                }
+            }
+        }
+        return $this->mTotalScore;
+    }
+    
     public function toArray() {
         return array(
             "id" => $this->mId,
             "quiz_name" => $this->mQuizName,
-            "course_code" => $this->mCourseCode,
-            "quiz_type_id" => $this->mQuizType,
+            "course_code" => (!is_null($this->mCourse) ? $this->mCourse->getCode() : null),
+            "quiz_type_id" => (!is_null($this->mQuizType) ? $this->mQuizType->getId() : null),
             "start_date_time" => $this->mStartDateTime,
             "end_date_time" => $this->mEndDateTime,
             "created_date" => $this->mCreatedDate,
-            "created_user" => $this->mCreatedUser,
-            "update_date" => $this->mUpdateDate,
-            "update_user" => $this->mUpdateUser
+            "created_user" => (!is_null($this->mCreatedUser) ? $this->mCreatedUser->getUserName() : null),
+            "updated_date" => $this->mUpdatedDate,
+            "updated_user" => (!is_null($this->mUpdatedUser) ? $this->mUpdatedUser->getUserName() : null),
+            "quiz_time" => $this->mQuizTime,
         );
     }
 }

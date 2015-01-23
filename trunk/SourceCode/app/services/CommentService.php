@@ -16,6 +16,24 @@ class CommentService extends BaseService
         }
     }
     
+    public function getListPaging($filter = null, $limit = 0, $offset = 0) {
+        try {
+            return $this->CommentDao->getListPaging($filter, $limit, $offset);
+        } catch (Exception $ex) {
+            $this->addError($ex->getMessage());
+            throw new Exception($ex->getMessage());
+        }
+    }
+    
+    public function getListCount($filter = null) {
+        try {
+            return $this->CommentDao->getListCount($filter);
+        } catch (Exception $ex) {
+            $this->addError($ex->getMessage());
+            throw new Exception($ex->getMessage());
+        }
+    }
+    
     public function getComment($id) {
         try { 
             return $this->CommentDao->getComment($id);
@@ -68,10 +86,6 @@ class CommentService extends BaseService
     
     private function validateBase($model) {
         if (is_null($model)) { return false; }
-        
-        if (is_null($model->getTitle()) || empty($model->getTitle())) {
-            $this->addError("Title is required!");
-        }
         
         return $this->getServiceState();
     }

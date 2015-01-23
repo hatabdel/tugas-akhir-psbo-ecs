@@ -29,8 +29,57 @@ class StudentQuizService extends BaseService {
     
        public function InsertStudentQuiz($StudentQuizObj) {
         try {
-            if (!$this->validateOnInsert($StudentQuizObj)) { return false; }//var_dump($StudentQuizObj);	die();
-            return $this->StudentQuizDao->InsertStudentQuiz($StudentQuizObj);
+            if (!$this->validateOnInsert($StudentQuizObj)) { return false; }
+            
+            $this->StudentQuizDao->BeginTransaction();
+            
+            $StudentQuizObj->setUserInfo($this->mUserInfo);
+            $StudentQuizObj->setEndDateTime(Date("Y-m-d H:i:s"));
+            
+            $StudentAnswer = array();
+            $TotalScore = 0;
+            foreach ($StudentQuizObj->getStudentAnswers() as $item) {
+                if (is_null($item)) continue;
+                $QuestionAnswer = (!is_null($item->getQuizQuestion()) ? $item->getQuizQuestion()->getCorrectAnswers() : array());
+                $Score = (!is_null($item->getQuizQuestion()) ? $item->getQuizQuestion()->getScore() : 0);
+                $AnswerId = (!is_null($item->getAnswer()) ? $item->getAnswer()->getId() : "");
+                if (in_array($AnswerId, $QuestionAnswer)) {
+                    $item->setScore($Score);
+                    $item->setIsCorrect(true);
+                    $TotalScore += $Score;
+                } else {
+                    $item->setScore(0);
+                    $item->setIsCorrect(false);
+                }
+                $StudentAnswer[] = $item;
+            }
+            $StudentQuizObj->setTotalScore($TotalScore);
+            $StudentQuizObj->setStudentAnswers($StudentAnswer);
+            
+            $Result = $this->StudentQuizDao->InsertStudentQuiz($StudentQuizObj);
+            
+            if (!$Result) {
+                $this->StudentQuizDao->RollbackTransaction();
+                $this->addError("Insert Data Failed");
+                return false;
+            }
+            
+            if (count($StudentQuizObj->getStudentAnswers()) > 0) {
+                foreach ($StudentQuizObj->getStudentAnswers() as $item) {
+                    if (is_null($item)) { continue; }
+                    $item->setStudentQuiz($Result);
+                    $StudentAnswerDao = new StudentAnswerDao();
+                    $ResultStudentAnswer = $StudentAnswerDao->InsertStudentAnswer($item);
+                    if (!$ResultStudentAnswer) {
+                        $this->StudentQuizDao->rollbackTransaction();
+                        $this->addError("Insert Detail Data Failed");
+                        return false;
+                    }
+                }
+            }
+            
+            $this->StudentQuizDao->CommitTransaction();
+            return $Result;
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
@@ -63,27 +112,6 @@ class StudentQuizService extends BaseService {
     private function validateBase($model) {
         if (is_null($model)) { return false; }
         
-        if (is_null($model->getIdentity()) || empty($model->getIdentity())) {
-            $this->addError("Identity Id is required!");
-        }
-        
-        if (is_null($model->getQuiz()) || empty($model->getQuiz())) {
-            $this->addError("Quiz Id is required!");
-        }
-        
-        
-        if (is_null($model->getTotalScore()) || empty($model->getTotalScore())) {
-            $this->addError("Total Score is required!");
-        }
-        
-        if (is_null($model->getStartDateTime()) || empty($model->getStartDateTime())) {
-            $this->addError("Start Date Time is required!");
-        }
-		
-        if (is_null($model->getEndDateTime()) || empty($model->getEndDateTime())) {
-            $this->addError("End Date Time is required!");
-        }
-		
         return $this->getServiceState();
     }
     
@@ -91,13 +119,7 @@ class StudentQuizService extends BaseService {
         if (is_null($model)) { return false; }
         $this->validateBase($model);
 		
-		if (!is_null($model->getStudentQuiz()) && !empty($model->getStudentQuiz())) {
-            $StudentQuizObj = $this->getStudentQuiz($model->getStudentQuiz());
-            if (!is_null($StudentQuizObj)) {
-                $this->addError("Data with code ".$model->getStudentQuiz()." is already exist!");
-            }
-        }
-        return $this->getServiceState();
+		return $this->getServiceState();
     }
     
     private function validateOnUpdate($model) {

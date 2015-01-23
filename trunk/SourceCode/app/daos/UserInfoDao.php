@@ -69,6 +69,9 @@ class UserInfoDao extends BaseDao implements UserInterface, RemindableInterface 
         $UserInfoObj->setUserGroup($UserGroupObj);
         $UserInfoObj->setIsActive($rowset["is_active"]);
         $UserInfoObj->setIsLoaded(true);
+        $UserInfoObj->setFirstName($rowset["first_name"]);
+        $UserInfoObj->setLastName($rowset["last_name"]);
+        $UserInfoObj->setEmail($rowset["email"]);
         return $UserInfoObj;
     }
 

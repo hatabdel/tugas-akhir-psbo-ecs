@@ -11,7 +11,12 @@ class UserInfo {
     private $mIsActive;
     private $mUserGroup;
     private $mIsLoaded;
-    
+    private $mFirstName;
+    private $mLastName;
+    private $mEmail;
+    private $mCourseDetail;
+    private $mInstructor;
+        
     public function __construct() {
         $this->mIsLoaded = false;
     }
@@ -22,6 +27,30 @@ class UserInfo {
 
     public function getUserName() {
         return $this->mUserName;
+    }
+    
+    public function setFirstName($value) {
+        $this->mFirstName = $value;
+    }
+
+    public function getFirstName() {
+        return $this->mFirstName;
+    }
+    
+    public function setLastName($value) {
+        $this->mLastName = $value;
+    }
+
+    public function getLastName() {
+        return $this->mLastName;
+    }
+    
+    public function setEmail($value) {
+        $this->mEmail = $value;
+    }
+
+    public function getEmail() {
+        return $this->mEmail;
     }
     
     public function setPassword($value) {
@@ -75,6 +104,27 @@ class UserInfo {
         return $this->mIsActive;
     }
     
+    public function getCourseDetail() {
+        if (!is_null($this->mUserName) && !empty($this->mUserName)) {
+            $CourseDetailDao = new CourseDetailDao();
+            $CourseDetailFilter = new CourseDetailFilter();
+            $CourseDetailFilter->setUserName($this->mUserName);
+            $this->mCourseDetail = $CourseDetailDao->getList($CourseDetailFilter);
+        }
+        return $this->mCourseDetail;
+    }
+    
+    public function getInstructor() {
+        if (!is_null($this->mUserName) && !empty($this->mUserName)) {
+            $InstructorDao = new InstructorDao();
+            $InstructorFilter = new InstructorFilter();
+            $InstructorFilter->setUserName($this->mUserName);
+            $Instructor = $InstructorDao->getList($InstructorFilter);
+            if (!is_null($Instructor) && count($Instructor) > 0) $this->mInstructor = $Instructor[0];
+        }
+        return $this->mInstructor;
+    }
+    
     public function setIsLoaded($value) {
         $this->mIsLoaded = $value;
     }
@@ -86,6 +136,9 @@ class UserInfo {
     public function toArray() {
         return array(
             "user_name" => $this->mUserName,
+            "first_name" => $this->mFirstName,
+            "last_name" => $this->mLastName,
+            "email" => $this->mEmail,
             "password" => md5($this->mPassword),
             "created_date" => $this->mCreatedDate,
             "updated_date" => $this->mUpdatedDate,

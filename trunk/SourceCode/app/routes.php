@@ -167,3 +167,9 @@ Route::any('access_denied', 'AccessDeniedController@index');
 Route::any('accessdenied', 'AccessDeniedController@index');Route::any('login/logout', 'LoginController@logout');
 Route::any('forum/detilforum/{id}', 'ForumController@detail');
 Route::any('comment/create/{id}', 'CommentController@create');
+
+Route::any('register', 'UserInfoController@register');
+Route::any('userinfo/active/{id}', 'UserInfoController@active');
+Route::any('course/dashboard/{id}', 'CourseController@dashboard');
+Route::any('quiz/take/{id}', 'QuizController@take');
+Route::any('quiz/result/{id}', 'StudentQuizController@result');

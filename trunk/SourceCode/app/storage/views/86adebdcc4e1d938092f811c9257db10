@@ -55,7 +55,7 @@
                     <input type="text" name="url" value="<?php if(!is_null($model)) echo $model->getUrl(); ?>" />
                 </div>
             </div>
-            <div class="control-group">
+            <div class="control-group" style="display:none">
                 <label class="control-label">Icon</label>
                 <div class="controls">
                     <select name="icon" id="icon">

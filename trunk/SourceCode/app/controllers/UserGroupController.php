@@ -69,6 +69,7 @@ class UserGroupController extends BaseController {
             }
             return $this->createInputView($model, null, "edit");
         } catch (Exception $ex) {
+            $this->addError($ex->getMessage());
             return $this->createInputView(null, null, "edit");
         }
     }
@@ -141,6 +142,9 @@ class UserGroupController extends BaseController {
         
         if (count($arr_Details) > 0) {
             for($i = 0;$i < count($arr_Details);$i++) {
+                if(!isset($arr_IsAllowDelete[$i])) {
+                    die("asdasd");
+                }
                 $PrivilegeInfoObj = new PrivilegeInfo();
                 $PrivilegeInfoObj->setId($arr_PrivilgeInfoId[$i]);
                 $FunctionInfoObj = new FunctionInfo();

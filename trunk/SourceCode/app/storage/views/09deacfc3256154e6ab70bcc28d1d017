@@ -1,0 +1,49 @@
+<?php $__env->startSection('title'); ?>
+    <?php echo $_MODULE_NAME; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main_content'); ?>
+<div class="box">
+    <div class="box-title">
+        <h3><i class="icon-plus"></i>Create New Comment</h3>
+        <div class="box-tool">
+            <a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
+        </div>
+    </div>
+    <div class="box-content" id="dialog-inputAdmin" title="Tambah Comment">
+        <?php echo $errors; ?>
+        <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
+            <div class="control-group">
+                <div class="controls">
+                    <input type="hidden" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Forum</label>
+                <div class="controls">
+				<?php echo(!is_null($model) ? (!is_null($model->getForum())?$model->getForum()->getTitle():""):""); ?>
+                    <input type="hidden" name="forum_id" value="<?php echo(!is_null($model) ? (!is_null($model->getForum())?$model->getForum()->getId():""):""); ?>" />
+                </div>
+             </div>
+            <div class="control-group">
+                <label class="control-label">Title Comment</label>
+                <div class="controls">
+                    <input class="span10" type="text" name="title" value="<?php if(!is_null($model)) echo $model->getTitle(); ?>" />
+                </div>
+            </div>
+             <div class="control-group">
+                <label class="control-label">Comment</label>
+                <div class="controls">
+                    <textarea rows="10" class="span10" cols="50" name="content"><?php if(!is_null($model)) echo str_replace("<br />", "\n", $model->getContent()); ?></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+                <button type="button" onclick='window.location.href="<?php echo url()."/forum/detilforum/".(!is_null($model->getForum())?$model->getForum()->getId():""); ?>"' class="btn btn-primary">Cancel</button>
+             </div>
+        </form>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('shared.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

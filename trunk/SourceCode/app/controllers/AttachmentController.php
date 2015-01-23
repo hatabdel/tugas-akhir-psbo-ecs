@@ -1,5 +1,6 @@
 <?php
 
+
 class AttachmentController extends BaseController {
 
 	private $AttachmentService;
@@ -27,7 +28,16 @@ class AttachmentController extends BaseController {
         try {
             $input = Input::all();
             $model = null;
-            if (count($input) > 0) {
+            
+            if (isset($input["course_code"])) {
+                $this->data["function_id"] = "course";
+                $this->data["record_id"] = $input["course_code"];
+            }
+            
+            if (isset($input["back_url"])) {
+                $this->data["back_url"] = $input["back_url"];
+            }
+            if (count($input) > 0 && Request::isMethod('post')) {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
                 if ($validation->fails()) {
@@ -39,7 +49,8 @@ class AttachmentController extends BaseController {
                         $this->addErrors($this->AttachmentService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("attachment/detail/".$model->getId());
+                    $back_url = (isset($input["back_url"]) ? "?back_url=".$input["back_url"] : "");
+                    return Redirect::to("attachment/detail/".$model->getId().$back_url);
                 }
             }
             return $this->createInputView($model);
@@ -95,6 +106,11 @@ class AttachmentController extends BaseController {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
+        $input = Input::all();
+        if (isset($input["back_url"])) {
+            $this->data["back_url"] = $input["back_url"];
+        }
+        
         $this->data["model"] = $this->AttachmentService->getAttachment($id);
         return View::make("attachment/detail", $this->data);
     }
@@ -120,6 +136,8 @@ class AttachmentController extends BaseController {
             $this->data["model"] = $model;
         } else {
             $this->data["model"] = new Attachment();
+            if (isset($this->data["function_id"])) $this->data["model"]->setFunctionId($this->data["function_id"]);
+            if (isset($this->data["record_id"])) $this->data["model"]->setRecordId($this->data["record_id"]);
         }
         if ($mode == "create") {
             $this->data["action"] = "/attachment/".$mode;
@@ -144,6 +162,9 @@ class AttachmentController extends BaseController {
             $AttachmentObj->setId($param["id"]);
             $AttachmentObj->setFileName($param["file_name"]);
             $AttachmentObj->setDescription($param["description"]);
+            $AttachmentObj->setFunctionId($param["function_id"]);
+            $AttachmentObj->setRecordId($param["record_id"]);
+            
             $AttachmentObj = $this->doUpload($AttachmentObj);
         }
         return $AttachmentObj;
