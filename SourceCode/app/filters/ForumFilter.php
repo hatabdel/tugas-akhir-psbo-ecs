@@ -1,24 +1,24 @@
 <?php
-class InstructorFilter
+class ForumFilter
 {
-	private $mUserName;
 	private $mCourseCode;
+	private $mForumType;
     private $mIsActive;
 	
-	public function setUserName($value) {
-        $this->mUserName = $value;
-    }
-
-    public function getUserName() {
-        return $this->mUserName;
-    }
-    
-    public function setCourseCode($value) {
+	public function setCourseCode($value) {
         $this->mCourseCode = $value;
     }
 
     public function getCourseCode() {
         return $this->mCourseCode;
+    }
+    
+    public function setForumType($value) {
+        $this->mForumType = $value;
+    }
+
+    public function getForumType() {
+        return $this->mForumType;
     }
     
     public function setIsActive($value) {
@@ -31,16 +31,16 @@ class InstructorFilter
 	
 	public function getWhereQuery() {
        $where = "";
-	   if(!is_null($this->mUserName) && !empty($this->mUserName))
+	   if(!is_null($this->mCourseCode) && !empty($this->mCourseCode))
 	   {
 			if(!empty($where)) { $where = " AND ";}
-			$where .= " user_name = '".stripslashes($this->mUserName)."'";
+			$where .= " course_code = '".stripslashes($this->mCourseCode)."'";
 	   }
        
-       if(!is_null($this->mCourseCode) && !empty($this->mCourseCode))
+       if(!is_null($this->mForumType) && !empty($this->mForumType))
 	   {
 			if(!empty($where)) { $where .= " AND ";}
-			$where .= " course_code = '".stripslashes($this->mCourseCode)."'";
+			$where .= " forum_type = '".stripslashes($this->mForumType)."'";
 	   }
        
        if(!is_null($this->mIsActive) && !empty($this->mIsActive))

@@ -71,7 +71,7 @@ class StudentAnswerFilter {
         
         if (!is_null($this->mUserName) && !empty($this->mUserName)) {
             if (!empty($where)) { $where .= " AND "; }
-            $where .= " user_group_id = '".stripslashes($this->mUserName)."'";
+            $where .= " user_name = '".stripslashes($this->mUserName)."'";
         }
         
         if (!is_null($this->mStudentQuiz) && !empty($this->mStudentQuiz)) {
