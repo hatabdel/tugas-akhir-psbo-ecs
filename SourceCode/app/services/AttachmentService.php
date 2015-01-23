@@ -14,9 +14,9 @@ class AttachmentService extends BaseService {
         $this->AttachmentDao = new AttachmentDao();
     }
     
-    public function getList() {
+    public function getList($filter = null) {
         try {
-            return $this->AttachmentDao->getList();
+            return $this->AttachmentDao->getList($filter);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());

@@ -17,6 +17,7 @@
                 <div class="clearfix"></div>
                 <a class='btn show-tooltip' style='margin-bottom:10px !important;' title='Create' href='<?php echo url()."/privilegeinfo/create"; ?>' ><i class='icon-plus'> Create</i></a>
                 @if (count($PrivilegeInfoList) > 0 && !is_null($PrivilegeInfoList))
+                <?php echo $paging; ?>
                 <table class="table table-advance" id="table_user_info">
                     <thead>
                         <tr>
@@ -41,10 +42,13 @@
                     @endforeach
                     </tbody>
                 </table>
+                <?php echo $paging; ?>
                 @else
                 <h3>There is no data in database</h3>
                 @endif
+                <div style="clear: both">
                 <a class='btn show-tooltip' style='margin-top:10px !important;' title='Create' href='<?php echo url()."/privilegeinfo/create"; ?>'><i class='icon-plus'> Create</i></a>
+                </div>
             </div>
         </div>
     </div>

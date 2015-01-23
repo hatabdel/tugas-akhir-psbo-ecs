@@ -12,7 +12,7 @@ class BaseDao extends Dao {
     protected function getList($filter = null) {
         $list = null;
         if (is_null($filter)) {
-            $list = parent::all();
+            $list = DB::table($this->table)->get();
         } else {
             $list = DB::table($this->table)->whereRaw($filter->getWhereQuery())->get();
         }
@@ -32,6 +32,43 @@ class BaseDao extends Dao {
             }
         }
         return $obj_arr;
+    }
+    
+    protected function getListPaging($filter = null, $limit = 0, $offset = 1) {
+        $list = null;
+        if (is_null($filter)) {
+            $list = DB::table($this->table)->skip($offset)->take($limit)->get();
+        } else {
+            $list = DB::table($this->table)->whereRaw($filter->getWhereQuery())->skip($offset)->take($limit)->get();
+        }
+        
+        $obj_arr = array();
+        if (!is_null($list)) {
+            $list_arr = array();
+            if (is_array($list)) {
+                $list_arr = $list;
+            } else {
+                $list_arr = $list->toArray();
+            }
+
+            foreach ($list_arr as $item) {
+                if(!is_array($item)) { $item = get_object_vars($item); }
+                $obj_arr[] = $this->toObject($item);
+            }
+        }
+        return $obj_arr;
+    }
+    
+    protected function getRowCount($filter = null) {
+        $count = 0;
+        
+        if (is_null($filter)) {
+            $count = DB::table($this->table)->count();
+        } else {
+            $count = DB::table($this->table)->whereRaw($filter->getWhereQuery())->count();
+        }
+        
+        return $count;
     }
     
     protected function getObject($id) {
@@ -65,6 +102,18 @@ class BaseDao extends Dao {
         if (is_null($id) || empty($id)) { return false; }
         DB::table($this->table)->where($this->primary_key, $id)->delete();
         return true;
+    }
+    
+    public function BeginTransaction() {
+        DB::beginTransaction();
+    }
+    
+    public function CommitTransaction() {
+        DB::commit();
+    }
+    
+    public function RollbackTransaction() {
+        DB::rollback();
     }
     
     protected function addError($message) {

@@ -86,15 +86,25 @@
 
 <div class="box effect6">
     <table style="width:100%;" id="box_log" border="0">
+        <tr style="text-align: center">
+            <td colspan="2"><h3>E Learning Collaborative System</h3></td>
+        </tr>
         <tr>
-            <td valign="top" style="width:50%;">
-                <div class="text-center" style="margin-top:150px;">
-                    <h1>ECS</h1>
-                </div>                
+            <td valign="top" style="width:50%;" style="text-align: center">
+                <div class="text-center">
+                    <h4>Sign Up</h4>
+                </div>
+                <form method="post" style="margin-left: 100px !important;" action="<?php echo url()."/register"; ?>" class="form-horizontal">
+                    <input type="hidden" name="user_type" value="student" />
+                    <input type="submit" class="btn show-tooltip" value="Student" />
+                </form>
+                <form method="post" style="margin-left: 100px !important;" action="<?php echo url()."/register"; ?>" class="form-horizontal">
+                    <input type="hidden" name="user_type" value="instructor" />
+                    <input type="submit" class="btn show-tooltip" value="Instructor" />
+                </form>
             </td>
             <td valign="top">
                 <div class="verticalLine"></div>
-                <h3>E Learning Collaborative System</h3>
                 <p id="welcome">Please login using your existing username and password.</p>
                 <br/>
                 <?php echo $errors; ?>

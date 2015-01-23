@@ -53,6 +53,11 @@ class ForumController extends BaseController {
         if (!$this->IsAllowUpdate()) { return Redirect::to("access_denied"); }
         
         $model = $this->ForumService->getForum($id);
+        
+        $CreatedUser = (!is_null($model->getCreatedUser()) ? $model->getCreatedUser()->getUserName() : null);
+        $LoginUser = (!is_null($this->mUserInfo) ? $this->mUserInfo->getUserName() : null);
+        if ($CreatedUser != $LoginUser) { return Redirect::to("access_denied"); }
+        
         try {
             $input = Input::all();
             if (count($input) > 0) {
@@ -82,6 +87,11 @@ class ForumController extends BaseController {
         if (!$this->IsAllowDelete()) { return Redirect::to("access_denied"); }
         try {
             $model = $this->ForumService->getForum($id);
+            
+            $CreatedUser = (!is_null($model->getCreatedUser()) ? $model->getCreatedUser()->getUserName() : null);
+            $LoginUser = (!is_null($this->mUserInfo) ? $this->mUserInfo->getUserName() : null);
+            if ($CreatedUser != $LoginUser) { return Redirect::to("access_denied"); }
+        
             if (is_null($model)) { return Redirect::to("forum"); }
             $this->ForumService->DeleteForum($id);
             return Redirect::to("forum");
@@ -96,6 +106,20 @@ class ForumController extends BaseController {
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
         $this->data["model"] = $this->ForumService->getForum($id);
+        
+        $CommentFilter = new CommentFilter();
+        $CommentFilter->setForumId($id);
+        $CommentService = new CommentService();
+        
+        $param = Input::all();
+        $row_count = $CommentService->getListCount($CommentFilter);
+        $this->data['paging'] = $this->generatePagingLink("forum", "detail/".$id, $row_count, $param);
+        
+        $limit = 10;
+        $offset = (isset($param['page']) ? $limit * ($param['page'] - 1) : 0);
+        $this->data["start_num_comment"] = $offset + 1;
+        $this->data["CommentList"] = $CommentService->getListPaging($CommentFilter, $limit, $offset);
+        
         return View::make("forum/detilforum", $this->data);
     }
     

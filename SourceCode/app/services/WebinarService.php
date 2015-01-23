@@ -9,9 +9,9 @@ class WebinarService extends BaseService {
         $this->WebinarDao = new WebinarDao();
     }
     
-    public function getList() {
+    public function getList($filter = null) {
         try {
-            return $this->WebinarDao->getList();
+            return $this->WebinarDao->getList($filter);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
@@ -171,7 +171,7 @@ class WebinarService extends BaseService {
             'dialNumber' => '',
             'voiceBridge' => '',
             'webVoice' => '',
-            'logoutUrl' => url()."webinar/detail/".$model->getId(), 
+            'logoutUrl' => url()."/webinar/detail/".$model->getId(), 
             'maxParticipants' => '-1',
             'record' => 'false',
             'duration' => '0'            

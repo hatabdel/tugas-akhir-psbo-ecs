@@ -2,6 +2,7 @@
 <html>
     <head>
         <title><?php echo $__env->yieldContent('title'); ?> E-Learning Collaborative System</title>
+        <link rel="stylesheet" href="<?php echo url()."/public/css/apps.css"; ?>" />
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/bootstrap/bootstrap.min.css"; ?>" />
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/bootstrap/bootstrap-responsive.min.css"; ?>" />
         <link rel="stylesheet" href="<?php echo url()."/public/scripts/bootstrap/font-awesome/css/font-awesome.min.css"; ?>" />
@@ -37,6 +38,8 @@
         <!--flaty scripts-->
         <script type="text/javascript" src="<?php echo url()."/public/scripts/flaty/flaty.js"; ?>"></script>
         <script type="text/javascript" src="<?php echo url()."/public/scripts/aztable/azTable.js"; ?>"></script>
+        <script type="text/javascript" src="<?php echo url()."/public/scripts/jquery.countdown.min.js"; ?>"></script>
+        <script type="text/javascript" src="<?php echo url()."/public/scripts/apps.js"; ?>"></script>
         <script type="text/javascript">
             $(document).ready(function () { 
                 if ($('#main-content').height() < $(window).height()) $('#main-content').css("min-height",$(window).height()); 
@@ -68,9 +71,18 @@
                     <!-- END Responsive Sidebar Collapse -->
 
                     <!-- BEGIN Navbar Buttons -->
+                    <?php 
+                    $show = true;
+                    if (isset($mode)) {
+                        if ($mode == "register") {
+                            $show = false;
+                        }
+                    }
+                    if ($show) {
+                    ?>
                     <ul class="nav flaty-nav pull-right">
                       <!-- BEGIN Button User -->
-                        <li class="nav-header">
+                        <li class="nav-header" style="display:none">
                             <i class="icon-time"></i>
                             Logined From 20:45
                         </li>
@@ -83,6 +95,7 @@
                         </li>
                         <!-- END Button User -->
                     </ul>
+                    <?php } ?>
                     <!-- END Navbar Buttons -->
                 </div><!--/.container-fluid-->
             </div><!--/.navbar-inner-->
@@ -92,6 +105,7 @@
         <!-- BEGIN Container -->
         <div class="container-fluid" id="main-container">
             <!-- BEGIN Side bar -->
+            <?php if ($show) { ?>
             <div id="sidebar" class="nav-collapse">
                 <?php echo $__env->make('shared.leftmenu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                 <!-- BEGIN Side bar Collapse Button -->
@@ -100,10 +114,11 @@
                 </div>
                 <!-- END Side bar Collapse Button -->
             </div>
+            <?php } ?>
             <!-- END Side bar -->
 
             <!-- BEGIN Content -->
-            <div id="main-content">
+            <div id="main-content" <?php echo (!$show ? "style=\"margin-left:0px;\"" : ""); ?>>
                 <!-- BEGIN Page Title -->
                 <div class="page-title">
                     <div>
@@ -114,7 +129,7 @@
                 <!-- END Page Title -->
 
                 <!-- BEGIN Bread Crumb -->
-                <div id="breadcrumbs">
+                <div id="breadcrumbs" style="display: none">
                     <ul class="breadcrumb">
                         <li class="active"><i class="icon-home"></i>Home</li>
                     </ul>

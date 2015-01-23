@@ -22,9 +22,8 @@
                         <tr>
                             <th style="width:100px">Action</th>
                             <th>Quiz Question Id</th>
-                            <th>Quiz Id</th>
+                            <th>Quiz</th>
                             <th>Question</th>
-                            <th>Answer Type Id</th>
                             <th>Score</th>
                         </tr>
                     </thead>
@@ -37,9 +36,8 @@
                                 <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/quizquestion/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
                             </td>
                             <td class="Id"><a href="<?php echo url()."/quizquestion/detail/".$item->getId(); ?>">{{ $item->getId() }}</a></td>
-                            <td class="Quiz">{{ $item->getQuiz() }}</td>
+                            <td class="Quiz">{{ (!is_null($item->getQuiz()) ? $item->getQuiz()->getQuizName() : "") }}</td>
                             <td class="Question">{{ $item->getQuestion() }}</td>
-                            <td class="AnswerType">{{ $item->getAnswerType() }}</td>
                             <td class="Score">{{ $item->getScore() }}</td>
                         </tr>
                     @endforeach

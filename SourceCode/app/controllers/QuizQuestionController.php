@@ -110,8 +110,7 @@ class QuizQuestionController extends BaseController {
             $this->data["action"] = "/quizquestion/".$mode."/".(!is_null($model) ? $model->getId() : "");
         }
         
-        $this->loadFunctionList();
-        $this->loadUsertGroupList();
+        $this->loadQuizList();
 		
         $this->addErrorValidation($validation);
         return View::make("quizquestion/input", $this->data);
@@ -119,12 +118,8 @@ class QuizQuestionController extends BaseController {
     
     private function initValidation() {
         $form_validation = array(
-           // "quiz_question_id" => "required",
-            "quiz_id" => "required",
             "question" => "required",
-            "answer_type_id" => "required",
             "score" => "required"
-            //"is_correct" => "required"
         );
         return $form_validation;
     }
@@ -133,25 +128,45 @@ class QuizQuestionController extends BaseController {
 	   $QuizQuestionObj = new QuizQuestion();
         if (!is_null($param) && count($param) > 0) {
             $QuizQuestionObj->setId($param["id"]);
-            $QuizQuestionObj->setQuiz($param["quiz_id"]);
+            $QuizObj = new Quiz();
+            $QuizObj->setId($param["quiz_id"]);
+            $QuizObj->setIsLoaded(true);
+            $QuizQuestionObj->setQuiz($QuizObj);
             $QuizQuestionObj->setQuestion($param["question"]);
-            $QuizQuestionObj->setAnswerType($param["answer_type_id"]);
             $QuizQuestionObj->setScore($param["score"]);
+            $Answers = $this->bindDataAnswer($param);
+            $QuizQuestionObj->setAnswers($Answers);
         }
+        
         return $QuizQuestionObj;
 		
     }
     
-    private function loadFunctionList() {
-        $FunctionInfoService = new FunctionInfoService();
-        $FunctionInfoList = $FunctionInfoService->getList();
-        $this->data['FunctionInfoList'] = $FunctionInfoList;
+    private function bindDataAnswer($param) {
+        $Answers = array();
+        $arr_Details = $param["details"];
+        $arr_AnswerId = $param["answer_id"];
+        $arr_Content = $param["content"];
+        $arr_IsCorrect = $param["is_correct"];
+        
+        if (count($arr_Details) > 0) {
+            for($i = 0;$i < count($arr_Details);$i++) {
+                $AnswerObj = new Answer();
+                $AnswerObj->setId($arr_AnswerId[$i]);
+                $AnswerObj->setContent($arr_Content[$i]);
+                $AnswerObj->setIsCorrect($arr_IsCorrect[$i]);
+                $AnswerObj->setIsLoaded(true);
+                $Answers[] = $AnswerObj;
+            }
+        }
+        
+        return $Answers;
     }
-
-    private function loadUsertGroupList() {
-        $UserGroupService = new UserGroupService();
-        $UserGroupList = $UserGroupService->getList();
-        $this->data['UserGroupList'] = $UserGroupList;
+    
+    private function loadQuizList() {
+        $QuizService = new QuizService();
+        $QuizList = $QuizService->getList();
+        $this->data['QuizList'] = $QuizList;
     }
     
     private function loadDefaultValue() {

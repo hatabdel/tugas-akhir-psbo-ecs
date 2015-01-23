@@ -44,7 +44,8 @@ class CommentController extends BaseController {
                         $this->addErrors($this->CommentService->getErrors());
                         return $this->createInputView($model, $validation->messages());
                     }
-                    return Redirect::to("comment/detail/".$model->getId());
+                    
+                    return Redirect::to("forum/detail/".$id);
                 }
             }
             return $this->createInputView($model, NULL, "create", $ForumObj);
@@ -59,6 +60,11 @@ class CommentController extends BaseController {
         if (!$this->IsAllowUpdate()) { return Redirect::to("access_denied"); }
         
         $model = $this->CommentService->getComment($id);
+        
+        $CommentCreatedUser = (!is_null($model->getCreatedUser()) ? $model->getCreatedUser()->getUserName() : null);
+        $CommentLoginUser = (!is_null($this->mUserInfo) ? $this->mUserInfo->getUserName() : null);
+        if ($CommentCreatedUser != $CommentLoginUser) { return Redirect::to("access_denied"); }
+        
         try {
             $input = Input::all();
             if (count($input) > 0) {
@@ -73,7 +79,8 @@ class CommentController extends BaseController {
                         $this->addErrors($this->CommentService->getErrors());
                         return $this->createInputView($model, $validation->messages(), "edit");
                     }
-                    return Redirect::to("comment/detail/".$model->getId());
+                    $ForumId = (!is_null($model->getForum()) ? $model->getForum()->getId() : "");
+                    return Redirect::to("forum/detail/".$ForumId);
                 }
             }
             return $this->createInputView($model, null, "edit");
@@ -139,7 +146,9 @@ class CommentController extends BaseController {
         if (!is_null($param) && count($param) > 0) {
             $CommentObj->setId($param["id"]);
 			$CommentObj->setTitle($param["title"]);
-			$CommentObj->setContent($param["content"]);
+            $content = str_replace("\r", "", $param["content"]);
+            $content = str_replace("\n", "<br />", $content);
+			$CommentObj->setContent($content);
 			$ForumObj = new Forum();
 			$ForumObj->setId($param["forum_id"]);
 			$ForumObj->setIsLoaded(true);

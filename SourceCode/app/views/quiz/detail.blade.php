@@ -28,13 +28,13 @@
         <div class="control-group">
             <label class="control-label">Course Code</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getCourseCode(); } ?>
+                <?php if(!is_null($model)) { echo (!is_null($model->getCourse()) ? $model->getCourse()->getName() : ""); } ?>
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">Quiz Type Id</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getQuizType(); } ?>
+                <?php if(!is_null($model)) { echo (!is_null($model->getQuizType()) ? $model->getQuizType()->getName() : ""); } ?>
             </div>
         </div>
         <div class="control-group">
@@ -50,31 +50,46 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Created Date</label>
+            <label class="control-label">Quiz Time</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getCreatedDate(); } ?>
+                <?php if(!is_null($model)) { echo $model->getQuizTime(); } ?> Hour(s)
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label">Created User</label>
-            <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getCreatedUser(); } ?>
+        <?php 
+        $number = 0;
+        $QuizDetailList = $model->getQuizDetail();
+        ?>
+            @if (count($QuizDetailList) > 0 && !is_null($QuizDetailList))
+            <div id="comment">
+                @foreach ($QuizDetailList as $item)
+                    @if(is_null($item)) continue @endif
+                    <table class="table_comment" border="1">
+                        <tr>
+                            <th style="text-align: left">
+                                <?php echo $item->getQuestion() ?>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <?php if (!is_null($item->getAnswers())) { ?>
+                                @foreach ($item->getAnswers() as $answer)
+                                    <?php $checked = ""; ?>
+                                    @if(is_null($answer)) continue @endif
+                                    <?php if($answer->IsCorrect()) { ?>&#10004;<?php } else { ?>&#x2717;<?php }?>
+                                    <?php echo $answer->getContent() ?><br />
+                                @endforeach
+                                <?php } ?>
+                            </td>
+                        </tr>
+                    </table>
+                    <?php $number++; ?>
+                @endforeach
             </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Update Date</label>
-            <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getUpdateDate(); } ?>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Update User</label>
-            <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getUpdateUser(); } ?>
-            </div>
-        </div>
+            @endif
         <div class="form-actions">
+            <button type="button" onclick='window.location.href="<?php echo url()."/quiz/take/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Take</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/quiz/edit/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Edit</button>
+            <button type="button" onclick='window.location.href="<?php echo url()."/quizquestion/create"; ?>"' class="btn btn-primary">Add Question</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/quiz"; ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>

@@ -1,18 +1,19 @@
 <?php
 
 class Answer {
-    private $mAnswer;
+    private $mId;
     private $mSequence;
     private $mQuizQuestion;
     private $mContent;
     private $mIsCorrect;
+    private $mIsLoaded;
     
-    public function setAnswer($value) {
-        $this->mAnswer = $value;
+    public function setId($value) {
+        $this->mId = $value;
     }
     
-    public function getAnswer() {
-        return $this->mAnswer;
+    public function getId() {
+        return $this->mId;
     }
     
     public function setSequence($value) {
@@ -28,7 +29,14 @@ class Answer {
     }
     
     public function getQuizQuestion() {
-        return $this->mQuizQuestion;
+        if (!is_null($this->mQuizQuestion) && !empty($this->mQuizQuestion)) {
+            if (!$this->mQuizQuestion->IsLoaded()) {
+                $QuizQuestionDao = new QuizQuestionDao();
+                $this->mQuizQuestion = $QuizQuestionDao->getQuizQuestion($this->mQuizQuestion->getId());
+                if (!is_null($this->mQuizQuestion)) { $this->mQuizQuestion->setIsLoaded(true); }
+            }
+        }
+		return $this->mQuizQuestion;
     }
     
     public function setContent($value) {
@@ -47,11 +55,19 @@ class Answer {
         return $this->mIsCorrect;
     }
     
+    public function setIsLoaded($value) {
+        $this->mIsLoaded = $value;
+    }
+    
+    public function IsLoaded() {
+        return $this->mIsLoaded;
+    }
+    
     public function toArray() {
         return array(
-			"id" => $this->mAnswer,
+			"id" => $this->mId,
             "sequence" => $this->mSequence,
-            "quiz_question_id" => $this->mQuizQuestion,
+            "quiz_question_id" => (!is_null($this->mQuizQuestion) ? $this->mQuizQuestion->getId() : null),
             "content" => $this->mContent,
             "is_correct" => $this->mIsCorrect
         );

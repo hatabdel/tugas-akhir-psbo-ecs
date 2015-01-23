@@ -58,6 +58,7 @@
                             if (is_null($item)) { continue; }
                             $FunctionInfo = $item->getFunctionInfo();
                             if (is_null($FunctionInfo)) { continue; }
+                            if (!$FunctionInfo->IsShow()) { continue; }
                             $class = "";
                             if ($FunctionInfo->getFunctionId() == $function_id) {
                                 $class = "active";
@@ -80,6 +81,68 @@
                 }
                 }
             }
+        $UserGroup = (!is_null($UserInfo->getUserGroup()) ? $UserInfo->getUserGroup()->getName() : "");
+        if ($UserGroup == "student") {
+            if (!is_null($UserInfo->getCourseDetail())) {
+                
+    ?>
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-book" ></i>
+                <span>Course</span>
+                <b class="arrow icon-angle-right"></b>
+            </a>
+            <ul class="submenu">
+                <?php
+                foreach ($UserInfo->getCourseDetail() as $item) {
+                    if (is_null($item)) continue;
+                    if (is_null($item->getCourse())) continue;
+                ?>
+                <li class="">
+                    <a href="<?php echo url()."/course/dashboard/".$item->getCourse()->getCode(); ?>">
+                        <i class=""></i>
+                        <span><?php echo $item->getCourse()->getName(); ?></span>
+                    </a>
+                </li>
+                <?php 
+                }
+                ?>
+            </ul>
+        </li>
+    <?php
+    
+                
+            }
+        }
+    if ($UserGroup == "instructor") {
+            if (!is_null($UserInfo->getInstructor())) {
+                
+    ?>
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-book" ></i>
+                <span>Course</span>
+                <b class="arrow icon-angle-right"></b>
+            </a>
+            <ul class="submenu">
+                <?php
+                    $item = $UserInfo->getInstructor();
+                    if (!is_null($item)) {
+                    if (!is_null($item->getCourse())) {
+                ?>
+                <li class="">
+                    <a href="<?php echo url()."/course/dashboard/".$item->getCourse()->getCode(); ?>">
+                        <i class=""></i>
+                        <span><?php echo $item->getCourse()->getName(); ?></span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+                    <?php   
+                    }
+                    }
+                }    
+        }
     }
     } ?>
 </ul>

@@ -22,6 +22,11 @@ class QuizQuestionDao extends BaseDao implements UserInterface, RemindableInterf
 	 *
 	 * @var array
 	 */
+    
+    public function __construct() {
+        parent::__construct();
+    }
+    
 	public function getList($filter = null) {
         return parent::getList($filter);
     }
@@ -46,11 +51,12 @@ class QuizQuestionDao extends BaseDao implements UserInterface, RemindableInterf
     
     function toObject($rowset) {
         $QuizQuestionObj = new QuizQuestion();
-        
         $QuizQuestionObj->setId($rowset["id"]);
-        $QuizQuestionObj->setQuiz($rowset["quiz_id"]);
+        $QuizObj = new Quiz();
+        $QuizObj->setId($rowset["quiz_id"]);
+        $QuizObj->setIsLoaded(false);
+        $QuizQuestionObj->setQuiz($QuizObj);
         $QuizQuestionObj->setQuestion($rowset["question"]);
-        $QuizQuestionObj->setAnswerType($rowset["answer_type_id"]);
         $QuizQuestionObj->setScore($rowset["score"]);
         return $QuizQuestionObj;
     }

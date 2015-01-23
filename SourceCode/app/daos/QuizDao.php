@@ -52,14 +52,17 @@ class QuizDao extends BaseDao implements UserInterface, RemindableInterface {
         $QuizObj = new Quiz();
         $QuizObj->setId($rowset["id"]);
         $QuizObj->setQuizName($rowset["quiz_name"]);
-        $QuizObj->setCourseCode($rowset["course_code"]);
-        $QuizObj->setQuizType($rowset["quiz_type_id"]);
+        $CourseObj = new Course();
+        $CourseObj->setCode($rowset["course_code"]);
+        $CourseObj->setIsLoaded(true);
+        $QuizObj->setCourse($CourseObj);
+        $QuizTypeObj = new QuizType();
+        $QuizTypeObj->setId($rowset["quiz_type_id"]);
+        $QuizTypeObj->setIsLoaded(true);
+        $QuizObj->setQuizType($QuizTypeObj);
         $QuizObj->setStartDateTime($rowset["start_date_time"]);
         $QuizObj->setEndDateTime($rowset["end_date_time"]);
-        $QuizObj->setCreatedDate($rowset["created_date"]);
-        $QuizObj->setCreatedUser($rowset["created_user"]);
-        $QuizObj->setUpdateDate($rowset["update_date"]);
-        $QuizObj->setUpdateUser($rowset["update_user"]);
+        $QuizObj->setQuizTime($rowset["quiz_time"]);
         return $QuizObj;
     }
 

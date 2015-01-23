@@ -100,6 +100,33 @@ class CourseController extends BaseController {
         return View::make("course/detail", $this->data);
     }
     
+    public function dashboard($id) {
+        if (!$this->IsLogin()) { return Redirect::to("login"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        $this->data["model"] = $this->CourseService->getCourse($id);
+        $ForumService = new ForumService();
+        $ForumList = $ForumService->getList();
+        
+        $this->data["ForumStudentList"] = $ForumList;
+        $this->data["ForumInstructorList"] = $ForumList;
+        
+        $AttachmentService = new AttachmentService();
+        $AttachmentFilter = new AttachmentFilter();
+        $AttachmentFilter->setFunctionId($this->function_id);
+        $AttachmentFilter->setRecordId($id);
+        $AttachmentList = $AttachmentService->getList($AttachmentFilter);
+        $this->data["AttachmentList"] = $AttachmentList;
+        
+        $WebinarService = new WebinarService();
+        $WebinarFilter = new WebinarFilter();
+        $WebinarFilter->setCourseCode($id);
+        $WebinarList = $WebinarService->getList($WebinarFilter);
+        $this->data["WebinarList"] = $WebinarList;
+        
+        return View::make("course/dashboard", $this->data);
+    }
+    
     public function join($id) {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }

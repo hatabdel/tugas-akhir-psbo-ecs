@@ -23,14 +23,10 @@
                             <th style="width:100px">Action</th>
                             <th>Quiz Id</th>
                             <th>Quiz Name</th>
-                            <th>Course Code</th>
-                            <th>Quiz Type Id</th>
+                            <th>Course</th>
+                            <th>Quiz Type</th>
                             <th>Start Date Time</th>
                             <th>End Date Time</th>
-                            <th>Created Date</th>
-                            <th>Created User</th>
-                            <th>Update Date</th>
-                            <th>Update User</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,17 +37,12 @@
                                 <a class='btn btn-small btn-danger show-tooltip btnDelete' id="btnDelete" title='Delete' href='<?php echo url()."/quiz/delete/".$item->getId(); ?>'><i class='icon-trash'></i></a>
                                 <a class='btn btn-small show-tooltip' title='Edit' href='<?php echo url()."/quiz/edit/".$item->getId(); ?>'><i class='icon-edit'></i></a>
                             </td>
-                            <td class="Id"><a href="<?php echo url()."/quiz/detail/".$item->getId(); ?>">{{ $item->getId() }}</a></td>
-                            <td class="QuizName">{{ $item->getQuizName() }}</td>
-                            <td class="CourseCode">{{ $item->getCourseCode() }}</td>
-                            <td class="QuizTypeId">{{ $item->getQuizType() }}</td>
+                            <td class="Id">{{ $item->getId() }}</td>
+                            <td class="QuizName"><a href="<?php echo url()."/quiz/detail/".$item->getId(); ?>">{{ $item->getQuizName() }}</a></td>
+                            <td class="CourseCode">{{ (!is_null($item->getCourse()) ? $item->getCourse()->getName() : "") }}</td>
+                            <td class="QuizTypeId">{{ (!is_null($item->getQuizType()) ? $item->getQuizType()->getName() : "") }}</td>
                             <td class="StartDateTime">{{ $item->getStartDateTime() }}</td>
                             <td class="EndDateTime">{{ $item->getEndDateTime() }}</td>
-                            <td class="CreatedDate">{{ $item->getCreatedDate() }}</td>
-                            <td class="CreatedUser">{{ $item->getCreatedUser() }}</td>
-                            <td class="UpdateDate">{{ $item->getUpdateDate() }}</td>
-                            <td class="UpdateUser">{{ $item->getUpdateUser() }}</td>
-                            
                         </tr>
                     @endforeach
                     </tbody>

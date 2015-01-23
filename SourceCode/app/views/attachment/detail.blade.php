@@ -27,7 +27,7 @@
         </div>
         <div class="form-actions">
             <button type="button" onclick='window.location.href="<?php echo url()."/attachment/edit/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Edit</button>
-            <button type="button" onclick='window.location.href="<?php echo url()."/attachment"; ?>"' class="btn btn-primary">Close</button>
+            <button type="button" onclick='window.location.href="<?php echo (!isset($back_url) ? url()."/attachment" : url().$back_url ); ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>
 </div>

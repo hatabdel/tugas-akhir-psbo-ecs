@@ -21,7 +21,7 @@ class LoginController extends BaseController {
                 $password = $input["password"];
                 $result = $this->logon($user_name, $password);
                 if (!$result) {
-                    $this->addError("Username or Password Incorect");
+                    $this->addError("Username or Password Incorect or Your account are not yet approved");
                     return View::make("login/index", $this->data);
                 }
                 return Redirect::to("/");

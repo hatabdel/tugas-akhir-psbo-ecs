@@ -19,6 +19,9 @@
                 <label class="control-label">Id</label>
                 <div class="controls">
                     <input type="hidden" name="id" value="<?php if(!is_null($model)) echo $model->getId(); ?>" />
+                    <input type="hidden" name="function_id" value="<?php if(!is_null($model)) echo $model->getFunctionId(); ?>" />
+                    <input type="hidden" name="back_url" value="<?php if(!is_null($back_url)) echo $back_url; ?>" />
+                    <input type="hidden" name="record_id" value="<?php if(!is_null($model)) echo $model->getRecordId(); ?>" />
                     <?php 
                         echo (!is_null($model) ? ($action == "edit" ? $model->getId() : "[autonumber]") : "[autonumber]")
                     ?>

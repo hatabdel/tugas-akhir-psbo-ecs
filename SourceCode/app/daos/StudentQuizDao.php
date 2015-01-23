@@ -22,8 +22,8 @@ class StudentQuizDao extends BaseDao implements UserInterface, RemindableInterfa
 	 *
 	 * @var array
 	 */
-	public function getList() {
-        return parent::getList();
+	public function getList($filter = null) {
+        return parent::getList($filter);
     }
     
     public function getStudentQuiz($Id) {
@@ -32,7 +32,7 @@ class StudentQuizDao extends BaseDao implements UserInterface, RemindableInterfa
     
     public function InsertStudentQuiz($StudentQuizObj) {
 		$result = parent::InsertObjectReturnId($StudentQuizObj);
-        if (!is_null($result) && !is_null($StudentQuizObj)) { $StudentQuizObj->setStudentQuiz($result); }
+        if (!is_null($result) && !is_null($StudentQuizObj)) { $StudentQuizObj->setId($result); }
 		return $StudentQuizObj;
     }
     
@@ -46,10 +46,15 @@ class StudentQuizDao extends BaseDao implements UserInterface, RemindableInterfa
     
     function toObject($rowset) {
         $StudentQuizObj = new StudentQuiz();
-		
-        $StudentQuizObj->setStudentQuiz($rowset["id"]);
-        $StudentQuizObj->setIdentity($rowset["identity_id"]);
-        $StudentQuizObj->setQuiz($rowset["quiz_id"]);
+		$StudentQuizObj->setId($rowset["id"]);
+        $StudentObj = new UserInfo();
+        $StudentObj->setUserName($rowset['user_name']);
+        $StudentObj->setIsLoaded(false);
+        $StudentQuizObj->setUserInfo($StudentObj);
+        $QuizObj = new Quiz();
+        $QuizObj->setId($rowset["quiz_id"]);
+        $QuizObj->setIsLoaded(false);
+        $StudentQuizObj->setQuiz($QuizObj);
         $StudentQuizObj->setTotalScore($rowset["total_score"]);
         $StudentQuizObj->setStartDateTime($rowset["start_date_time"]);
         $StudentQuizObj->setEndDateTime($rowset["end_date_time"]);

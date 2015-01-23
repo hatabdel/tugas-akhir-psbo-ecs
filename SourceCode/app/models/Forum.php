@@ -164,7 +164,7 @@ class Forum
             "created_date" => $this->mCreatedDate,
             "created_user" => (!is_null($this->mCreatedUser) ? $this->mCreatedUser->getUserName() : null),
             "update_date" => $this->mUpdatedDate,
-            "update_user" => $this->mUpdatedUser,
+            "update_user" => (!is_null($this->mUpdatedUser) ? $this->mUpdatedUser->getUserName() : null),
             "course_code" => (!is_null($this->mCourse) ? $this->mCourse->getCode() : null),
             "is_public" => $this->mIsPublic
         );

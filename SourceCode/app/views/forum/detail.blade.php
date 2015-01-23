@@ -17,14 +17,6 @@
 	<table border="0">
 	<tr>
         <div class="control-group">
-            <!--<label class="control-label">Function Id</label>-->
-            <div class="controls">
-                <?php //if(!is_null($model)) { echo $model->getId(); } ?>
-            </div>
-        </div>
-	</tr>
-	<tr>
-        <div class="control-group">
             <label class="control-label">Title</label>
             <div class="controls">
                 <?php if(!is_null($model)) { echo $model->getTitle(); } ?>

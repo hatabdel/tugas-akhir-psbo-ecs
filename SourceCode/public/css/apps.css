@@ -8,6 +8,129 @@ and open the template in the editor.
     Author     : Bayu
 */
 
-#font {
+/*#font {
     font-weight: bold;
+}*/
+
+.nav_list
+{
+	width:960px;
+	float:left;
+	margin-bottom:15px;
+}
+
+.paging
+{
+	clear:both;
+	float:left;
+	border-top:0px solid #CCCCCC;
+	padding-top:0px;
+	font-weight:bold;
+	margin-bottom:10px;
+	margin-left:2px;
+	font-size:11px;
+}
+
+.paging a
+{
+	padding:3px 8px;
+	border:1px solid #CCCCCC;
+	background:#08C;
+	color:#111;
+	text-decoration:none;
+}
+
+.paging a:hover
+{
+	border:1px solid #CCCCCC;
+	padding:3px 8px;
+	background:#EEEEEE;
+	color:#FFFFFF;
+	color:#644F0C;
+	text-decoration:none;
+}
+
+
+.paging b  , .paging strong
+{	
+	border:1px solid #CCCCCC;
+	padding:3px 8px;
+	color:#666666;
+	background:#EEEEEE;
+}
+
+#comment {
+    padding: 5px;
+}
+
+#comment table {
+    width: 100%;
+    border: 1px solid #CCC;
+    background: none repeat scroll 0% 0% #F8FAFE;
+    margin-bottom: 10px;
+}
+
+#comment table tr th, #comment table tr td  {
+    border: 1px solid #CCC;
+    padding: 5px;
+}
+
+#comment .table_comment .user {
+    position: relative;
+    top: 0;
+    min-height: 100px;
+}
+
+#comment .table_comment .comment_content {
+    position: relative;
+    min-height: 100px;
+}
+
+#comment .table_comment .comment_content .edit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#forum {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#forum table {
+    width: 100%;
+    border: 1px solid #CCC;
+    background: none repeat scroll 0% 0% #E9F0F9;
+}
+
+#forum table tr th, #forum table tr td  {
+    border: 1px solid #CCC;
+    padding: 5px;
+}
+
+#forum .table_forum .user {
+    position: relative;
+    top: 0;
+    min-height: 100px;
+}
+
+#forum .table_forum .forum_content {
+    position: relative;
+    min-height: 100px;
+}
+
+#forum .table_forum .forum_content .edit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#table_forum {
+    border: 1px solid #CCC;
+}
+
+#forum_student, #forum_instructor {
+    border: 1px solid #CCC;
+    height: 150px;
+    overflow-y: scroll;
 }

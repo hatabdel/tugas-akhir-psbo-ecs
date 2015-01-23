@@ -18,6 +18,24 @@ class PrivilegeInfoService extends BaseService {
         }
     }
     
+    public function getListPaging($filter = null, $limit = 0, $offset = 0) {
+        try {
+            return $this->PrivilegeInfoDao->getListPaging($filter, $limit, $offset);
+        } catch (Exception $ex) {
+            $this->addError($ex->getMessage());
+            throw new Exception($ex->getMessage());
+        }
+    }
+    
+    public function getListCount($filter = null) {
+        try {
+            return $this->PrivilegeInfoDao->getListCount($filter);
+        } catch (Exception $ex) {
+            $this->addError($ex->getMessage());
+            throw new Exception($ex->getMessage());
+        }
+    }
+    
     public function getPrivilegeInfo($id) {
         try { 
             return $this->PrivilegeInfoDao->getPrivilegeInfo($id);

@@ -48,7 +48,7 @@ class CourseDetailDao extends BaseDao implements UserInterface, RemindableInterf
         $UserInfo = new UserInfo();
         $UserInfo->setUserName($rowset["user_name"]);
         $UserInfo->setIsLoaded(false);
-        $CourseDetailObj->setUserInfo();
+        $CourseDetailObj->setUserInfo($UserInfo);
         $Course = new Course();
         $Course->setCode($rowset["course_code"]);
         $Course->setIsLoaded(false);

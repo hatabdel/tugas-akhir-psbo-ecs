@@ -15,9 +15,9 @@ class CourseDetailService extends BaseService {
         $this->CourseDetailDao = new CourseDetailDao();
     }
     
-    public function getList() {
+    public function getList($filter = null) {
         try {
-            return $this->CourseDetailDao->getList();
+            return $this->CourseDetailDao->getList($filter);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());

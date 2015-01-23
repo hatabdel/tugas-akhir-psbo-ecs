@@ -60,7 +60,7 @@ class Comment
 		if (!is_null($this->mCreatedUser) && !empty($this->mCreatedUser)) {
             if (!$this->mCreatedUser->IsLoaded()) {
                 $UserInfoDao = new UserInfoDao();
-                $this->mCreatedUser = $UserInfoDao->getUserInfo($this->mCreatedUser->getId());
+                $this->mCreatedUser = $UserInfoDao->getUserInfo($this->mCreatedUser->getUserName());
                 if (!is_null($this->mCreatedUser)) { $this->mCreatedUser->setIsLoaded(true); }
             }
         }
