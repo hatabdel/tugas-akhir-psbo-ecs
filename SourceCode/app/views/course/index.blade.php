@@ -23,6 +23,9 @@
                             <th style="width:100px">Action</th>
                             <th>Code</th>
                             <th>Name</th>
+                            <th>Description</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +38,11 @@
                             </td>
                             <td class="Code">{{ $item->getCode() }}</td>
                             <td class="Name"><a href="<?php echo url()."/course/detail/".$item->getCode(); ?>">{{ $item->getName() }}</a></td>
-                        </tr>
+							<td class="Description">{{ $item->getDescription() }}</td>
+							<td class="StartDate">{{ $item->getStartDate() }}</td>
+							<td class="EndDate">{{ $item->getEndDate() }}</td>
+						
+						</tr>
                     @endforeach
                     </tbody>
                 </table>
