@@ -8247,3 +8247,63 @@ Stack trace:
 Stack trace:
 #0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
 #1 {main} [] []
+[2015-01-23 22:17:21] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getQuizDetail() on a non-object' in C:\xampp\htdocs\ecs\app\storage\views\5d7507c162d3eb5d9eb47c7167e11c95:58
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-23 22:24:16] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Answer::getAnswer()' in C:\xampp\htdocs\ecs\app\storage\views\10d13b3f044b7fcf1f6c8579a8f7d5f0:34
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-23 22:24:21] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Answer::getAnswer()' in C:\xampp\htdocs\ecs\app\storage\views\10d13b3f044b7fcf1f6c8579a8f7d5f0:34
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-23 22:24:46] production.ERROR: exception 'ErrorException' with message 'Undefined variable: back_url' in C:\xampp\htdocs\ecs\app\storage\views\d12479d3b270db49a36d0797a8feff56:21
+Stack trace:
+#0 C:\xampp\htdocs\ecs\app\storage\views\d12479d3b270db49a36d0797a8feff56(21): Illuminate\Exception\Handler->handleError(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 21, Array)
+#1 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9798): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ecs\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9676): Illuminate\View\Engines\CompilerEngine->get('C:\\xampp\\htdocs...', Array)
+#4 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9663): Illuminate\View\View->getContents()
+#5 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9654): Illuminate\View\View->renderContents()
+#6 C:\xampp\htdocs\ecs\bootstrap\compiled.php(10357): Illuminate\View\View->render()
+#7 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9886): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#8 C:\xampp\htdocs\ecs\bootstrap\compiled.php(5189): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#9 C:\xampp\htdocs\ecs\bootstrap\compiled.php(4998): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#10 C:\xampp\htdocs\ecs\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ecs\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ecs\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 C:\xampp\htdocs\ecs\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\ecs\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\ecs\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\ecs\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#17 C:\xampp\htdocs\ecs\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ecs\index.php(49): Illuminate\Foundation\Application->run()
+#19 {main}
+
+Next exception 'ErrorException' with message 'Undefined variable: back_url (View: C:\xampp\htdocs\ecs\app\views\attachment\input.blade.php)' in C:\xampp\htdocs\ecs\app\storage\views\d12479d3b270db49a36d0797a8feff56:21
+Stack trace:
+#0 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9800): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException), 1)
+#1 C:\xampp\htdocs\ecs\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('C:\\xampp\\htdocs...', Array)
+#2 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9676): Illuminate\View\Engines\CompilerEngine->get('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9663): Illuminate\View\View->getContents()
+#4 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9654): Illuminate\View\View->renderContents()
+#5 C:\xampp\htdocs\ecs\bootstrap\compiled.php(10357): Illuminate\View\View->render()
+#6 C:\xampp\htdocs\ecs\bootstrap\compiled.php(9886): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#7 C:\xampp\htdocs\ecs\bootstrap\compiled.php(5189): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#8 C:\xampp\htdocs\ecs\bootstrap\compiled.php(4998): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#9 C:\xampp\htdocs\ecs\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ecs\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ecs\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ecs\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#13 C:\xampp\htdocs\ecs\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\ecs\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\ecs\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\ecs\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#17 C:\xampp\htdocs\ecs\index.php(49): Illuminate\Foundation\Application->run()
+#18 {main} [] []
+[2015-01-23 22:27:39] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Answer::getAnswer()' in C:\xampp\htdocs\ecs\app\storage\views\10d13b3f044b7fcf1f6c8579a8f7d5f0:34
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
