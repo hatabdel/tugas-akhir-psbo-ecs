@@ -22,6 +22,8 @@
         <link rel="shortcut icon" href="favicon.ico">
         <script type="text/javascript" src="<?php echo url()."/public/scripts/bootstrap/bootstrap/bootstrap.min.js"; ?>"></script>
         <script type="text/javascript" src="<?php echo url()."/public/scripts/nicescroll/jquery.nicescroll.min.js"; ?>"></script>
+        <script type="text/javascript" src="<?php echo url()."/public/js/datetimepicker_css.js"; ?>"></script>
+        <script type="text/javascript" src="<?php echo url()."/public/images/cal.gif"; ?>"></script>
 
         <!--page specific plug in scripts-->
         <script type="text/javascript" src="<?php echo url()."/public/scripts/bootstrap/data-tables/jquery.dataTables.js"; ?>"></script>
@@ -52,7 +54,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <!-- BEGIN Brand -->
@@ -138,11 +140,13 @@
 
                 <!-- BEGIN Main Content -->
                 <div class="row-fluid">
+				
                     @yield('main_content')
                 </div>
                 <!-- END Main Content -->
                 
                 <footer style="bottom: 0px;">
+				
                     <p>2014 &copy; ECS - Bogor Agricultural University.</p>
                 </footer>
                 <a id="btn-scrollup" class="btn btn-circle btn-large" href="#"><i class="icon-chevron-up"></i></a>
