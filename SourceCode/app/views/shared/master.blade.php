@@ -86,9 +86,8 @@
                     ?>
                     <ul class="nav flaty-nav pull-right">
                       <!-- BEGIN Button User -->
-                        <li class="nav-header" style="display:none">
-                            <i class="icon-time"></i>
-                            Logined From 20:45
+                        <li class="nav-header">
+                            <?php echo "Welcome, " . (isset($UserInfo) ? (!is_null($UserInfo) ? $UserInfo->getFirstName() . " " . $UserInfo->getLastName() : "") : "" ); ?>
                         </li>
                         <li class="divider"></li>
 

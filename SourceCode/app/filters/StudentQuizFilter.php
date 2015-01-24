@@ -1,10 +1,10 @@
 <?php
 
-class StudentAnswerFilter {
+class StudentQuizFilter {
 
     private $mId;
-    private $mStudentQuiz;
     private $mUserName;
+    private $mQuizId;
     private $mIsAllowRead;
 	private $mIsAllowCreate;
 	private $mIsAllowUpdate;
@@ -18,20 +18,20 @@ class StudentAnswerFilter {
         return $this->mId;
     }
     
-    public function setStudentQuizId($value) {
-        $this->mStudentQuiz = $value;
-    }
-
-    public function getStudentQuizId() {
-        return $this->mStudentQuiz;
-    }
-    
     public function setUserName($value) {
         $this->mUserName = $value;
     }
 
     public function getUserName() {
         return $this->mUserName;
+    }
+    
+    public function setQuizId($value) {
+        $this->mQuizId = $value;
+    }
+
+    public function getQuizId() {
+        return $this->mQuizId;
     }
     
     public function setIsAllowRead($value) {
@@ -69,14 +69,14 @@ class StudentAnswerFilter {
     public function getWhereQuery() {
         $where = "";
         
+        if (!is_null($this->mQuizId) && !empty($this->mQuizId)) {
+            if (!empty($where)) { $where .= " AND "; }
+            $where .= " quiz_id = '".stripslashes($this->mQuizId)."'";
+        }
+        
         if (!is_null($this->mUserName) && !empty($this->mUserName)) {
             if (!empty($where)) { $where .= " AND "; }
             $where .= " user_name = '".stripslashes($this->mUserName)."'";
-        }
-        
-        if (!is_null($this->mStudentQuiz) && !empty($this->mStudentQuiz)) {
-            if (!empty($where)) { $where .= " AND "; }
-            $where .= " student_quiz_id = '".stripslashes($this->mStudentQuiz)."'";
         }
         
         return $where; 

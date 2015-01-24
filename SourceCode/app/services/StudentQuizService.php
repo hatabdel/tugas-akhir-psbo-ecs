@@ -9,9 +9,9 @@ class StudentQuizService extends BaseService {
         $this->StudentQuizDao = new StudentQuizDao();
     }
     
-   public function getList() {
+   public function getList($filter = null) {
         try {
-            return $this->StudentQuizDao->getList();
+            return $this->StudentQuizDao->getList($filter);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());

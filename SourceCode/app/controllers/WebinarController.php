@@ -27,7 +27,7 @@ class WebinarController extends BaseController {
         try {
             $input = Input::all();
             $model = null;
-            if (count($input) > 0) {
+            if (count($input) > 0  && Request::isMethod('post')) {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
                 if ($validation->fails()) {
@@ -94,6 +94,12 @@ class WebinarController extends BaseController {
     public function detail($id) {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
+        
+        $input = Input::all();
+        $this->data["back_url"] = "";
+        if (isset($input["back_url"])) {
+            $this->data["back_url"] = $input["back_url"];
+        }
         
         $this->data["model"] = $this->WebinarService->getWebinar($id);
         return View::make("webinar/detail", $this->data);
@@ -199,7 +205,12 @@ class WebinarController extends BaseController {
     
     private function loadCourseList() {
         $CourseService = new CourseService();
-        $CourseList = $CourseService->getList();
+        $CourseFilter = new CourseFilter();
+        if ($this->mUserGroup == "instructor") {
+            $CourseCode = (!is_null($this->mUserInfo) ? ((!is_null($this->mUserInfo->getInstructor())) ? ((!is_null($this->mUserInfo->getInstructor()->getCourse())) ? $this->mUserInfo->getInstructor()->getCourse()->getCode() : "" ) : "") : "");
+            $CourseFilter->setCourseCode($CourseCode);
+        }
+        $CourseList = $CourseService->getList($CourseFilter);
         $this->data['CourseList'] = $CourseList;
     }
     

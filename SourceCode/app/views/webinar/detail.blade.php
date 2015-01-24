@@ -44,10 +44,12 @@
             </div>
         </div>
         <div class="form-actions">
+            <?php if ($UserGroup != "student") { ?>
             <button type="button" onclick='window.location.href="<?php echo url()."/webinar/start/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Start</button>
-            <button type="button" onclick='window.location.href="<?php echo url()."/webinar/join/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Join</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/webinar/edit/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Edit</button>
-            <button type="button" onclick='window.location.href="<?php echo url()."/webinar"; ?>"' class="btn btn-primary">Close</button>
+            <?php } ?>
+            <button type="button" onclick='window.location.href="<?php echo url()."/webinar/join/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Join</button>
+            <button type="button" onclick='window.location.href="<?php echo url().(!isset($back_url) ? "/webinar" : $back_url); ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>
 </div>

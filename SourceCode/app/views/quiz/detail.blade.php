@@ -13,6 +13,7 @@
         </div>
     </div>
     <div class="box-content" id="dialog-detailQuiz" title="Detail Quiz">
+        <?php echo (isset($errors) ? $errors : ""); ?>
         <div class="control-group">
             <label class="control-label">Quiz Id</label>
             <div class="controls">
@@ -28,7 +29,9 @@
         <div class="control-group">
             <label class="control-label">Course Code</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo (!is_null($model->getCourse()) ? $model->getCourse()->getName() : ""); } ?>
+                <?php 
+                $CourseObj = (!is_null($model->getCourse()) ? $model->getCourse()->getCode() : "");
+                if(!is_null($model)) { echo (!is_null($model->getCourse()) ? $model->getCourse()->getName() : ""); } ?>
             </div>
         </div>
         <div class="control-group">
@@ -52,10 +55,11 @@
         <div class="control-group">
             <label class="control-label">Quiz Time</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo $model->getQuizTime(); } ?> Hour(s)
+                <?php if(!is_null($model)) { echo round($model->getQuizTime(), 2); } ?> Hour(s)
             </div>
         </div>
         <?php 
+        if ($UserGroup != "student") {
         $number = 0;
         $QuizDetailList = $model->getQuizDetail();
         ?>
@@ -86,11 +90,23 @@
                 @endforeach
             </div>
             @endif
+        <?php } ?>
         <div class="form-actions">
+            <?php if (is_null($student_quiz)) { ?>
             <button type="button" onclick='window.location.href="<?php echo url()."/quiz/take/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Take</button>
+            <?php } ?>
+            <?php if ($UserGroup != "student") { ?>
             <button type="button" onclick='window.location.href="<?php echo url()."/quiz/edit/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Edit</button>
             <button type="button" onclick='window.location.href="<?php echo url()."/quizquestion/create"; ?>"' class="btn btn-primary">Add Question</button>
-            <button type="button" onclick='window.location.href="<?php echo url()."/quiz"; ?>"' class="btn btn-primary">Close</button>
+            <?php } 
+                if (!is_null($student_quiz)) {
+            ?>
+            <button type="button" onclick='window.location.href="<?php echo url()."/quiz/result/".(!is_null($student_quiz) ? $student_quiz->getId() : ""); ?>"' class="btn btn-primary">Result</button>
+            <?php
+                }
+            ?>
+            
+            <button type="button" onclick='window.location.href="<?php echo url()."/course/dashboard/".$CourseObj; ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>
 </div>

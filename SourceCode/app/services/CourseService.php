@@ -9,9 +9,9 @@ class CourseService extends BaseService {
         $this->CourseDao = new CourseDao();
     }
     
-    public function getList() {
+    public function getList($filter = null) {
         try {
-            return $this->CourseDao->getList();
+            return $this->CourseDao->getList($filter);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());

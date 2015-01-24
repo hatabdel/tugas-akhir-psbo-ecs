@@ -39,6 +39,9 @@ class BaseController extends Controller {
         
         if (!is_null($result)) {
             Session::put("UserInfo", serialize($result));
+            if (Session::has('quiz_start_time')) {
+                Session::forget('quiz_start_time');
+            }
             return true;
         } else {
             return false;
@@ -168,6 +171,22 @@ class BaseController extends Controller {
                 $this->data["errors"] .= $error;
             }
             $this->data["errors"] .= "</div>";
+        }
+    }
+    
+    public function getModelState() {
+        if(count($this->errors) <= 0) { return true; }
+        return false;
+    }
+    
+    protected function SaveModelStateTemp() {
+        Session::put("errors", $this->errors);
+    }
+    
+    protected function GetModelStateFromTemp() {
+        if (Session::has('errors')) {
+            $this->errors = Session::get("errors");
+            Session::forget('errors');
         }
     }
     
