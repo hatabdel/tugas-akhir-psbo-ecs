@@ -48,7 +48,11 @@
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Upload</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
-                <button type="button" onclick='window.location.href="<?php echo url()."/attachment"; ?>"' class="btn btn-primary">Cancel</button>
+                <?php if ($UserGroup == "admin") { ?>
+                <button type="button" onclick='window.location.href="<?php echo url()."/quiz"; ?>"' class="btn btn-primary">Cancel</button>
+                <?php } else {?>
+                <button type="button" onclick='window.location.href="<?php echo url().(isset($back_url) ? $back_url : "/attachment"); ?>"' class="btn btn-primary">Cancel</button>
+                <?php } ?>
              </div>
         </form>
     </div>

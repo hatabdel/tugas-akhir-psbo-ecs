@@ -31,7 +31,9 @@
                 <label class="control-label">Course</label>
                 <div class="controls">
                     <select name="course_code">
-                        <?php if(!is_null($CourseList))
+                        <?php 
+                        $CourseCode = null;
+                        if(!is_null($CourseList))
                         {
                             foreach($CourseList as $item)
                             {
@@ -40,7 +42,9 @@
                                 /*if($item->getCode() == $model->getCourse()) 
                                     {
                                         $selected = "selected=\"selected\"";
-                                    }*/?>
+                                    }*/
+                                $CourseCode = $item->getCode();
+                                ?>
                         <option value="{{ $item->getCode() }}" <?php echo $selected;?>> {{ $item->getName() }} </option>
                         <?php }
                         }?>
@@ -93,6 +97,11 @@
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
                 <button type="button" onclick='window.location.href="<?php echo url()."/quiz"; ?>"' class="btn btn-primary">Cancel</button>
+                <?php if ($UserGroup == "admin") { ?>
+                <button type="button" onclick='window.location.href="<?php echo url()."/quiz"; ?>"' class="btn btn-primary">Cancel</button>
+                <?php } else {?>
+                <button type="button" onclick='window.location.href="<?php echo url().(isset($CourseCode) ? "/course/dashboard/".$CourseCode : "/quiz"); ?>"' class="btn btn-primary">Cancel</button>
+                <?php } ?>
              </div>
         </form>
     </div>

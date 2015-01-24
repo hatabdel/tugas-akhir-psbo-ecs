@@ -140,8 +140,8 @@ class UserInfoController extends BaseController {
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
         $model = $this->UserInfoService->getUserInfo($id);
-        $model->setIsActive(true);
-        $this->UserInfoService->UpdateUserInfo($model, $id);
+        if (is_null($model)) { return Redirect::to("/"); }
+        $this->UserInfoService->ActivateUserInfo($id);
         return Redirect::to("userinfo");
     }
     

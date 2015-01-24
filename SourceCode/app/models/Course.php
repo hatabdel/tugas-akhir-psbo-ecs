@@ -11,6 +11,7 @@ class Course {
     private $mCreatedUser;
     private $mIsActive;
     private $mIsLoaded;
+    private $mInstructor;
     
     public function __construct() {
         $this->mIsLoaded = false;
