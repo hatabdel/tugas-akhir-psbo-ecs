@@ -36,12 +36,16 @@
                 <label class="control-label">Course</label>
                 <div class="controls">
                     <select name="course_code">
-                        <?php if (!is_null($CourseList)) { 
+                        <?php 
+                        $CourseCode = null;
+                        if (!is_null($CourseList)) { 
+                            
                                 foreach($CourseList as $item) {
                                     if (is_null($item)) { continue; }
                                     $selected = "";
                                     $CourseId = (!is_null($model->getCourse()) ? $model->getCourse()->getCode() : null);
                                     if ($item->getCode() == $CourseId) { $selected = "selected=\"selected\""; }
+                                    $CourseCode = $item->getCode();
                         ?>
                         <option value="{{ $item->getCode() }}" <?php echo $selected; ?>> {{ $item->getName() }}</option>
                         <?php   }
@@ -66,7 +70,11 @@
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
+                <?php if ($UserGroup == "admin") { ?>
                 <button type="button" onclick='window.location.href="<?php echo url()."/webinar"; ?>"' class="btn btn-primary">Cancel</button>
+                <?php } else {?>
+                <button type="button" onclick='window.location.href="<?php echo url().(isset($CourseCode) ? "/course/dashboard/".$CourseCode : "/webinar"); ?>"' class="btn btn-primary">Cancel</button>
+                <?php } ?>
              </div>
         </form>
     </div>

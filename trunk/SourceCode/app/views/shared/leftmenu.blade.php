@@ -42,7 +42,7 @@
     
     if (isset($UserInfo)) {
     if (!is_null($UserInfo)) {
-        if ($UserGroupId != "student") {
+        if ($UserGroupId != "student" && $UserGroupId != "instructor") {
             if (!is_null($UserInfo->getUserGroup())) {
                 $PrivilegeInfos = $UserInfo->getUserGroup()->getPrivilegeInfos();
                 if (!is_null($PrivilegeInfos) && count($PrivilegeInfos) > 0) {

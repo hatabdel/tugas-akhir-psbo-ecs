@@ -134,7 +134,7 @@
                 @endif
             <div class="form-actions">
                 <button type="submit" id="btn-submit" class="btn btn-primary"><i class="icon-ok"></i> Submit</button>
-                <?php if ($UserGroup != "student") { ?>
+                <?php if ($UserGroup == "admin") { ?>
                 <button type="reset" class="btn btn-primary">Reset</button>
                 <button type="button" onclick='window.location.href="<?php echo url()."/quiz"; ?>"' class="btn btn-primary">Cancel</button>
                 <?php } else { ?>

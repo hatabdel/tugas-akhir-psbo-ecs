@@ -34,7 +34,7 @@ class UserInfoDao extends BaseDao implements UserInterface, RemindableInterface 
         try {
             return parent::InsertObject($UserInfoObj);
         } catch (Exception $ex) {
-            $this->addError($ex-getMessages());
+            $this->addError($ex-getMessage());
             throw new Exception($ex->getMessage());
         }
     }
@@ -43,7 +43,17 @@ class UserInfoDao extends BaseDao implements UserInterface, RemindableInterface 
         try {
             return parent::UpdateObject($UserInfoObj, $Id);
         } catch (Exception $ex) {
-            $this->addError($ex-getMessages());
+            $this->addError($ex-getMessage());
+            throw new Exception($ex->getMessage());
+        }
+    }
+    
+    public function ActivateUserInfo($id)  {
+        try {
+            DB::table($this->table)->where($this->primary_key, $id)->update(array("is_active" => 1));
+            return true;
+        } catch (Exception $ex) {
+            $this->addError($ex-getMessage());
             throw new Exception($ex->getMessage());
         }
     }
@@ -52,7 +62,7 @@ class UserInfoDao extends BaseDao implements UserInterface, RemindableInterface 
         try {
             return parent::DeleteObject($Id);
         } catch (Exception $ex) {
-            $this->addError($ex-getMessages());
+            $this->addError($ex-getMessage());
             throw new Exception($ex->getMessage());
         }
     }

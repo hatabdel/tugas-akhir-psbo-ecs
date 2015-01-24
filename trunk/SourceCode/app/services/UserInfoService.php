@@ -64,6 +64,16 @@ class UserInfoService extends BaseService {
         }
     }
     
+     public function ActivateUserInfo($id) {
+        try {
+            $result = $this->UserInfoDao->ActivateUserInfo($id);
+            return $result;
+        } catch (Exception $ex) {
+            $this->addError($ex->getMessage());
+            throw new Exception($ex->getMessage());
+        }
+    }
+    
     public function DeleteUserInfo($Id) {
         try {
             return $this->UserInfoDao->DeleteUserInfo($Id);

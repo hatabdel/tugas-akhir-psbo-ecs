@@ -53,12 +53,24 @@
 						}?>
 					</select>
                     <?php } else { ?>
+                    <?php $CourseCode = (!is_null($model) ? (!is_null($model->getCourse()) ? $model->getCourse()->getCode() : ""):""); ?>
                     <input type="hidden" name="course_code" value="<?php echo (!is_null($model) ? (!is_null($model->getCourse()) ? $model->getCourse()->getCode() : ""):"") ?>">
                     <?php echo (!is_null($model) ? (!is_null($model->getCourse()) ? $model->getCourse()->getName() : ""):"") ?>
                     <?php } ?>
                     <input type="hidden" name="forum_type" value="<?php echo (!is_null($model) ? $model->getForumType() : "") ?>">
 				</div>
             </div>
+            <?php if ($UserGroup == "admin") { ?>
+            <div class="control-group">
+                <label class="control-label">Forum Type</label>
+                <div class="controls">
+                    <select name="forum_type">
+                        <option value="student">Student</option>
+                        <option value="instructor">Instructor</option>
+                    </select>
+                </div>
+            </div>
+            <?php } ?>
             <div class="control-group" style="display: none;">
                 <label class="control-label">Is Public</label>
                 <?php 
@@ -80,7 +92,11 @@
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
+                <?php if ($UserGroup == "admin") { ?>
                 <button type="button" onclick='window.location.href="<?php echo url()."/forum"; ?>"' class="btn btn-primary">Cancel</button>
+                <?php } else {?>
+                <button type="button" onclick='window.location.href="<?php echo url().(isset($CourseCode) ? "/course/dashboard/".$CourseCode : "/forum"); ?>"' class="btn btn-primary">Cancel</button>
+                <?php } ?>
              </div>
         </form>
     </div>
