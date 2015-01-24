@@ -95,6 +95,17 @@ class Course {
         return $this->mIsLoaded;
     }
     
+    public function getInstructor() {
+        if (!is_null($this->mCode) && !empty($this->mCode)) {
+            $InstructorDao = new InstructorDao();
+            $InstructorFilter = new InstructorFilter();
+            $InstructorFilter->setCourseCode($this->mCode);
+            $Instructor = $InstructorDao->getList($InstructorFilter);
+            if (!is_null($Instructor) && count($Instructor) > 0) $this->mInstructor = $Instructor;
+        }
+        return $this->mInstructor;
+    }
+    
     public function toArray() {
         return array(
             "code" => $this->mCode,

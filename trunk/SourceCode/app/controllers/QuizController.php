@@ -4,6 +4,7 @@ class QuizController extends BaseController {
     
     private $QuizService;
     protected $function_id = "quiz";
+    private $Course = null;
     public function __construct() {
         parent::__construct();
         $this->loadDefaultValue();
@@ -24,9 +25,11 @@ class QuizController extends BaseController {
         if (!$this->IsAllowCreate()) { return Redirect::to("access_denied"); }
         
         try {
+            
             $input = Input::all();
+            
             $model = null;
-            if (count($input) > 0) {
+            if (count($input) > 0 && Request::isMethod('post')) {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
                 if ($validation->fails()) {
@@ -77,18 +80,40 @@ class QuizController extends BaseController {
     
     public function take($id) {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
-        if (!$this->IsAllowUpdate()) { return Redirect::to("access_denied"); }
+        if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
         $model = $this->QuizService->getQuiz($id);
+        if (!$this->checkQuizValidation($model)) {
+            $this->SaveModelStateTemp();
+            return Redirect::to("quiz/detail/".$id);
+        }
+        
+        $minutes_interval = 0;
         if (!Session::has('quiz_start_time'))
         {
+            
             $startTime = strtotime(Date("Y-m-d H:i:s"));
+            
+            $datetime1 = new DateTime($model->getEndDateTime());
+            $datetime2 = new DateTime(Date("Y-m-d H:i:s"));
+            $interval = date_diff($datetime1, $datetime2);
+            
+            $minutes_interval = $interval->format('%i');
             Session::put('quiz_start_time', $startTime);
         } else {
             $startTime = Session::get('quiz_start_time');
+            
+            $datetime1 = new DateTime($model->getEndDateTime());
+            $datetime2 = new DateTime(Date("Y-m-d H:i:s", $startTime));
+            $interval = date_diff($datetime1, $datetime2);
+            $minutes_interval = $interval->format('%i');
         }
         
-        $minutes = $model->getQuizTime() * 60;
+        $minutes = round($model->getQuizTime(),2) * 60;
+        if ($minutes_interval < $minutes) {
+            $minutes = $minutes_interval;
+        }
+        
         $this->data["maxTime"] = strtotime("+".$minutes." minutes", $startTime);
         
         try {
@@ -108,6 +133,9 @@ class QuizController extends BaseController {
                     if (!$result) {
                         $this->addErrors($this->QuizService->getErrors());
                         return $this->createTakeView($model, $validation->messages(), "take");
+                    }
+                    if (Session::has('quiz_start_time')) {
+                        Session::forget('quiz_start_time');
                     }
                     return Redirect::to("quiz/result/".$StudentQuizObj->getId());
                 }
@@ -138,7 +166,24 @@ class QuizController extends BaseController {
         if (!$this->IsLogin()) { return Redirect::to("login"); }
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
-        $this->data["model"] = $this->QuizService->getQuiz($id);
+        $this->GetModelStateFromTemp();
+        $this->getErrors();
+        $quizObj = $this->QuizService->getQuiz($id);
+        if (is_null($quizObj)) { return Redirect::to("/"); }
+        
+        $StudentQuizService = new StudentQuizService();
+        $StudentQuizFilter = new StudentQuizFilter();
+        $StudentQuizFilter->setQuizId($quizObj->getId());
+        if (!is_null($this->mUserInfo)) {
+            $StudentQuizFilter->setUserName($this->mUserInfo->getUserName());
+        }
+        $StudentQuizs = $StudentQuizService->getList($StudentQuizFilter);
+        $this->data["student_quiz"] = null;
+        if (!is_null($StudentQuizs) && count($StudentQuizs) > 0) {
+            $this->data["student_quiz"] = $StudentQuizs[0];
+        }
+        
+        $this->data["model"] = $quizObj;
         return View::make("quiz/detail", $this->data);
     }
  
@@ -198,6 +243,30 @@ class QuizController extends BaseController {
             
         );
         return $form_validation;
+    }
+    
+    private function checkQuizValidation($quizObj) {
+        if (is_null($quizObj)) { return false; }
+        
+        if (strtotime(Date("Y-m-d H:i:s")) < strtotime($quizObj->getStartDateTime())) {
+            $this->addError("Quiz not opened yet");
+        }
+        
+        if (strtotime(Date("Y-m-d H:i:s")) > strtotime($quizObj->getEndDateTime())) {
+            $this->addError("Quiz has been closed");
+        }
+        
+        $StudentQuizService = new StudentQuizService();
+        $StudentQuizFilter = new StudentQuizFilter();
+        $StudentQuizFilter->setQuizId($quizObj->getId());
+        if (!is_null($this->mUserInfo)) {
+            $StudentQuizFilter->setUserName($this->mUserInfo->getUserName());
+        }
+        $StudentQuizs = $StudentQuizService->getList($StudentQuizFilter);
+        if (!is_null($StudentQuizs) && count($StudentQuizs) > 0) {
+            $this->addError("Quiz have been done");
+        }
+        return $this->getModelState();
     }
     
     private function bindData($param) {
@@ -276,7 +345,12 @@ class QuizController extends BaseController {
     private function loadCourseList()
 	{
 		$CourseService = new CourseService();
-		$CourseList = $CourseService->getList(); 
+		$CourseFilter = new CourseFilter();
+        if ($this->mUserGroup == "instructor") {
+            $CourseCode = (!is_null($this->mUserInfo) ? ((!is_null($this->mUserInfo->getInstructor())) ? ((!is_null($this->mUserInfo->getInstructor()->getCourse())) ? $this->mUserInfo->getInstructor()->getCourse()->getCode() : "" ) : "") : "");
+            $CourseFilter->setCourseCode($CourseCode);
+        }
+        $CourseList = $CourseService->getList($CourseFilter);
 		$this->data['CourseList'] = $CourseList;
 	}
     

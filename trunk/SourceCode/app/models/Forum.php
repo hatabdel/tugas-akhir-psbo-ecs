@@ -12,8 +12,10 @@ class Forum
 	private $mComments;
 	private $mIsPublic;
 	private $mIsLoaded;
-	
-	public function __construct()
+    private $mForumType;
+
+
+    public function __construct()
 	{
 		$this->mIsLoaded = false;
 	}
@@ -155,7 +157,19 @@ class Forum
 	{
 		return $this->mIsLoaded;
 	}
-        
+    
+    public function setForumType($value)
+	{
+		$this->mForumType = $value;
+	}
+    
+    public function getForumType()
+	{
+		return $this->mForumType;
+	}
+	
+
+    
     public function toArray() {
         return array(
             "id" => $this->mId,
@@ -166,7 +180,8 @@ class Forum
             "update_date" => $this->mUpdatedDate,
             "update_user" => (!is_null($this->mUpdatedUser) ? $this->mUpdatedUser->getUserName() : null),
             "course_code" => (!is_null($this->mCourse) ? $this->mCourse->getCode() : null),
-            "is_public" => $this->mIsPublic
+            "is_public" => $this->mIsPublic,
+            "forum_type" => $this->mForumType
         );
     }
 	

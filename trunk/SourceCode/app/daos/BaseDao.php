@@ -14,7 +14,11 @@ class BaseDao extends Dao {
         if (is_null($filter)) {
             $list = DB::table($this->table)->get();
         } else {
-            $list = DB::table($this->table)->whereRaw($filter->getWhereQuery())->get();
+            if (!empty($filter->getWhereQuery())) {
+                $list = DB::table($this->table)->whereRaw($filter->getWhereQuery())->get();
+            } else {
+                $list = DB::table($this->table)->get();
+            }
         }
         
         $obj_arr = array();

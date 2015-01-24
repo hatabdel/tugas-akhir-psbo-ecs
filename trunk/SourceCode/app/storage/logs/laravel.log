@@ -8679,3 +8679,379 @@ Stack trace:
 Stack trace:
 #0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
 #1 {main} [] []
+[2015-01-24 00:02:08] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCreatedUser() on a non-object' in C:\xampp\htdocs\laravel\app\controllers\ForumController.php:70
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 00:02:09] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCreatedUser() on a non-object' in C:\xampp\htdocs\laravel\app\controllers\ForumController.php:70
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:34:36] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Quiz::getStartDatetTime()' in C:\xampp\htdocs\laravel\app\controllers\QuizController.php:216
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:41:25] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:41:34] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:41:44] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:41:53] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:41:58] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:42:06] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:42:13] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:42:20] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:42:35] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:47:28] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getUserName() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\eae3010e92c9f2a5caec0a20a4c62fb8:39
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:47:53] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getUserInfo() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\eae3010e92c9f2a5caec0a20a4c62fb8:39
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:48:34] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Course::getUserInfo()' in C:\xampp\htdocs\laravel\app\storage\views\eae3010e92c9f2a5caec0a20a4c62fb8:39
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:52:48] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:52:58] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:59:41] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 05:59:43] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:00:11] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:14:54] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:14:54] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'StudentQuizFilter' not found' in C:\xampp\htdocs\laravel\app\controllers\QuizController.php:227
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:15:15] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:15:21] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getStudentAnswers() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\dbedb699e6322d07d69397aaca36639d:46
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:15:27] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getStudentAnswers() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\dbedb699e6322d07d69397aaca36639d:46
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:18:57] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getQuiz() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\dbedb699e6322d07d69397aaca36639d:24
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:20:56] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getId() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\731dccece8bbf2815715b17338e8372b:29
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:21:02] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getId() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\731dccece8bbf2815715b17338e8372b:29
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:21:10] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:21:28] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:21:41] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:22:19] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:22:26] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:24:48] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:24:56] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:25:27] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:32:52] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:34:12] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:34:50] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:36:01] production.ERROR: exception 'ErrorException' with message 'date_diff() expects parameter 1 to be DateTimeInterface, integer given' in C:\xampp\htdocs\laravel\app\controllers\QuizController.php:102
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleError(2, 'date_diff() exp...', 'C:\\xampp\\htdocs...', 102, Array)
+#1 C:\xampp\htdocs\laravel\app\controllers\QuizController.php(102): date_diff(1422055494, 1422057600)
+#2 [internal function]: QuizController->take('3')
+#3 C:\xampp\htdocs\laravel\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5776): Illuminate\Routing\Controller->callAction('take', Array)
+#5 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5764): Illuminate\Routing\ControllerDispatcher->call(Object(QuizController), Object(Illuminate\Routing\Route), 'take')
+#6 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4971): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'QuizController', 'take')
+#7 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}('3')
+#8 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5329): call_user_func_array(Object(Closure), Array)
+#9 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4996): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\laravel\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\laravel\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 C:\xampp\htdocs\laravel\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\laravel\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#17 C:\xampp\htdocs\laravel\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\laravel\index.php(49): Illuminate\Foundation\Application->run()
+#19 {main} [] []
+[2015-01-24 06:41:15] production.ERROR: exception 'ErrorException' with message 'A non well formed numeric value encountered' in C:\xampp\htdocs\laravel\app\controllers\QuizController.php:106
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleError(8, 'A non well form...', 'C:\\xampp\\htdocs...', 106, Array)
+#1 C:\xampp\htdocs\laravel\app\controllers\QuizController.php(106): date('Y-m-d H:i:s', '2015-01-24 07:0...')
+#2 [internal function]: QuizController->take('3')
+#3 C:\xampp\htdocs\laravel\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5776): Illuminate\Routing\Controller->callAction('take', Array)
+#5 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5764): Illuminate\Routing\ControllerDispatcher->call(Object(QuizController), Object(Illuminate\Routing\Route), 'take')
+#6 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4971): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'QuizController', 'take')
+#7 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}('3')
+#8 C:\xampp\htdocs\laravel\bootstrap\compiled.php(5329): call_user_func_array(Object(Closure), Array)
+#9 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4996): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\laravel\bootstrap\compiled.php(4984): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\laravel\bootstrap\compiled.php(715): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\laravel\bootstrap\compiled.php(696): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 C:\xampp\htdocs\laravel\bootstrap\compiled.php(7744): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8351): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#15 C:\xampp\htdocs\laravel\bootstrap\compiled.php(8298): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#16 C:\xampp\htdocs\laravel\bootstrap\compiled.php(10961): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#17 C:\xampp\htdocs\laravel\bootstrap\compiled.php(657): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\laravel\index.php(49): Illuminate\Foundation\Application->run()
+#19 {main} [] []
+[2015-01-24 06:42:00] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:42:07] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:42:27] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:43:10] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:43:14] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:45:47] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:45:51] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:49:00] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:50:11] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:50:48] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:51:12] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:51:58] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:53:29] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:53:51] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:54:09] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:54:39] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:55:05] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:55:41] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 06:58:17] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:00:56] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:01:16] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:04:45] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:04:57] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:05:23] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:09:01] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:11:04] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:11:27] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:11:39] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:12:13] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:14:27] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:14:52] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getQuiz() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\dbedb699e6322d07d69397aaca36639d:24
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:15:00] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:15:19] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getCourse() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\077561cb63bda55fa77ed797be648aac:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:20:51] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getQuiz() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\dbedb699e6322d07d69397aaca36639d:24
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:23:11] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getId() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\731dccece8bbf2815715b17338e8372b:29
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:23:30] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getQuiz() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\dbedb699e6322d07d69397aaca36639d:24
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:26:29] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getQuiz() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\dbedb699e6322d07d69397aaca36639d:24
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 07:26:39] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 08:42:30] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 08:42:47] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 08:43:09] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 08:43:43] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 08:44:00] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getTitle() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\d2f42d52f298ab15b293fcfcea47bc0e:22
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-01-24 08:44:37] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function getQuiz() on a non-object' in C:\xampp\htdocs\laravel\app\storage\views\dbedb699e6322d07d69397aaca36639d:24
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

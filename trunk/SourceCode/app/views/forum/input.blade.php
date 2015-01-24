@@ -36,6 +36,7 @@
 			<div class="control-group">
                 <label class="control-label">Course</label>
 				<div class="controls">
+                    <?php if ($UserGroup == "admin") { ?>
 					<select name="course_code">
 						<?php if(!is_null($CourseList))
 						{
@@ -51,7 +52,12 @@
 						<?php }
 						}?>
 					</select>
-				</div>   
+                    <?php } else { ?>
+                    <input type="hidden" name="course_code" value="<?php echo (!is_null($model) ? (!is_null($model->getCourse()) ? $model->getCourse()->getCode() : ""):"") ?>">
+                    <?php echo (!is_null($model) ? (!is_null($model->getCourse()) ? $model->getCourse()->getName() : ""):"") ?>
+                    <?php } ?>
+                    <input type="hidden" name="forum_type" value="<?php echo (!is_null($model) ? $model->getForumType() : "") ?>">
+				</div>
             </div>
             <div class="control-group" style="display: none;">
                 <label class="control-label">Is Public</label>

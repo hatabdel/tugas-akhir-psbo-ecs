@@ -34,9 +34,11 @@ class AttachmentController extends BaseController {
                 $this->data["record_id"] = $input["course_code"];
             }
             
+            $this->data["back_url"] = "";
             if (isset($input["back_url"])) {
                 $this->data["back_url"] = $input["back_url"];
             }
+            
             if (count($input) > 0 && Request::isMethod('post')) {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
@@ -107,6 +109,7 @@ class AttachmentController extends BaseController {
         if (!$this->IsAllowRead()) { return Redirect::to("access_denied"); }
         
         $input = Input::all();
+        $this->data["back_url"] = "";
         if (isset($input["back_url"])) {
             $this->data["back_url"] = $input["back_url"];
         }
@@ -160,7 +163,7 @@ class AttachmentController extends BaseController {
         $AttachmentObj = new Attachment();
         if (!is_null($param) && count($param) > 0) {
             $AttachmentObj->setId($param["id"]);
-            $AttachmentObj->setFileName($param["file_name"]);
+            $AttachmentObj->setFileName(str_replace(" ", "_", $param["file_name"]));
             $AttachmentObj->setDescription($param["description"]);
             $AttachmentObj->setFunctionId($param["function_id"]);
             $AttachmentObj->setRecordId($param["record_id"]);

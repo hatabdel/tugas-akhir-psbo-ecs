@@ -22,7 +22,9 @@
         <div class="control-group">
             <label class="control-label">Quiz</label>
             <div class="controls">
-                <?php if(!is_null($model)) { echo (!is_null($model->getQuiz()) ? $model->getQuiz()->getQuizName() : ""); } ?>
+                <?php 
+                $CourseCode = (!is_null($model->getQuiz()) ? (!is_null($model->getQuiz()->getCourse()) ? $model->getQuiz()->getCourse()->getCode() : "" ) : "");
+                if(!is_null($model)) { echo (!is_null($model->getQuiz()) ? $model->getQuiz()->getQuizName() : ""); } ?>
             </div>
         </div>
         <div class="control-group">
@@ -81,7 +83,7 @@
                 </div>
                 @endif
             <div class="form-actions">
-                <button type="button" onclick='window.location.href="<?php echo url()."/quiz"; ?>"' class="btn btn-primary">Close</button>
+                <button type="button" onclick='window.location.href="<?php echo url()."/course/dashboard/".$CourseCode; ?>"' class="btn btn-primary">Close</button>
             </div>
     </div>
 </div>

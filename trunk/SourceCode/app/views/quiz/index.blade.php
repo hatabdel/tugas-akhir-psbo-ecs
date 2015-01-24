@@ -39,7 +39,7 @@
                             </td>
                             <td class="Id">{{ $item->getId() }}</td>
                             <td class="QuizName"><a href="<?php echo url()."/quiz/detail/".$item->getId(); ?>">{{ $item->getQuizName() }}</a></td>
-                            <td class="Course"><?php echo (!is_null($item->getCourse()) ? $item->getCourse()->getCode() : "" ) ?></td>
+                            <td class="Course"><?php echo (!is_null($item->getCourse()) ? $item->getCourse()->getName() : "" ) ?></td>
                             <td class="QuizType"><?php echo (!is_null($item->getQuizType()) ? $item->getQuizType()->getName() : "" ) ?></td>
                             <td class="StartDateTime">{{ $item->getStartDateTime() }}</td>
                             <td class="EndDateTime">{{ $item->getEndDateTime() }}</td>

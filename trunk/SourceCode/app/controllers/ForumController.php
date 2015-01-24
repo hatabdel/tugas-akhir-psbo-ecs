@@ -4,6 +4,9 @@ class ForumController extends BaseController {
     
     private $ForumService;
     protected $function_id = "forum";
+    private $Course = null;
+    private $ForumType = null;
+    
     public function __construct() {
         parent::__construct();
         $this->loadDefaultValue();
@@ -26,7 +29,17 @@ class ForumController extends BaseController {
         try {
             $input = Input::all();
 			$model = null;
-            if (count($input) > 0) {
+            
+            $CourseService = new CourseService();
+            if (isset($input["course_code"])) {
+                $this->Course = $CourseService->getCourse($input["course_code"]);
+            }
+            
+            if (isset($input["forum_type"])) {
+                $this->ForumType = $input["forum_type"];
+            }
+            
+            if (count($input) > 0 && Request::isMethod('post')) {
                 $model = $this->bindData($input);
                 $validation = Validator::make($input, $this->initValidation());
                 if ($validation->fails()) {
@@ -138,7 +151,8 @@ class ForumController extends BaseController {
 		$this->loadFunctionList();
         $this->loadCourseList();
 		$this->loadCommentList();
-		
+		$this->data["model"]->setCourse($this->Course);
+        $this->data["model"]->setForumType($this->ForumType);
         $this->addErrorValidation($validation);
         return View::make("forum/input", $this->data);
     }
@@ -157,7 +171,11 @@ class ForumController extends BaseController {
             $ForumObj->setTitle($param["title"]);
 			$ForumObj->setContent($param["content"]);
 			$ForumObj->setIsPublic($param["is_public"]);
-			
+            $ForumObj->setForumType($param["forum_type"]);
+            $Course = new Course();
+            $Course->setCode($param["course_code"]);
+            $Course->setIsLoaded(true);
+            $ForumObj->setCourse($Course);
         }
         return $ForumObj;
     }
@@ -173,7 +191,12 @@ class ForumController extends BaseController {
 	private function loadCourseList()
 	{
 		$CourseService = new CourseService();
-		$CourseList = $CourseService->getList(); 
+		$CourseFilter = new CourseFilter();
+        if ($this->mUserGroup == "instructor") {
+            $CourseCode = (!is_null($this->mUserInfo) ? ((!is_null($this->mUserInfo->getInstructor())) ? ((!is_null($this->mUserInfo->getInstructor()->getCourse())) ? $this->mUserInfo->getInstructor()->getCourse()->getCode() : "" ) : "") : "");
+            $CourseFilter->setCourseCode($CourseCode);
+        }
+        $CourseList = $CourseService->getList($CourseFilter);
 		$this->data['CourseList'] = $CourseList;
 	}
 	

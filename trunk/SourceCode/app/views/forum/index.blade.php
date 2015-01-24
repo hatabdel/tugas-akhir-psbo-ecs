@@ -22,7 +22,6 @@
                         <tr>
                             <th style="width:100px">Action</th>
                             <th>Title</th>
-                            <th>Content</th>
                             <th>Created Date</th>
                         </tr>
                     </thead>
@@ -36,7 +35,6 @@
                             </td>
                             <td class="Title"><a href="<?php echo url()."/forum/detilforum/".$item->getId(); ?>">{{ $item->getTitle() }}</a>
 							</td>
-							<td class="Content">{{ Str::limit(strip_tags($item->getContent()), 25) }}</td>
 							<td class="CreatedDate">{{ $item->getCreatedDate() }}</td>
 						</tr>
 						@endforeach

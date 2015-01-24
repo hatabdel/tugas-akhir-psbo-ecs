@@ -36,6 +36,9 @@ class LoginController extends BaseController {
         {
             Session::forget("UserInfo");
         }
+        if (Session::has('quiz_start_time')) {
+            Session::forget('quiz_start_time');
+        }
         $this->mUserInfo = null;
         return Redirect::to("login");
     }

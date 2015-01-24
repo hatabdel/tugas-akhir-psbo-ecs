@@ -13,10 +13,16 @@
         </div>
     </div>
     <div class="box-content" id="dialog-detailQuizType" title="Detail Answer Type">
-        <div class="control-group">
+        <div class="control-group" style="display:none">
             <label class="control-label">Id</label>
             <div class="controls">
                 <?php if(!is_null($model)) { echo $model->getId(); } ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Description</label>
+            <div class="controls">
+                <?php if(!is_null($model)) { echo $model->getDescription(); } ?>
             </div>
         </div>
         <div class="control-group">
@@ -26,7 +32,9 @@
             </div>
         </div>
         <div class="form-actions">
+            <?php if ($UserGroup != "student") { ?>
             <button type="button" onclick='window.location.href="<?php echo url()."/attachment/edit/".(!is_null($model) ? $model->getId() : ""); ?>"' class="btn btn-primary">Edit</button>
+            <?php } ?>
             <button type="button" onclick='window.location.href="<?php echo (!isset($back_url) ? url()."/attachment" : url().$back_url ); ?>"' class="btn btn-primary">Close</button>
          </div>
     </div>

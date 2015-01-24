@@ -106,10 +106,18 @@ class CourseController extends BaseController {
         
         $this->data["model"] = $this->CourseService->getCourse($id);
         $ForumService = new ForumService();
-        $ForumList = $ForumService->getList();
+        $StudentForumFilter = new ForumFilter();
+        $StudentForumFilter->setCourseCode($id);
+        $StudentForumFilter->setForumType("student");
+        $StudentForumList = $ForumService->getList($StudentForumFilter);
         
-        $this->data["ForumStudentList"] = $ForumList;
-        $this->data["ForumInstructorList"] = $ForumList;
+        $InstructorForumFilter = new ForumFilter();
+        $InstructorForumFilter->setCourseCode($id);
+        $InstructorForumFilter->setForumType("instructor");
+        $InstructorForumList = $ForumService->getList($InstructorForumFilter);
+        
+        $this->data["ForumStudentList"] = $StudentForumList;
+        $this->data["ForumInstructorList"] = $InstructorForumList;
         
         $AttachmentService = new AttachmentService();
         $AttachmentFilter = new AttachmentFilter();
@@ -123,6 +131,12 @@ class CourseController extends BaseController {
         $WebinarFilter->setCourseCode($id);
         $WebinarList = $WebinarService->getList($WebinarFilter);
         $this->data["WebinarList"] = $WebinarList;
+        
+        $QuizService = new QuizService();
+        $QuizFilter = new QuizFilter();
+        $QuizFilter->setCourseCode($id);
+        $QuizList = $QuizService->getList($QuizFilter);
+        $this->data["QuizList"] = $QuizList;
         
         return View::make("course/dashboard", $this->data);
     }

@@ -15,8 +15,9 @@
     <div class="box-content" id="dialog-inputAdmin" title="Tambah Quiz">
         <?php echo $errors; ?>
         <div id="countdown" class="pull-right btn-danger btn popover-hover" href="#" data-content="Sisa Waktu Mengerjakan"></div>
-       <div id="until" class="hide">{{Date("Y/m/d H:i:s", $maxTime)}}</div>
-        <form method="post" action="<?php echo url().$action; ?>" class="form-horizontal">
+        <div id="until" class="hide">{{Date("Y/m/d H:i:s", $maxTime)}}</div>
+        <div id="until_timestamp" class="hide">{{ $maxTime }}</div>
+        <form method="post" action="<?php echo url().$action; ?>" id="form_quiz" class="form-horizontal">
             <div class="control-group" style="display: none">
                 <label class="control-label">Quiz Id</label>
                 <div class="controls">
@@ -34,13 +35,15 @@
                 <label class="control-label">Course</label>
                 <div class="controls">
                     <select name="course_code">
-                        <?php if(!is_null($CourseList))
+                        <?php 
+                        $CourseObj = (!is_null($model->getCourse()) ? $model->getCourse()->getCode() : "");
+                        if(!is_null($CourseList))
                         {
                             foreach($CourseList as $item)
                             {
                                 if(is_null($item)){continue;}
                                 $selected = "";
-                                $CourseObj = (!is_null($model->getCourse()) ? $model->getCourse()->getCode() : "");
+                                
                                 if($item->getCode() == $CourseObj) 
                                 {
                                     $selected = "selected=\"selected\"";
@@ -90,7 +93,7 @@
                 <label class="control-label">Quiz Time</label>
                 <div class="controls">
                     <input type="hidden" name="quiz_time" value="<?php if(!is_null($model)) echo $model->getQuizTime(); ?>" /> 
-                    <?php if(!is_null($model)) echo $model->getQuizTime(); ?> Hour(s)
+                    <?php if(!is_null($model)) echo round($model->getQuizTime(),2); ?> Hour(s)
                 </div>
             </div>
             
@@ -131,8 +134,12 @@
                 @endif
             <div class="form-actions">
                 <button type="submit" id="btn-submit" class="btn btn-primary"><i class="icon-ok"></i> Submit</button>
+                <?php if ($UserGroup != "student") { ?>
                 <button type="reset" class="btn btn-primary">Reset</button>
                 <button type="button" onclick='window.location.href="<?php echo url()."/quiz"; ?>"' class="btn btn-primary">Cancel</button>
+                <?php } else { ?>
+                <button type="button" onclick='window.location.href="<?php echo url()."/course/dashboard/".$CourseObj; ?>"' class="btn btn-primary">Close</button>
+                <?php } ?>
              </div>
         </form>
     </div>

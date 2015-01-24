@@ -9,9 +9,9 @@ class QuizService extends BaseService {
         $this->QuizDao = new QuizDao();
     }
     
-    public function getList() {
+    public function getList($filter = null) {
         try {
-            return $this->QuizDao->getList();
+            return $this->QuizDao->getList($filter);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
@@ -90,6 +90,14 @@ class QuizService extends BaseService {
         
         if (is_null($model->getEndDateTime()) || empty($model->getEndDateTime())) {
             $this->addError("End Date Time is required!");
+        }
+        
+        if (!is_null($model->getStartDateTime()) && !is_null($model->getEndDateTime())) {
+            $StartDateTime = strtotime($model->getStartDateTime());
+            $EndDateTime = strtotime($model->getEndDateTime());
+            if ($StartDateTime > $EndDateTime) {
+                $this->addError("End Date Time Smaller Than Start Date Time!");
+            }
         }
         
         return $this->getServiceState();

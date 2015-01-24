@@ -7,9 +7,9 @@ class ForumService extends BaseService
         parent::__construct();
         $this->ForumDao = new ForumDao();
     }
-	public function getList() {
+	public function getList($filter = null) {
         try {
-            return $this->ForumDao->getList();
+            return $this->ForumDao->getList($filter);
         } catch (Exception $ex) {
             $this->addError($ex->getMessage());
             throw new Exception($ex->getMessage());
